@@ -16,6 +16,7 @@ state = args.state_name
 include_file_name = "include/State_"+state+".h"
 src_file_name = "src/State_"+state+".cpp"
 
+# Writing h file
 include_file = open(include_file_name, "w")
 guards = "STATE_" + state.upper() + "_H"
 state_name = "State_" + state
@@ -25,22 +26,39 @@ include_file_content += '#include <iostream>\n#include <map>\n'
 include_file_content += '#include \"State.h\"\n\n'
 include_file_content += 'class Root;\nclass ' + state_name + ' : public State {\n'
 include_file_content += '\tpublic:\n\t\t' + state_name + '();\n'
-include_file_content += '\t\t' + state_name + '(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root);\n'
-include_file_content += '\t\t' + 'std::string execute() override;\n};\n#endif'
+include_file_content += '\t\t' + state_name + '(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);\n'
+include_file_content += '\t\t' + 'EventName execute() override;\n};\n#endif'
 include_file.write(include_file_content)
 include_file.close()
 
+# Writing cpp file
 src_file = open(src_file_name, "w")
 src_file_content = '#include \"' + state_name + '.h\"\n'
 src_file_content += '#include \"Root.h\"\n\n'
 src_file_content += state_name+'::'+state_name+'(): State() {\n\n}\n\n'
-src_file_content += state_name+'::'+state_name+'(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root): State(name,state_transitions,root) {\n\n}\n\n'
-src_file_content += 'std::string '+state_name+'::execute() {\n'
+src_file_content += state_name+'::'+state_name+'(StateName name, std::map<EventName, StateName> &state_transitions, Root* root) : State(name, state_transitions, root) {\n\n}\n\n'
+src_file_content += 'EventName '+state_name+'::execute() {\n'
 src_file_content += '\tstd::cout << \"In ' + state_name + ' and will return end state.\" << std::endl;\n'
-src_file_content += '\treturn \"end_state\";\n}'
+src_file_content += '\treturn TERMINATE;\n}'
 src_file.write(src_file_content)
 src_file.close()
 
+# Updating State_Enums with new state
+enums_file = open('include/State_Enums.h','r')
+data = enums_file.readlines()
+enums_file.close()
+
+enum_end_index = data.index('};\n')
+add_state = '    STATE_' + state.upper() + '\n'
+data[enum_end_index - 1] = data[enum_end_index - 1][:-1] + ",\n" + add_state
+
+enums_content = "".join(data)
+
+new_enums_file = open('include/State_Enums.h','w')
+new_enums_file.write(enums_content)
+new_enums_file.close()
+
+# Updating CMakeLists with new state
 cmake_file = open('CMakeLists.txt','r')
 data = cmake_file.readlines()
 cmake_file.close()
@@ -54,4 +72,3 @@ cmake_content = "".join(data)
 new_cmake_file = open('CMakeLists.txt','w')
 new_cmake_file.write(cmake_content)
 new_cmake_file.close()
-

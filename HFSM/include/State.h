@@ -1,6 +1,8 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include "State_Enums.h"
+
 #include <iostream>
 #include <map>
 
@@ -9,15 +11,16 @@ class Root;
 class State {
     public:
         State();
-        State(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root);
-        virtual std::string execute();
-        std::string getName();
+        State(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);
+        virtual EventName execute();
+        StateName getName();
+        StateName getNextState(EventName curr_event);
 
     // Subclasses cannot access these variables unless they protected, not private 
     protected:
         Root* root_;
-        std::string name_;
-        std::map<std::string,std::string> state_transitions_;
+        StateName name_;
+        std::map<EventName,StateName> state_transitions_;
 };
 
 #endif
