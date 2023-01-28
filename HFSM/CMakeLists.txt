@@ -1,6 +1,7 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_C.cpp
         src/Root.cpp
         src/State.cpp
         src/State_A.cpp

@@ -1,17 +1,22 @@
 #include "State.h"
 #include "Root.h"
+
 State::State() {
 
 }
 
-State::State(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root): name_(name), state_transitions_(state_transitions),root_(root) {
+State::State(StateName name, std::map<EventName,StateName> &state_transitions, Root* root) : name_(name), state_transitions_(state_transitions), root_(root) {
 
 }
 
-std::string State::getName() {
+StateName State::getName() {
     return this->name_;
 }
 
-std::string State::execute() {
-    return "ERROR: YOU ARE IN THE BASE STATE";
+StateName State::getNextState(EventName curr_event) {
+    return this->state_transitions_[curr_event];
+}
+
+EventName State::execute() {
+    return TERMINATE;
 }

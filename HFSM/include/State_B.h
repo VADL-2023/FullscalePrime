@@ -9,8 +9,8 @@ class Root;
 class State_B : public State {
     public:
         State_B();
-        State_B(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root);
-        std::string execute() override;
+        State_B(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);
+        EventName execute() override;
     private:
 };
 #endif
