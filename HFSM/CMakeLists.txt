@@ -3,7 +3,7 @@ include_directories(include)
 add_library(HFSM
         src/State_Final.cpp
         src/State_Initial.cpp
-        src/State_Stepper_Test.cpp
+        src/State_Stepper1.cpp
         src/Root.cpp
         src/State.cpp
         src/State_A.cpp

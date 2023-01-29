@@ -24,6 +24,7 @@ class Root {
         int stepper_1_pin_4_ = 6;
         int stepper_speed_ = 30;
         bool gpio_initialized_ = false;
+        int num_steps_ = 34;
         Stepper stepper_1_;
         std::map<StateName,State*> states_;
         Root();
