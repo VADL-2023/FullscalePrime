@@ -16,7 +16,6 @@ class State;
 class Root {
     public:
         double start_time_;
-<<<<<<< HEAD
         int stepper_1_standby_pin_ = 0;
         int steps_per_revolution_ = 200;
         int stepper_1_pin_1_ = 11;
@@ -26,11 +25,7 @@ class Root {
         int stepper_speed_ = 30;
         bool gpio_initialized_ = false;
         Stepper stepper_1_;
-        std::map<std::string,State*> states_;
-=======
         std::map<StateName,State*> states_;
-
->>>>>>> 6e12645 (Added enums to represent states and events)
         Root();
         void addState(State* the_state);
         void execute();

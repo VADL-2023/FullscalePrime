@@ -11,7 +11,7 @@ class Root;
 class State {
     public:
         State();
-        State(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);
+        State(StateName &name, std::map<EventName, StateName> &state_transitions, Root* root);
         virtual EventName execute();
         StateName getName();
         StateName getNextState(EventName curr_event);

@@ -5,7 +5,7 @@ State::State() {
 
 }
 
-State::State(StateName name, std::map<EventName,StateName> &state_transitions, Root* root) : name_(name), state_transitions_(state_transitions), root_(root) {
+State::State(StateName& name, std::map<EventName,StateName> &state_transitions, Root* root) : name_(name), state_transitions_(state_transitions), root_(root) {
 
 }
 
