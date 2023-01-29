@@ -10,14 +10,14 @@ int main() {
     //State Definitions and Declarations
 
     //State Stepper Test
-    std::string stepper_name = "state_stepper";
-    std::map<std::string,std::string> stepper_transitions;
-    stepper_transitions.insert(std::pair<std::string,std::string>("swivel_stepper","end_state"));
+    StateName stepper_name = STATE_STEPPER;
+    std::map<EventName,StateName> stepper_transitions;
+    stepper_transitions.insert(std::pair<EventName,StateName>(BASIC_SWIVEL,END_STATE));
     State_Stepper_Test stepper_test(stepper_name,stepper_transitions,&root);
 
     
     //Add States to Machine
-    root.addStates(&stepper_test);
+    root.addState(&stepper_test);
     State* current_state = &stepper_test;
 
     root.start_time_ = root.getCurrentTime();
@@ -27,12 +27,12 @@ int main() {
         std::cout << "Not initialized" << std::endl;
     }
     std::cout << "Initialized" << std::endl;
-    std::string next_state_str = current_state->execute();
-    std::cout << "Next state: " << next_state_str << std::endl;
-    while(next_state_str != "end_state") {
-        current_state = root.states_[next_state_str];
-        next_state_str = current_state->execute();
-        std::cout << "Next state: " << next_state_str << std::endl;
+    EventName curr_event = current_state->execute();
+    StateName next_state = current_state->getNextState(curr_event);
+    while(next_state != END_STATE && curr_event != TERMINATE) {
+        current_state = root.states_[next_state];
+        curr_event = current_state->execute();
+        next_state = current_state->getNextState(curr_event);
     }
 
     //Temporary termination thing
