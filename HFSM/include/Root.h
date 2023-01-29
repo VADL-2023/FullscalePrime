@@ -1,6 +1,8 @@
 #ifndef ROOT_H
 #define ROOT_H
 
+#include "State_Enums.h"
+
 #include <iostream>
 #include <map>
 #include <ctime>
@@ -23,13 +25,13 @@ class Root {
         int stepper_speed_ = 30;
         bool gpio_initialized_ = false;
         Stepper stepper_1_;
-        std::map<std::string,State*> states_;
+        std::map<StateName,State*> states_;
         Root();
-        void addStates(State* the_state);
+        void addState(State* the_state);
         void execute();
         double getCurrentTime();
+
     private:
-        
 
 };
 #endif

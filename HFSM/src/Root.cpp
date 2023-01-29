@@ -9,8 +9,8 @@ Root::Root():start_time_(0) {
     this->stepper_1_.setSpeed(this->stepper_speed_);
 }
 
-void Root::addStates(State* the_state) {
-    this->states_.insert(std::pair<std::string,State*>(the_state->getName(),the_state));
+void Root::addState(State* the_state) {
+    this->states_.insert(std::pair<StateName,State*>(the_state->getName(),the_state));
 }
 
 double Root::getCurrentTime() {

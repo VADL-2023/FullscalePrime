@@ -9,7 +9,7 @@ class Root;
 class State_Stepper_Test : public State {
 	public:
 		State_Stepper_Test();
-		State_Stepper_Test(std::string &name,std::map<std::string,std::string> &state_transitions,Root* root);
-		std::string execute() override;
+		State_Stepper_Test(StateName &name,std::map<EventName,StateName> &state_transitions,Root* root);
+		EventName execute() override;
 };
 #endif
