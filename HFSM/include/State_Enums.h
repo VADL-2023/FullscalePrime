@@ -5,6 +5,8 @@ enum StateName {
     STATE_B,
     STATE_STEPPER,
     END_STATE,
+    STATE_INITIAL,
+    STATE_FINAL
 };
 
 enum EventName {
@@ -12,5 +14,6 @@ enum EventName {
     TIME_15,
     TIME_20,
     BASIC_SWIVEL,
-    TERMINATE
+    TERMINATE,
+    INITIALIZE,
 };
