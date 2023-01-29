@@ -3,7 +3,7 @@
 enum StateName {
     STATE_A, 
     STATE_B,
-    STATE_STEPPER,
+    STATE_STEPPER1,
     END_STATE,
     STATE_INITIAL,
     STATE_FINAL
