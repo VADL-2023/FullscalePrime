@@ -18,11 +18,12 @@ class Root {
         bool gpio_initialized_ = false;
         double start_time_;
         bool is_unit_fsm_;
+        int unit_test_delay_ms_ = 1000000;
 
         int steps_per_revolution_ = 200;
         int stepper_speed_ = 30;
         int num_steps_ = 34;
-        int stepper_threshold_ = 10000;
+        int stepper_threshold_ = 5000;
         int pwm_motor_max_ = 255;
 
         int stepper_1_standby_pin_ = 0;

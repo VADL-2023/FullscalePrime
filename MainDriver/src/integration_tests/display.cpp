@@ -4,7 +4,7 @@
 #include "State_Stepper1.h"
 #include "State_Stepper2.h"
 #include "State_Initial.h"
-#include "State_Delay.h"
+#include "State_RCB_Motor.h"
 #include "State_Final.h"
 #include <map>
 #include "pigpio.h"
@@ -18,20 +18,20 @@ int main()
     // State Initial
     StateName initial_name = STATE_INITIAL;
     std::map<EventName, StateName> initial_transitions;
-    initial_transitions.insert(std::pair<EventName, StateName>(INITIALIZE, STATE_STEPPER1));
+    initial_transitions.insert(std::pair<EventName, StateName>(INITIALIZE, STATE_RCB_MOTOR));
     State_Initial initial(initial_name, initial_transitions, &root);
+
+    // State RCB Motor
+    StateName rcb_name = STATE_RCB_MOTOR;
+    std::map<EventName, StateName> rcb_transitions;
+    rcb_transitions.insert(std::pair<EventName, StateName>(BASIC_ROTATE, STATE_STEPPER1));
+    State_RCB_Motor rcb(rcb_name, rcb_transitions, &root);
 
     // State Stepper 1 Test
     StateName stepper1_name = STATE_STEPPER1;
     std::map<EventName, StateName> stepper1_transitions;
-    stepper1_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_DELAY));
+    stepper1_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_STEPPER2));
     State_Stepper1 stepper1(stepper1_name, stepper1_transitions, &root);
-
-    //State Delay 5 Seconds
-    StateName delay_name = STATE_DELAY;
-    std::map<EventName, StateName> delay_transitions;
-    delay_transitions.insert(std::pair<EventName, StateName>(DELAY_1_SECOND, STATE_STEPPER2));
-    State_Delay delay1(delay_name, delay_transitions, &root);
 
     // State Stepper 2 Test
     StateName stepper2_name = STATE_STEPPER2;
@@ -47,8 +47,8 @@ int main()
 
     // Add States to Machine
     root.addState(&initial);
+    root.addState(&rcb);
     root.addState(&stepper1);
-    root.addState(&delay1);
     root.addState(&stepper2);
     root.addState(&final);
     State *current_state = &initial;
@@ -60,6 +60,7 @@ int main()
     if (root.is_unit_fsm_)
     {
         curr_event = current_state->unitExecute();
+        usleep(root.unit_test_delay_ms_);
     }
     else
     {
@@ -72,6 +73,8 @@ int main()
         if (root.is_unit_fsm_)
         {
             curr_event = current_state->unitExecute();
+            // Automatically sleep for 1 second after
+            usleep(root.unit_test_delay_ms_);
         }
         else
         {
