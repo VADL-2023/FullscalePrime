@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Root.h"
 #include "State.h"
-#include "State_Stepper1.h"
+#include "State_Stepper2.h"
 #include "State_Initial.h"
 #include "State_Final.h"
 #include <map>
@@ -16,14 +16,14 @@ int main()
     // State Initial
     StateName initial_name = STATE_INITIAL;
     std::map<EventName, StateName> initial_transitions;
-    initial_transitions.insert(std::pair<EventName, StateName>(INITIALIZE, STATE_STEPPER1));
+    initial_transitions.insert(std::pair<EventName, StateName>(INITIALIZE, STATE_STEPPER2));
     State_Initial initial(initial_name, initial_transitions, &root);
 
     // State Stepper Test
-    StateName stepper1_name = STATE_STEPPER1;
-    std::map<EventName, StateName> stepper1_transitions;
-    stepper1_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_FINAL));
-    State_Stepper1 stepper1(stepper1_name, stepper1_transitions, &root);
+    StateName stepper2_name = STATE_STEPPER2;
+    std::map<EventName, StateName> stepper2_transitions;
+    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_FINAL));
+    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);
 
     // State Final
     StateName final_name = STATE_FINAL;
@@ -33,7 +33,7 @@ int main()
 
     // Add States to Machine
     root.addState(&initial);
-    root.addState(&stepper1);
+    root.addState(&stepper2);
     root.addState(&final);
     State *current_state = &initial;
 

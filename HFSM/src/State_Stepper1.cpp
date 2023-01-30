@@ -11,8 +11,13 @@ State_Stepper1::State_Stepper1(StateName &name,std::map<EventName,StateName> &st
 
 
 EventName State_Stepper1::execute() {
-	double start_time = this->root_->getCurrentTime();
-	while(this->root_->getCurrentTime() - start_time < 10000) {
+	std::cout << "I terminate" << std::endl;
+    return TERMINATE;
+}
+
+EventName State_Stepper1::unitExecute() {
+    double start_time = this->root_->getCurrentTime();
+	while(this->root_->getCurrentTime() - start_time < this->root_->stepper_threshold_) {
         gpioWrite(this->root_->stepper_1_standby_pin_,1);
         std::cout << "Moving one way" << std::endl;
         //std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;

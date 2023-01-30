@@ -15,3 +15,8 @@ EventName State_Final::execute() {
 	std::cout << "Terminated" << std::endl;
 	return TERMINATE;
 }
+
+EventName State_Final::unitExecute() {
+	return this->execute();
+}
+

@@ -27,7 +27,7 @@ include_file_content += '#include \"State.h\"\n\n'
 include_file_content += 'class Root;\nclass ' + state_name + ' : public State {\n'
 include_file_content += '\tpublic:\n\t\t' + state_name + '();\n'
 include_file_content += '\t\t' + state_name + '(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);\n'
-include_file_content += '\t\t' + 'EventName execute() override;\n};\n#endif'
+include_file_content += '\t\t' + 'EventName execute() override;\n\t\tEventName unitExecute() override;\n};\n#endif'
 include_file.write(include_file_content)
 include_file.close()
 
@@ -39,7 +39,9 @@ src_file_content += state_name+'::'+state_name+'(): State() {\n\n}\n\n'
 src_file_content += state_name+'::'+state_name+'(StateName name, std::map<EventName, StateName> &state_transitions, Root* root) : State(name, state_transitions, root) {\n\n}\n\n'
 src_file_content += 'EventName '+state_name+'::execute() {\n'
 src_file_content += '\tstd::cout << \"In ' + state_name + ' and will return end state.\" << std::endl;\n'
-src_file_content += '\treturn TERMINATE;\n}'
+src_file_content += '\treturn TERMINATE;\n}\n\n'
+src_file_content += 'EventName '+state_name+'::unitExecute() {\n'
+src_file_content += '\treturn this->execute();\n}'
 src_file.write(src_file_content)
 src_file.close()
 

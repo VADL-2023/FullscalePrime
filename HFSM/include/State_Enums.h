@@ -6,7 +6,8 @@ enum StateName {
     STATE_STEPPER1,
     END_STATE,
     STATE_INITIAL,
-    STATE_FINAL
+    STATE_FINAL,
+    STATE_STEPPER2
 };
 
 enum EventName {

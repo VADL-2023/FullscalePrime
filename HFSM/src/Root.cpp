@@ -1,7 +1,11 @@
 #include "Root.h"
 #include "State.h"
 
-Root::Root():start_time_(0) {
+Root::Root():start_time_(0),is_unit_fsm_(false) {
+
+}
+
+Root::Root(bool is_unit_fsm):start_time_(0),is_unit_fsm_(is_unit_fsm) {
 }
 
 void Root::addState(State* the_state) {

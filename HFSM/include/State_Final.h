@@ -11,5 +11,6 @@ class State_Final : public State {
 		State_Final();
 		State_Final(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);
 		EventName execute() override;
+		EventName unitExecute() override;
 };
 #endif

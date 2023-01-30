@@ -17,6 +17,10 @@ StateName State::getNextState(EventName curr_event) {
     return this->state_transitions_[curr_event];
 }
 
+EventName State::unitExecute() {
+    return TERMINATE;
+}
+
 EventName State::execute() {
     return TERMINATE;
 }
