@@ -60,7 +60,6 @@ void Stepper::setSpeed(double whatSpeed)
  */
 void Stepper::step(int steps_to_move)
 {
-    std::cout << "In here" << std::endl;
     int steps_left = std::abs(steps_to_move); // how many steps to take
 
     // determine direction based on whether steps_to_mode is + or -:

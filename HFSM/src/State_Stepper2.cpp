@@ -18,21 +18,17 @@ EventName State_Stepper2::unitExecute() {
 	double start_time = this->root_->getCurrentTime();
 	while(this->root_->getCurrentTime() - start_time < this->root_->stepper_threshold_) {
         gpioWrite(this->root_->stepper_2_standby_pin_,1);
-		std::cout << "Current high" << std::endl;
         std::cout << "Moving one way" << std::endl;
         //std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
         this->root_->stepper_2_.step(this->root_->num_steps_);
         std::cout << "Pausing" << std::endl;
         gpioWrite(this->root_->stepper_2_standby_pin_,0);
-		std::cout << "Current low" << std::endl;
         usleep(2000000);
         gpioWrite(this->root_->stepper_2_standby_pin_,1);
-		std::cout << "Current high" << std::endl;
         std::cout << "Moving other way" << std::endl;
         this->root_->stepper_2_.step(-this->root_->num_steps_);
         std::cout << "Pausing" << std::endl;
         gpioWrite(this->root_->stepper_2_standby_pin_,0);
-		std::cout << "Current low" << std::endl;
         usleep(2000000);
     }
 	return BASIC_SWIVEL;

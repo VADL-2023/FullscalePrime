@@ -1,6 +1,7 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_Delay.cpp
         src/State_Stepper2.cpp
         src/State_Final.cpp
         src/State_Initial.cpp

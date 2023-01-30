@@ -7,7 +7,8 @@ enum StateName {
     END_STATE,
     STATE_INITIAL,
     STATE_FINAL,
-    STATE_STEPPER2
+    STATE_STEPPER2,
+    STATE_DELAY
 };
 
 enum EventName {
@@ -17,4 +18,6 @@ enum EventName {
     BASIC_SWIVEL,
     TERMINATE,
     INITIALIZE,
+    DELAY_1_SECOND,
+    DELAY
 };
