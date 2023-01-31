@@ -1,11 +1,8 @@
 #include <iostream>
 #include "Root.h"
 #include "State.h"
-#include "State_Stepper1.h"
-#include "State_Stepper2.h"
-#include "State_Initial.h"
-#include "State_RCB_Motor.h"
 #include "State_Nacelle_Servo.h"
+#include "State_Initial.h"
 #include "State_Final.h"
 #include <map>
 #include "pigpio.h"
@@ -22,29 +19,11 @@ int main()
     initial_transitions.insert(std::pair<EventName, StateName>(INITIALIZE, STATE_NACELLE_SERVO));
     State_Initial initial(initial_name, initial_transitions, &root);
 
-    // State Nacelle Servo
+    // State Stepper Test
     StateName nacelle_servo_name = STATE_NACELLE_SERVO;
     std::map<EventName, StateName> nacelle_servo_transitions;
-    nacelle_servo_transitions.insert(std::pair<EventName, StateName>(BASIC_SERVO, STATE_RCB_MOTOR));
+    nacelle_servo_transitions.insert(std::pair<EventName, StateName>(BASIC_SERVO, STATE_FINAL));
     State_Nacelle_Servo nacelle_servo(nacelle_servo_name, nacelle_servo_transitions, &root);
-
-    // State RCB Motor
-    StateName rcb_name = STATE_RCB_MOTOR;
-    std::map<EventName, StateName> rcb_transitions;
-    rcb_transitions.insert(std::pair<EventName, StateName>(BASIC_ROTATE, STATE_STEPPER1));
-    State_RCB_Motor rcb(rcb_name, rcb_transitions, &root);
-
-    // State Stepper 1 Test
-    StateName stepper1_name = STATE_STEPPER1;
-    std::map<EventName, StateName> stepper1_transitions;
-    stepper1_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_STEPPER2));
-    State_Stepper1 stepper1(stepper1_name, stepper1_transitions, &root);
-
-    // State Stepper 2 Test
-    StateName stepper2_name = STATE_STEPPER2;
-    std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_FINAL));
-    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);
 
     // State Final
     StateName final_name = STATE_FINAL;
@@ -55,9 +34,6 @@ int main()
     // Add States to Machine
     root.addState(&initial);
     root.addState(&nacelle_servo);
-    root.addState(&rcb);
-    root.addState(&stepper1);
-    root.addState(&stepper2);
     root.addState(&final);
     State *current_state = &initial;
 
@@ -68,7 +44,6 @@ int main()
     if (root.is_unit_fsm_)
     {
         curr_event = current_state->unitExecute();
-        usleep(root.unit_test_delay_ms_);
     }
     else
     {
@@ -81,8 +56,6 @@ int main()
         if (root.is_unit_fsm_)
         {
             curr_event = current_state->unitExecute();
-            // Automatically sleep for 1 second after
-            usleep(root.unit_test_delay_ms_);
         }
         else
         {

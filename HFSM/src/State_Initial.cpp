@@ -35,6 +35,9 @@ EventName State_Initial::execute() {
     gpioWrite(this->root_->rcb_standby_,0);
     gpioPWM(this->root_->rcb_enable_,0);
 
+    //Nacelle Locking Servo Initializaiton
+    gpioSetMode(this->root_->nacelle_servo_,PI_OUTPUT);
+
 	return INITIALIZE;
 }
 

@@ -46,6 +46,11 @@ class Root {
         int rcb_enable_ = 13;
         int rcb_standby_ = 21;
         int rcb_time_threshold_ = 5000;
+
+        int nacelle_servo_ = 14;
+        uint16_t nacelle_servo_pulse_min_ = 750;
+        uint16_t nacelle_servo_pulse_max_ = 2250;
+        uint8_t nacelle_servo_deg_range_ = 180;
         
         std::map<StateName,State*> states_;
         Root();
@@ -53,6 +58,7 @@ class Root {
         void addState(State* the_state);
         void execute();
         double getCurrentTime();
+        float angleToPulseWidth(double pulse_max,double pulse_min,double range,float angle);
 
     private:
 

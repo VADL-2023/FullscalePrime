@@ -15,3 +15,7 @@ void Root::addState(State* the_state) {
 double Root::getCurrentTime() {
     return double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
 }
+
+float Root::angleToPulseWidth(double pulse_max,double pulse_min,double range,float angle) {
+    return (pulse_max - pulse_min) * angle / range + (pulse_max + pulse_min) / 2.0;
+}

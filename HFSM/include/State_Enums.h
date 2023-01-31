@@ -9,7 +9,8 @@ enum StateName {
     STATE_FINAL,
     STATE_STEPPER2,
     STATE_DELAY,
-    STATE_RCB_MOTOR
+    STATE_RCB_MOTOR,
+    STATE_NACELLE_SERVO
 };
 
 enum EventName {
@@ -21,5 +22,6 @@ enum EventName {
     TERMINATE,
     INITIALIZE,
     DELAY_1_SECOND,
-    DELAY
+    DELAY,
+    BASIC_SERVO
 };
