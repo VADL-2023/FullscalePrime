@@ -38,8 +38,15 @@ class Root {
         int stepper_2_pin_3_ = 22;
         int stepper_2_pin_4_ = 10;
 
+        int stepper_3_standby_pin_ = 8;
+        int stepper_3_pin_1_ = 7;
+        int stepper_3_pin_2_ = 1;
+        int stepper_3_pin_3_ = 25;
+        int stepper_3_pin_4_ = 24;
+
         Stepper stepper_1_;
         Stepper stepper_2_;
+        Stepper stepper_3_;
 
         int rcb_p_ = 26;
         int rcb_n_ = 19;

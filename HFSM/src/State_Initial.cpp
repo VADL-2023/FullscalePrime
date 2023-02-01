@@ -27,6 +27,12 @@ EventName State_Initial::execute() {
     gpioWrite(this->root_->stepper_2_standby_pin_,0);
     this->root_->stepper_2_.setSpeed(this->root_->stepper_speed_);
 
+    // Stepper 3 Initialization
+    this->root_->stepper_3_.initialize(this->root_->steps_per_revolution_,this->root_->stepper_3_pin_1_,this->root_->stepper_3_pin_2_,this->root_->stepper_3_pin_3_,this->root_->stepper_3_pin_4_,true);
+    gpioSetMode(this->root_->stepper_3_standby_pin_,PI_OUTPUT);
+    gpioWrite(this->root_->stepper_3_standby_pin_,0);
+    this->root_->stepper_3_.setSpeed(this->root_->stepper_speed_);
+
     //RCB Motor Initialization
     gpioSetMode(this->root_->rcb_p_,PI_OUTPUT);
 	gpioSetMode(this->root_->rcb_n_,PI_OUTPUT);

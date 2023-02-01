@@ -3,6 +3,7 @@
 #include "State.h"
 #include "State_Stepper1.h"
 #include "State_Stepper2.h"
+#include "State_Stepper3.h"
 #include "State_Initial.h"
 #include "State_RCB_Motor.h"
 #include "State_Nacelle_Servo.h"
@@ -64,8 +65,14 @@ int main()
     // State Stepper 2 Test
     StateName stepper2_name = STATE_STEPPER2;
     std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_FINAL));
+    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_STEPPER3));
     State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);
+
+    // State Stepper 3 Test
+    StateName stepper3_name = STATE_STEPPER3;
+    std::map<EventName, StateName> stepper3_transitions;
+    stepper3_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_FINAL));
+    State_Stepper3 stepper3(stepper3_name, stepper3_transitions, &root);
 
     // State Final
     StateName final_name = STATE_FINAL;
@@ -82,6 +89,7 @@ int main()
     root.addState(&level_servo);
     root.addState(&stepper1);
     root.addState(&stepper2);
+    root.addState(&stepper3);
     root.addState(&final);
     State *current_state = &initial;
 

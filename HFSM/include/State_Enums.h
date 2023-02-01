@@ -13,7 +13,8 @@ enum StateName {
     STATE_NACELLE_SERVO,
     STATE_LIFT_SERVO,
     STATE_LIFT_MOTOR,
-    STATE_LEVEL_SERVO
+    STATE_LEVEL_SERVO,
+    STATE_STEPPER3
 };
 
 enum EventName {
