@@ -6,7 +6,10 @@
 #include "State_Initial.h"
 #include "State_RCB_Motor.h"
 #include "State_Nacelle_Servo.h"
+#include "State_Lift_Servo.h"
 #include "State_Final.h"
+#include "State_Lift_Motor.h"
+#include "State_Level_Servo.h"
 #include <map>
 #include "pigpio.h"
 int main()
@@ -31,8 +34,26 @@ int main()
     // State RCB Motor
     StateName rcb_name = STATE_RCB_MOTOR;
     std::map<EventName, StateName> rcb_transitions;
-    rcb_transitions.insert(std::pair<EventName, StateName>(BASIC_ROTATE, STATE_STEPPER1));
+    rcb_transitions.insert(std::pair<EventName, StateName>(BASIC_ROTATE, STATE_LIFT_SERVO));
     State_RCB_Motor rcb(rcb_name, rcb_transitions, &root);
+
+    // State Lift Retention Servo
+    StateName lift_servo_name = STATE_LIFT_SERVO;
+    std::map<EventName, StateName> lift_servo_transitions;
+    lift_servo_transitions.insert(std::pair<EventName, StateName>(BASIC_SERVO, STATE_LIFT_MOTOR));
+    State_Lift_Servo lift_servo(lift_servo_name, lift_servo_transitions, &root);
+
+    // State Lift Motor Test
+    StateName lift_motor_name = STATE_LIFT_MOTOR;
+    std::map<EventName, StateName> lift_motor_transitions;
+    lift_motor_transitions.insert(std::pair<EventName, StateName>(BASIC_ROTATE, STATE_LEVEL_SERVO));
+    State_Lift_Motor lift_motor(lift_motor_name, lift_motor_transitions, &root);
+
+    // State Level Servo Test
+    StateName level_servo_name = STATE_LEVEL_SERVO;
+    std::map<EventName, StateName> level_servo_transitions;
+    level_servo_transitions.insert(std::pair<EventName, StateName>(BASIC_SERVO, STATE_STEPPER1));
+    State_Level_Servo level_servo(level_servo_name, level_servo_transitions, &root);
 
     // State Stepper 1 Test
     StateName stepper1_name = STATE_STEPPER1;
@@ -56,6 +77,9 @@ int main()
     root.addState(&initial);
     root.addState(&nacelle_servo);
     root.addState(&rcb);
+    root.addState(&lift_servo);
+    root.addState(&lift_motor);
+    root.addState(&level_servo);
     root.addState(&stepper1);
     root.addState(&stepper2);
     root.addState(&final);

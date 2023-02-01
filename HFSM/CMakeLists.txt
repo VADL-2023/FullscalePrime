@@ -1,6 +1,9 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_Level_Servo.cpp
+        src/State_Lift_Motor.cpp
+        src/State_Lift_Servo.cpp
         src/State_Nacelle_Servo.cpp
         src/State_RCB_Motor.cpp
         src/State_Stepper2.cpp

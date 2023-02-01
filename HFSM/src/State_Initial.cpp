@@ -31,12 +31,24 @@ EventName State_Initial::execute() {
     gpioSetMode(this->root_->rcb_p_,PI_OUTPUT);
 	gpioSetMode(this->root_->rcb_n_,PI_OUTPUT);
 	gpioSetMode(this->root_->rcb_enable_,PI_OUTPUT);
-    gpioSetMode(this->root_->rcb_standby_,PI_OUTPUT);
-    gpioWrite(this->root_->rcb_standby_,0);
+    gpioSetMode(this->root_->rcb_lift_standby_,PI_OUTPUT);
+    gpioWrite(this->root_->rcb_lift_standby_,0);
     gpioPWM(this->root_->rcb_enable_,0);
 
     //Nacelle Locking Servo Initializaiton
     gpioSetMode(this->root_->nacelle_servo_,PI_OUTPUT);
+
+    //Lift Locking Servo Initialization
+    gpioSetMode(this->root_->lift_servo_,PI_OUTPUT);
+
+    //Lift Motor Initialization
+    gpioSetMode(this->root_->lift_p_,PI_OUTPUT);
+	gpioSetMode(this->root_->lift_n_,PI_OUTPUT);
+	gpioSetMode(this->root_->lift_enable_,PI_OUTPUT);
+    gpioPWM(this->root_->lift_enable_,0);
+
+    //Level Servo Initialization
+    gpioSetMode(this->root_->level_servo_,PI_OUTPUT);
 
 	return INITIALIZE;
 }

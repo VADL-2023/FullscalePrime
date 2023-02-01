@@ -44,13 +44,22 @@ class Root {
         int rcb_p_ = 26;
         int rcb_n_ = 19;
         int rcb_enable_ = 13;
-        int rcb_standby_ = 21;
+        int rcb_lift_standby_ = 21;
         int rcb_time_threshold_ = 5000;
 
         int nacelle_servo_ = 14;
-        uint16_t nacelle_servo_pulse_min_ = 750;
-        uint16_t nacelle_servo_pulse_max_ = 2250;
-        uint8_t nacelle_servo_deg_range_ = 180;
+        uint16_t servo_pulse_min_ = 750;
+        uint16_t servo_pulse_max_ = 2250;
+        uint8_t servo_deg_range_ = 180;
+
+        int lift_servo_ = 2;
+
+        int lift_p_ = 20;
+        int lift_n_ = 16;
+        int lift_enable_ = 12;
+        int lift_time_threshold_ = 5000;
+
+        int level_servo_ = 3;
         
         std::map<StateName,State*> states_;
         Root();
