@@ -149,7 +149,8 @@ int main() {
 
 
     bool runTests = true;
-    int userInput;
+    std::string userInput;
+    int userInt = 0;
 
     State *current_state = &nacelle_servo;
     State *next_state = current_state;
@@ -164,9 +165,17 @@ int main() {
         std::cout << "What would you like to do? ";
         std::cin >> userInput;
 
-        if (userInput == 1) {
+        try {
+            userInt = stoi(userInput);
+        } catch (...) {
+            std::cout << "Invalid selection" << std::endl;
+            userInt = 0;
+        }
+        
+
+        if (userInt == 1) {
             runFullStateMachine(root, nacelle_servo);
-        } else if (userInput == 2) {
+        } else if (userInt == 2) {
             std::cout << "------------STATES-------------" << std::endl;
             int numStates = END_STATE + 1;
             for (int i = 0; i < numStates; i++) {
@@ -176,9 +185,16 @@ int main() {
             
             std::cout << "What state would you like to run? ";
             std::cin >> userInput;
+            
+            try {
+                userInt = stoi(userInput);
+            } catch (...) {
+                std::cout << "Invalid selection" << std::endl;
+                userInt = numStates;
+            }
 
-            if (0 < userInput && userInput < numStates - 1) {
-                StateName stateType = (StateName) (userInput-1);
+            if (0 < userInt && userInt < numStates - 1) {
+                StateName stateType = (StateName) (userInt-1);
 
                 current_state = root.states_[stateType];
                 if (root.is_unit_fsm_) {
@@ -190,13 +206,16 @@ int main() {
                 {
                     curr_event = current_state->execute();
                 }
-            } else if (userInput == numStates + 1) {
-                runTests = false;
-            } else {
+            } else if (numStates - 1 <= userInt && userInt <= numStates) {
                 std::cout << "Doing nothing" << std::endl;
+            } else {
+                runTests = false;
+                return 0;
             }
-        } else if (userInput == 3) {
+        } else if (userInt == 3) {
             runTests = false;
+            std::cout << "Am I for real" << std::endl;
+            return 0;
         }
     }
 
