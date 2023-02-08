@@ -64,7 +64,7 @@ class Root {
         int lift_p_ = 20;
         int lift_n_ = 16;
         int lift_enable_ = 12;
-        int lift_time_threshold_ = 5000;
+        int lift_time_threshold_ = 25000;
 
         int level_servo_ = 3;
         

@@ -214,7 +214,6 @@ int main() {
             }
         } else if (userInt == 3) {
             runTests = false;
-            std::cout << "Am I for real" << std::endl;
             return 0;
         }
     }
