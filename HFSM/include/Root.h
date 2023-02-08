@@ -69,8 +69,11 @@ class Root {
         int level_servo_ = 3;
         
         std::map<StateName,State*> states_;
+
         Root();
         Root(bool is_unit_fsm);
+        ~Root();
+        
         void addState(State* the_state);
         void execute();
         double getCurrentTime();

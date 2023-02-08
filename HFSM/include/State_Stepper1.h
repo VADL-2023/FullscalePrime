@@ -9,7 +9,7 @@ class Root;
 class State_Stepper1 : public State {
 	public:
 		State_Stepper1();
-		State_Stepper1(StateName &name,std::map<EventName,StateName> &state_transitions,Root* root);
+		State_Stepper1(StateName name,std::map<EventName,StateName> &state_transitions,Root* root);
 		EventName execute() override;
 		EventName unitExecute() override;
 };

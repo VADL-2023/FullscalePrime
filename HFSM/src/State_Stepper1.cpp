@@ -5,7 +5,7 @@ State_Stepper1::State_Stepper1(): State() {
 
 }
 
-State_Stepper1::State_Stepper1(StateName &name,std::map<EventName,StateName> &state_transitions,Root* root): State(name,state_transitions,root) {
+State_Stepper1::State_Stepper1(StateName name,std::map<EventName,StateName> &state_transitions,Root* root): State(name,state_transitions,root) {
 
 }
 
