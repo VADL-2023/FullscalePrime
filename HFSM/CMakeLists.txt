@@ -1,6 +1,8 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_SDR2.cpp
+        src/State_SDR1.cpp
         src/State_Stepper3.cpp
         src/State_Level_Servo.cpp
         src/State_Lift_Motor.cpp
@@ -13,5 +15,5 @@ add_library(HFSM
         src/State.cpp
         )
 
-target_link_libraries(HFSM Stepper pigpio)
+target_link_libraries(HFSM Stepper pigpio PacketReceiver)
 target_include_directories(HFSM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

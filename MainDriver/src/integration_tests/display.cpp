@@ -9,6 +9,8 @@
 #include "State_Lift_Servo.h"
 #include "State_Lift_Motor.h"
 #include "State_Level_Servo.h"
+#include "State_SDR1.h"
+#include "State_SDR2.h"
 #include <map>
 #include "pigpio.h"
 
@@ -45,6 +47,12 @@ std::string getStateName(StateName stateType) {
             break;
         case END_STATE:
             name = "End State";
+            break;
+        case STATE_SDR1:
+            name = "SDR 1";
+            break;
+        case STATE_SDR2:
+            name = "SDR 2";
             break;
         default:
             name = "UNKNOWN";
@@ -137,6 +145,16 @@ int main() {
     stepper3_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, END_STATE));
     State_Stepper3 stepper3(STATE_STEPPER3, stepper3_transitions, &root);
 
+    // State SDR 1 Test
+    std::map<EventName, StateName> sdr1_transitions;
+    sdr1_transitions.insert(std::pair<EventName, StateName>(RECEIVED_PACKETS, END_STATE));
+    State_SDR1 sdr1(STATE_SDR1, sdr1_transitions, &root);
+    
+    // State SDR 2 Test
+    std::map<EventName, StateName> sdr2_transitions;
+    sdr2_transitions.insert(std::pair<EventName, StateName>(RECEIVED_PACKETS, END_STATE));
+    State_SDR2 sdr2(STATE_SDR2, sdr2_transitions, &root);
+
     // Add States to Machine
     root.addState(&nacelle_servo);
     root.addState(&rcb);
@@ -146,7 +164,8 @@ int main() {
     root.addState(&stepper1);
     root.addState(&stepper2);
     root.addState(&stepper3);    
-
+    root.addState(&sdr1);
+    root.addState(&sdr2);
 
     bool runTests = true;
     std::string userInput;

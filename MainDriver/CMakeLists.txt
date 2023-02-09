@@ -4,7 +4,7 @@ include_directories(include)
 
 add_executable(displayTest src/integration_tests/display.cpp)
 
-target_link_libraries(displayTest HFSM pigpio)
+target_link_libraries(displayTest HFSM pigpio PacketReceiver)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)

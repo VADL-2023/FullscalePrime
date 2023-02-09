@@ -52,6 +52,9 @@ Root::Root(bool is_unit_fsm):start_time_(0),is_unit_fsm_(is_unit_fsm) {
 
     //Level Servo Initialization
     gpioSetMode(this->level_servo_,PI_OUTPUT);
+
+    radio1.setDeviceIndex(0);
+    radio2.setDeviceIndex(1);
 }
 
 Root::~Root() {

@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <thread>
 #include "Stepper.h"
+#include "PacketReceiver.h"
 
 class State;
 
@@ -69,6 +70,9 @@ class Root {
         int level_servo_ = 3;
         
         std::map<StateName,State*> states_;
+
+        PacketReceiver radio1;
+        PacketReceiver radio2;
 
         Root();
         Root(bool is_unit_fsm);

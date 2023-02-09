@@ -9,8 +9,10 @@ enum StateName {
     STATE_STEPPER1,
     STATE_STEPPER2,
     STATE_STEPPER3,
+    STATE_SDR1,
+    STATE_SDR2,
     STATE_DELAY,
-    END_STATE,
+    END_STATE
 };
 
 enum EventName {
@@ -18,6 +20,7 @@ enum EventName {
     BASIC_SWIVEL,
     BASIC_ROTATE,
     BASIC_SERVO,
+    RECEIVED_PACKETS,
     DELAY_1_SECOND,
     DELAY,
     TERMINATE,
