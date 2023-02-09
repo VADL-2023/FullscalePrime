@@ -4,12 +4,12 @@ Log::Log(std::string flightFilename, std::string programFilename, vn::sensors::V
 mIMU(imu)
 {
     //initialize variables
-    this->startTime = sTime;
+    this->startTime = double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     this->sampleNumber = 1;
     this->savedParameters = false;
     this->delim = "$";
 
-    std::string string_time = std::to_string(sTime);
+    std::string string_time = std::to_string(this->startTime);
 
     // catch errors involving special characters in filenames rip AAC madien flight 8/20 D:
     for (size_t i = 0; i < numSpecialCharacters; i++){

@@ -93,7 +93,7 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 3;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 0.5;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -107,10 +107,17 @@ public:
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
     int imu_wait_ = 60;                 // number of samples to get from IMU before actually starting to use + save data
 
+    float p0_;
+    float t0_;
+    float g0_;
+
+    double launch_time_;
+    float z_current_ = 0;
+
     // IMU Connection and Configuration
-    VnSensor* m_vn_;
+    VnSensor *m_vn_;
     ImuMeasurementsRegister response_;
-    std::string input_file_name_ = "packets_" + std::to_string(start_time_).substr(0,std::to_string(start_time_).find(".")) + ".txt";
+    std::string input_file_name_ = "packets_" + std::to_string(start_time_).substr(0, std::to_string(start_time_).find(".")) + ".txt";
     std::string flight_log_name_ = "flightDataLog";
     std::string program_log_name_ = "programDataLog";
     Log m_log_;
@@ -130,6 +137,18 @@ public:
 
     // given a float array, calculates the average of all the arrays values
     float calcArrayAverage(float array[], int size);
+
+    // disconnects IMUf
+    // returns true if IMU was active but was successfuly disconnected; returns false if IMU was not active
+    bool terminateConnections(VnSensor *imu);
+
+    // functional the same as sleep() command but still records and logs IMU data
+    // sleep_time given in seconds
+    void activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time);
+
+    // checks if flight has gone on for too long, if so returns true to end program
+    // launchTime given in milliseconds; triggerTime given in seconds
+    bool isTimeExceeded(double launch_time, double trigger_time);
 
 private:
 };

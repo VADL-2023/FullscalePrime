@@ -15,9 +15,6 @@ EventName State_Prelaunch::execute() {
     float pressure_sum;
     float temp_sum;
     float grav_sum;
-    float p0;
-    float t0;
-    float g0;
 
     // Get start time and date
     time_t raw_time;
@@ -105,14 +102,14 @@ EventName State_Prelaunch::execute() {
             }
         }
 
-        p0 = pressure_sum/this->root_->num_sample_readings_;
-        t0 = temp_sum/this->root_->num_sample_readings_ + this->root_->c_2_k_;
-        g0 = grav_sum/this->root_->num_sample_readings_;
+        this->root_->p0_ = pressure_sum/this->root_->num_sample_readings_;
+        this->root_->t0_ = temp_sum/this->root_->num_sample_readings_ + this->root_->c_2_k_;
+        this->root_->g0_ = grav_sum/this->root_->num_sample_readings_;
 
-        this->root_->m_log_.write("Calibrated Temperature: " + to_string(t0 - this->root_->c_2_k_) + " C");
-        this->root_->m_log_.write("Calibrated Pressure: " + to_string(p0) + " kPa");
-        this->root_->m_log_.write("Calibrated Gravity: " + to_string(g0) + " m/s^2");
-        this->root_->m_log_.saveBaselineParameters(this->root_->r_, this->root_->b_, p0, t0, g0);
+        this->root_->m_log_.write("Calibrated Temperature: " + to_string(this->root_->t0_ - this->root_->c_2_k_) + " C");
+        this->root_->m_log_.write("Calibrated Pressure: " + to_string(this->root_->p0_) + " kPa");
+        this->root_->m_log_.write("Calibrated Gravity: " + to_string(this->root_->g0_) + " m/s^2");
+        this->root_->m_log_.saveBaselineParameters(this->root_->r_, this->root_->b_, this->root_->p0_, this->root_->t0_, this->root_->g0_);
 
         // RADIO TEST BLOCK: Maybe gotta make a separate silent script?
         /*
@@ -141,7 +138,7 @@ EventName State_Prelaunch::execute() {
     }
 
     this->root_->m_log_.writeTime("Pre-Flight Stage Completed");
-	return TERMINATE;
+	return PRELAUNCH_COMPLETE;
 }
 
 EventName State_Prelaunch::unitExecute() {

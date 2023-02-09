@@ -5,8 +5,9 @@ Root::Root() : Root(false)
 {
 }
 
-Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_(flight_log_name_,program_log_name_,m_vn_,start_time_)
+Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_(flight_log_name_, program_log_name_, m_vn_, start_time_)
 {
+    start_time_ = this->getCurrentTime();
     // Temporary initialization thing
     while (gpioInitialise() <= 0)
     {
@@ -91,4 +92,55 @@ float Root::calcArrayAverage(float array[], int size)
         sum += array[i];
     }
     return sum / size;
+}
+
+bool Root::terminateConnections(VnSensor *imu)
+{
+    bool out;
+    if (IMU_ACTIVE)
+    {
+        out = true;
+        imu->disconnect();
+    }
+    else
+    {
+        out = false;
+    }
+
+    return out;
+}
+
+void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time)
+{
+    double current_time = this->getCurrentTime();
+    double end_time = sleep_time * 1000 + current_time;
+    while (current_time < end_time)
+    {
+        try
+        {
+            response = imu->readImuMeasurements();
+            log.write(response);
+            current_time = getCurrentTime();
+        }
+        catch (const std::exception &e)
+        {
+            log.write("Exception: ");
+            log.write(e.what());
+            log.write("IMU failed to connect... restart program");
+            this->time_delay_enabled_ = true;
+            return;
+        }
+    }
+}
+
+bool Root::isTimeExceeded(double launch_time, double trigger_time)
+{
+    if (getCurrentTime() - launch_time > trigger_time * 1000)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

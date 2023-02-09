@@ -1,6 +1,9 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_Landing_Detection.cpp
+        src/State_Apogee_Detection.cpp
+        src/State_Launch_Detection.cpp
         src/State_Prelaunch.cpp
         src/State_Stepper3.cpp
         src/State_Level_Servo.cpp
