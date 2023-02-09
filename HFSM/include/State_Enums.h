@@ -11,6 +11,7 @@ enum StateName {
     STATE_STEPPER3,
     STATE_DELAY,
     END_STATE,
+    STATE_PRELAUNCH
 };
 
 enum EventName {
@@ -21,4 +22,5 @@ enum EventName {
     DELAY_1_SECOND,
     DELAY,
     TERMINATE,
+    PRELAUNCH
 };
