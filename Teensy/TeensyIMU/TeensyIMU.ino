@@ -15,10 +15,9 @@ float samplingFrequency = 60; // [Hz] IMU sample rate - TODO: need to confirm th
 
 // Variable flight parameters
 float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
-int numDataPointsChecked4Launch = 8; // how many acceleration points are averaged to see if data set is over accelRoof
-int numDataPointsChecked4Apogee = 10; // how many altitude points must a new max not be found for apogee to be declared
-int numSecondsNoNewMinimum = 10; // [s] number of seconds to wait for no new minimum to determine landing
-int numDataPointsChecked4Landing = numSecondsNoNewMinimum*samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
+int numDataPointsChecked4Launch = 0.4 * samplingFrequency; // how many acceleration points are averaged to see if data set is over accelRoof
+int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
+int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 int zThresholdForLanding = 175 * ft2m; // [m] threshold that the altitude must be within for landing
 int maxFlightTime = 150; // [s] max allowable flight time, if exceeded program ends
 int maxParachuteDetachWaitTime = 2; // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
@@ -69,23 +68,24 @@ void loop() {
   
   /* -------------------- P R E - F L I G H T  S T A G E -------------------- */
 
-  double startTime = millis();
+  unsigned long startTime = millis();
 
   // Flush IMU
-  Serial.println("IMU Flushing"); // TODO: remove
+  Serial.println("IMU Flushing"); // TODO: add to log file instead
   for (int i = 0; i < imuWait; ++i) {
     readIMU();
   }
-  Serial.println("IMU Flushed"); // TODO: remove
+  Serial.println("IMU Flushed"); // TODO: add to log file instead
 
   // Calibrate ground level, pressure, temperature, and gravity
-  Serial.println("Calibrating baseline parameters"); // TODO: remove
+  Serial.println("Calibrating baseline parameters"); // TODO: add to log file instead
   float pressureSum = 0;
   float tempSum = 0;
   float gravSum = 0;
   
   for (int i = 0; i < numSampleReadings; i++) {
     data = readIMU();
+    // TODO: save IMU data to log file
     pressureSum += data.pressure;
     tempSum += data.temp;
     gravSum += sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
@@ -95,15 +95,117 @@ void loop() {
   T0 = tempSum / numSampleReadings + C2K;
   g0 = gravSum / numSampleReadings;
 
-  Serial.println("Calibrated Temperature: " + String(T0 - C2K) + " C"); // TODO: remove
-  Serial.println("Calibrated Pressure: " + String(P0) + " kPa"); // TODO: remove
-  Serial.println("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: remove
+  Serial.println("Calibrated Temperature: " + String(T0 - C2K) + " C"); // TODO: add to log file instead
+  Serial.println("Calibrated Pressure: " + String(P0) + " kPa"); // TODO: add to log file instead
+  Serial.println("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: add to log file instead
 
   Serial.println("Pre-Flight Stage Completed"); // TODO: remove
 
   /* ------------------------ L A U N C H  S T A G E ------------------------ */
 
+  Serial.println("Ready for Assembly and Launch Rail"); // TODO: remove
+
+  float accelArray[numDataPointsChecked4Launch] = {0};
+  float accelAvg = 0;
+  int counter = 0;
+
+  while (accelAvg < accelRoof * g0) {
+    data = readIMU();
+    // TOOD: save IMU data to log file
+    accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
+    accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
+    ++counter;
+  }
+
+  Serial.println("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points"); // TODO: add to log file instead
+  Serial.println("Rocket has launched"); // TODO: add to log file instead
+  Serial.println("Waiting for motor burn time"); // TODO: add to log file instead
+
+  unsigned long launchTime = millis();
+
+  /* ------------------------ M O T O R  B U R N ------------------------ */
+  unsigned long tBurnEnd = tBurn * 1000 + launchTime;
+  while (millis() < tBurnEnd) {
+    data = readIMU();
+    // TODO: save IMU data to log file
+  }
+
+  Serial.println("Motor burn time complete"); // TODO: add to log file instead
+
+  /* --------------------- C O A S T I N G  S T A G E --------------------- */
+
+  unsigned long maxFlightMillis = maxFlightTime * 1000;
+  float zCurrent = 0;
+  float maxAltitude = 0;
+  int samplesSinceMaxHasChanged = 0;
+
+  Serial.println("Looking for apogee"); // TODO: add to log file instead
+  
+  while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (millis() - launchTime) < maxFlightMillis) {
+    data = readIMU();
+    // TODO: save IMU data to log file
+    zCurrent = pressure2Altitude(data.pressure);
+
+    if (zCurrent >= maxAltitude) {
+      maxAltitude = zCurrent;
+      samplesSinceMaxHasChanged = 0;
+    } else {
+      ++samplesSinceMaxHasChanged;
+    }
+  }
+
+  Serial.println("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples"); // TODO: add to log file instead
+  Serial.println("Apogee detected"); // TODO: add to log file instead
+
+  /* ---------------------- D E S C E N T  S T A G E ---------------------- */
+
+  float minAltitude = 1000000;
+  int samplesSinceMinHasChanged = 0;
+
+  Serial.println("Waiting for landing detection"); // TODO: add to log file instead
+
+  while (samplesSinceMinHasChanged < numDataPointsChecked4Landing && abs(zCurrent) < zThresholdForLanding && (millis() - launchTime) < maxFlightMillis) {
+    data = readIMU();
+    // TODO: save IMU data to log file
+    zCurrent = pressure2Altitude(data.pressure);
+
+    if (zCurrent < minAltitude) {
+      minAltitude = zCurrent;
+      samplesSinceMinHasChanged = 0;
+    } else {
+      ++samplesSinceMinHasChanged;
+    }
+  }
+
+  if ((samplesSinceMinHasChanged >= numDataPointsChecked4Landing) && (abs(zCurrent) < zThresholdForLanding)) {
+    Serial.println("Altitude has not reached a new min for " + String(numDataPointsChecked4Landing) + " samples"); // TODO: add to log file instead
+    Serial.println("Altitude was within threshold of " + String(zThresholdForLanding) + " meters"); // TODO: add to log file instead
+  } else {
+    Serial.println("Time exceeded max flight limit of " + String(maxFlightTime) + " s"); // TODO: add to log file instead
+  }
+  
+  Serial.println("Landing Detected"); // TODO: add to log file instead
+
+  /* -------------------- P O S T - L A N D I N G  S T A G E -------------------- */
+
+  // TODO: Detach parachute 
+ 
   delay(10000);
+}
+
+// given P [kPa], returns altitude above ground level
+// 0 indicates baseline measurement, R and B are constants
+float pressure2Altitude(float P) {
+    return T0/B*(pow(P/P0,-R*B/g0) - 1);
+}
+
+// given a float array, calculates the average of all the arrays values
+float calcArrayAverage(float array[], int size) {
+    float sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += array[i];
+    }
+    return sum/size;
 }
 
 imuData readIMU() {
@@ -256,7 +358,7 @@ imuData readIMU() {
   // Calculate current altitude
   float alt = -99999;
   if (T0 != 0 || P0 != 0 || g0 != 0) {
-    alt = T0/B*(pow(data.pressure/P0,-R*B/g0) - 1);
+    alt = pressure2Altitude(data.pressure);
   }
   data.alt = alt;
   
@@ -270,24 +372,20 @@ String queryIMU(String request) {
   // Send request to IMU
   Serial3.write(request.c_str());
 
-  bool valid = false;
+  // Get the response from the IMU
+  do {
+    c = Serial3.read();
+    if (' ' <= c && c <= '~') {
+      response += c;
+    }
+  } while (c != '*'); // Wait for the check sum
 
-  while (!valid) {
-    // Get the response from the IMU
-    do {
-      c = Serial3.read();
-      if (' ' <= c && c <= '~') {
-        response += c;
-      }
-    } while (c != '*'); // Wait for the check sum
-  
-    // Read the check sum so it doesn't remain in the buffer
-    for (int i = 0; i < 2; i = i) {
-      c = Serial3.read();
-      if (' ' <= c && c <= '~') {
-        response += c;
-        i = i + 1;
-      }
+  // Read the check sum so it doesn't remain in the buffer
+  for (int i = 0; i < 2; i = i) {
+    c = Serial3.read();
+    if (' ' <= c && c <= '~') {
+      response += c;
+      i = i + 1;
     }
   }
   
