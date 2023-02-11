@@ -1,3 +1,7 @@
+#include <Servo.h>
+#include <SD.h>
+
+#define SERVO_PIN 9
 #define VNRRG_LEN 10
 
 // Conversions
@@ -11,7 +15,7 @@ float B = 6.5*km2m;   // [K/m] variation of temperature within the troposphere
 
 // Fixed flight parameters
 float tBurn = 1.1; // [s] motor burn time
-float samplingFrequency = 60; // [Hz] IMU sample rate - TODO: need to confirm this sampling rate
+float samplingFrequency = 30; // [Hz] IMU sample rate - TODO: need to confirm this sampling rate
 
 // Variable flight parameters
 float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
@@ -30,6 +34,14 @@ int imuWait = 60; //number of samples to get from IMU before actually starting t
 float P0;
 float T0;
 float g0;
+
+// SD card file
+File myFile;
+
+// Servo variables
+Servo theServo;
+int servoStart = 72;
+int servoEnd = 155;
 
 // Structure for passing IMU data
 struct imuData {
@@ -54,9 +66,24 @@ void setup() {
   Serial3.begin(115200);  // Communication with IMU
   delay(3000);
 
+  // TODO: This needs to be removed
   while(!Serial.available()){}
+
+  // Initialize SD card reading
+  pinMode(10, OUTPUT);
+ 
+//  if (!SD.begin(10)) {
+//    Serial.println("initialization failed!");
+//    return;
+//  }
+
+  // Initialize the servo
+  theServo.attach(SERVO_PIN);
+  delay(500);
+  theServo.write(servoStart);
+  delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
   
-  Serial.println("VectorNav Teensy Test");
+  Serial.println("Initialization complete");
 }
 
 void loop() {
@@ -188,9 +215,11 @@ void loop() {
 
   /* -------------------- P O S T - L A N D I N G  S T A G E -------------------- */
 
-  // TODO: Detach parachute 
+  // Move the servo to detach the parachute
+  theServo.write(servoEnd);
+  delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
  
-  delay(10000);
+  while(true){} // Halt
 }
 
 // given P [kPa], returns altitude above ground level
@@ -366,26 +395,40 @@ imuData readIMU() {
 }
 
 String queryIMU(String request) {
+  // Flush buffer if necessary
+  while(Serial3.available()) {
+    Serial3.read();
+  }
+  
   String response;
   char c;
 
   // Send request to IMU
   Serial3.write(request.c_str());
 
-  // Get the response from the IMU
-  do {
-    c = Serial3.read();
-    if (' ' <= c && c <= '~') {
-      response += c;
-    }
-  } while (c != '*'); // Wait for the check sum
+  bool valid = false;
+  int attempt = 1;
 
-  // Read the check sum so it doesn't remain in the buffer
-  for (int i = 0; i < 2; i = i) {
-    c = Serial3.read();
-    if (' ' <= c && c <= '~') {
-      response += c;
-      i = i + 1;
+  while (!valid) {
+    // Get the response from the IMU
+    do {
+      c = Serial3.read();
+      if (' ' <= c && c <= '~') {
+        response += c;
+      }
+    } while (c != '*'); // Wait for the check sum
+  
+    // Read the check sum so it doesn't remain in the buffer
+    for (int i = 0; i < 2; i = i) {
+      c = Serial3.read();
+      if (' ' <= c && c <= '~') {
+        response += c;
+        i = i + 1;
+      }
+    }
+
+    if (response.substring(0,VNRRG_LEN-1).equals(request.substring(0,VNRRG_LEN-1)) || attempt++ == 2) {
+      valid = true;
     }
   }
   
