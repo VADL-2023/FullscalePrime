@@ -58,13 +58,13 @@ void setup() {
   while(!Serial.available()){}
   
   Serial.println("VectorNav Teensy Test");
-
-  // Configure IMU
-  Serial3.write("$VNWRG,06,0*XX\r\n");
-  Serial3.write("$VNWRG,82,1,0,0,0,0*XX\r\n");
 }
 
 void loop() {
+  // Configure IMU
+  queryIMU("$VNWRG,06,0*XX\r\n");
+  queryIMU("$VNWRG,82,1,0,0,0,0*XX\r\n");
+  
   imuData data;
   
   /* -------------------- P R E - F L I G H T  S T A G E -------------------- */
@@ -100,6 +100,8 @@ void loop() {
   Serial.println("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: remove
 
   Serial.println("Pre-Flight Stage Completed"); // TODO: remove
+
+  /* ------------------------ L A U N C H  S T A G E ------------------------ */
 
   delay(10000);
 }
@@ -213,7 +215,7 @@ imuData readIMU() {
   data.pressure = pressure;
 
   // SECOND QUERY
-  response = queryIMU("$VNRRG,8*XX\r\n");
+  response = queryIMU("$VNRRG,08*XX\r\n");
 
   if (!response.substring(0,VNRRG_LEN - 1).equals("$VNRRG,08")) {
     Serial.println("ERROR: Received different response than expected from IMU");
@@ -262,31 +264,30 @@ imuData readIMU() {
 }
 
 String queryIMU(String request) {
-  // Flush read buffer
-  while (Serial3.available()) {
-    Serial3.read();
-  }
-  
   String response;
   char c;
 
   // Send request to IMU
   Serial3.write(request.c_str());
 
-  // Get the response from the IMU
-  do {
-    c = Serial3.read();
-    if (' ' <= c && c <= '~') {
-      response += c;
-    }
-  } while (c != '*'); // Wait for the check sum
+  bool valid = false;
 
-  // Read the check sum so it doesn't remain in the buffer
-  for (int i = 0; i < 2; i = i) {
-    c = Serial3.read();
-    if (' ' <= c && c <= '~') {
-      response += c;
-      i = i + 1;
+  while (!valid) {
+    // Get the response from the IMU
+    do {
+      c = Serial3.read();
+      if (' ' <= c && c <= '~') {
+        response += c;
+      }
+    } while (c != '*'); // Wait for the check sum
+  
+    // Read the check sum so it doesn't remain in the buffer
+    for (int i = 0; i < 2; i = i) {
+      c = Serial3.read();
+      if (' ' <= c && c <= '~') {
+        response += c;
+        i = i + 1;
+      }
     }
   }
   
