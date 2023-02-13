@@ -14,6 +14,7 @@
 #include "State_Launch_Detection.h"
 #include "State_Apogee_Detection.h"
 #include "State_Landing_Detection.h"
+#include "State_Full_Lift.h"
 #include <map>
 #include "pigpio.h"
 
@@ -58,6 +59,9 @@ std::string getStateName(StateName stateType) {
             break;
         case STATE_LANDING_DETECTION:
             name = "Landing Detection";
+            break;
+        case STATE_FULL_LIFT:
+            name = "Full Lift";
             break;
         case END_STATE:
             name = "End State";
@@ -137,11 +141,19 @@ int main() {
     landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, END_STATE));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
+    // State Full Lift
+    StateName full_lift_name = STATE_FULL_LIFT;
+    std::map<EventName, StateName> full_lift_transitions;
+    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_SUCCESS, END_STATE));
+    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_FAILURE, END_STATE));
+    State_Full_Lift full_lift(full_lift_name, full_lift_transitions, &root);
+
     // Add States to Machine
     root.addState(&prelaunch);
     root.addState(&launch_detection);
     root.addState(&apogee_detection);
     root.addState(&landing_detection);
+    root.addState(&full_lift);
 
     bool runTests = true;
     std::string userInput;

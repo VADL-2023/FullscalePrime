@@ -60,16 +60,20 @@ public:
     int rcb_time_threshold_ = 5000;
 
     int nacelle_servo_ = 14;
-    uint16_t servo_pulse_min_ = 750;
+    uint16_t servo_pulse_min_ = 500;
     uint16_t servo_pulse_max_ = 2250;
-    uint8_t servo_deg_range_ = 180;
+    uint8_t servo_deg_range_ = 90;
 
     int lift_servo_ = 2;
+    double unlock_lift_angle_ = 0;
+    int lift_base_limit_switch_ = 18;
+    int lift_final_limit_switch_ = 23;
+    int lift_unit_time_threshold_ = 2000;
 
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 25000;
+    int lift_time_threshold_ = 30000;
 
     int level_servo_ = 3;
 

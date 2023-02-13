@@ -20,7 +20,7 @@ EventName State_Lift_Motor::unitExecute() {
 	double current_time = start_time;
 	gpioWrite(this->root_->rcb_lift_standby_,1);
 	std::cout << "Spin one way" << std::endl;
-	while(current_time - start_time < this->root_->lift_time_threshold_) {
+	while(current_time - start_time < this->root_->lift_unit_time_threshold_) {
 		gpioWrite(this->root_->lift_p_,1);
 		gpioWrite(this->root_->lift_n_,0);
 		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
@@ -32,7 +32,7 @@ EventName State_Lift_Motor::unitExecute() {
 	current_time = start_time;
 	gpioWrite(this->root_->rcb_lift_standby_,1);
 	std::cout << "Spin other way" << std::endl;
-	while(current_time - start_time < this->root_->lift_time_threshold_) {
+	while(current_time - start_time < this->root_->lift_unit_time_threshold_) {
 		gpioWrite(this->root_->lift_p_,0);
 		gpioWrite(this->root_->lift_n_,1);
 		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
