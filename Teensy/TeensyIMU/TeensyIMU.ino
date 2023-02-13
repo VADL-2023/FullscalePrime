@@ -2,6 +2,7 @@
 #include <SD.h>
 
 #define SERVO_PIN 9
+#define SD_CARD_PIN 10
 #define VNRRG_LEN 10
 
 // Conversions
@@ -36,7 +37,14 @@ float T0;
 float g0;
 
 // SD card file
-File myFile;
+File configFile;
+File programDataFile;
+File flightDataFile;
+
+String configFileName = "config.txt";
+String programDataFileName = "programData.txt";
+String flightDataFileName = "flightData.txt";
+int fileNum = 0;
 
 // Servo variables
 Servo theServo;
@@ -70,12 +78,11 @@ void setup() {
   while(!Serial.available()){}
 
   // Initialize SD card reading
-  pinMode(10, OUTPUT);
+  pinMode(SD_CARD_PIN, OUTPUT);
  
-//  if (!SD.begin(10)) {
-//    Serial.println("initialization failed!");
-//    return;
-//  }
+  if (!SD.begin(SD_CARD_PIN)) {
+    Serial.println("SD card initialization failed");
+  }
 
   // Initialize the servo
   theServo.attach(SERVO_PIN);
@@ -92,20 +99,40 @@ void loop() {
   queryIMU("$VNWRG,82,1,0,0,0,0*XX\r\n");
   
   imuData data;
+
+  // Get information from config file
+  configFile = SD.open(configFileName.c_str());
+  if(configFile.available()) {
+    fileNum = configFile.parseInt();
+    Serial.println("Read from config file: " + String(fileNum)); // TODO: remove
+  }
+  configFile.close();
+
+  programDataFileName = "programData" + String(fileNum) + ".txt";
+  flightDataFileName = "flightData" + String(fileNum) + ".txt";
+
+  delay(100);
+
+  // Write header for flight data file
+  flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
+  if (flightDataFileName) {
+    flightDataFile.println("Time\t MagX\t MagY\t MagZ\t AccelX\t AccelY\t AccelZ\t Yaw\t Pitch\t Roll\t Temperature\t Pressure\t Altitude");
+  }
+  flightDataFile.close();
   
   /* -------------------- P R E - F L I G H T  S T A G E -------------------- */
 
   unsigned long startTime = millis();
 
   // Flush IMU
-  Serial.println("IMU Flushing"); // TODO: add to log file instead
+  writeProgramFile("IMU Flushing"); // TODO: add to log file instead
   for (int i = 0; i < imuWait; ++i) {
     readIMU();
   }
-  Serial.println("IMU Flushed"); // TODO: add to log file instead
+  writeProgramFile("IMU Flushed"); // TODO: add to log file instead
 
   // Calibrate ground level, pressure, temperature, and gravity
-  Serial.println("Calibrating baseline parameters"); // TODO: add to log file instead
+  writeProgramFile("Calibrating baseline parameters"); // TODO: add to log file instead
   float pressureSum = 0;
   float tempSum = 0;
   float gravSum = 0;
@@ -122,15 +149,15 @@ void loop() {
   T0 = tempSum / numSampleReadings + C2K;
   g0 = gravSum / numSampleReadings;
 
-  Serial.println("Calibrated Temperature: " + String(T0 - C2K) + " C"); // TODO: add to log file instead
-  Serial.println("Calibrated Pressure: " + String(P0) + " kPa"); // TODO: add to log file instead
-  Serial.println("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: add to log file instead
+  writeProgramFile("Calibrated Temperature: " + String(T0 - C2K) + " C"); // TODO: add to log file instead
+  writeProgramFile("Calibrated Pressure: " + String(P0) + " kPa"); // TODO: add to log file instead
+  writeProgramFile("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: add to log file instead
 
-  Serial.println("Pre-Flight Stage Completed"); // TODO: remove
+  writeProgramFile("Pre-Flight Stage Completed"); // TODO: remove
 
   /* ------------------------ L A U N C H  S T A G E ------------------------ */
 
-  Serial.println("Ready for Assembly and Launch Rail"); // TODO: remove
+  writeProgramFile("Ready for Assembly and Launch Rail"); // TODO: remove
 
   float accelArray[numDataPointsChecked4Launch] = {0};
   float accelAvg = 0;
@@ -144,9 +171,9 @@ void loop() {
     ++counter;
   }
 
-  Serial.println("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points"); // TODO: add to log file instead
-  Serial.println("Rocket has launched"); // TODO: add to log file instead
-  Serial.println("Waiting for motor burn time"); // TODO: add to log file instead
+  writeProgramFile("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points"); // TODO: add to log file instead
+  writeProgramFile("Rocket has launched"); // TODO: add to log file instead
+  writeProgramFile("Waiting for motor burn time"); // TODO: add to log file instead
 
   unsigned long launchTime = millis();
 
@@ -157,7 +184,7 @@ void loop() {
     // TODO: save IMU data to log file
   }
 
-  Serial.println("Motor burn time complete"); // TODO: add to log file instead
+  writeProgramFile("Motor burn time complete"); // TODO: add to log file instead
 
   /* --------------------- C O A S T I N G  S T A G E --------------------- */
 
@@ -166,7 +193,7 @@ void loop() {
   float maxAltitude = 0;
   int samplesSinceMaxHasChanged = 0;
 
-  Serial.println("Looking for apogee"); // TODO: add to log file instead
+  writeProgramFile("Looking for apogee"); // TODO: add to log file instead
   
   while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (millis() - launchTime) < maxFlightMillis) {
     data = readIMU();
@@ -181,15 +208,15 @@ void loop() {
     }
   }
 
-  Serial.println("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples"); // TODO: add to log file instead
-  Serial.println("Apogee detected"); // TODO: add to log file instead
+  writeProgramFile("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples"); // TODO: add to log file instead
+  writeProgramFile("Apogee detected"); // TODO: add to log file instead
 
   /* ---------------------- D E S C E N T  S T A G E ---------------------- */
 
   float minAltitude = 1000000;
   int samplesSinceMinHasChanged = 0;
 
-  Serial.println("Waiting for landing detection"); // TODO: add to log file instead
+  writeProgramFile("Waiting for landing detection"); // TODO: add to log file instead
 
   while (samplesSinceMinHasChanged < numDataPointsChecked4Landing && abs(zCurrent) < zThresholdForLanding && (millis() - launchTime) < maxFlightMillis) {
     data = readIMU();
@@ -205,20 +232,30 @@ void loop() {
   }
 
   if ((samplesSinceMinHasChanged >= numDataPointsChecked4Landing) && (abs(zCurrent) < zThresholdForLanding)) {
-    Serial.println("Altitude has not reached a new min for " + String(numDataPointsChecked4Landing) + " samples"); // TODO: add to log file instead
-    Serial.println("Altitude was within threshold of " + String(zThresholdForLanding) + " meters"); // TODO: add to log file instead
+    writeProgramFile("Altitude has not reached a new min for " + String(numDataPointsChecked4Landing) + " samples"); // TODO: add to log file instead
+    writeProgramFile("Altitude was within threshold of " + String(zThresholdForLanding) + " meters"); // TODO: add to log file instead
   } else {
-    Serial.println("Time exceeded max flight limit of " + String(maxFlightTime) + " s"); // TODO: add to log file instead
+    writeProgramFile("Time exceeded max flight limit of " + String(maxFlightTime) + " s"); // TODO: add to log file instead
   }
   
-  Serial.println("Landing Detected"); // TODO: add to log file instead
+  writeProgramFile("Landing Detected"); // TODO: add to log file instead
 
   /* -------------------- P O S T - L A N D I N G  S T A G E -------------------- */
 
   // Move the servo to detach the parachute
   theServo.write(servoEnd);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
- 
+
+  // Update config file
+  fileNum = fileNum + 1;
+  configFile = SD.open(configFileName.c_str(), FILE_WRITE);
+  if(configFile) {
+    configFile.seek(0);
+    configFile.println(String(fileNum));
+    Serial.println("Wrote to configFile");
+  }
+  configFile.close();  
+  
   while(true){} // Halt
 }
 
@@ -390,7 +427,8 @@ imuData readIMU() {
     alt = pressure2Altitude(data.pressure);
   }
   data.alt = alt;
-  
+
+  writeDataFile(data);
   return data;
 }
 
@@ -431,6 +469,25 @@ String queryIMU(String request) {
       valid = true;
     }
   }
-  
+
   return response;
+}
+
+void writeProgramFile(String data) {
+  Serial.println(data);
+  programDataFile = SD.open(programDataFileName.c_str(), FILE_WRITE);
+  if (programDataFile) {
+    programDataFile.println(data + " (" + String(millis()) + ")");
+  }
+  programDataFile.close();
+}
+
+void writeDataFile(imuData data) {
+  flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
+  if (flightDataFileName) {
+    char buf[256];
+    sprintf(buf, "%u\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\n",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
+    flightDataFile.println(buf);
+  }
+  flightDataFile.close();
 }
