@@ -25,6 +25,8 @@ class SerialObject {
         char photo_buf_[256];
         int size_index_;
         int photo_index_;
+        std::string indicator_;
+        int indicator_index_;
 
     public:
 

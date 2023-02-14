@@ -1,6 +1,7 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_PDS_Delay.cpp
         src/State_Full_RCB.cpp
         src/State_Full_Level.cpp
         src/State_Full_Lift.cpp

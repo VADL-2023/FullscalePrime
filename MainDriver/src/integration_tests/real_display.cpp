@@ -17,6 +17,7 @@
 #include "State_Full_Lift.h"
 #include "State_Full_Level.h"
 #include "State_Full_RCB.h"
+#include "State_PDS_Delay.h"
 #include <map>
 #include "pigpio.h"
 
@@ -70,6 +71,9 @@ std::string getStateName(StateName stateType) {
             break;
         case STATE_FULL_RCB:
             name = "Full RCB";
+            break;
+        case STATE_PDS_DELAY:
+            name = "PDS Delay";
             break;
         case END_STATE:
             name = "End State";
@@ -146,10 +150,16 @@ int main() {
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_FULL_RCB));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
     // State Landing Detection
+    StateName pds_delay_name = STATE_PDS_DELAY;
+    std::map<EventName, StateName> pds_delay_transitions;
+    pds_delay_transitions.insert(std::pair<EventName, StateName>(DELAY, STATE_FULL_RCB));
+    State_PDS_Delay pds_delay(pds_delay_name, pds_delay_transitions, &root);
+
+    // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
     full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
@@ -165,18 +175,26 @@ int main() {
     // State Full Level
     StateName full_level_name = STATE_FULL_LEVEL;
     std::map<EventName, StateName> full_level_transitions;
-    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_SUCCESS, END_STATE));
-    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, END_STATE));
+    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_SUCCESS, STATE_STEPPER2));
+    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, STATE_STEPPER2));
     State_Full_Level full_level(full_level_name, full_level_transitions, &root);
+
+     // State Stepper 2
+    StateName stepper2_name = STATE_STEPPER2;
+    std::map<EventName, StateName> stepper2_transitions;
+    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, END_STATE));
+    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);
 
     // Add States to Machine
     root.addState(&prelaunch);
     root.addState(&launch_detection);
     root.addState(&apogee_detection);
     root.addState(&landing_detection);
+    root.addState(&pds_delay);
     root.addState(&full_rcb);
     root.addState(&full_lift);
     root.addState(&full_level);
+    root.addState(&stepper2);
 
     bool runTests = true;
     std::string userInput;

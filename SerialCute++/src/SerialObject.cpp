@@ -1,6 +1,6 @@
 #include "../include/SerialObject.h"
 
-SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size_index_(0), photo_index_(0)
+SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size_index_(0), photo_index_(0),indicator_("$PRIME"),indicator_index_(0)
 {
     memset(&size_buf_, '\0', sizeof(size_buf_));
     memset(&photo_buf_, '\0', sizeof(photo_buf_));
@@ -141,14 +141,17 @@ void SerialObject::readSerialImage()
     }
     for (int i = 0; i < 256; i++)
     {
-        if (read_buf[i] == '$')
+        if (indicator_index_ > 5)
         {
             counter_++;
             std::cout << "Counter: " << counter_ << std::endl;
+            indicator_index_ = 0;
+        } else if(read_buf[i] == indicator_[indicator_index_]) {
+            indicator_index_++;
         }
         if (counter_ == 1)
         {
-            if (read_buf[i] != '$' && read_buf[i] != '\0')
+            if (read_buf[i] != 'E' && read_buf[i] != '\0')
             {
                 // std::cout << "Size index: " << size_index_ << std::endl;
                 size_buf_[size_index_] = read_buf[i];
@@ -158,13 +161,8 @@ void SerialObject::readSerialImage()
         }
         else if (counter_ == 2)
         {
-            if (read_buf[i] != '$' && read_buf[i] != '\0')
-            {
-                // std::cout << "Photo index: " << photo_index_ << std::endl;
-                photo_buf_[photo_index_] = read_buf[i];
-                photo_index_++;
-                // std::cout << read_buf[i];
-            }
+            photo_buf_[photo_index_] = read_buf[i];
+            photo_index_++;
         }
         else if (counter_ == 3)
         {
@@ -180,22 +178,22 @@ void SerialObject::readSerialImage()
             photo_size_stream >> official_photo_size;
             std::cout << "Photo size: " << official_photo_size << std::endl;
             std::cout << "Photo contents: ";
-            char real_photo_buf[photo_index_];
+            char real_photo_buf[photo_index_ - 6];
             memset(&real_photo_buf, '\0', sizeof(real_photo_buf));
-            for (int i = 0; i < photo_index_; i++)
+            for (int i = 0; i < photo_index_ - 6; i++)
             {
                 real_photo_buf[i] = photo_buf_[i];
-                std::cout << photo_buf_[i];
+                //std::cout << photo_buf_[i];
             }
-            std::cout << std::endl;
+            //std::cout << std::endl;
 
-            for (int i = 0; i < photo_index_; i++)
+            for (int i = 0; i < photo_index_ - 6; i++)
             {
                 std::cout << real_photo_buf[i];
             }
             std::cout << std::endl;
 
-            const char *file_hello = "/home/vadl/Desktop/eric.jpeg";
+            const char *file_hello = "/home/vadl/Desktop/eric_pog.jpeg";
             FILE *f = fopen(file_hello, "w");
             if (f == NULL)
             {
