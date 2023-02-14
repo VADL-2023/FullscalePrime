@@ -58,6 +58,7 @@ public:
     int rcb_enable_ = 13;
     int rcb_lift_standby_ = 21;
     int rcb_time_threshold_ = 5000;
+    int rcb_angle_threshold_ = 1;
 
     int nacelle_servo_ = 14;
     uint16_t servo_pulse_min_ = 500;
@@ -76,6 +77,12 @@ public:
     int lift_time_threshold_ = 30000;
 
     int level_servo_ = 3;
+    int num_level_samples_ = 20;
+    double ideal_level_angle_ = 180;
+    int servo_up_pos_ = 0;
+    int servo_down_pos_ = 45;
+    double max_down_angle_ = 15;
+    double max_up_angle_ = -15;
 
     std::map<StateName, State *> states_;
 
@@ -97,7 +104,7 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 3;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 1.1;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -125,6 +132,7 @@ public:
     std::string flight_log_name_ = "flightDataLog";
     std::string program_log_name_ = "programDataLog";
     Log m_log_;
+    bool is_imu_connected_ = false;
 
     Root();
     Root(bool is_unit_fsm);

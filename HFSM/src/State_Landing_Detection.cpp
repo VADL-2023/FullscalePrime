@@ -90,6 +90,7 @@ EventName State_Landing_Detection::execute()
 		this->root_->m_log_.writeDelim("IMU: Disconnected");
 	}
 	delete this->root_->m_vn_;
+	this->root_->is_imu_connected_ = false;
 	return LANDING_DETECTED;
 }
 

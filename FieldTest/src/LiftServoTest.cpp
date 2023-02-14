@@ -46,7 +46,7 @@ int main()
         if (userInput == "L")
         {
             std::cout << "Start lock" << std::endl;
-            angle = 30;
+            angle = 45;
             pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
             gpioServo(LIFT_SERVO, pulse_width);
             gpioSleep(0, 2, 0);

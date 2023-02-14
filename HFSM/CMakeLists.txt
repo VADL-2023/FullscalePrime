@@ -1,6 +1,8 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_Full_RCB.cpp
+        src/State_Full_Level.cpp
         src/State_Full_Lift.cpp
         src/State_Landing_Detection.cpp
         src/State_Apogee_Detection.cpp

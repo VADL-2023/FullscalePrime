@@ -65,6 +65,7 @@ EventName State_Prelaunch::execute() {
             this->root_->m_log_.write("IMU failed to connect... restart program");
             return TERMINATE;
         }
+        this->root_->is_imu_connected_ = true;
 
         // flush IMU data during init
         this->root_->m_log_.write("IMU Flushing");

@@ -48,10 +48,10 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
     // Lift Locking Servo Initialization
     gpioSetMode(this->lift_servo_, PI_OUTPUT);
 
-    //Lift Limit Switch Initialization
-    gpioSetMode(this->lift_base_limit_switch_,PI_INPUT);
-    gpioSetMode(this->lift_final_limit_switch_,PI_INPUT);
-    
+    // Lift Limit Switch Initialization
+    gpioSetMode(this->lift_base_limit_switch_, PI_INPUT);
+    gpioSetMode(this->lift_final_limit_switch_, PI_INPUT);
+
     // Lift Motor Initialization
     gpioSetMode(this->lift_p_, PI_OUTPUT);
     gpioSetMode(this->lift_n_, PI_OUTPUT);
@@ -66,6 +66,15 @@ Root::~Root()
 {
     gpioTerminate();
     std::cout << "GPIOs terminated" << std::endl;
+    if (this->is_imu_connected_)
+    {
+        if (this->terminateConnections(this->m_vn_))
+        {
+            this->m_log_.writeDelim("IMU: Disconnected");
+        }
+        delete this->m_vn_;
+        this->is_imu_connected_ = false;
+    }
 }
 
 void Root::addState(State *the_state)

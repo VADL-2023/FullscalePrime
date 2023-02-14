@@ -15,6 +15,8 @@
 #include "State_Apogee_Detection.h"
 #include "State_Landing_Detection.h"
 #include "State_Full_Lift.h"
+#include "State_Full_Level.h"
+#include "State_Full_RCB.h"
 #include <map>
 #include "pigpio.h"
 
@@ -62,6 +64,12 @@ std::string getStateName(StateName stateType) {
             break;
         case STATE_FULL_LIFT:
             name = "Full Lift";
+            break;
+        case STATE_FULL_LEVEL:
+            name = "Full Level";
+            break;
+        case STATE_FULL_RCB:
+            name = "Full RCB";
             break;
         case END_STATE:
             name = "End State";
@@ -138,22 +146,37 @@ int main() {
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, END_STATE));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_FULL_RCB));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
+
+    // State Landing Detection
+    StateName full_rcb_name = STATE_FULL_RCB;
+    std::map<EventName, StateName> full_rcb_transitions;
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
+    State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
     // State Full Lift
     StateName full_lift_name = STATE_FULL_LIFT;
     std::map<EventName, StateName> full_lift_transitions;
-    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_SUCCESS, END_STATE));
+    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_SUCCESS, STATE_FULL_LEVEL));
     full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_FAILURE, END_STATE));
     State_Full_Lift full_lift(full_lift_name, full_lift_transitions, &root);
+
+    // State Full Level
+    StateName full_level_name = STATE_FULL_LEVEL;
+    std::map<EventName, StateName> full_level_transitions;
+    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_SUCCESS, END_STATE));
+    full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, END_STATE));
+    State_Full_Level full_level(full_level_name, full_level_transitions, &root);
 
     // Add States to Machine
     root.addState(&prelaunch);
     root.addState(&launch_detection);
     root.addState(&apogee_detection);
     root.addState(&landing_detection);
+    root.addState(&full_rcb);
     root.addState(&full_lift);
+    root.addState(&full_level);
 
     bool runTests = true;
     std::string userInput;
