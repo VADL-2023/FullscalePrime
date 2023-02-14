@@ -15,8 +15,8 @@ float R = 287;        // [kg/JK] universal gas constant
 float B = 6.5*km2m;   // [K/m] variation of temperature within the troposphere
 
 // Fixed flight parameters
-float tBurn = 1.1; // [s] motor burn time
-float samplingFrequency = 30; // [Hz] IMU sample rate - TODO: need to confirm this sampling rate
+float tBurn = 10; // [s] motor burn time
+float samplingFrequency = 42; // [Hz] IMU sample rate
 
 // Variable flight parameters
 float accelRoof = 3; // how many g's does the program need to see in order for launch to be detected
@@ -74,9 +74,6 @@ void setup() {
   Serial3.begin(115200);  // Communication with IMU
   delay(3000);
 
-  // TODO: This needs to be removed
-  while(!Serial.available()){}
-
   // Initialize SD card reading
   pinMode(SD_CARD_PIN, OUTPUT);
  
@@ -104,7 +101,6 @@ void loop() {
   configFile = SD.open(configFileName.c_str());
   if(configFile.available()) {
     fileNum = configFile.parseInt();
-    Serial.println("Read from config file: " + String(fileNum)); // TODO: remove
   }
   configFile.close();
 
@@ -125,21 +121,20 @@ void loop() {
   unsigned long startTime = millis();
 
   // Flush IMU
-  writeProgramFile("IMU Flushing"); // TODO: add to log file instead
+  writeProgramFile("IMU Flushing");
   for (int i = 0; i < imuWait; ++i) {
     readIMU();
   }
-  writeProgramFile("IMU Flushed"); // TODO: add to log file instead
+  writeProgramFile("IMU Flushed");
 
   // Calibrate ground level, pressure, temperature, and gravity
-  writeProgramFile("Calibrating baseline parameters"); // TODO: add to log file instead
+  writeProgramFile("Calibrating baseline parameters");
   float pressureSum = 0;
   float tempSum = 0;
   float gravSum = 0;
   
   for (int i = 0; i < numSampleReadings; i++) {
     data = readIMU();
-    // TODO: save IMU data to log file
     pressureSum += data.pressure;
     tempSum += data.temp;
     gravSum += sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
@@ -149,15 +144,15 @@ void loop() {
   T0 = tempSum / numSampleReadings + C2K;
   g0 = gravSum / numSampleReadings;
 
-  writeProgramFile("Calibrated Temperature: " + String(T0 - C2K) + " C"); // TODO: add to log file instead
-  writeProgramFile("Calibrated Pressure: " + String(P0) + " kPa"); // TODO: add to log file instead
-  writeProgramFile("Calibrated Gravity: " + String(g0) + " m/s^2"); // TODO: add to log file instead
+  writeProgramFile("Calibrated Temperature: " + String(T0 - C2K) + " C");
+  writeProgramFile("Calibrated Pressure: " + String(P0) + " kPa");
+  writeProgramFile("Calibrated Gravity: " + String(g0) + " m/s^2");
 
-  writeProgramFile("Pre-Flight Stage Completed"); // TODO: remove
+  writeProgramFile("Pre-Flight Stage Completed");
 
   /* ------------------------ L A U N C H  S T A G E ------------------------ */
 
-  writeProgramFile("Ready for Assembly and Launch Rail"); // TODO: remove
+  writeProgramFile("Ready for Assembly and Launch Rail");
 
   float accelArray[numDataPointsChecked4Launch] = {0};
   float accelAvg = 0;
@@ -165,15 +160,14 @@ void loop() {
 
   while (accelAvg < accelRoof * g0) {
     data = readIMU();
-    // TOOD: save IMU data to log file
     accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
     accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
     ++counter;
   }
 
-  writeProgramFile("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points"); // TODO: add to log file instead
-  writeProgramFile("Rocket has launched"); // TODO: add to log file instead
-  writeProgramFile("Waiting for motor burn time"); // TODO: add to log file instead
+  writeProgramFile("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points");
+  writeProgramFile("Rocket has launched");
+  writeProgramFile("Waiting for motor burn time");
 
   unsigned long launchTime = millis();
 
@@ -181,10 +175,9 @@ void loop() {
   unsigned long tBurnEnd = tBurn * 1000 + launchTime;
   while (millis() < tBurnEnd) {
     data = readIMU();
-    // TODO: save IMU data to log file
   }
 
-  writeProgramFile("Motor burn time complete"); // TODO: add to log file instead
+  writeProgramFile("Motor burn time complete");
 
   /* --------------------- C O A S T I N G  S T A G E --------------------- */
 
@@ -193,11 +186,10 @@ void loop() {
   float maxAltitude = 0;
   int samplesSinceMaxHasChanged = 0;
 
-  writeProgramFile("Looking for apogee"); // TODO: add to log file instead
+  writeProgramFile("Looking for apogee");
   
   while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (millis() - launchTime) < maxFlightMillis) {
     data = readIMU();
-    // TODO: save IMU data to log file
     zCurrent = pressure2Altitude(data.pressure);
 
     if (zCurrent >= maxAltitude) {
@@ -208,19 +200,22 @@ void loop() {
     }
   }
 
-  writeProgramFile("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples"); // TODO: add to log file instead
-  writeProgramFile("Apogee detected"); // TODO: add to log file instead
+  writeProgramFile("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples");
+  writeProgramFile("Apogee detected");
 
   /* ---------------------- D E S C E N T  S T A G E ---------------------- */
 
   float minAltitude = 1000000;
   int samplesSinceMinHasChanged = 0;
 
-  writeProgramFile("Waiting for landing detection"); // TODO: add to log file instead
+  writeProgramFile("Waiting for landing detection");
+
+  long freqTestStartTime = millis();
+  long freqTestCount = 0;
 
   while (samplesSinceMinHasChanged < numDataPointsChecked4Landing && abs(zCurrent) < zThresholdForLanding && (millis() - launchTime) < maxFlightMillis) {
     data = readIMU();
-    // TODO: save IMU data to log file
+    freqTestCount++;
     zCurrent = pressure2Altitude(data.pressure);
 
     if (zCurrent < minAltitude) {
@@ -231,15 +226,18 @@ void loop() {
     }
   }
 
+  long freqTestEndTime = millis();
+  Serial.print("IMU Frequency: " + String(freqTestCount / ((freqTestEndTime - freqTestStartTime) / 1000)) + " Hz");
+
+  writeProgramFile("Landing Detected");
+
   if ((samplesSinceMinHasChanged >= numDataPointsChecked4Landing) && (abs(zCurrent) < zThresholdForLanding)) {
-    writeProgramFile("Altitude has not reached a new min for " + String(numDataPointsChecked4Landing) + " samples"); // TODO: add to log file instead
-    writeProgramFile("Altitude was within threshold of " + String(zThresholdForLanding) + " meters"); // TODO: add to log file instead
+    writeProgramFile("Altitude has not reached a new min for " + String(numDataPointsChecked4Landing) + " samples");
+    writeProgramFile("Altitude was within threshold of " + String(zThresholdForLanding) + " meters");
   } else {
-    writeProgramFile("Time exceeded max flight limit of " + String(maxFlightTime) + " s"); // TODO: add to log file instead
+    writeProgramFile("Time exceeded max flight limit of " + String(maxFlightTime) + " s");
   }
   
-  writeProgramFile("Landing Detected"); // TODO: add to log file instead
-
   /* -------------------- P O S T - L A N D I N G  S T A G E -------------------- */
 
   // Move the servo to detach the parachute
@@ -252,7 +250,6 @@ void loop() {
   if(configFile) {
     configFile.seek(0);
     configFile.println(String(fileNum));
-    Serial.println("Wrote to configFile");
   }
   configFile.close();  
   
@@ -467,6 +464,8 @@ String queryIMU(String request) {
 
     if (response.substring(0,VNRRG_LEN-1).equals(request.substring(0,VNRRG_LEN-1)) || attempt++ == 2) {
       valid = true;
+    } else {
+      Serial.println("Invalid response from IMU");
     }
   }
 
@@ -486,7 +485,7 @@ void writeDataFile(imuData data) {
   flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
   if (flightDataFileName) {
     char buf[256];
-    sprintf(buf, "%u\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\n",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
+    sprintf(buf, "%u\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
     flightDataFile.println(buf);
   }
   flightDataFile.close();
