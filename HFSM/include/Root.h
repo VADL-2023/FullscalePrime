@@ -72,7 +72,7 @@ class Root {
         std::map<StateName,State*> states_;
 
         PacketReceiver radio1;
-        PacketReceiver radio2;
+        PacketReceiver radio2 = PacketReceiver(2);
 
         Root();
         Root(bool is_unit_fsm);
