@@ -9,11 +9,11 @@
 #include <string>
 #include <unistd.h>
 #include <thread>
-#include "Stepper.h"
 #include <math.h>
 #include "sensors.h"
 #include "config_IMU.hpp"
 #include "Log.h"
+#include "PacketReceiver.h"
 
 class State;
 
@@ -141,6 +141,9 @@ public:
     std::string program_log_name_ = "programDataLog";
     Log m_log_;
     bool is_imu_connected_ = false;
+    
+    PacketReceiver radio1 = PacketReceiver(1);
+    PacketReceiver radio2 = PacketReceiver(2);
 
     Root();
     Root(bool is_unit_fsm);
@@ -171,5 +174,6 @@ public:
     bool isTimeExceeded(double launch_time, double trigger_time);
 
 private:
+
 };
 #endif

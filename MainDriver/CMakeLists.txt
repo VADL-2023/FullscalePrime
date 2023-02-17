@@ -8,6 +8,7 @@ add_executable(realDisplayTest src/integration_tests/real_display.cpp)
 target_link_libraries(displayTest HFSM pigpio VN IMU Log)
 target_link_libraries(realDisplayTest HFSM pigpio VN IMU Log)
 
+target_link_libraries(displayTest HFSM pigpio PacketReceiver)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
