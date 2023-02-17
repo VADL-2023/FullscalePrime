@@ -14,6 +14,7 @@
 #include "config_IMU.hpp"
 #include "Log.h"
 #include "PacketReceiver.h"
+#include "Stepper.h"
 
 class State;
 

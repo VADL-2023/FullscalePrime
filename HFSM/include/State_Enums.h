@@ -20,7 +20,7 @@ enum StateName {
     STATE_FULL_LEVEL,
     STATE_FULL_RCB,
     STATE_PDS_DELAY,
-    STATE_RAFCO_Mission,
+    STATE_RAFCO_MISSION,
     END_STATE
  };
 

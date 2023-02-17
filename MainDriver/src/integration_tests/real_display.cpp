@@ -18,6 +18,7 @@
 #include "State_Full_Level.h"
 #include "State_Full_RCB.h"
 #include "State_PDS_Delay.h"
+#include "State_RAFCO_Mission.h"
 #include <map>
 #include "pigpio.h"
 #include <unistd.h>
@@ -83,6 +84,9 @@ std::string getStateName(StateName stateType)
         break;
     case STATE_PDS_DELAY:
         name = "PDS Delay";
+        break;
+    case STATE_RAFCO_MISSION:
+        name = "RAFCO Mission";
         break;
     case END_STATE:
         name = "End State";
@@ -173,7 +177,7 @@ int main()
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, END_STATE));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
     full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, END_STATE));
     State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
@@ -194,8 +198,14 @@ int main()
     // State Stepper 2
     StateName stepper2_name = STATE_STEPPER2;
     std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, END_STATE));
+    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_RAFCO_MISSION));
     State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);
+
+    // State RAFCO
+    StateName rafco_mission_name = STATE_RAFCO_MISSION;
+    std::map<EventName, StateName> rafco_mission_transitions;
+    rafco_mission_transitions.insert(std::pair<EventName, StateName>(RAFCO_COMPLETE, END_STATE));
+    State_RAFCO_Mission rafco_mission(rafco_mission_name, rafco_mission_transitions, &root);
 
     // Add States to Machine
     root.addState(&prelaunch);
@@ -207,6 +217,7 @@ int main()
     root.addState(&full_lift);
     root.addState(&full_level);
     root.addState(&stepper2);
+    root.addState(&rafco_mission);
 
     bool runTests = true;
     std::string userInput;
