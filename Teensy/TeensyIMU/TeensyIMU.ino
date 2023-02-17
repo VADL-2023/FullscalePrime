@@ -49,7 +49,7 @@ int fileNum = 0;
 // Servo variables
 Servo theServo;
 int servoStart = 72;
-int servoEnd = 155;
+int servoEnd = 165;
 
 // Structure for passing IMU data
 struct imuData {
