@@ -34,6 +34,7 @@ class PacketReceiver {
         void startSDR();
         void stopSDR();
         
+        int packetAvailable();
         std::string getPacket();
 };
 

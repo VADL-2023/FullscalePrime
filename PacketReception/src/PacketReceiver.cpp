@@ -4,6 +4,7 @@
 #include <fstream>
 #include <unistd.h>
 #include <string.h>
+#include <poll.h>
 #include </usr/include/signal.h>
 
 #include "../include/PacketReceiver.h"
@@ -36,6 +37,7 @@ void PacketReceiver::startSDR() {
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) {
         fprintf(stderr,"ERROR opening socket\n");
+        return;
     }
 
     server = gethostbyname("localhost");
@@ -50,7 +52,8 @@ void PacketReceiver::startSDR() {
     serv_addr.sin_port = htons(port_num);
 
     if (connect(sockfd,(struct sockaddr *)  &serv_addr,sizeof(serv_addr)) < 0) {
-        fprintf(stderr, "ERROR connecting. The decepticons are taking over\n");    
+        fprintf(stderr, "ERROR connecting.\n");
+        return;    
     }
 }
 
@@ -64,6 +67,17 @@ void PacketReceiver::stopSDR() {
     rtl_active = false;
 }
 
+int PacketReceiver::packetAvailable() {
+    struct pollfd fds;
+    struct timespec ts;
+    ts.tv_sec = 0;
+    ts.tv_sec = 1000000;
+    fds.fd = sockfd;
+    fds.events = POLLIN;
+    int r = ppoll (&fds, 1, &ts, NULL);
+    return r;
+}
+
 std::string PacketReceiver::getPacket() {
     std::string s = "";
 
@@ -74,7 +88,9 @@ std::string PacketReceiver::getPacket() {
 
         int n = read(sockfd,buffer,255);
         if (n < 0) {
-            fprintf(stderr,"ERROR reading from socket");
+            fprintf(stderr,"ERROR reading from socket\n");
+            std::cout << std::to_string(port_num) << std::endl;
+            return "ERROR";
         }
 
         bool valid = false;
@@ -96,17 +112,17 @@ std::string PacketReceiver::getPacket() {
             }
         }
         
-        for (int i = 0; i < 255; i++) {
-            printf("%x ", buffer[i]);
-        }
+        // for (int i = 0; i < 255; i++) {
+        //     printf("%x ", buffer[i]);
+        // }
 
-        std::cout << std::endl;
+        // std::cout << std::endl;
 
-        for (int i = payloadStart; i < j; i++) {
-            printf("%x ", message[i]);
-        }
+        // for (int i = payloadStart; i < j; i++) {
+        //     printf("%x ", message[i]);
+        // }
 
-        std::cout << std::endl;
+        // std::cout << std::endl;
 
         for (int i = payloadStart; i < j; i++) {
             s += message[i];
