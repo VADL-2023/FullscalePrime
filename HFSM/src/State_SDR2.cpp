@@ -21,7 +21,7 @@ EventName State_SDR2::unitExecute() {
 	sleep(10);
 	std::cout << "Halting SDR" << std::endl;
 	this->root_->radio2.stopSDR();
-	std::string packetsReceived = this->root_->radio2.getPackets();
+	std::string packetsReceived = this->root_->radio2.getPacket();
 	std::cout << packetsReceived;
 	return RECEIVED_PACKETS;
 }
