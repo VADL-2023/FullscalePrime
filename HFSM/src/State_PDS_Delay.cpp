@@ -10,13 +10,13 @@ State_PDS_Delay::State_PDS_Delay(StateName name, std::map<EventName, StateName> 
 }
 
 EventName State_PDS_Delay::execute() {
-	std::cout << "In State_PDS_Delay and will return end state." << std::endl;
+	this->root_->m_log_.write("In State PDS Delay and starting " + std::to_string(this->root_->pds_delay_) + " ms delay.");
 	auto start_time = this->root_->getCurrentTime();
 	auto current_time = start_time;
-	while(current_time - start_time < 15000) {
+	while(current_time - start_time < this->root_->pds_delay_) {
 		current_time = this->root_->getCurrentTime();
 	}
-	std::cout << "Exiting delay" << std::endl;
+	this->root_->m_log_.write("Exiting PDS delay");
 	return DELAY;
 }
 

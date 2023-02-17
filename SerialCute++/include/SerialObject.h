@@ -22,7 +22,7 @@ class SerialObject {
         std::string input_;
         int counter_;
         char size_buf_[256];
-        char photo_buf_[256];
+        uint8_t photo_buf_[3000000];
         int size_index_;
         int photo_index_;
         std::string indicator_;
@@ -37,6 +37,7 @@ class SerialObject {
         void writeSerial(std::string str);
 
         std::string readSerial();
+        void readSerialImageOrganic();
         void readSerialImage();
         std::string readSerial(int buff_size);
 

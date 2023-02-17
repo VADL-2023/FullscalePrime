@@ -3,12 +3,12 @@
 #include "pigpio.h"
 #include <chrono>
 
-const int LIFT_SERVO = 2;
-const uint16_t SERVO_PULSE_MIN = 500;
-const uint16_t SERVO_PULSE_MAX = 2250;
-const uint8_t SERVO_DEG_RANGE = 90;
-const int LIFT_LOCK = 1500;
-const int LIFT_UNLOCK = 900;
+const int NACELLE_SERVO = 14;
+const uint16_t SERVO_PULSE_MIN = 100;
+const uint16_t SERVO_PULSE_MAX = 2500;
+const uint8_t SERVO_DEG_RANGE = 180;
+const int NACELLE_LOCK = 1375;
+const int NACELLE_UNLOCK = 2250;
 
 double getCurrentTime()
 {
@@ -31,7 +31,7 @@ int main()
     std::cout << "GPIOs initialized" << std::endl;
 
     // Lift Locking Servo Initialization
-    gpioSetMode(LIFT_SERVO, PI_OUTPUT);
+    gpioSetMode(NACELLE_SERVO, PI_OUTPUT);
 
     // Wait for the user to signal the lift servo
     double angle = 0;
@@ -48,18 +48,18 @@ int main()
         if (userInput == "L")
         {
             std::cout << "Start lock" << std::endl;
-            angle = 60;
+            angle = 0;
             pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
-            gpioServo(LIFT_SERVO, LIFT_LOCK);
+            gpioServo(NACELLE_SERVO, NACELLE_LOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End lock" << std::endl;
         }
         else if (userInput == "U")
         {
             std::cout << "Start unlock" << std::endl;
-            angle = 15;
+            angle = 90;
             pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
-            gpioServo(LIFT_SERVO, LIFT_UNLOCK);
+            gpioServo(NACELLE_SERVO, NACELLE_UNLOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End unlock" << std::endl;
         }

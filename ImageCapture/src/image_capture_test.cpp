@@ -4,15 +4,17 @@
 #include <sstream>
 int main()
 {
-    SerialObject testObject("/dev/ttyUSB1");
+    SerialObject testObject("/dev/ttyUSB0");
     std::string start_indicator = "$START$";
     std::string photo_indicator = "$PHOTO$";
     std::string end_indicator = "$END$";
     std::string photo_size = "";
     std::string photo = "";
+    int i = 1;
     while (true)
     {
         testObject.readSerialImage();
+        i++;
         /*std::string 
         size_t found_start = result.find(start_indicator);
         size_t found_photo = result.find(photo_indicator);

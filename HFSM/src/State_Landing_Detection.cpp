@@ -63,6 +63,7 @@ EventName State_Landing_Detection::execute()
 
 	if (this->root_->time_delay_enabled_)
 	{
+		this->root_->m_log_.write("Delaying for " + std::to_string(this->root_->max_flight_time_ - ((this->root_->getCurrentTime() - this->root_->launch_time_) / 1000)) + "s");
 		while (!this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 		{
 			usleep(100);

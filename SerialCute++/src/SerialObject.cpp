@@ -1,6 +1,6 @@
 #include "../include/SerialObject.h"
 
-SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size_index_(0), photo_index_(0),indicator_("$PRIME"),indicator_index_(0)
+SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size_index_(0), photo_index_(0), indicator_("ABCD1$OPTIMUS$2PRIME3!Megatron#4Bumblebee5^Starscream&6Ratchet1$OPTIMUS$2PRIME3!Megatron#4Bumblebee5^Starscream&6Ratchet7*Shockwave(8Ironhide9)Soundwave10Jazz1$OPTIMUS$2PRIME3!Megatron#4Bumblebee5^Starscream&6Ratchet1$OPTIMUS$2PRIME3!Megatron#4Bumblebee5^Starscream&6Ratchet7*Shockwave(8Ironhide9)Soundwave10Jazz"), indicator_index_(0)
 {
     memset(&size_buf_, '\0', sizeof(size_buf_));
     memset(&photo_buf_, '\0', sizeof(photo_buf_));
@@ -124,6 +124,25 @@ void SerialObject::writeSerial(std::string str)
     write(serial_port, str.c_str(), str.size());
 }
 
+void SerialObject::readSerialImageOrganic() {
+    char read_buf[256];
+
+    // Clear buffer
+    memset(&read_buf, '\0', sizeof(read_buf));
+
+    // This read function comes from the unistd library
+    int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
+
+    // Check for any errors
+    if (num_bytes < 0)
+    {
+        printf("Error reading: %s", strerror(errno));
+    }
+    for(int i = 0; i < num_bytes; i++) {
+        std::cout << read_buf[i];
+    }
+    std::cout << "\n";
+}
 void SerialObject::readSerialImage()
 {
     char read_buf[256];
@@ -141,25 +160,83 @@ void SerialObject::readSerialImage()
     }
     for (int i = 0; i < 256; i++)
     {
-        if (indicator_index_ > 5)
+        if (indicator_index_ > indicator_.length() - 1)
         {
             counter_++;
-            std::cout << "Counter: " << counter_ << std::endl;
+            //std::cout << "Counter: " << counter_ << std::endl;
             indicator_index_ = 0;
-        } else if(read_buf[i] == indicator_[indicator_index_]) {
+        }
+        else if (read_buf[i] == indicator_[indicator_index_])
+        {
             indicator_index_++;
         }
         if (counter_ == 1)
         {
-            if (read_buf[i] != 'E' && read_buf[i] != '\0')
+            // std::cout << "Image size: ";
+            if (read_buf[i] != '\0')
             {
                 // std::cout << "Size index: " << size_index_ << std::endl;
                 size_buf_[size_index_] = read_buf[i];
                 size_index_++;
-                // std::cout << read_buf[i];
+                // std::cout << "Read buf: " << read_buf[i] << std::endl;
+                // std::cout << "Size index: " << size_index_ << std::endl;
             }
+            /*for(int i = 0; i < size_index_; i++) {
+                std::cout << size_buf_[i];
+            }*/
+            // std::cout << "\n";
         }
         else if (counter_ == 2)
+        {
+            photo_buf_[photo_index_] = read_buf[i];
+            photo_index_++;
+        }
+        else if (counter_ == 3)
+        {
+            size_index_ -= indicator_.length();
+            for (int i = 0; i < size_index_; i++)
+            {
+                std::cout << size_buf_[i];
+            }
+            std::cout << "\n";
+
+            photo_index_ -= indicator_.length();
+            /*for (int i = 0; i < photo_index_; i++)
+            {
+                std::cout << photo_buf_[i];
+            }
+            std::cout << "\n";*/
+            std::cout << "END" << std::endl;
+
+            const char* file_hello = "/home/vadl/Desktop/pain.jpg";
+            FILE *f = fopen(file_hello, "w");
+            if (f == NULL)
+            {
+                std::cout << "File opening pain" << std::endl;
+            }
+            char *mutable_size = new char[strlen(size_buf_) + 1];
+            strcpy(mutable_size, size_buf_);
+            std::stringstream size_stream(mutable_size);
+            size_t the_size;
+            size_stream >> the_size;
+            // fwrite(inputImage.data, inputImage.step[0]*inputImage.rows, 1, f);
+            fwrite(photo_buf_, the_size, 1, f);
+            fclose(f);
+            /*for(int i = 0; i < photo_index_; i++) {
+                std::cout << photo_buf_[i];
+            }
+            std::cout << "\n";*/
+            memset(&size_buf_, '\0', sizeof(size_buf_));
+            size_index_ = 0;
+            memset(&photo_buf_, '\0', sizeof(photo_buf_));
+            photo_index_ = 0;
+            counter_ = 0;
+            /*for(int i = 0; i < size_index_; i++) {
+                std::cout << size_buf_[i];
+            }
+            std::cout << "\n";*/
+        }
+        /*else if (counter_ == 2)
         {
             photo_buf_[photo_index_] = read_buf[i];
             photo_index_++;
@@ -207,7 +284,7 @@ void SerialObject::readSerialImage()
             size_index_ = 0;
             photo_index_ = 0;
             counter_ = 0;
-        }
+        }*/
     }
 }
 

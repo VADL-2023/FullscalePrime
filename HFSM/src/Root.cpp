@@ -11,10 +11,9 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
     // Temporary initialization thing
     while (gpioInitialise() <= 0)
     {
-        std::cout << "GPIOs not initialized" << std::endl;
+        m_log_.write("GPIOS not initialized");
     }
-
-    std::cout << "GPIOs initialized" << std::endl;
+    m_log_.write("GPIOS initialized");
 
     // Stepper 1 Initialization
     this->stepper_1_.initialize(this->steps_per_revolution_, this->stepper_1_pin_1_, this->stepper_1_pin_2_, this->stepper_1_pin_3_, this->stepper_1_pin_4_, true);
@@ -65,7 +64,7 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
 Root::~Root()
 {
     gpioTerminate();
-    std::cout << "GPIOs terminated" << std::endl;
+    this->m_log_.write("GPIOs terminated");
     if (this->is_imu_connected_)
     {
         if (this->terminateConnections(this->m_vn_))
@@ -75,6 +74,7 @@ Root::~Root()
         delete this->m_vn_;
         this->is_imu_connected_ = false;
     }
+    this->m_log_.writeDelim("Program ending");
 }
 
 void Root::addState(State *the_state)

@@ -38,5 +38,6 @@ enum EventName {
     LIFT_FAILURE,
     LEVEL_SUCCESS,
     LEVEL_FAILURE,
-    RCB_SUCCESS
+    RCB_SUCCESS,
+    RCB_FAILURE
 };

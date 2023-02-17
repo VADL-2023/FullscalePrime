@@ -25,6 +25,8 @@ public:
     bool is_unit_fsm_;
     int unit_test_delay_ms_ = 1000000;
 
+    int pds_delay_ = 60000;
+
     int steps_per_revolution_ = 200;
     int stepper_speed_ = 30;
     int num_steps_ = 40;
@@ -59,22 +61,28 @@ public:
     int rcb_lift_standby_ = 21;
     int rcb_time_threshold_ = 5000;
     int rcb_angle_threshold_ = 1;
+    bool is_aligned_ = false;
+    int full_rcb_time_threshold_ = 40000;
 
     int nacelle_servo_ = 14;
     uint16_t servo_pulse_min_ = 500;
     uint16_t servo_pulse_max_ = 2250;
     uint8_t servo_deg_range_ = 90;
+    int nacelle_lock_ = 1375;
+    int nacelle_unlock_ = 2250;
 
     int lift_servo_ = 2;
     double unlock_lift_angle_ = 0;
     int lift_base_limit_switch_ = 18;
     int lift_final_limit_switch_ = 23;
     int lift_unit_time_threshold_ = 2000;
+    int lift_lock_ = 1500;
+    int lift_unlock_ = 900;
 
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 30000;
+    int lift_time_threshold_ = 45000;
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
@@ -97,7 +105,7 @@ public:
     float b_ = 6.5 * km_2_m_; // [K/m] variation of temperature within the troposphere
 
     // fixed flight parameters
-    float t_burn_ = 10;            // [s] motor burn time
+    float t_burn_ = 15;            // [s] motor burn time
     float sampling_frequency_ = 20; // [Hz] how fast does the IMU sample data
     bool restart_ = false;          // tells the program whether or not we NO-GOed
     bool time_delay_enabled_ = false;

@@ -20,73 +20,83 @@
 #include "State_PDS_Delay.h"
 #include <map>
 #include "pigpio.h"
+#include <unistd.h>
+#include <iostream>
 
-std::string getStateName(StateName stateType) {
+static void signal_callback_handler(int signum) {
+   cout << "Caught signal " << signum << endl;
+   // Terminate program
+   exit(signum);
+}
+std::string getStateName(StateName stateType)
+{
     std::string name;
-    switch (stateType) {
-        case STATE_RCB_MOTOR:
-            name = "RCB Motor";
-            break;
-        case STATE_NACELLE_SERVO:
-            name = "Nacelle Servo";
-            break;
-        case STATE_LIFT_SERVO:
-            name = "Lift Servo";
-            break;
-        case STATE_LIFT_MOTOR:
-            name = "Lift Motor";
-            break;
-        case STATE_LEVEL_SERVO:
-            name = "Level Servo";
-            break;
-        case STATE_STEPPER1:
-            name = "Stepper 1";
-            break;
-        case STATE_STEPPER2:
-            name = "Stepper 2";
-            break;
-        case STATE_STEPPER3:
-            name = "Stepper 3";
-            break;
-        case STATE_DELAY:
-            name = "Delay";
-            break;
-        case STATE_PRELAUNCH:
-            name = "Pre launch";
-            break;
-        case STATE_LAUNCH_DETECTION:
-            name = "Launch Detection";
-            break;
-        case STATE_APOGEE_DETECTION:
-            name = "Apogee Detection";
-            break;
-        case STATE_LANDING_DETECTION:
-            name = "Landing Detection";
-            break;
-        case STATE_FULL_LIFT:
-            name = "Full Lift";
-            break;
-        case STATE_FULL_LEVEL:
-            name = "Full Level";
-            break;
-        case STATE_FULL_RCB:
-            name = "Full RCB";
-            break;
-        case STATE_PDS_DELAY:
-            name = "PDS Delay";
-            break;
-        case END_STATE:
-            name = "End State";
-            break;
-        default:
-            name = "UNKNOWN";
-            break;
+    switch (stateType)
+    {
+    case STATE_RCB_MOTOR:
+        name = "RCB Motor";
+        break;
+    case STATE_NACELLE_SERVO:
+        name = "Nacelle Servo";
+        break;
+    case STATE_LIFT_SERVO:
+        name = "Lift Servo";
+        break;
+    case STATE_LIFT_MOTOR:
+        name = "Lift Motor";
+        break;
+    case STATE_LEVEL_SERVO:
+        name = "Level Servo";
+        break;
+    case STATE_STEPPER1:
+        name = "Stepper 1";
+        break;
+    case STATE_STEPPER2:
+        name = "Stepper 2";
+        break;
+    case STATE_STEPPER3:
+        name = "Stepper 3";
+        break;
+    case STATE_DELAY:
+        name = "Delay";
+        break;
+    case STATE_PRELAUNCH:
+        name = "Pre launch";
+        break;
+    case STATE_LAUNCH_DETECTION:
+        name = "Launch Detection";
+        break;
+    case STATE_APOGEE_DETECTION:
+        name = "Apogee Detection";
+        break;
+    case STATE_LANDING_DETECTION:
+        name = "Landing Detection";
+        break;
+    case STATE_FULL_LIFT:
+        name = "Full Lift";
+        break;
+    case STATE_FULL_LEVEL:
+        name = "Full Level";
+        break;
+    case STATE_FULL_RCB:
+        name = "Full RCB";
+        break;
+    case STATE_PDS_DELAY:
+        name = "PDS Delay";
+        break;
+    case END_STATE:
+        name = "End State";
+        break;
+    default:
+        name = "UNKNOWN";
+        break;
     }
 
     return name;
 }
 
-void runFullStateMachine(Root &root, State* initial_state) {
+void runFullStateMachine(Root &root, State *initial_state)
+{
     State *current_state = initial_state;
 
     root.start_time_ = root.getCurrentTime();
@@ -123,7 +133,8 @@ void runFullStateMachine(Root &root, State* initial_state) {
     std::cout << "State Machine Completed" << std::endl;
 }
 
-int main() {
+int main()
+{
     bool is_unit_fsm = false;
     Root root(is_unit_fsm);
 
@@ -162,7 +173,8 @@ int main() {
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, END_STATE));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, END_STATE));
     State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
     // State Full Lift
@@ -179,7 +191,7 @@ int main() {
     full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, STATE_STEPPER2));
     State_Full_Level full_level(full_level_name, full_level_transitions, &root);
 
-     // State Stepper 2
+    // State Stepper 2
     StateName stepper2_name = STATE_STEPPER2;
     std::map<EventName, StateName> stepper2_transitions;
     stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, END_STATE));
@@ -204,7 +216,8 @@ int main() {
     State *next_state = current_state;
     EventName curr_event;
 
-    while (runTests) {
+    while (runTests)
+    {
         std::cout << "------------OPTIONS------------" << std::endl;
         std::cout << "1. Run whole state machine" << std::endl;
         std::cout << "2. Run a single state" << std::endl;
@@ -213,45 +226,64 @@ int main() {
         std::cout << "What would you like to do? ";
         std::cin >> userInput;
 
-        try {
+        try
+        {
             userInt = stoi(userInput);
-        } catch (...) {
+        }
+        catch (...)
+        {
             std::cout << "Invalid selection" << std::endl;
             userInt = 0;
         }
-        
 
-        if (userInt == 1) {
+        if (userInt == 1)
+        {
             runFullStateMachine(root, current_state);
-        } else if (userInt == 2) {
+            runTests = false;
+            return 0;
+        }
+        else if (userInt == 2)
+        {
             std::cout << "------------STATES-------------" << std::endl;
             int numStates = END_STATE + 1;
-            for (int i = 0; i < numStates; i++) {
-                std::cout << std::to_string(i + 1) << ". " << getStateName((StateName) i) << std::endl;
+            for (int i = 0; i < numStates; i++)
+            {
+                std::cout << std::to_string(i + 1) << ". " << getStateName((StateName)i) << std::endl;
             }
-            std::cout << std::to_string(numStates + 1) << ". " << "Quit" << std::endl;
-            
+            std::cout << std::to_string(numStates + 1) << ". "
+                      << "Quit" << std::endl;
+
             std::cout << "What state would you like to run? ";
             std::cin >> userInput;
-            
-            try {
+
+            try
+            {
                 userInt = stoi(userInput);
-            } catch (...) {
+            }
+            catch (...)
+            {
                 std::cout << "Invalid selection" << std::endl;
                 userInt = numStates;
             }
 
-            if (0 < userInt && userInt < numStates) {
-                StateName stateType = (StateName) (userInt-1);
-                if(stateType == STATE_LAUNCH_DETECTION) {
+            if (0 < userInt && userInt < numStates)
+            {
+                StateName stateType = (StateName)(userInt - 1);
+                if (stateType == STATE_LAUNCH_DETECTION)
+                {
                     std::cout << "WARNING: YOU SHOULD NOT RUN THIS STATE ALONE. PLEASE RUN STATE_PRELAUNCH FIRST" << std::endl;
-                } else if (stateType == STATE_APOGEE_DETECTION) {
+                }
+                else if (stateType == STATE_APOGEE_DETECTION)
+                {
                     std::cout << "WARNING: YOU SHOULD NOT RUN THIS STATE ALONE. PLEASE RUN STATE_PRELAUNCH and STATE_LAUNCH_DETECTION FIRST" << std::endl;
-                } else if (stateType == STATE_LANDING_DETECTION) {
+                }
+                else if (stateType == STATE_LANDING_DETECTION)
+                {
                     std::cout << "WARNING: YOU SHOULD NOT RUN THIS STATE ALONE. PLEASE RUN STATE_PRELAUNCH and STATE_LAUNCH_DETECTION and STATE_APOGEE_DETECTION FIRST" << std::endl;
                 }
                 current_state = root.states_[stateType];
-                if (root.is_unit_fsm_) {
+                if (root.is_unit_fsm_)
+                {
                     curr_event = current_state->unitExecute();
                     // Automatically sleep for 1 second after
                     usleep(root.unit_test_delay_ms_);
@@ -260,13 +292,19 @@ int main() {
                 {
                     curr_event = current_state->execute();
                 }
-            } else if (numStates - 1 <= userInt && userInt <= numStates) {
+            }
+            else if (numStates - 1 <= userInt && userInt <= numStates)
+            {
                 std::cout << "Doing nothing" << std::endl;
-            } else {
+            }
+            else
+            {
                 runTests = false;
                 return 0;
             }
-        } else if (userInt == 3) {
+        }
+        else if (userInt == 3)
+        {
             runTests = false;
             return 0;
         }

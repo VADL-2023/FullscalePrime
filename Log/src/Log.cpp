@@ -27,6 +27,7 @@ mIMU(imu)
     mProgLog.open(program_name);
 
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
+        std::cout << "Redundant error in file message" << std::endl;
         mProgLog << "Error opening file streams";
     }else {
         mFlightLog

@@ -10,15 +10,16 @@ State_Full_Lift::State_Full_Lift(StateName name, std::map<EventName, StateName> 
 }
 
 EventName State_Full_Lift::execute() {
-	std::cout << "In State_Full_Lift and will return end state." << std::endl;
-	float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_,this->root_->servo_pulse_min_,this->root_->servo_deg_range_,this->root_->unlock_lift_angle_);
-	gpioServo(this->root_->lift_servo_,pulse_width);
+	this->root_->m_log_.write("In State full lift");
+	this->root_->m_log_.write("Initiate lift servo unlock");
+	gpioServo(this->root_->lift_servo_,this->root_->lift_unlock_);
 	gpioSleep(0,2,0);
+	this->root_->m_log_.write("Initiate lift servo lock");
 	bool is_done = false;
 	bool is_time_up = false;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;
-	std::cout << "Starting winch" << std::endl;
+	this->root_->m_log_.write("Starting winch");
 	gpioWrite(this->root_->rcb_lift_standby_,1);
 	while(!is_done) {
 		is_done = !gpioRead(this->root_->lift_final_limit_switch_);
@@ -36,10 +37,10 @@ EventName State_Full_Lift::execute() {
 	gpioWrite(this->root_->lift_p_,0);
 	gpioPWM(this->root_->lift_enable_,0);
 	if(is_time_up) {
-		std::cout << "Time ran out" << std::endl;
+		this->root_->m_log_.write("Time Ran Out for Lift");
 		return LIFT_FAILURE;
 	} else {
-		std::cout << "Winch success" << std::endl;
+		this->root_->m_log_.write("Lift success");
 		return LIFT_SUCCESS; 
 	}
 	
