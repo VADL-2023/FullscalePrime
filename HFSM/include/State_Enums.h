@@ -12,7 +12,6 @@ enum StateName {
     STATE_SDR1,
     STATE_SDR2,
     STATE_DELAY,
-
     STATE_PRELAUNCH,
     STATE_LAUNCH_DETECTION,
     STATE_APOGEE_DETECTION,
@@ -21,7 +20,8 @@ enum StateName {
     STATE_FULL_LEVEL,
     STATE_FULL_RCB,
     STATE_PDS_DELAY,
-    END_STATE,
+    STATE_RAFCO_Mission,
+    END_STATE
  };
 
 enum EventName {
@@ -42,5 +42,6 @@ enum EventName {
     LEVEL_SUCCESS,
     LEVEL_FAILURE,
     RCB_SUCCESS,
-    RCB_FAILURE
+    RCB_FAILURE,
+    RAFCO_COMPLETE
 };
