@@ -18,11 +18,11 @@ EventName State_Lift_Servo::unitExecute() {
 	std::cout << "Started Lift Servo Test" << std::endl;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;
-	double angle = 60;
+	double angle = 0;
 	float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_,this->root_->servo_pulse_min_,this->root_->servo_deg_range_,angle);
 	gpioServo(this->root_->lift_servo_,pulse_width);
 	gpioSleep(0,2,0);
-	angle = 30;
+	angle = 45;
 	pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_,this->root_->servo_pulse_min_,this->root_->servo_deg_range_,angle);
 	gpioServo(this->root_->lift_servo_,pulse_width);
 	gpioSleep(0,2,0);

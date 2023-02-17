@@ -3,6 +3,14 @@ include_directories(include)
 add_library(HFSM
         src/State_SDR2.cpp
         src/State_SDR1.cpp
+        src/State_PDS_Delay.cpp
+        src/State_Full_RCB.cpp
+        src/State_Full_Level.cpp
+        src/State_Full_Lift.cpp
+        src/State_Landing_Detection.cpp
+        src/State_Apogee_Detection.cpp
+        src/State_Launch_Detection.cpp
+        src/State_Prelaunch.cpp
         src/State_Stepper3.cpp
         src/State_Level_Servo.cpp
         src/State_Lift_Motor.cpp
@@ -15,5 +23,5 @@ add_library(HFSM
         src/State.cpp
         )
 
-target_link_libraries(HFSM Stepper pigpio PacketReceiver)
+target_link_libraries(HFSM Stepper pigpio PacketReceiver IMU Log VN)
 target_include_directories(HFSM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
