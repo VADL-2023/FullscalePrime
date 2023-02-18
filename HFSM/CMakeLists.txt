@@ -1,6 +1,7 @@
 include_directories(include)
 
 add_library(HFSM
+        src/State_RAFCO_Mission.cpp
         src/State_SDR2.cpp
         src/State_SDR1.cpp
         src/State_PDS_Delay.cpp

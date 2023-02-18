@@ -11,7 +11,7 @@ State_Full_Level::State_Full_Level(StateName name, std::map<EventName, StateName
 
 EventName State_Full_Level::execute()
 {
-	std::cout << "In State_Full_Level and will return end state." << std::endl;
+	this->root_->m_log_.write("In State_Full_Level and will return end state.");
 	if (!this->root_->is_imu_connected_)
 	{
 		try
@@ -44,14 +44,16 @@ EventName State_Full_Level::execute()
 		}
 		average_error /= this->root_->num_level_samples_;
 		int desired_servo_pos = this->root_->servo_up_pos_ + ((average_error - this->root_->max_up_angle_) * (this->root_->servo_down_pos_ - this->root_->servo_up_pos_)) / (this->root_->max_down_angle_ - this->root_->max_up_angle_);
-		std::cout << "Average error: " << average_error << std::endl;
-		std::cout << "Desired servo pos: " << desired_servo_pos << std::endl;
+		this->root_->m_log_.write("Average error: " + std::to_string(average_error));
+		this->root_->m_log_.write("Desired servo pos: " + std::to_string(desired_servo_pos));
 		if (desired_servo_pos > this->root_->servo_down_pos_)
 		{
+			this->root_->m_log_.write("At max down");
 			desired_servo_pos = this->root_->servo_down_pos_;
 		}
 		else if (desired_servo_pos < this->root_->servo_up_pos_)
 		{
+			this->root_->m_log_.write("At max up");
 			desired_servo_pos = this->root_->servo_up_pos_;
 		}
 		float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_, this->root_->servo_pulse_min_, this->root_->servo_deg_range_, desired_servo_pos);
