@@ -9,4 +9,101 @@ Note: PTT not configured for channel 0. (Ignore this if using VOX.)
 Ready to accept AGW client application 0 on port 8000 ...
 Ready to accept KISS TCP client application 0 on port 8001 ...
 
+KQ4DPB audio level = 47(18/17)   [NONE]   ||||||:__
+[0.3] KQ4DPB>BEACON:Test<0x0d>
+Error: Information part of telemetry packet must begin with "T#"
+Telemetry
+
+KQ4DPB audio level = 46(18/18)   [NONE]   |||||||__
+[0.3] KQ4DPB>BEACON:Test 2<0x0d>
+Error: Information part of telemetry packet must begin with "T#"
+Telemetry
+
+KQ4DPB audio level = 47(18/17)   [NONE]   |||||||__
+[0.3] KQ4DPB>BEACON:Test<0x0d>
+Error: Information part of telemetry packet must begin with "T#"
+Telemetry
+
+Attached to KISS TCP client application 0...
+
+Ready to accept KISS TCP client application 1 on port 8001 ...
+KISS protocol set hardware "TNC:", port 0
+
+KQ4DPB audio level = 46(18/17)   [NONE]   ||||||___
+[0.2] KQ4DPB>BEACON:Test<0x0d>
+Error: Information part of telemetry packet must begin with "T#"
+Telemetry
+
+KISS client application 0 has gone away.
+
+
+Attached to KISS TCP client application 1...
+
+Ready to accept KISS TCP client application 0 on port 8001 ...
+
+KQ4DPB audio level = 45(18/17)   [NONE]   |||||||__
+[0.3] KQ4DPB>BEACON:Test<0x0d>
+Error: Information part of telemetry packet must begin with "T#"
+Telemetry
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+KISS TCP: Something unexpected from client application.
+Is client app treating this like an old TNC with command mode?
+This can be caused by the application sending commands to put a
+traditional TNC into KISS mode.  It is usually a harmless warning.
+For best results, configure for a KISS-only TNC to avoid this.
+In the case of APRSISCE/32, use "Simply(KISS)" rather than "KISS."
+
 End of file on stdin.  Exiting.

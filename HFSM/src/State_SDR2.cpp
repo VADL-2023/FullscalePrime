@@ -17,11 +17,14 @@ EventName State_SDR2::execute() {
 EventName State_SDR2::unitExecute() {
 	std::cout << "Starting SDR" << std::endl;
 	this->root_->radio2.startSDR();
-	std::cout << "Waiting for packets for 10 seconds" << std::endl;
-	sleep(10);
+	std::cout << "Waiting for packets" << std::endl;
+	std::string sdr_output = "";
+	while (sdr_output.find("shutdown") == std::string::npos && sdr_output.find("ERROR") == std::string::npos) {
+        sdr_output = this->root_->radio2.getPacket();
+        std::cout << sdr_output << std::endl;
+    }
 	std::cout << "Halting SDR" << std::endl;
+	sleep(5);
 	this->root_->radio2.stopSDR();
-	std::string packetsReceived = this->root_->radio2.getPackets();
-	std::cout << packetsReceived;
 	return RECEIVED_PACKETS;
 }

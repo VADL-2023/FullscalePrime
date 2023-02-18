@@ -3,16 +3,22 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <string.h>
+#include <poll.h>
 #include </usr/include/signal.h>
 
 #include "../include/PacketReceiver.h"
 
-PacketReceiver::PacketReceiver() : device_index{0}, default_gain{42}, default_squelch{0}, rtl_active{false} {
-    // No need to do anything here
-}
-
-PacketReceiver::PacketReceiver(int index) : device_index{index}, default_gain{42}, default_squelch{0}, rtl_active{false} {
-    // No need to do anything here
+PacketReceiver::PacketReceiver(int device_num) : rtl_active{false}, sdr_num(device_num) {
+    if (device_num == 2) {
+        script_name = "../../runSDR2.sh ";
+        port_num = 9001;
+    } else {
+        // default values
+        // could make this a struct instead??
+        script_name = "../../runSDR1.sh ";
+        port_num = 8001;
+    }
 }
 
 PacketReceiver::~PacketReceiver(){
@@ -20,90 +26,109 @@ PacketReceiver::~PacketReceiver(){
 }
 
 void PacketReceiver::startSDR() {
-    startSDR(default_gain, default_squelch, "");
-}
-
-void PacketReceiver::startSDR_Gain(int gain) {
-    startSDR(gain, default_squelch, "");
-}
-
-void PacketReceiver::startSDR_Squelch(int squelch) {
-    startSDR(default_gain, squelch, "");
-}
-
-void PacketReceiver::startSDR_Squelch(int squelch, std::string prefix) {
-    startSDR(default_gain, squelch, prefix);
-}
-
-void PacketReceiver::startSDR(int gain, int squelch) {
-    startSDR(gain, squelch, "");
-}
-
-void PacketReceiver::startSDR(int gain, int squelch, std::string prefix) {
     stopSDR();
-    input_filename = prefix + "direwolf_output" + std::to_string(count++) + ".txt";
-    std::string command = "../../runSDR.sh " + std::to_string(device_index) + " " + std::to_string(gain) + " " + std::to_string(squelch) + " " + input_filename;
+    input_filename = "sdr" + std::to_string(sdr_num) +  "_output" + std::to_string(count++) + ".txt";
+    std::string command = script_name + " " + input_filename;
     rtl_pid = std::stoi(exec(command.c_str()));
     rtl_active = true;
+    sleep(1);
+
+    // Connect to TCP port
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0) {
+        fprintf(stderr,"ERROR opening socket\n");
+        return;
+    }
+
+    server = gethostbyname("localhost");
+    if (server == NULL) {
+        fprintf(stderr,"ERROR, no such host\n");
+        return;
+    }
+
+    bzero((char *) &serv_addr, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
+    serv_addr.sin_port = htons(port_num);
+
+    if (connect(sockfd,(struct sockaddr *)  &serv_addr,sizeof(serv_addr)) < 0) {
+        fprintf(stderr, "ERROR connecting.\n");
+        return;    
+    }
 }
 
 void PacketReceiver::stopSDR() {
     if (rtl_active) {
+        close(sockfd);
+        sleep(1);
         kill(rtl_pid, SIGTERM);
         sleep(2);
     }
     rtl_active = false;
 }
 
-void PacketReceiver::setDeviceIndex(int index) {
-    device_index = index;
+int PacketReceiver::packetAvailable() {
+    struct pollfd fds;
+    struct timespec ts;
+    ts.tv_sec = 0;
+    ts.tv_sec = 1000000;
+    fds.fd = sockfd;
+    fds.events = POLLIN;
+    int r = ppoll (&fds, 1, &ts, NULL);
+    return r;
 }
 
-int PacketReceiver::getDeviceIndex() {
-    return device_index;
-}
+std::string PacketReceiver::getPacket() {
+    std::string s = "";
 
-std::string PacketReceiver::getPackets() {
-    std::string receivedPackets;
+    if (rtl_active) {
+        int buffer_len = 255;
+        char buffer[buffer_len];
+        memset(buffer, 0, buffer_len);
 
-    std::ifstream ifile(input_filename);
-    
-    std::string call_sign = "KQ4DPB";
-    std::string packet_start_text = call_sign + ">BEACON:";
-    std::string inputString;
-    int packet_count = 0;
-
-    while(std::getline(ifile, inputString)) {
-        int packet_start_index = inputString.find(packet_start_text);
-        if (packet_start_index != -1) {
-            // Extract the packet
-            packet_start_index += packet_start_text.length();
-            int packet_end_index = inputString.find("<");
-            std::string packet_data = inputString.substr(packet_start_index, packet_end_index - packet_start_index);
-            receivedPackets += "Packet " + std::to_string(++packet_count) + ": " + packet_data + "\n";
+        int n = read(sockfd,buffer,255);
+        if (n < 0) {
+            fprintf(stderr,"ERROR reading from socket\n");
+            std::cout << std::to_string(port_num) << std::endl;
+            return "ERROR";
         }
-    }
 
-    return receivedPackets;
-}
-
-int PacketReceiver::countPackets() {
-    int packetCount = 0;
-
-    std::ifstream ifile(input_filename);
-    
-    std::string call_sign = "KQ4DPB";
-    std::string packet_start_text = call_sign + ">BEACON:";
-    std::string inputString;
-
-    while(std::getline(ifile, inputString)) {
-        int packet_start_index = inputString.find(packet_start_text);
-        if (packet_start_index != -1) {
-            packetCount++;
+        bool valid = false;
+        char message[buffer_len];
+        memset(message, 0, buffer_len);
+        char c;
+        int j = 0;
+        int payloadStart = 0;
+        for (int i = 0; i < buffer_len; i++) {
+            c = buffer[i];
+            if (c == 0xc0) {
+                valid = !valid;
+                i = i + 1;
+            } else if (valid) {
+                message[j++] = c;
+                if (c == 0xf0) {
+                    payloadStart = j;
+                }
+            }
         }
-    }
+        
+        // for (int i = 0; i < 255; i++) {
+        //     printf("%x ", buffer[i]);
+        // }
 
-    return packetCount;
+        // std::cout << std::endl;
+
+        // for (int i = payloadStart; i < j; i++) {
+        //     printf("%x ", message[i]);
+        // }
+
+        // std::cout << std::endl;
+
+        for (int i = payloadStart; i < j; i++) {
+            s += message[i];
+        }
+    } 
+    return s;
 }
 
 std::string PacketReceiver::exec(std::string cmd) {
