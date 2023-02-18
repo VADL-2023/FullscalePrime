@@ -44,8 +44,8 @@ EventName State_Full_Level::execute()
 		}
 		average_error /= this->root_->num_level_samples_;
 		int desired_servo_pos = this->root_->servo_up_pos_ + ((average_error - this->root_->max_up_angle_) * (this->root_->servo_down_pos_ - this->root_->servo_up_pos_)) / (this->root_->max_down_angle_ - this->root_->max_up_angle_);
-		this->root_->m_log_.write("Average error: " << average_error);
-		this->root_->m_log_.write("Desired servo pos: " << desired_servo_pos);
+		this->root_->m_log_.write("Average error: " + std::to_string(average_error));
+		this->root_->m_log_.write("Desired servo pos: " + std::to_string(desired_servo_pos));
 		if (desired_servo_pos > this->root_->servo_down_pos_)
 		{
 			this->root_->m_log_.write("At max down");

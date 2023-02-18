@@ -145,6 +145,7 @@ public:
     
     PacketReceiver radio1 = PacketReceiver(1);
     PacketReceiver radio2 = PacketReceiver(2);
+    int maxRadioWaitTime = 60 * 4; // [s] max wait time to receive packets
 
     Root();
     Root(bool is_unit_fsm);
