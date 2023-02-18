@@ -6,7 +6,7 @@ add_executable(displayTest src/integration_tests/display.cpp)
 add_executable(realDisplayTest src/integration_tests/real_display.cpp)
 
 target_link_libraries(displayTest HFSM pigpio VN IMU Log)
-target_link_libraries(realDisplayTest HFSM pigpio VN IMU Log)
+target_link_libraries(realDisplayTest HFSM pigpio VN IMU Log Stepper)
 
 target_link_libraries(displayTest HFSM pigpio PacketReceiver)
 

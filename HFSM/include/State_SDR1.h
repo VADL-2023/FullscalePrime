@@ -4,6 +4,8 @@
 #include <iostream>
 #include <map>
 #include "State.h"
+#include <string.h>
+#include "pigpio.h"
 
 class Root;
 class State_SDR1 : public State {
