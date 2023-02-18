@@ -1,0 +1,32 @@
+Dire Wolf version 1.6
+Includes optional support for:  cm108-ptt
+
+Reading config file /home/vadl/sdr-1200bps.conf
+Audio input device for receive: stdin  (channel 0)
+Audio out device for transmit: null  (channel 0)
+Channel 0: 1200 baud, AFSK 1200 & 2200 Hz, E+, 24000 sample rate.
+Note: PTT not configured for channel 0. (Ignore this if using VOX.)
+Ready to accept AGW client application 0 on port 8000 ...
+Ready to accept KISS TCP client application 0 on port 8001 ...
+
+KQ4DPB audio level = 73(18/19)   [NONE]   :|||||___
+[0.2] KQ4DPB>BEACON:3-1<0x0d>
+Unknown APRS Data Type Indicator "3"
+
+KQ4DPB audio level = 68(18/19)   [NONE]   ||||||___
+[0.2] KQ4DPB>BEACON:3-2<0x0d>
+Unknown APRS Data Type Indicator "3"
+
+KQ4DPB audio level = 63(17/19)   [NONE]   :|||||___
+[0.2] KQ4DPB>BEACON:3-3<0x0d>
+Unknown APRS Data Type Indicator "3"
+
+KQ4DPB audio level = 66(18/19)   [NONE]   ||||||___
+[0.2] KQ4DPB>BEACON:3-4<0x0d>
+Unknown APRS Data Type Indicator "3"
+
+KQ4DPB audio level = 62(18/18)   [NONE]   ||||||___
+[0.2] KQ4DPB>BEACON:3-5<0x0d>
+Unknown APRS Data Type Indicator "3"
+
+End of file on stdin.  Exiting.
