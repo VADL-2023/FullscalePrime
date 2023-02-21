@@ -181,14 +181,14 @@ int main()
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
     full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, STATE_SDR1));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, STATE_RAFCO_MISSION));
     State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
     // State Full Lift
     StateName full_lift_name = STATE_FULL_LIFT;
     std::map<EventName, StateName> full_lift_transitions;
     full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_SUCCESS, STATE_FULL_LEVEL));
-    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_FAILURE, END_STATE));
+    full_lift_transitions.insert(std::pair<EventName, StateName>(LIFT_FAILURE, STATE_RAFCO_MISSION));
     State_Full_Lift full_lift(full_lift_name, full_lift_transitions, &root);
 
     // State Full Level

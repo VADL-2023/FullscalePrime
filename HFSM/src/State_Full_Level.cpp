@@ -28,38 +28,39 @@ EventName State_Full_Level::execute()
 			this->root_->m_log_.write("IMU failed to connect... restart program");
 			return LEVEL_FAILURE;
 		}
-		auto response_rpy = this->root_->m_vn_->readYawPitchRoll();
-		double average_error = 0;
-		for (int i = 0; i < this->root_->num_level_samples_; i++)
-		{
-			auto yaw_measurement = response_rpy[2];
-			if (yaw_measurement < 0)
-			{
-				average_error += (this->root_->ideal_level_angle_ + yaw_measurement);
-			}
-			else
-			{
-				average_error += (yaw_measurement - this->root_->ideal_level_angle_);
-			}
-		}
-		average_error /= this->root_->num_level_samples_;
-		int desired_servo_pos = this->root_->servo_up_pos_ + ((average_error - this->root_->max_up_angle_) * (this->root_->servo_down_pos_ - this->root_->servo_up_pos_)) / (this->root_->max_down_angle_ - this->root_->max_up_angle_);
-		this->root_->m_log_.write("Average error: " + std::to_string(average_error));
-		this->root_->m_log_.write("Desired servo pos: " + std::to_string(desired_servo_pos));
-		if (desired_servo_pos > this->root_->servo_down_pos_)
-		{
-			this->root_->m_log_.write("At max down");
-			desired_servo_pos = this->root_->servo_down_pos_;
-		}
-		else if (desired_servo_pos < this->root_->servo_up_pos_)
-		{
-			this->root_->m_log_.write("At max up");
-			desired_servo_pos = this->root_->servo_up_pos_;
-		}
-		float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_, this->root_->servo_pulse_min_, this->root_->servo_deg_range_, desired_servo_pos);
-		gpioServo(this->root_->level_servo_, pulse_width);
-		gpioSleep(0, 2, 0);
 	}
+	this->root_->is_imu_connected_ = true;
+	auto response_rpy = this->root_->m_vn_->readYawPitchRoll();
+	double average_error = 0;
+	for (int i = 0; i < this->root_->num_level_samples_; i++)
+	{
+		auto yaw_measurement = response_rpy[2];
+		if (yaw_measurement < 0)
+		{
+			average_error += (this->root_->ideal_level_angle_ + yaw_measurement);
+		}
+		else
+		{
+			average_error += (yaw_measurement - this->root_->ideal_level_angle_);
+		}
+	}
+	average_error /= this->root_->num_level_samples_;
+	int desired_servo_pos = this->root_->servo_up_pos_ + ((average_error - this->root_->max_up_angle_) * (this->root_->servo_down_pos_ - this->root_->servo_up_pos_)) / (this->root_->max_down_angle_ - this->root_->max_up_angle_);
+	this->root_->m_log_.write("Average error: " + std::to_string(average_error));
+	this->root_->m_log_.write("Desired servo pos: " + std::to_string(desired_servo_pos));
+	if (desired_servo_pos > this->root_->servo_down_pos_)
+	{
+		this->root_->m_log_.write("At max down");
+		desired_servo_pos = this->root_->servo_down_pos_;
+	}
+	else if (desired_servo_pos < this->root_->servo_up_pos_)
+	{
+		this->root_->m_log_.write("At max up");
+		desired_servo_pos = this->root_->servo_up_pos_;
+	}
+	float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_, this->root_->servo_pulse_min_, this->root_->servo_deg_range_, desired_servo_pos);
+	gpioServo(this->root_->level_servo_, pulse_width);
+	gpioSleep(0, 2, 0);
 	return LEVEL_SUCCESS;
 }
 

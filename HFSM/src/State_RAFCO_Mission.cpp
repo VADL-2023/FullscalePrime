@@ -62,6 +62,7 @@ EventName State_RAFCO_Mission::execute()
 			usleep(1000000);
 			// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
 			this->root_->stepper_2_.step(this->root_->num_steps_);
+			usleep(1000000);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		} else if (sdr1_output.find("B2") == 0 || sdr2_output.find("B2") == 0)
 		{
@@ -69,7 +70,8 @@ EventName State_RAFCO_Mission::execute()
 			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
 			usleep(1000000);
 			// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-			this->root_->stepper_2_.step(this->root_->num_steps_);
+			this->root_->stepper_2_.step(-this->root_->num_steps_);
+			usleep(1000000);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		}
 		sdr1_output = "";

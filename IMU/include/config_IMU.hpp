@@ -34,7 +34,7 @@ const float LS_STABILITY_THRESHOLD = 5;               // Seconds
 const string LOG_FILE = "./dataOutput/LOG";                  // File Path
 const uint8_t LOG_TIMER = 0;                          // Timer
 const string IMG_FILE = "./img/IMG";                  // File Path
-const string IMU_PORT = "/dev/ttyUSB0";               // Port
+const string IMU_PORT = "/dev/ttyUSB4";               // Port
 const uint32_t IMU_BAUD_RATE = 115200;                // Baud
 static BinaryOutputRegister IMU_OUTPUT(               // IMU Output
     ASYNCMODE_PORT1,

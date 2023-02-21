@@ -33,6 +33,7 @@ EventName State_Full_RCB::execute()
 			return RCB_FAILURE;
 		}
 	}
+	this->root_->is_imu_connected_ = true;
 	bool rcb_stable = false;
 	gpioWrite(this->root_->rcb_lift_standby_, 1);
 	bool is_time_up = false;

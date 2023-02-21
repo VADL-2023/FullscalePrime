@@ -29,7 +29,7 @@ public:
     int pds_delay_ = 60000;
 
     int steps_per_revolution_ = 200;
-    int stepper_speed_ = 30;
+    int stepper_speed_ = 10;
     int num_steps_ = 40;
     int stepper_threshold_ = 5000;
     int pwm_motor_max_ = 255;
@@ -106,14 +106,14 @@ public:
     float b_ = 6.5 * km_2_m_; // [K/m] variation of temperature within the troposphere
 
     // fixed flight parameters
-    float t_burn_ = 15;            // [s] motor burn time
+    float t_burn_ = 1.9;            // [s] motor burn time
     float sampling_frequency_ = 20; // [Hz] how fast does the IMU sample data
     bool restart_ = false;          // tells the program whether or not we NO-GOed
     bool time_delay_enabled_ = false;
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 3;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 3.5;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
