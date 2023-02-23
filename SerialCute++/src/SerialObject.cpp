@@ -124,7 +124,8 @@ void SerialObject::writeSerial(std::string str)
     write(serial_port, str.c_str(), str.size());
 }
 
-void SerialObject::readSerialImageOrganic() {
+void SerialObject::readSerialImageOrganic()
+{
     char read_buf[256];
 
     // Clear buffer
@@ -138,7 +139,8 @@ void SerialObject::readSerialImageOrganic() {
     {
         printf("Error reading: %s", strerror(errno));
     }
-    for(int i = 0; i < num_bytes; i++) {
+    for (int i = 0; i < num_bytes; i++)
+    {
         std::cout << read_buf[i];
     }
     std::cout << "\n";
@@ -163,7 +165,7 @@ void SerialObject::readSerialImage()
         if (indicator_index_ > indicator_.length() - 1)
         {
             counter_++;
-            //std::cout << "Counter: " << counter_ << std::endl;
+            // std::cout << "Counter: " << counter_ << std::endl;
             indicator_index_ = 0;
         }
         else if (read_buf[i] == indicator_[indicator_index_])
@@ -201,14 +203,16 @@ void SerialObject::readSerialImage()
             std::cout << "\n";
 
             photo_index_ -= indicator_.length();
-            /*for (int i = 0; i < photo_index_; i++)
+            std::cout << "Photo Index: " << photo_index_ << std::endl;
+            for (int i = 0; i < photo_index_; i++)
             {
                 std::cout << photo_buf_[i];
             }
-            std::cout << "\n";*/
+            std::cout << "\n";
             std::cout << "END" << std::endl;
-
-            const char* file_hello = "/home/vadl/Desktop/pain.jpg";
+            std::cout << "\n"
+                      << std::endl;
+            const char *file_hello = "/home/vadl/Desktop/hope2.JPG";
             FILE *f = fopen(file_hello, "w");
             if (f == NULL)
             {
@@ -219,9 +223,11 @@ void SerialObject::readSerialImage()
             std::stringstream size_stream(mutable_size);
             size_t the_size;
             size_stream >> the_size;
+            std::cout << "SIZE: " << the_size << std::endl;
             // fwrite(inputImage.data, inputImage.step[0]*inputImage.rows, 1, f);
             fwrite(photo_buf_, the_size, 1, f);
             fclose(f);
+            std::cout << "Buf 1000: " << photo_buf_[1000] << std::endl;
             /*for(int i = 0; i < photo_index_; i++) {
                 std::cout << photo_buf_[i];
             }
