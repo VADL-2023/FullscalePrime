@@ -13,8 +13,15 @@ int main()
     int i = 1;
     while (true)
     {
-        testObject.readSerialImage();
+        //std::cout << "I: " << i << std::endl;
+        testObject.writeSerial("Autobots! Transform and roll out");
+        auto thing = testObject.readSerial();
+        std::cout << thing << std::endl;
         i++;
+        //std::cout << "Serial Read: " << testObject.readSerial() << std::endl;
+    }
+        /*testObject.readSerialImage();
+        i++;*/
         /*std::string 
         size_t found_start = result.find(start_indicator);
         size_t found_photo = result.find(photo_indicator);
@@ -76,6 +83,6 @@ int main()
                 fclose(f);
             }
         }*/
-    }
+    //}
     return 0;
 }

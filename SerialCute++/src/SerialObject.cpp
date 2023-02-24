@@ -5,6 +5,7 @@ SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size
     memset(&size_buf_, '\0', sizeof(size_buf_));
     memset(&photo_buf_, '\0', sizeof(photo_buf_));
     serial_port = open((const char *)input_.c_str(), O_RDWR);
+    std::cout << "Input: " << input_.c_str() << std::endl;
     // Check for errors
     if (serial_port < 0)
     {
