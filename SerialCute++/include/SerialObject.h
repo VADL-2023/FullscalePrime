@@ -38,7 +38,7 @@ class SerialObject {
 
         std::string readSerial();
         void readSerialImageOrganic();
-        void readSerialImage();
+        bool readSerialImage(const char* pic_name);
         std::string readSerial(int buff_size);
 
 };

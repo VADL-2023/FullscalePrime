@@ -1,4 +1,6 @@
 include_directories(include)
+set (CMAKE_PREFIX_PATH "/home/vadl/opencv/build")
+find_package( OpenCV REQUIRED )
 
 add_library(HFSM
         src/State_RAFCO_Mission.cpp
@@ -25,5 +27,5 @@ add_library(HFSM
         src/State.cpp
         )
 
-target_link_libraries(HFSM Stepper pigpio PacketReceiver IMU Log VN PacketReceiver)
+target_link_libraries(HFSM Stepper pigpio PacketReceiver IMU Log VN PacketReceiver SerialObject ${OpenCV_LIBS})
 target_include_directories(HFSM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
