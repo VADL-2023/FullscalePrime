@@ -61,7 +61,7 @@ public:
     int rcb_enable_ = 13;
     int rcb_lift_standby_ = 21;
     int rcb_time_threshold_ = 5000;
-    int rcb_angle_threshold_ = 1;
+    int rcb_angle_threshold_ = 1.5;
     bool is_aligned_ = false;
     int full_rcb_time_threshold_ = 40000;
 

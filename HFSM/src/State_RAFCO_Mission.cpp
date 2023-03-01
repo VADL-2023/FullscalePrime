@@ -27,7 +27,7 @@ EventName State_RAFCO_Mission::execute()
 	bool sdr1_valid = true;
 	bool sdr2_valid = true;
 	bool got_packet = false;
-	SerialObject testObject("/dev/ttyUSB1");
+	SerialObject testObject("/dev/ttyUSB0");
 	while (!got_packet)
 	{
 		// std::cout << "I: " << i << std::endl;

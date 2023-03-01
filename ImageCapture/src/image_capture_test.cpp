@@ -8,7 +8,7 @@
 #include <opencv2/imgproc.hpp>
 int main()
 {
-    SerialObject testObject("/dev/ttyUSB1");
+    SerialObject testObject("/dev/ttyUSB0");
     std::string start_indicator = "$START$";
     std::string photo_indicator = "$PHOTO$";
     std::string end_indicator = "$END$";
@@ -32,7 +32,7 @@ int main()
         // std::cout << "Serial Read: " << testObject.readSerial() << std::endl;
     }
     std::string command;
-    std::string rafco_command = "C3 D4 C3 E5 C3 D4 C3 E5 C3";
+    std::string rafco_command = "C3 D4 C3 D4 E5 C3";
     std::stringstream rafco_stream(rafco_command);
     bool is_gray = false;
     bool is_blur = false;
@@ -91,6 +91,8 @@ int main()
             is_rotate = !is_rotate;
         }
     }
+    std::string thing = testObject.readSerial();
+	std::cout << thing << std::endl;
     std::cout << "Reached the end" << std::endl;
     /*testObject.readSerialImage();
     i++;*/
