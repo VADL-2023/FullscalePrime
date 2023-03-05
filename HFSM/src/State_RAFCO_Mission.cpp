@@ -14,6 +14,7 @@ EventName State_RAFCO_Mission::execute()
 	this->root_->m_log_.write("Starting SDRs");
 	this->root_->radio1.startSDR();
 	this->root_->radio2.startSDR();
+	
 
 	this->root_->m_log_.write("Waiting for packets");
 

@@ -11,12 +11,12 @@
 
 PacketReceiver::PacketReceiver(int device_num) : rtl_active{false}, sdr_num(device_num) {
     if (device_num == 2) {
-        script_name = "../../runSDR2.sh ";
+        script_name = "../../runSDR2.sh";
         port_num = 9001;
     } else {
         // default values
         // could make this a struct instead??
-        script_name = "../../runSDR1.sh ";
+        script_name = "../../runSDR1.sh";
         port_num = 8001;
     }
 }
@@ -51,7 +51,7 @@ void PacketReceiver::startSDR() {
     bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);
     serv_addr.sin_port = htons(port_num);
 
-    if (connect(sockfd,(struct sockaddr *)  &serv_addr,sizeof(serv_addr)) < 0) {
+    if (connect(sockfd, (struct sockaddr *)  &serv_addr, sizeof(serv_addr)) < 0) {
         fprintf(stderr, "ERROR connecting.\n");
         return;    
     }
@@ -71,7 +71,7 @@ int PacketReceiver::packetAvailable() {
     struct pollfd fds;
     struct timespec ts;
     ts.tv_sec = 0;
-    ts.tv_sec = 1000000;
+    ts.tv_nsec = 1000000;
     fds.fd = sockfd;
     fds.events = POLLIN;
     int r = ppoll (&fds, 1, &ts, NULL);
@@ -89,7 +89,6 @@ std::string PacketReceiver::getPacket() {
         int n = read(sockfd,buffer,255);
         if (n < 0) {
             fprintf(stderr,"ERROR reading from socket\n");
-            std::cout << std::to_string(port_num) << std::endl;
             return "ERROR";
         }
 
