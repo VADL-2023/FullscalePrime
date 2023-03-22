@@ -59,6 +59,11 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
 
     // Level Servo Initialization
     gpioSetMode(this->level_servo_, PI_OUTPUT);
+
+    //Instantiate camera streams
+    this->camera_streams_.push_back("/dev/videoLaserbeak");
+    this->camera_streams_.push_back("/dev/videoRumble");
+    this->camera_streams_.push_back("/dev/videoRavage");
 }
 
 Root::~Root()

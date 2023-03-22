@@ -21,6 +21,7 @@ enum StateName {
     STATE_FULL_RCB,
     STATE_PDS_DELAY,
     STATE_RAFCO_MISSION,
+    STATE_CAMERA_CHECK,
     END_STATE
  };
 
@@ -43,5 +44,6 @@ enum EventName {
     LEVEL_FAILURE,
     RCB_SUCCESS,
     RCB_FAILURE,
-    RAFCO_COMPLETE
+    RAFCO_COMPLETE,
+    CAMERA_PICKED
 };

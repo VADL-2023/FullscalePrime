@@ -34,6 +34,7 @@ private:
     int numSpecialCharacters = 10; // match this to number of specialCharacters (don't tell matt we hardcoded this lol)
     std::string specialCharacters[10] = {"/", "\\", "*", "<", ">", ",", ".", "`", "~", "|"}; // not all of these are invalid but rather be safe than sorry
     std::string delim;
+    std::string timestamp_;
     
 public:
 
@@ -52,6 +53,8 @@ public:
     double elapsedTime();
     
     void saveBaselineParameters(float Rconst, float Bconst, float pressure, float temperature, float accelg);
+
+    std::string getTimestamp();
 
 };
 

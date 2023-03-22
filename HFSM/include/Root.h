@@ -147,6 +147,10 @@ public:
     PacketReceiver radio2 = PacketReceiver(2);
     int maxRadioWaitTime = 60 * 4; // [s] max wait time to receive packets
 
+    //Camera streams
+    std::vector<std::string> camera_streams_;
+    std::string primary_camera_stream_;
+
     Root();
     Root(bool is_unit_fsm);
     ~Root();

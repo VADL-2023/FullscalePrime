@@ -1,4 +1,7 @@
 #!/bin/bash
+sudo unlink /dev/videoLaserbeak
+sudo unlink /dev/videoRavage
+sudo unlink /dev/videoRumble
 
 v4l2-ctl --list-devices > cam_devices.txt
 SUB='Arducam USB Camera: Arducam USB'
