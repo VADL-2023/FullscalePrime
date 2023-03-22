@@ -14,6 +14,7 @@ class PacketReceiver {
         bool rtl_active;
         int rtl_pid;
         int sdr_num;
+        std::string serial_num;
         std::string script_name;
         std::string input_filename = "direwolf_output0.txt";
         int count = 0;

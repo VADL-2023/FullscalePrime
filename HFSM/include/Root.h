@@ -121,7 +121,7 @@ public:
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
     int max_flight_time_ = 150;                                                                 // [s] max allowable flight time, if exceeded program ends
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 20;                                                             // TODO CHA4 * 60; // [s] amount of time to collect RAFCO signals and perform image processing
+    int length_collect_rafco_ = 60;                                                             // TODO CHA4 * 60; // [s] amount of time to collect RAFCO signals and perform image processing
 
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
@@ -145,7 +145,6 @@ public:
     
     PacketReceiver radio1 = PacketReceiver(1);
     PacketReceiver radio2 = PacketReceiver(2);
-    int maxRadioWaitTime = 60 * 4; // [s] max wait time to receive packets
 
     Root();
     Root(bool is_unit_fsm);

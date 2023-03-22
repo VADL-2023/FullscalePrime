@@ -11,12 +11,10 @@
 
 PacketReceiver::PacketReceiver(int device_num) : rtl_active{false}, sdr_num(device_num) {
     if (device_num == 2) {
-        script_name = "../../runSDR2.sh";
+        serial_num = "00000200";
         port_num = 9001;
     } else {
-        // default values
-        // could make this a struct instead??
-        script_name = "../../runSDR1.sh";
+        serial_num = "00000100";
         port_num = 8001;
     }
 }
@@ -28,9 +26,8 @@ PacketReceiver::~PacketReceiver(){
 void PacketReceiver::startSDR() {
     stopSDR();
     input_filename = "sdr" + std::to_string(sdr_num) +  "_output" + std::to_string(count++) + ".txt";
-    std::string command = script_name + " " + input_filename;
+    std::string command = script_name + " -o " + input_filename + " -d " + serial_num;
     rtl_pid = std::stoi(exec(command.c_str()));
-    rtl_active = true;
     sleep(1);
 
     // Connect to TCP port
@@ -52,9 +49,11 @@ void PacketReceiver::startSDR() {
     serv_addr.sin_port = htons(port_num);
 
     if (connect(sockfd, (struct sockaddr *)  &serv_addr, sizeof(serv_addr)) < 0) {
-        fprintf(stderr, "ERROR connecting.\n");
+        fprintf(stderr, "ERROR connecting\n");
         return;    
     }
+
+    rtl_active = true;
 }
 
 void PacketReceiver::stopSDR() {
@@ -62,12 +61,15 @@ void PacketReceiver::stopSDR() {
         close(sockfd);
         sleep(1);
         kill(rtl_pid, SIGTERM);
-        sleep(2);
+        sleep(1);
     }
     rtl_active = false;
 }
 
 int PacketReceiver::packetAvailable() {
+    if (!rtl_active)
+        return 0;
+
     struct pollfd fds;
     struct timespec ts;
     ts.tv_sec = 0;
