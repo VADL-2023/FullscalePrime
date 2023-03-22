@@ -1,7 +1,7 @@
 #!/bin/bash
-sudo unlink /dev/videoLaserbeak
-sudo unlink /dev/videoRavage
-sudo unlink /dev/videoRumble
+sudo unlink /dev/videoCam1
+sudo unlink /dev/videoCam3
+sudo unlink /dev/videoCam2
 
 v4l2-ctl --list-devices > cam_devices.txt
 SUB='Arducam USB Camera: Arducam USB'
@@ -14,16 +14,16 @@ FOUND3=false
 while read p; do
   FULL_LINE=$p
   if [ "$FOUND1" = true ]; then
-      sudo ln -s "$p" "/dev/videoLaserbeak"
-      echo "sudo ln -s $p dev/videoLaserbeak"
+      sudo ln -s "$p" "/dev/videoCam1"
+      echo "sudo ln -s $p dev/videoCam1"
       FOUND1=false
   elif [ "$FOUND2" = true ]; then
-      sudo ln -s "$p" "/dev/videoRavage"
-      echo "sudo ln -s $p dev/videoRavage"
+      sudo ln -s "$p" "/dev/videoCam3"
+      echo "sudo ln -s $p dev/videoCam3"
       FOUND2=false
   elif [ "$FOUND3" = true ]; then
-      sudo ln -s "$p" "/dev/videoRumble"
-      echo "sudo ln -s $p dev/videoRumble"
+      sudo ln -s "$p" "/dev/videoCam2"
+      echo "sudo ln -s $p dev/videoCam2"
       FOUND3=false
   fi
   if [[ "$FULL_LINE" =~ .*"$SUB".* ]]; then
