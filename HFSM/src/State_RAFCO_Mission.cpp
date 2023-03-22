@@ -19,7 +19,8 @@ EventName State_RAFCO_Mission::execute()
 	this->root_->m_log_.write("Starting SDRs");
 	this->root_->radio1.startSDR();
 	this->root_->radio2.startSDR();
-
+	
+	
 	this->root_->m_log_.write("Waiting for packets");
 
 	std::string sdr1_output = "";
@@ -27,7 +28,23 @@ EventName State_RAFCO_Mission::execute()
 	bool sdr1_valid = true;
 	bool sdr2_valid = true;
 	bool got_packet = false;
-	SerialObject testObject("/dev/ttyUSB0");
+	
+	//--- INITIALIZE VIDEOCAPTURE
+	cv::VideoCapture cap;
+	// open the default camera using default API
+	// cap.open(0);
+	// OR advance usage: select any API backend
+	int deviceID = 0;		 // 0 = open default camera
+	int apiID = cv::CAP_ANY; // 0 = autodetect default API
+	int numPics = 0;
+	// open selected camera using selected API
+	cap.open(deviceID, apiID);
+	// check if we succeeded
+	if (!cap.isOpened())
+	{
+		std::cerr << "ERROR! Unable to open camera\n";
+	}
+	/*SerialObject testObject("/dev/ttyUSB0");
 	while (!got_packet)
 	{
 		// std::cout << "I: " << i << std::endl;
@@ -41,10 +58,10 @@ EventName State_RAFCO_Mission::execute()
 		}
 
 		// std::cout << "Serial Read: " << testObject.readSerial() << std::endl;
-	}
+	}*/
 	while (sdr1_valid || sdr2_valid)
 	{
-		if (sdr1_valid && this->root_->radio1.packetAvailable())
+		/*if (sdr1_valid && this->root_->radio1.packetAvailable())
 		{
 			sdr1_output = this->root_->radio1.getPacket();
 			this->root_->m_log_.write("Radio 1 Received: " + sdr1_output);
@@ -75,75 +92,70 @@ EventName State_RAFCO_Mission::execute()
 			{
 				sdr2_valid = false;
 			}
-		}
-		std::string command;
-		std::string rafco_command = sdr1_output;
+		}*/
+		std::string command = "";
+		// std::string rafco_command = sdr1_output;
+		std::string rafco_command = "C3 A1 C3 A1 C3 A1 C3 A1 C3 A1 C3";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
-		bool is_rotate = false;
+		bool is_rotate = true;
 		int pic_num = 1;
+		std::cout << "Start" << std::endl;
+		
 		while (rafco_stream >> command)
 		{ // Extract word from the stream.
+			std::cout << "Command: " << command << std::endl;
 			if (command == "A1")
 			{
-				this->root_->m_log_.write("Swivel one way");
+				this->root_->m_log_.write("Swivel clockwise");
 				gpioWrite(this->root_->stepper_2_standby_pin_, 1);
 				usleep(1000000);
 				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
 				this->root_->stepper_2_.step(this->root_->num_steps_);
 				usleep(1000000);
-				gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+				//gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 			}
 			else if (command == "B2")
 			{
-				this->root_->m_log_.write("Swivel other way");
+				this->root_->m_log_.write("Swivel counterclockwise");
 				gpioWrite(this->root_->stepper_2_standby_pin_, 1);
 				usleep(1000000);
 				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
 				this->root_->stepper_2_.step(-this->root_->num_steps_);
 				usleep(1000000);
-				gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+				//gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 			}
 			else if (command == "C3")
 			{
-				std::cout << command << std::endl;
-				bool got_packet = false;
-				while (!got_packet)
-				{
-					// std::cout << "I: " << i << std::endl;
-					testObject.writeSerial("C3");
-					std::string thing = testObject.readSerial();
-					std::cout << thing << std::endl;
-					if (thing.find("C3") != std::string::npos)
-					{
-						std::cout << "found!" << '\n';
-						got_packet = true;
-					}
-
-					// std::cout << "Serial Read: " << testObject.readSerial() << std::endl;
+				cv::Mat frame;
+				usleep(1000000);
+				int i = 0;
+				while(i < 10) {
+					auto the_thing = cap.read(frame);
+					i++;
 				}
-				bool status = false;
+				if (frame.empty())
+				{
+					std::cerr << "ERROR! blank frame grabbed\n";
+					break;
+				}
 				std::string pic_name_str = "/home/vadl/Desktop/i" + std::to_string(pic_num) + ".JPG";
-				while (!status)
-				{
-
-					status = testObject.readSerialImage(pic_name_str.c_str());
-				}
-				cv::Mat image = cv::imread(pic_name_str);
+				cv::Mat display_frame = frame;
+				//cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
 				if (is_gray)
 				{
-					cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
+					cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
 				}
 				if (is_rotate)
 				{
-					cv::rotate(image, image, cv::ROTATE_180);
+					cv::rotate(display_frame, display_frame, cv::ROTATE_180);
 				}
 				if (is_blur)
 				{
-					cv::GaussianBlur(image, image, cv::Size(15, 15), 1000);
+					cv::GaussianBlur(display_frame, display_frame, cv::Size(5, 5), 0);
 				}
-				cv::imwrite(pic_name_str, image);
+				cv::imwrite(pic_name_str, display_frame);
 				pic_num++;
 			}
 			else if (command == "D4")
@@ -170,7 +182,9 @@ EventName State_RAFCO_Mission::execute()
 			}
 		}
 		std::cout << "Reached the end" << std::endl;
-		if (sdr1_output.find("A1") == 0 || sdr2_output.find("A1") == 0)
+		sdr1_valid = false;
+		sdr2_valid = false;
+		/*if (sdr1_output.find("A1") == 0 || sdr2_output.find("A1") == 0)
 		{
 			this->root_->m_log_.write("Swivel one way");
 			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
@@ -191,8 +205,9 @@ EventName State_RAFCO_Mission::execute()
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		}
 		sdr1_output = "";
-		sdr2_output = "";
+		sdr2_output = "";*/
 	}
+	gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 	this->root_->m_log_.write("Shutting down SDRs");
 	this->root_->radio1.stopSDR();
 	this->root_->radio2.stopSDR();

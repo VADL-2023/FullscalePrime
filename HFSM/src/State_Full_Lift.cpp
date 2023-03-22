@@ -22,6 +22,8 @@ EventName State_Full_Lift::execute() {
 	this->root_->m_log_.write("Starting winch");
 	gpioWrite(this->root_->rcb_lift_standby_,1);
 	while(!is_done) {
+		std::cout << "Base Limit switch: " << gpioRead(this->root_->lift_base_limit_switch_) << std::endl;
+		std::cout << "Final Limit switch: " << gpioRead(this->root_->lift_final_limit_switch_) << std::endl;
 		is_done = !gpioRead(this->root_->lift_final_limit_switch_);
 		current_time = this->root_->getCurrentTime();
 		if(current_time - start_time > this->root_->lift_time_threshold_) {
