@@ -17,32 +17,32 @@ EventName State_Camera_Check::execute()
 {
 	system("sudo bash ../../cam_assignment.bash");
 	std::cout << this->root_->m_log_.getTimestamp() << std::endl;
-	bool laserbeak_online = false;
-	bool rumble_online = false;
-	bool ravage_online = false;
+	bool cam1_online = false;
+	bool cam2_online = false;
+	bool cam3_online = false;
 	for (int i = 0; i < this->root_->camera_streams_.size(); i++)
 	{
 		std::string camera_stream = this->root_->camera_streams_[i];
 		int cam_result = cameraCheck(camera_stream);
 		if(cam_result == 0) {
 			if(i == 0) {
-				laserbeak_online = true;
+				cam1_online = true;
 			}else if(i == 1) {
-				rumble_online = true;
+				cam2_online = true;
 			} else if(i == 2) {
-				ravage_online = true;
+				cam3_online = true;
 			}
 		}
 	}
-	if(rumble_online) {
+	if(cam2_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
-	} else if(ravage_online) {
+	} else if(cam3_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[2];
-	} else if(laserbeak_online) {
+	} else if(cam1_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[0];
 	} else {
 		std::cout << "No cameras work" << std::endl;
-		this->root_->primary_camera_stream_ = "";
+		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
 
 	}
 	std::cout << "Primary camera: " << this->root_->primary_camera_stream_ << std::endl;

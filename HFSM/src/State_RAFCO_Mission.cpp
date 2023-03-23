@@ -5,6 +5,12 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 
 State_RAFCO_Mission::State_RAFCO_Mission() : State()
 {
@@ -17,8 +23,8 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 EventName State_RAFCO_Mission::execute()
 {
 	this->root_->m_log_.write("Starting SDRs");
-	this->root_->radio1.startSDR();
-	this->root_->radio2.startSDR();
+	//this->root_->radio1.startSDR();
+	//this->root_->radio2.startSDR();
 	
 	
 	this->root_->m_log_.write("Waiting for packets");
@@ -94,11 +100,11 @@ EventName State_RAFCO_Mission::execute()
 		}*/
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		std::string rafco_command = "C3 A1 C3 A1 C3 A1 C3 A1 C3 A1 C3";
+		std::string rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
-		bool is_rotate = true;
+		bool is_rotate = false;
 		int pic_num = 1;
 		std::cout << "Start" << std::endl;
 		
@@ -139,8 +145,10 @@ EventName State_RAFCO_Mission::execute()
 					std::cerr << "ERROR! blank frame grabbed\n";
 					break;
 				}
-				std::string pic_name_str = "/home/vadl/Desktop/i" + std::to_string(pic_num) + ".JPG";
+				
 				cv::Mat display_frame = frame;
+				//Need to rotate frame because of how camera is mounted
+				cv::rotate(display_frame, display_frame, cv::ROTATE_180);
 				//cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
 				if (is_gray)
 				{
@@ -152,8 +160,12 @@ EventName State_RAFCO_Mission::execute()
 				}
 				if (is_blur)
 				{
-					cv::GaussianBlur(display_frame, display_frame, cv::Size(5, 5), 0);
+					cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
 				}
+				std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
+				mkdir(folder_name_str.c_str(),0777);
+				std::string pic_name_str = folder_name_str+"/primary_image_" + std::to_string(pic_num) + ".png";
+				std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
 				cv::imwrite(pic_name_str, display_frame);
 				pic_num++;
 			}
