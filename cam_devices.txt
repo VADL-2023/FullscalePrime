@@ -4,7 +4,7 @@ bcm2835-codec-decode (platform:bcm2835-codec):
 	/dev/video12
 	/dev/video18
 	/dev/video31
-	/dev/media3
+	/dev/media2
 
 bcm2835-isp (platform:bcm2835-isp):
 	/dev/video13
@@ -15,18 +15,39 @@ bcm2835-isp (platform:bcm2835-isp):
 	/dev/video21
 	/dev/video22
 	/dev/video23
+	/dev/media0
 	/dev/media1
-	/dev/media2
 
 rpivid (platform:rpivid):
+	/dev/video24
+	/dev/media6
+
+Arducam USB Camera: Arducam USB (usb-0000:01:00.0-1.1):
+	/dev/video0
+	/dev/video1
+	/dev/video2
+	/dev/video3
+	/dev/media3
+
+Arducam USB Camera: Arducam USB (usb-0000:01:00.0-1.2.1):
+	/dev/video8
+	/dev/video9
+	/dev/video17
 	/dev/video19
-	/dev/media4
+	/dev/media5
 
 Realtek RTL2832 SDR (usb-0000:01:00.0-1.2.2):
 	/dev/swradio0
-	/dev/media0
+	/dev/media7
 
 Realtek RTL2832 SDR (usb-0000:01:00.0-1.2.4):
 	/dev/swradio1
-	/dev/media5
+	/dev/media8
+
+Arducam USB Camera: Arducam USB (usb-0000:01:00.0-1.4):
+	/dev/video4
+	/dev/video5
+	/dev/video6
+	/dev/video7
+	/dev/media4
 

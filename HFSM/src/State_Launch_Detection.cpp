@@ -16,7 +16,29 @@ EventName State_Launch_Detection::execute()
 	float accelArray[this->root_->num_data_points_checked_4_launch_] = {0};
 	float accelAvg = 0;
 	int counter = 0;
-
+	system("sudo bash ../../cam_assignment.bash");
+	for (int i = 0; i < this->root_->camera_streams_.size(); i++)
+	{
+		std::string camera_stream = this->root_->camera_streams_[i];
+		int cam_result = this->root_->cameraCheck(camera_stream);
+		this->root_->aac_camera_streams_.push_back(camera_stream);
+	}
+	for(int i = 0; i < this->root_->aac_camera_streams_.size(); ++i) {
+		std::cout << this->root_->aac_camera_streams_[i] << std::endl;
+	}
+	
+	// open the default camera using default API
+	// cap.open(0);
+	// OR advance usage: select any API backend
+	int apiID = cv::CAP_ANY; // 0 = autodetect default API
+	int numPics = 0;
+	// open selected camera using selected API
+	this->root_->cap1.open(this->root_->aac_camera_streams_[0], apiID);
+	// check if we succeeded
+	if (!this->root_->cap1.isOpened())
+	{
+		std::cerr << "ERROR! Unable to open camera\n";
+	}
 	// launch detected when avg accel exceeds accelRoof*g0 for numDataPointsChecked4Launch
 	while (accelAvg < this->root_->accel_roof_ * this->root_->g0_)
 	{

@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 State_RAFCO_Mission::State_RAFCO_Mission() : State()
 {
 }
@@ -23,10 +22,9 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 EventName State_RAFCO_Mission::execute()
 {
 	this->root_->m_log_.write("Starting SDRs");
-	//this->root_->radio1.startSDR();
-	//this->root_->radio2.startSDR();
-	
-	
+	// this->root_->radio1.startSDR();
+	// this->root_->radio2.startSDR();
+
 	this->root_->m_log_.write("Waiting for packets");
 
 	std::string sdr1_output = "";
@@ -34,7 +32,7 @@ EventName State_RAFCO_Mission::execute()
 	bool sdr1_valid = true;
 	bool sdr2_valid = true;
 	bool got_packet = false;
-	
+
 	//--- INITIALIZE VIDEOCAPTURE
 	cv::VideoCapture cap;
 	// open the default camera using default API
@@ -107,7 +105,7 @@ EventName State_RAFCO_Mission::execute()
 		bool is_rotate = false;
 		int pic_num = 1;
 		std::cout << "Start" << std::endl;
-		
+
 		while (rafco_stream >> command)
 		{ // Extract word from the stream.
 			std::cout << "Command: " << command << std::endl;
@@ -119,7 +117,7 @@ EventName State_RAFCO_Mission::execute()
 				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
 				this->root_->stepper_2_.step(this->root_->num_steps_);
 				usleep(1000000);
-				//gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+				// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 			}
 			else if (command == "B2")
 			{
@@ -129,45 +127,48 @@ EventName State_RAFCO_Mission::execute()
 				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
 				this->root_->stepper_2_.step(-this->root_->num_steps_);
 				usleep(1000000);
-				//gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+				// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 			}
 			else if (command == "C3")
 			{
 				cv::Mat frame;
 				usleep(1000000);
 				int i = 0;
-				while(i < 10) {
+				while (i < 10)
+				{
 					auto the_thing = cap.read(frame);
 					i++;
 				}
 				if (frame.empty())
 				{
 					std::cerr << "ERROR! blank frame grabbed\n";
-					break;
 				}
-				
-				cv::Mat display_frame = frame;
-				//Need to rotate frame because of how camera is mounted
-				cv::rotate(display_frame, display_frame, cv::ROTATE_180);
-				//cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
-				if (is_gray)
+				else
 				{
-					cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
-				}
-				if (is_rotate)
-				{
+
+					cv::Mat display_frame = frame;
+					// Need to rotate frame because of how camera is mounted
 					cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+					// cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
+					if (is_gray)
+					{
+						cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
+					}
+					if (is_rotate)
+					{
+						cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+					}
+					if (is_blur)
+					{
+						cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
+					}
+					std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
+					mkdir(folder_name_str.c_str(), 0777);
+					std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
+					std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
+					cv::imwrite(pic_name_str, display_frame);
+					pic_num++;
 				}
-				if (is_blur)
-				{
-					cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
-				}
-				std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
-				mkdir(folder_name_str.c_str(),0777);
-				std::string pic_name_str = folder_name_str+"/primary_image_" + std::to_string(pic_num) + ".png";
-				std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
-				cv::imwrite(pic_name_str, display_frame);
-				pic_num++;
 			}
 			else if (command == "D4")
 			{

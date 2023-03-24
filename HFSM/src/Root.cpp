@@ -162,3 +162,37 @@ bool Root::isTimeExceeded(double launch_time, double trigger_time)
         return false;
     }
 }
+
+int Root::cameraCheck(std::string camera_stream)
+{
+	cv::Mat frame;
+	//--- INITIALIZE VIDEOCAPTURE
+	cv::VideoCapture cap;
+	// open the default camera using default API
+	// cap.open(0);
+	// OR advance usage: select any API backend
+	int deviceID = 100;		 // 0 = open default camera
+	int apiID = cv::CAP_ANY; // 0 = autodetect default API
+	bool isGray = false;
+	bool isRotated = false;
+	bool isBlurred = false;
+	int numPics = 0;
+	// open selected camera using selected API
+	cap.open(camera_stream, apiID);
+	// check if we succeeded
+	if (!cap.isOpened())
+	{
+		std::cerr << "ERROR! Unable to open camera\n";
+		return -1;
+	}
+	std::cout << "Opened camera " << camera_stream << std::endl;
+	// wait for a new frame from camera and store it into 'frame'
+	cap.read(frame);
+	// check if we succeeded
+	if (frame.empty())
+	{
+		std::cerr << "ERROR! blank frame grabbed\n";
+		return -1;
+	}
+	return 0;
+}

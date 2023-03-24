@@ -1,5 +1,11 @@
 #include "State_Apogee_Detection.h"
 #include "Root.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <algorithm>
 
 State_Apogee_Detection::State_Apogee_Detection() : State()
 {
@@ -11,7 +17,7 @@ State_Apogee_Detection::State_Apogee_Detection(StateName name, std::map<EventNam
 
 EventName State_Apogee_Detection::execute()
 {
-	
+
 	float max_altitude = 0;
 	int samples_since_max_has_changed = 0;
 
@@ -34,6 +40,26 @@ EventName State_Apogee_Detection::execute()
 			else
 			{
 				++samples_since_max_has_changed;
+			}
+			cv::Mat frame;
+			auto the_thing = this->root_->cap1.read(frame);
+			if (frame.empty())
+			{
+				std::cerr << "ERROR! blank frame grabbed\n";
+			}
+			else
+			{
+				cv::Mat display_frame = frame;
+				// Need to rotate frame because of how camera is mounted
+				cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
+				mkdir(folder_name_str.c_str(), 0777);
+				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
+				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_,aac_num_string.size());
+				aac_num_string.insert(0,precision,'0');
+				std::string pic_name_str = folder_name_str + "/secondary_image_cam1_" + aac_num_string + ".png";
+				cv::imwrite(pic_name_str, display_frame);
+				this->root_->aac_pic_num_++;
 			}
 		}
 		catch (const std::exception &e)

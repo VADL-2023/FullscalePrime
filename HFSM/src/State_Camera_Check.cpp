@@ -23,7 +23,7 @@ EventName State_Camera_Check::execute()
 	for (int i = 0; i < this->root_->camera_streams_.size(); i++)
 	{
 		std::string camera_stream = this->root_->camera_streams_[i];
-		int cam_result = cameraCheck(camera_stream);
+		int cam_result = this->root_->cameraCheck(camera_stream);
 		if(cam_result == 0) {
 			if(i == 0) {
 				cam1_online = true;
@@ -54,36 +54,3 @@ EventName State_Camera_Check::unitExecute()
 	return this->execute();
 }
 
-int State_Camera_Check::cameraCheck(std::string camera_stream)
-{
-	cv::Mat frame;
-	//--- INITIALIZE VIDEOCAPTURE
-	cv::VideoCapture cap;
-	// open the default camera using default API
-	// cap.open(0);
-	// OR advance usage: select any API backend
-	int deviceID = 100;		 // 0 = open default camera
-	int apiID = cv::CAP_ANY; // 0 = autodetect default API
-	bool isGray = false;
-	bool isRotated = false;
-	bool isBlurred = false;
-	int numPics = 0;
-	// open selected camera using selected API
-	cap.open(camera_stream, apiID);
-	// check if we succeeded
-	if (!cap.isOpened())
-	{
-		std::cerr << "ERROR! Unable to open camera\n";
-		return -1;
-	}
-	std::cout << "Opened camera " << camera_stream << std::endl;
-	// wait for a new frame from camera and store it into 'frame'
-	cap.read(frame);
-	// check if we succeeded
-	if (frame.empty())
-	{
-		std::cerr << "ERROR! blank frame grabbed\n";
-		return -1;
-	}
-	return 0;
-}

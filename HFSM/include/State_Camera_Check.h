@@ -12,6 +12,5 @@ class State_Camera_Check : public State {
 		State_Camera_Check(StateName name, std::map<EventName, StateName> &state_transitions, Root* root);
 		EventName execute() override;
 		EventName unitExecute() override;
-		int cameraCheck(std::string camera_check);
 };
 #endif

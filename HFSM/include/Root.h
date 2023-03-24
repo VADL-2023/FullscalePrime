@@ -15,6 +15,10 @@
 #include "Log.h"
 #include "PacketReceiver.h"
 #include "Stepper.h"
+#include <opencv2/core.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 class State;
 
@@ -46,6 +50,11 @@ public:
     int stepper_2_pin_3_ = 22;
     int stepper_2_pin_4_ = 10;
 
+    std::vector<std::string> aac_camera_streams_;
+    //--- INITIALIZE VIDEOCAPTURE
+	cv::VideoCapture cap1;
+    int aac_pic_num_ = 1;
+
     int stepper_3_standby_pin_ = 8;
     int stepper_3_pin_1_ = 7;
     int stepper_3_pin_2_ = 1;
@@ -65,6 +74,10 @@ public:
     bool is_aligned_ = false;
     int full_rcb_time_threshold_ = 40000;
 
+    double landing_time_;
+    int aac_fps_;
+    size_t n_photo_bit_size_ = 5;
+
     int nacelle_servo_ = 14;
     uint16_t servo_pulse_min_ = 500;
     uint16_t servo_pulse_max_ = 2250;
@@ -78,7 +91,7 @@ public:
     int lift_final_limit_switch_ = 23;
     int lift_unit_time_threshold_ = 2000;
     int lift_lock_ = 1500;
-    int lift_unlock_ = 900;
+    int lift_unlock_ = 1150;
 
     int lift_p_ = 20;
     int lift_n_ = 16;
@@ -113,7 +126,7 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 3.5;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 1.5;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -178,6 +191,9 @@ public:
     // checks if flight has gone on for too long, if so returns true to end program
     // launchTime given in milliseconds; triggerTime given in seconds
     bool isTimeExceeded(double launch_time, double trigger_time);
+
+    //check if a given camera stream is operational
+    int cameraCheck(std::string camera_check);
 
 private:
 
