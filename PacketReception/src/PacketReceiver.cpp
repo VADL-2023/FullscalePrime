@@ -9,14 +9,8 @@
 
 #include "../include/PacketReceiver.h"
 
-PacketReceiver::PacketReceiver(int device_num) : rtl_active{false}, sdr_num(device_num) {
-    if (device_num == 2) {
-        serial_num = "00000200";
-        port_num = 9001;
-    } else {
-        serial_num = "00000100";
-        port_num = 8001;
-    }
+PacketReceiver::PacketReceiver(int serial_num, std::string frequency, int port, std::string configfile) : 
+    serial_num{serial_num}, frequency{frequency}, port_num{port}, configfile{configfile} {
 }
 
 PacketReceiver::~PacketReceiver(){
@@ -25,8 +19,8 @@ PacketReceiver::~PacketReceiver(){
 
 void PacketReceiver::startSDR() {
     stopSDR();
-    input_filename = "sdr" + std::to_string(sdr_num) +  "_output" + std::to_string(count++) + ".txt";
-    std::string command = script_name + " -o " + input_filename + " -d " + serial_num;
+    std::string input_filename = "sdr" + std::to_string(serial_num) +  "_output" + std::to_string(count++) + ".txt";
+    std::string command = sdr_script + " -o " + input_filename + " -d " + std::to_string(serial_num) + " -f " + frequency + " -c " + configfile;
     rtl_pid = std::stoi(exec(command.c_str()));
     sleep(1);
 
@@ -80,8 +74,8 @@ int PacketReceiver::packetAvailable() {
     return r;
 }
 
-std::string PacketReceiver::getPacket() {
-    std::string s = "";
+AX25Packet PacketReceiver::getPacket() {
+    AX25Packet p;
 
     if (rtl_active) {
         int buffer_len = 255;
@@ -91,7 +85,10 @@ std::string PacketReceiver::getPacket() {
         int n = read(sockfd,buffer,255);
         if (n < 0) {
             fprintf(stderr,"ERROR reading from socket\n");
-            return "ERROR";
+            p.source = "ERROR";
+            p.dest = "ERROR";
+            p.msg = "ERROR";
+            return p;
         }
 
         bool valid = false;
@@ -99,7 +96,8 @@ std::string PacketReceiver::getPacket() {
         memset(message, 0, buffer_len);
         char c;
         int j = 0;
-        int payloadStart = 0;
+
+        // Extract the KISS frame
         for (int i = 0; i < buffer_len; i++) {
             c = buffer[i];
             if (c == 0xc0) {
@@ -107,31 +105,72 @@ std::string PacketReceiver::getPacket() {
                 i = i + 1;
             } else if (valid) {
                 message[j++] = c;
-                if (c == 0xf0) {
-                    payloadStart = j;
-                }
             }
         }
+
+        // Extract the data and translate it
+        int len_frame = j;
         
+        char dest_addr[7];
+        char dest_ssid;
+        char source_addr[7];
+        char source_ssid;
+        char control[2];
+        char data[len_frame - 15];
+
+        memset(dest_addr,0,7);
+        memset(source_addr,0,7);
+        memset(data,0,len_frame - 15);
+
+        for (int i = 0; i < len_frame; i++) {
+            // Extract the destination address
+            if (i < 6) {
+                dest_addr[i] = message[i] >> 1;
+
+            // Extract the destination SSID
+            } else if (i < 7) {
+                dest_ssid = message[i];
+
+            // Extract the source address
+            } else if (i < 13) {
+                source_addr[i - 7] = message[i] >> 1;
+
+            // Extract the source SSID
+            } else if (i < 14) {
+                source_ssid = message[i];
+
+            // Extract the control bits
+            } else if (i < 16) {
+                control[i- 14] = message[i];
+
+            // Extract the message (called data)
+            } else if (i) {
+                data[i - 16] = message[i];
+            }
+        }
+
         // for (int i = 0; i < 255; i++) {
         //     printf("%x ", buffer[i]);
         // }
 
         // std::cout << std::endl;
 
-        // for (int i = payloadStart; i < j; i++) {
+        // for (int i = 0; i < j; i++) {
         //     printf("%x ", message[i]);
         // }
 
         // std::cout << std::endl;
 
-        for (int i = payloadStart; i < j; i++) {
-            s += message[i];
-        }
+        p.source = source_addr;
+        p.dest = dest_addr;
+        p.msg = data;
     } 
-    return s;
+
+    return p;
 }
 
+// Executes cmd on the command line
+// returns the output from the command line
 std::string PacketReceiver::exec(std::string cmd) {
     char buffer[128];
     std::string result = "";

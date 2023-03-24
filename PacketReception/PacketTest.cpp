@@ -3,16 +3,18 @@
 #include "./include/PacketReceiver.h"
 
 int main() {
-    PacketReceiver sdr1 = PacketReceiver(2);
+    std::string configfile = "/home/vadl/FullscalePrime/sdr1.conf";
+    PacketReceiver sdr1 = PacketReceiver(100, "144.97M", 8001, configfile);
     sdr1.startSDR();
 
-    std::string sdr_output = "";
+    AX25Packet p;
 
-    while (sdr_output.find("shutdown") == std::string::npos && sdr_output.find("ERROR") == std::string::npos) {
-        if (sdr1.packetAvailable() != -1) {
-            std::cout << "Available" << std::endl;
-            sdr_output = sdr1.getPacket();
-            std::cout << sdr_output << std::endl;
+    while (p.source.find("ERROR") == std::string::npos) {
+        if (sdr1.packetAvailable()) {
+            p = sdr1.getPacket();
+            std::cout << "Source: " << p.source << std::endl;
+            std::cout << "Destination: " << p.dest << std::endl;
+            std::cout << "Message: " << p.msg << std::endl;
         }
         usleep(1000);
     }

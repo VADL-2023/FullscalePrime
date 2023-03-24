@@ -16,15 +16,15 @@ EventName State_SDR2::execute() {
 
 EventName State_SDR2::unitExecute() {
 	std::cout << "Starting SDR" << std::endl;
-	this->root_->radio2.startSDR();
+	this->root_->radio2_.startSDR();
 	std::cout << "Waiting for packets" << std::endl;
-	std::string sdr_output = "";
-	while (sdr_output.find("shutdown") == std::string::npos && sdr_output.find("ERROR") == std::string::npos) {
-        sdr_output = this->root_->radio2.getPacket();
-        std::cout << sdr_output << std::endl;
+	AX25Packet p1;
+	while (p1.msg.find("shutdown") == std::string::npos && p1.msg.find("ERROR") == std::string::npos) {
+        p1 = this->root_->radio2_.getPacket();
+        std::cout << p1.msg << std::endl;
     }
 	std::cout << "Halting SDR" << std::endl;
 	sleep(5);
-	this->root_->radio2.stopSDR();
+	this->root_->radio2_.stopSDR();
 	return RECEIVED_PACKETS;
 }

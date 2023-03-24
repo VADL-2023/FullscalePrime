@@ -12,15 +12,14 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 EventName State_RAFCO_Mission::execute()
 {
 	this->root_->m_log_.write("Starting the SDRs");
-	this->root_->radio2.startSDR();
-	this->root_->radio1.startSDR();
+	this->root_->radio1_.startSDR();
+	this->root_->radio2_.startSDR();
 	
-
 	this->root_->m_log_.write("Waiting for packets");
 
-	// These strings will hold the output from the radios
-	std::string sdr1_output = "";
-	std::string sdr2_output = "";
+	// These structs hold the output from the radios
+	AX25Packet p1;
+	AX25Packet p2;
 
 	// These indicate whether or not errors have occurred on either SDR
 	bool sdr1_valid = true;
@@ -34,29 +33,29 @@ EventName State_RAFCO_Mission::execute()
 	{
 		// If SDR 1 has not had an error and if it has received a packet,
 		// then parse that packet
-		if (sdr1_valid && this->root_->radio1.packetAvailable())
+		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
 			// Read the packet from the SDR and print it out
-			sdr1_output = this->root_->radio1.getPacket();
-			this->root_->m_log_.write("Radio 1 Received: " + sdr1_output);
+			p1 = this->root_->radio1_.getPacket();
+			this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
 
 			// An error will be returned if the SDR becomes disconnected
 			// or if there is an issue with the ports
-			if (sdr1_output.find("ERROR") != std::string::npos)
+			if (p1.msg.find("ERROR") != std::string::npos)
 			{
 				sdr1_valid = false;
 			}
 		}
 
-		if (sdr2_valid && this->root_->radio2.packetAvailable())
+		if (sdr2_valid && this->root_->radio2_.packetAvailable())
 		{
 			// Read the packet from the SDR and print it out
-			sdr2_output = this->root_->radio2.getPacket();
-			this->root_->m_log_.write("Radio 2 Received: " + sdr2_output);
+			p2 = this->root_->radio2_.getPacket();
+			this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
 
 			// An error will be returned if the SDR becomes disconnected
 			// or if there is an issue with the ports
-			if (sdr2_output.find("ERROR") != std::string::npos)
+			if (p2.msg.find("ERROR") != std::string::npos)
 			{
 				sdr2_valid = false;
 			}
@@ -65,7 +64,7 @@ EventName State_RAFCO_Mission::execute()
 		// TODO: compare if the received values are the same
 
 		// Execute the individual commands
-		if (sdr1_output.find("A1") == 0 || sdr2_output.find("A1") == 0)
+		if (p1.msg.find("A1") == 0 || p2.msg.find("A1") == 0)
 		{
 			this->root_->m_log_.write("Swivel one way");
 			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
@@ -75,7 +74,7 @@ EventName State_RAFCO_Mission::execute()
 			usleep(1000000);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		} 
-		else if (sdr1_output.find("B2") == 0 || sdr2_output.find("B2") == 0)
+		else if (p1.msg.find("B2") == 0 || p2.msg.find("B2") == 0)
 		{
 			this->root_->m_log_.write("Swivel other way");
 			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
@@ -85,14 +84,14 @@ EventName State_RAFCO_Mission::execute()
 			usleep(1000000);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		}
-		sdr1_output = "";
-		sdr2_output = "";
+		p1.msg = "";
+		p2.msg = "";
 	}
 
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
-	this->root_->radio1.stopSDR();
-	this->root_->radio2.stopSDR();
+	this->root_->radio1_.stopSDR();
+	this->root_->radio2_.stopSDR();
 	return RAFCO_COMPLETE;
 }
 
