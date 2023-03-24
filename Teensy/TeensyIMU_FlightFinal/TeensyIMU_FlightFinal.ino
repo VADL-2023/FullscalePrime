@@ -25,7 +25,6 @@ int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude 
 int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 int zThresholdForLanding = 175 * ft2m; // [m] threshold that the altitude must be within for landing
 int maxFlightTime = 150; // [s] max allowable flight time, if exceeded program ends
-int maxParachuteDetachWaitTime = 2; // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
 
 // Calibration parameters
 uint16_t numSampleReadings = 60; // amount of samples taken and averaged to find ground P and T
