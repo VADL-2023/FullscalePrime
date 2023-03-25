@@ -56,27 +56,52 @@ EventName State_Landing_Detection::execute()
 			{
 				++samples_since_min_has_changed;
 			}
-			cv::Mat frame;
-			auto the_thing = this->root_->cap1.read(frame);
-			if (frame.empty())
+
+			cv::Mat frame1;
+			cv::Mat frame2;
+			auto the_thing1 = this->root_->cap1.read(frame1);
+			auto the_thing2 = this->root_->cap2.read(frame2);
+			if (frame1.empty())
 			{
-				std::cerr << "ERROR! blank frame grabbed\n";
+				std::cerr << "ERROR! blank frame1 grabbed\n";
 			}
 			else
 			{
-				cv::Mat display_frame = frame;
-				// Need to rotate frame because of how camera is mounted
-				cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+				cv::Mat display_frame1 = frame1;
+				// Need to rotate frame1 because of how camera is mounted
+				cv::rotate(display_frame1, display_frame1, cv::ROTATE_180);
 				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
 				mkdir(folder_name_str.c_str(), 0777);
+				std::string cam1_str = folder_name_str + "/cam1";
+				mkdir(cam1_str.c_str(),0777);
 				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
 				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_,aac_num_string.size());
 				aac_num_string.insert(0,precision,'0');
-				std::string pic_name_str = folder_name_str + "/secondary_image_cam1_" + aac_num_string + ".png";
-				cv::imwrite(pic_name_str, display_frame);
+				std::string pic_name_str = cam1_str + "/i" + aac_num_string + ".png";
+				cv::imwrite(pic_name_str, display_frame1);
 				this->root_->aac_pic_num_++;
 				this->root_->landing_time_ = this->root_->getCurrentTime();
 			}
+			if (frame2.empty())
+			{
+				std::cerr << "ERROR! blank frame2 grabbed\n";
+			}
+			else
+			{
+				cv::Mat display_frame2 = frame2;
+				// Need to rotate frame2 because of how camera is mounted
+				cv::rotate(display_frame2, display_frame2, cv::ROTATE_180);
+				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
+				mkdir(folder_name_str.c_str(), 0777);
+				std::string cam2_str = folder_name_str + "/cam2";
+				mkdir(cam2_str.c_str(),0777);
+				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
+				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_,aac_num_string.size());
+				aac_num_string.insert(0,precision,'0');
+				std::string pic_name_str = cam2_str + "/i" + aac_num_string + ".png";
+				cv::imwrite(pic_name_str, display_frame2);
+			}
+			
 		}
 		catch (const std::exception &e)
 		{

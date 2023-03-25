@@ -60,7 +60,7 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
     // Level Servo Initialization
     gpioSetMode(this->level_servo_, PI_OUTPUT);
 
-    //Instantiate camera streams
+    // Instantiate camera streams
     this->camera_streams_.push_back("/dev/videoCam1");
     this->camera_streams_.push_back("/dev/videoCam2");
     this->camera_streams_.push_back("/dev/videoCam3");
@@ -139,7 +139,43 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
             response = imu->readImuMeasurements();
             log.write(response);
             current_time = getCurrentTime();
+            for (int i = 0; i < this->aac_camera_captures_.size(); i++)
+            {
+                cv::Mat frame;
+                cv::rotate(frame, frame, cv::ROTATE_180);
+                this->aac_camera_captures_[i].read(frame);
+                if (frame.empty())
+                {
+                    std::cerr << "ERROR! blank frame" << i << " grabbed\n";
+                    break;
+                }
+                std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+                mkdir(folder_name_str.c_str(), 0777);
+                std::string cam_str;
+                if (this->aac_camera_streams_[i] == "/dev/videoCam1")
+                {
+                    cam_str = folder_name_str + "/cam1";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                else if (this->aac_camera_streams_[i] == "/dev/videoCam2")
+                {
+                    cam_str = folder_name_str + "/cam2";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                else if (this->aac_camera_streams_[i] == "/dev/videoCam3")
+                {
+                    cam_str = folder_name_str + "/cam3";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                std::string aac_num_string = std::to_string(this->aac_pic_num_);
+                int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+                aac_num_string.insert(0, precision, '0');
+                std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+                cv::imwrite(pic_name_str, frame);
+            }
+            this->aac_pic_num_++;
         }
+
         catch (const std::exception &e)
         {
             log.write("Exception: ");
@@ -163,36 +199,36 @@ bool Root::isTimeExceeded(double launch_time, double trigger_time)
     }
 }
 
-int Root::cameraCheck(std::string camera_stream)
+bool Root::cameraCheck(std::string camera_stream)
 {
-	cv::Mat frame;
-	//--- INITIALIZE VIDEOCAPTURE
-	cv::VideoCapture cap;
-	// open the default camera using default API
-	// cap.open(0);
-	// OR advance usage: select any API backend
-	int deviceID = 100;		 // 0 = open default camera
-	int apiID = cv::CAP_ANY; // 0 = autodetect default API
-	bool isGray = false;
-	bool isRotated = false;
-	bool isBlurred = false;
-	int numPics = 0;
-	// open selected camera using selected API
-	cap.open(camera_stream, apiID);
-	// check if we succeeded
-	if (!cap.isOpened())
-	{
-		std::cerr << "ERROR! Unable to open camera\n";
-		return -1;
-	}
-	std::cout << "Opened camera " << camera_stream << std::endl;
-	// wait for a new frame from camera and store it into 'frame'
-	cap.read(frame);
-	// check if we succeeded
-	if (frame.empty())
-	{
-		std::cerr << "ERROR! blank frame grabbed\n";
-		return -1;
-	}
-	return 0;
+    cv::Mat frame;
+    //--- INITIALIZE VIDEOCAPTURE
+    cv::VideoCapture cap;
+    // open the default camera using default API
+    // cap.open(0);
+    // OR advance usage: select any API backend
+    int deviceID = 100;      // 0 = open default camera
+    int apiID = cv::CAP_ANY; // 0 = autodetect default API
+    bool isGray = false;
+    bool isRotated = false;
+    bool isBlurred = false;
+    int numPics = 0;
+    // open selected camera using selected API
+    cap.open(camera_stream, apiID);
+    // check if we succeeded
+    if (!cap.isOpened())
+    {
+        std::cerr << "ERROR! Unable to open camera\n";
+        return false;
+    }
+    std::cout << "Opened camera " << camera_stream << std::endl;
+    // wait for a new frame from camera and store it into 'frame'
+    cap.read(frame);
+    // check if we succeeded
+    if (frame.empty())
+    {
+        std::cerr << "ERROR! blank frame grabbed\n";
+        return false;
+    }
+    return true;
 }

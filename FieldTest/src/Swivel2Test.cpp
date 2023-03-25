@@ -8,7 +8,7 @@
 const int TIME_THRESHOLD = 20000;
 const int STEPS_PER_REVOLUTION = 200;
 const int STEPPER_SPEED = 5;
-const int NUM_STEPS = 40;
+const int NUM_STEPS = 34;
 const int STEPPER_2_STANDBY_PIN = 27;
 const int STEPPER_2_PIN_1 = 17;
 const int STEPPER_2_PIN_2 = 4;

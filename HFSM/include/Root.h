@@ -19,6 +19,11 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 class State;
 
@@ -51,8 +56,11 @@ public:
     int stepper_2_pin_4_ = 10;
 
     std::vector<std::string> aac_camera_streams_;
+    std::vector<cv::VideoCapture> aac_camera_captures_;
     //--- INITIALIZE VIDEOCAPTURE
 	cv::VideoCapture cap1;
+    cv::VideoCapture cap2;
+    cv::VideoCapture cap3;
     int aac_pic_num_ = 1;
 
     int stepper_3_standby_pin_ = 8;
@@ -70,12 +78,12 @@ public:
     int rcb_enable_ = 13;
     int rcb_lift_standby_ = 21;
     int rcb_time_threshold_ = 5000;
-    int rcb_angle_threshold_ = 1.5;
+    double rcb_angle_threshold_ = 1;
     bool is_aligned_ = false;
     int full_rcb_time_threshold_ = 40000;
 
     double landing_time_;
-    int aac_fps_;
+    double aac_fps_;
     size_t n_photo_bit_size_ = 5;
 
     int nacelle_servo_ = 14;
@@ -193,7 +201,7 @@ public:
     bool isTimeExceeded(double launch_time, double trigger_time);
 
     //check if a given camera stream is operational
-    int cameraCheck(std::string camera_check);
+    bool cameraCheck(std::string camera_check);
 
 private:
 
