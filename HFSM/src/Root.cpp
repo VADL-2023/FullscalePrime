@@ -293,6 +293,9 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
     {
         cam_str = folder_name_str + "/cam2";
         mkdir(cam_str.c_str(), 0777);
+    } else if(cam_number == 3) {
+        cam_str = folder_name_str + "/cam3";
+        mkdir(cam_str.c_str(), 0777);
     }
     for (int i = 0; i < frames.size(); i++)
     {
@@ -309,7 +312,7 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
     double current_time = this->getCurrentTime();
     double end_time = sleep_time * 1000 + current_time;
     // for(int i = 0; i < this->aac_camera_captures_.size(); i++) {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < this->aac_camera_captures_.size(); i++)
     {
         if (this->aac_camera_streams_[i] == "/dev/videoCam1")
         {
