@@ -2,3 +2,5 @@ build/
 .vscode/
 cam_devices.txt
 *.png
+*.avi
+*.mp4

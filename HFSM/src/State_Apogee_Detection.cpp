@@ -41,7 +41,8 @@ EventName State_Apogee_Detection::execute()
 			{
 				++samples_since_max_has_changed;
 			}
-			for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
+			//for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
+			for(int i = 0;i < 0;i++)
 			{
 				cv::Mat frame;
 				cv::rotate(frame, frame, cv::ROTATE_180);

@@ -19,14 +19,14 @@ cap3 = cv2.VideoCapture("/dev/videoCam3")
 cap3.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
 
 i = 0
-while(i < 10):
+while(True):
     # Capture frame-by-frame
     ret1, frame1 = cap1.read()
-    ret2, frame2 = cap2.read()
-    ret3, frame3 = cap3.read()
+    #ret2, frame2 = cap2.read()
+    #ret3, frame3 = cap3.read()
     cv2.imwrite('test1.png',frame1)
-    cv2.imwrite('test2.png',frame2)
-    cv2.imwrite('test3.png',frame3)
+    #cv2.imwrite('test2.png',frame2)
+    #cv2.imwrite('test3.png',frame3)
     i = i + 1
 # When everything done, release the capture
 cap1.release()

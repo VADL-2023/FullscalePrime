@@ -61,6 +61,10 @@ public:
 	cv::VideoCapture cap1;
     cv::VideoCapture cap2;
     cv::VideoCapture cap3;
+    bool launch_detected_ = false;
+    int aac_pic_num_cam_1_ = 1;
+    int aac_pic_num_cam_2_ = 1;
+    int aac_pic_num_cam_3_ = 1;
     int aac_pic_num_ = 1;
 
     int stepper_3_standby_pin_ = 8;
@@ -202,6 +206,9 @@ public:
 
     //check if a given camera stream is operational
     bool cameraCheck(std::string camera_check);
+
+    //Takes pictures with camera
+    void camThread(cv::VideoCapture* cap,int cam_number);
 
 private:
 

@@ -128,10 +128,74 @@ bool Root::terminateConnections(VnSensor *imu)
     return out;
 }
 
+void Root::camThread(cv::VideoCapture *cap, int cam_number)
+{
+    while (!this->launch_detected_)
+    {
+        cv::Mat frame;
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        (*cap).read(frame);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
+            break;
+        }
+        std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+        mkdir(folder_name_str.c_str(), 0777);
+        std::string cam_str;
+        if (cam_number == 1)
+        {
+            cam_str = folder_name_str + "/cam1";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_1_++;
+        } else if (cam_number == 2)
+        {
+            cam_str = folder_name_str + "/cam2";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_2_++;
+        } else if (cam_number == 3)
+        {
+            cam_str = folder_name_str + "/cam3";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_3_++;
+        }
+    }
+    (*cap).release();
+}
+
 void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time)
 {
     double current_time = this->getCurrentTime();
     double end_time = sleep_time * 1000 + current_time;
+    std::vector<std::thread> threads;
+    for(int i = 0; i < this->aac_camera_captures_.size(); i++) {
+        if(this->aac_camera_streams_[i] == "/dev/videoCam1") {
+            std::thread t1(&Root::camThread, this, &this->aac_camera_captures_[i], 1);
+            threads.push_back(move(t1));
+        } else if(this->aac_camera_streams_[i] == "/dev/videoCam2") {
+            std::thread t2(&Root::camThread, this, &this->aac_camera_captures_[i], 2);
+            threads.push_back(move(t2));
+        } else if(this->aac_camera_streams_[i] == "/dev/videoCam3") {
+            std::thread t3(&Root::camThread, this, &this->aac_camera_captures_[i], 3);
+            threads.push_back(move(t3));
+        }
+    }
+    
     while (current_time < end_time)
     {
         try
@@ -139,7 +203,7 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
             response = imu->readImuMeasurements();
             log.write(response);
             current_time = getCurrentTime();
-            for (int i = 0; i < this->aac_camera_captures_.size(); i++)
+            /*for (int i = 0; i < this->aac_camera_captures_.size(); i++)
             {
                 cv::Mat frame;
                 cv::rotate(frame, frame, cv::ROTATE_180);
@@ -172,8 +236,7 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
                 aac_num_string.insert(0, precision, '0');
                 std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
                 cv::imwrite(pic_name_str, frame);
-            }
-            this->aac_pic_num_++;
+            }*/
         }
 
         catch (const std::exception &e)
@@ -185,6 +248,11 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
             return;
         }
     }
+    this->launch_detected_ = true;
+    for(int i = 0;i < threads.size();i++) {
+        threads[i].join();
+    }
+    std::cout << "DONE" << std::endl;
 }
 
 bool Root::isTimeExceeded(double launch_time, double trigger_time)
