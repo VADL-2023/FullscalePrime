@@ -231,6 +231,60 @@ void Root::camThreadApogee(cv::VideoCapture *cap, int cam_number)
     }
 }
 
+void Root::camThreadLift(cv::VideoCapture *cap) {
+    std::vector<cv::Mat> frames;
+    std::string folder_name_str = "Lift" + this->m_log_.getTimestamp();
+    mkdir(folder_name_str.c_str(), 0777);
+    while(!this->lift_done_) {
+        cv::Mat frame;
+        
+        (*cap).read(frame);
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << " grabbed\n";
+            break;
+        }
+        frames.push_back(frame);
+    }
+    std::cout << "Frames size: " << frames.size() << std::endl;
+    for (int i = 0; i < frames.size(); i++)
+    {
+        std::string rcb_num_string = std::to_string(i);
+        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, rcb_num_string.size());
+        rcb_num_string.insert(0, precision, '0');
+        std::string pic_name_str = folder_name_str + "/i" + rcb_num_string + ".png";
+        cv::imwrite(pic_name_str, frames[i]);
+    }
+}
+
+void Root::camThreadRCB(cv::VideoCapture *cap) {
+    std::vector<cv::Mat> frames;
+    std::string folder_name_str = "RCB" + this->m_log_.getTimestamp();
+    mkdir(folder_name_str.c_str(), 0777);
+    while(!this->rcb_done_) {
+        cv::Mat frame;
+        
+        (*cap).read(frame);
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << " grabbed\n";
+            break;
+        }
+        frames.push_back(frame);
+    }
+    std::cout << "Frames size: " << frames.size() << std::endl;
+    for (int i = 0; i < frames.size(); i++)
+    {
+        std::string rcb_num_string = std::to_string(i);
+        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, rcb_num_string.size());
+        rcb_num_string.insert(0, precision, '0');
+        std::string pic_name_str = folder_name_str + "/i" + rcb_num_string + ".png";
+        cv::imwrite(pic_name_str, frames[i]);
+    }
+}
+
 void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
 {
     double prev_time = getCurrentTime();
@@ -244,8 +298,9 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
         double curr_time = getCurrentTime();
         prev_time = curr_time;
         cv::Mat frame;
-        cv::rotate(frame, frame, cv::ROTATE_180);
+        
         (*cap).read(frame);
+        cv::rotate(frame, frame, cv::ROTATE_180);
         if (frame.empty())
         {
             std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";

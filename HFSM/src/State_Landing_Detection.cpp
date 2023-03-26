@@ -157,6 +157,9 @@ EventName State_Landing_Detection::execute()
 	std::cout << "FPS 2: " << this->root_->aac_pic_num_cam_2_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	std::cout << "FPS 3: " << this->root_->aac_pic_num_cam_3_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	std::cout << "Freq: " << measure_count / ((my_end_time - my_start_time) / 1000 )<< std::endl;
+	this->root_->cap1.release();
+    this->root_->cap2.release();
+    this->root_->cap3.release();
 	return LANDING_DETECTED;
 }
 

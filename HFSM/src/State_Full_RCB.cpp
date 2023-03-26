@@ -41,6 +41,20 @@ EventName State_Full_RCB::execute()
 	double current_time = start_time;
 	this->root_->m_log_.write("Starting RCB");
 	bool first_imu_disconnect = true;
+	cv::VideoCapture cap;
+	// open the default camera using default API
+	// cap.open(0);
+	// OR advance usage: select any API backend
+	int apiID = cv::CAP_ANY; // 0 = autodetect default API
+	int numPics = 0;
+	// open selected camera using selected API
+	cap.open(this->root_->primary_camera_stream_, apiID);
+	// check if we succeeded
+	if (!cap.isOpened())
+	{
+		std::cerr << "ERROR! Unable to open camera\n";
+	}
+	std::thread t1(&Root::camThreadRCB, this->root_, &cap);
 	while (!rcb_stable)
 	{
 		try
@@ -87,10 +101,14 @@ EventName State_Full_RCB::execute()
 			rcb_stable = true;
 		}
 	}
+	this->root_->rcb_done_ = true;
+	t1.join();
+	
 	this->root_->m_log_.write("Initiating Nacelle servo unlock");
 	gpioServo(this->root_->nacelle_servo_, this->root_->nacelle_unlock_);
 	gpioSleep(0, 2, 0);
 	this->root_->m_log_.write("Initiating Nacelle servo lock");
+	cap.release();
 	if (is_time_up)
 	{
 		this->root_->m_log_.write("RCB Timeout Error");

@@ -97,7 +97,9 @@ public:
     uint16_t servo_pulse_max_ = 2250;
     uint8_t servo_deg_range_ = 90;
     int nacelle_lock_ = 1375;
-    int nacelle_unlock_ = 2250;
+    int nacelle_unlock_ = 755;
+
+    bool lift_done_ = false;
 
     int lift_servo_ = 2;
     double unlock_lift_angle_ = 0;
@@ -179,6 +181,8 @@ public:
     std::vector<std::string> camera_streams_;
     std::string primary_camera_stream_;
 
+    bool rcb_done_ = false;
+
     Root();
     Root(bool is_unit_fsm);
     ~Root();
@@ -212,6 +216,10 @@ public:
 
     //Takes pictures with camera
     void camThreadLaunch(cv::VideoCapture* cap,int cam_number);
+
+    void camThreadRCB(cv::VideoCapture* cap);
+
+    void camThreadLift(cv::VideoCapture* cap);
 
     void camThreadApogee(cv::VideoCapture* cap,int cam_number);
 
