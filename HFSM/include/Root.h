@@ -15,6 +15,15 @@
 #include "Log.h"
 #include "PacketReceiver.h"
 #include "Stepper.h"
+#include <opencv2/core.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 class State;
 
@@ -46,6 +55,20 @@ public:
     int stepper_2_pin_3_ = 22;
     int stepper_2_pin_4_ = 10;
 
+    std::vector<std::string> aac_camera_streams_;
+    std::vector<cv::VideoCapture> aac_camera_captures_;
+    //--- INITIALIZE VIDEOCAPTURE
+	cv::VideoCapture cap1;
+    cv::VideoCapture cap2;
+    cv::VideoCapture cap3;
+    bool launch_detected_ = false;
+    bool apogee_detected_ = false;
+    bool landing_detected_ = false;
+    int aac_pic_num_cam_1_ = 1;
+    int aac_pic_num_cam_2_ = 1;
+    int aac_pic_num_cam_3_ = 1;
+    int aac_pic_num_ = 1;
+
     int stepper_3_standby_pin_ = 8;
     int stepper_3_pin_1_ = 7;
     int stepper_3_pin_2_ = 1;
@@ -61,9 +84,13 @@ public:
     int rcb_enable_ = 13;
     int rcb_lift_standby_ = 21;
     int rcb_time_threshold_ = 5000;
-    int rcb_angle_threshold_ = 1;
+    double rcb_angle_threshold_ = 1;
     bool is_aligned_ = false;
     int full_rcb_time_threshold_ = 40000;
+
+    double landing_time_;
+    double aac_fps_;
+    size_t n_photo_bit_size_ = 5;
 
     int nacelle_servo_ = 14;
     uint16_t servo_pulse_min_ = 500;
@@ -78,7 +105,7 @@ public:
     int lift_final_limit_switch_ = 23;
     int lift_unit_time_threshold_ = 2000;
     int lift_lock_ = 1500;
-    int lift_unlock_ = 900;
+    int lift_unlock_ = 1150;
 
     int lift_p_ = 20;
     int lift_n_ = 16;
@@ -94,6 +121,7 @@ public:
     double max_up_angle_ = -15;
 
     std::map<StateName, State *> states_;
+    std::vector<std::thread> threads_;
 
     // conversion factors
     float ft_2_m_ = 0.3048;      // [m/ft]
@@ -113,7 +141,7 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 3.5;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 1.1;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -150,6 +178,10 @@ public:
     PacketReceiver radio1_ = PacketReceiver(100, rafco_freq_, 8001, config1_);
     PacketReceiver radio2_ = PacketReceiver(200, rafco_freq_, 9001, config2_);
 
+    //Camera streams
+    std::vector<std::string> camera_streams_;
+    std::string primary_camera_stream_;
+
     Root();
     Root(bool is_unit_fsm);
     ~Root();
@@ -177,6 +209,16 @@ public:
     // checks if flight has gone on for too long, if so returns true to end program
     // launchTime given in milliseconds; triggerTime given in seconds
     bool isTimeExceeded(double launch_time, double trigger_time);
+
+    //check if a given camera stream is operational
+    bool cameraCheck(std::string camera_check);
+
+    //Takes pictures with camera
+    void camThreadLaunch(cv::VideoCapture* cap,int cam_number);
+
+    void camThreadApogee(cv::VideoCapture* cap,int cam_number);
+
+    void camThreadLanding(cv::VideoCapture* cap,int cam_number);
 
 private:
 

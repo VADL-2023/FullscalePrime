@@ -59,10 +59,18 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
 
     // Level Servo Initialization
     gpioSetMode(this->level_servo_, PI_OUTPUT);
+
+    // Instantiate camera streams
+    this->camera_streams_.push_back("/dev/videoCam1");
+    this->camera_streams_.push_back("/dev/videoCam2");
+    this->camera_streams_.push_back("/dev/videoCam3");
 }
 
 Root::~Root()
 {
+    this->cap1.release();
+    this->cap2.release();
+    this->cap3.release();
     gpioTerminate();
     this->m_log_.write("GPIOs terminated");
     if (this->is_imu_connected_)
@@ -123,10 +131,206 @@ bool Root::terminateConnections(VnSensor *imu)
     return out;
 }
 
+void Root::camThreadLaunch(cv::VideoCapture *cap, int cam_number)
+{
+    while (!this->launch_detected_)
+    {
+        cv::Mat frame;
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        (*cap).read(frame);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
+            break;
+        }
+        std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+        mkdir(folder_name_str.c_str(), 0777);
+        std::string cam_str;
+        if (cam_number == 1)
+        {
+            cam_str = folder_name_str + "/cam1";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_1_++;
+        }
+        else if (cam_number == 2)
+        {
+            cam_str = folder_name_str + "/cam2";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_2_++;
+        }
+        else if (cam_number == 3)
+        {
+            cam_str = folder_name_str + "/cam3";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_3_++;
+        }
+    }
+}
+
+void Root::camThreadApogee(cv::VideoCapture *cap, int cam_number)
+{
+    while (!this->apogee_detected_)
+    {
+        cv::Mat frame;
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        (*cap).read(frame);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
+            break;
+        }
+        std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+        mkdir(folder_name_str.c_str(), 0777);
+        std::string cam_str;
+        /*if (cam_number == 1)
+        {
+            cam_str = folder_name_str + "/cam1";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_1_++;
+        } else if (cam_number == 2)
+        {
+            cam_str = folder_name_str + "/cam2";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_2_++;
+        } else if (cam_number == 3)
+        {
+            cam_str = folder_name_str + "/cam3";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_3_++;
+        }*/
+    }
+}
+
+void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
+{
+    double prev_time = getCurrentTime();
+    std::vector<cv::Mat> frames;
+    std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+    mkdir(folder_name_str.c_str(), 0777);
+    std::string cam_str;
+
+    while (!this->landing_detected_)
+    {
+        double curr_time = getCurrentTime();
+        prev_time = curr_time;
+        cv::Mat frame;
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        (*cap).read(frame);
+        if (frame.empty())
+        {
+            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
+            break;
+        }
+        frames.push_back(frame);
+        /*if (cam_number == 1)
+        {
+            cam_str = folder_name_str + "/cam1";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_1_++;
+        } else if (cam_number == 2)
+        {
+            cam_str = folder_name_str + "/cam2";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_2_++;
+        } else if (cam_number == 3)
+        {
+            cam_str = folder_name_str + "/cam3";
+            mkdir(cam_str.c_str(), 0777);
+            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            cv::imwrite(pic_name_str, frame);
+            this->aac_pic_num_cam_3_++;
+        }*/
+    }
+    if (cam_number == 1)
+    {
+        cam_str = folder_name_str + "/cam1";
+        mkdir(cam_str.c_str(), 0777);
+    }
+    else if (cam_number == 2)
+    {
+        cam_str = folder_name_str + "/cam2";
+        mkdir(cam_str.c_str(), 0777);
+    } else if(cam_number == 3) {
+        cam_str = folder_name_str + "/cam3";
+        mkdir(cam_str.c_str(), 0777);
+    }
+    for (int i = 0; i < frames.size(); i++)
+    {
+        std::string aac_num_string = std::to_string(i);
+        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+        aac_num_string.insert(0, precision, '0');
+        std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+        cv::imwrite(pic_name_str, frames[i]);
+    }
+}
+
 void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time)
 {
     double current_time = this->getCurrentTime();
     double end_time = sleep_time * 1000 + current_time;
+    // for(int i = 0; i < this->aac_camera_captures_.size(); i++) {
+    for (int i = 0; i < this->aac_camera_captures_.size(); i++)
+    {
+        if (this->aac_camera_streams_[i] == "/dev/videoCam1")
+        {
+            std::thread t1(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 1);
+            this->threads_.push_back(move(t1));
+        }
+        else if (this->aac_camera_streams_[i] == "/dev/videoCam2")
+        {
+            std::thread t2(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 2);
+            this->threads_.push_back(move(t2));
+        }
+        else if (this->aac_camera_streams_[i] == "/dev/videoCam3")
+        {
+            std::thread t3(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 3);
+            this->threads_.push_back(move(t3));
+        }
+    }
+    std::cout << "Thread size: " << this->threads_.size() << std::endl;
     while (current_time < end_time)
     {
         try
@@ -134,7 +338,42 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
             response = imu->readImuMeasurements();
             log.write(response);
             current_time = getCurrentTime();
+            /*for (int i = 0; i < this->aac_camera_captures_.size(); i++)
+            {
+                cv::Mat frame;
+                cv::rotate(frame, frame, cv::ROTATE_180);
+                this->aac_camera_captures_[i].read(frame);
+                if (frame.empty())
+                {
+                    std::cerr << "ERROR! blank frame" << i << " grabbed\n";
+                    break;
+                }
+                std::string folder_name_str = "SecondaryPayloadImages" + this->m_log_.getTimestamp();
+                mkdir(folder_name_str.c_str(), 0777);
+                std::string cam_str;
+                if (this->aac_camera_streams_[i] == "/dev/videoCam1")
+                {
+                    cam_str = folder_name_str + "/cam1";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                else if (this->aac_camera_streams_[i] == "/dev/videoCam2")
+                {
+                    cam_str = folder_name_str + "/cam2";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                else if (this->aac_camera_streams_[i] == "/dev/videoCam3")
+                {
+                    cam_str = folder_name_str + "/cam3";
+                    mkdir(cam_str.c_str(), 0777);
+                }
+                std::string aac_num_string = std::to_string(this->aac_pic_num_);
+                int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+                aac_num_string.insert(0, precision, '0');
+                std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+                cv::imwrite(pic_name_str, frame);
+            }*/
         }
+
         catch (const std::exception &e)
         {
             log.write("Exception: ");
@@ -144,6 +383,8 @@ void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister 
             return;
         }
     }
+    this->launch_detected_ = true;
+    std::cout << "DONE" << std::endl;
 }
 
 bool Root::isTimeExceeded(double launch_time, double trigger_time)
@@ -156,4 +397,38 @@ bool Root::isTimeExceeded(double launch_time, double trigger_time)
     {
         return false;
     }
+}
+
+bool Root::cameraCheck(std::string camera_stream)
+{
+    cv::Mat frame;
+    //--- INITIALIZE VIDEOCAPTURE
+    cv::VideoCapture cap;
+    // open the default camera using default API
+    // cap.open(0);
+    // OR advance usage: select any API backend
+    int deviceID = 100;      // 0 = open default camera
+    int apiID = cv::CAP_ANY; // 0 = autodetect default API
+    bool isGray = false;
+    bool isRotated = false;
+    bool isBlurred = false;
+    int numPics = 0;
+    // open selected camera using selected API
+    cap.open(camera_stream, apiID);
+    // check if we succeeded
+    if (!cap.isOpened())
+    {
+        std::cerr << "ERROR! Unable to open camera\n";
+        return false;
+    }
+    std::cout << "Opened camera " << camera_stream << std::endl;
+    // wait for a new frame from camera and store it into 'frame'
+    cap.read(frame);
+    // check if we succeeded
+    if (frame.empty())
+    {
+        std::cerr << "ERROR! blank frame grabbed\n";
+        return false;
+    }
+    return true;
 }

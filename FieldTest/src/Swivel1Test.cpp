@@ -8,12 +8,12 @@
 const int TIME_THRESHOLD = 20000;
 const int STEPS_PER_REVOLUTION = 200;
 const int STEPPER_SPEED = 5;
-const int NUM_STEPS = 34;
-const int STEPPER_2_STANDBY_PIN = 27;
-const int STEPPER_2_PIN_1 = 17;
-const int STEPPER_2_PIN_2 = 4;
-const int STEPPER_2_PIN_3 = 22;
-const int STEPPER_2_PIN_4 = 10;
+const int NUM_STEPS = 40;
+const int STEPPER_1_STANDBY_PIN = 0;
+const int STEPPER_1_PIN_1 = 11;
+const int STEPPER_1_PIN_2 = 9;
+const int STEPPER_1_PIN_3 = 5;
+const int STEPPER_1_PIN_4 = 6;
 
 double getCurrentTime()
 {
@@ -34,11 +34,11 @@ int main()
     }
 
     std::cout << "GPIOs initialized" << std::endl;
-    Stepper stepper_2;
-    stepper_2.initialize(STEPS_PER_REVOLUTION, STEPPER_2_PIN_1, STEPPER_2_PIN_2, STEPPER_2_PIN_3, STEPPER_2_PIN_4, true);
-    gpioSetMode(STEPPER_2_STANDBY_PIN, PI_OUTPUT);
-    gpioWrite(STEPPER_2_STANDBY_PIN, 0);
-    stepper_2.setSpeed(STEPPER_SPEED);
+    Stepper stepper_1;
+    stepper_1.initialize(STEPS_PER_REVOLUTION, STEPPER_1_PIN_1, STEPPER_1_PIN_2, STEPPER_1_PIN_3, STEPPER_1_PIN_4, true);
+    gpioSetMode(STEPPER_1_STANDBY_PIN, PI_OUTPUT);
+    gpioWrite(STEPPER_1_STANDBY_PIN, 0);
+    stepper_1.setSpeed(STEPPER_SPEED);
     bool exit = false;
     do
     {
@@ -47,27 +47,27 @@ int main()
         std::cin >> userInput;
         if (userInput == "L")
         {
-            gpioWrite(STEPPER_2_STANDBY_PIN, 1);
+            gpioWrite(STEPPER_1_STANDBY_PIN, 1);
             usleep(500000);
             std::cout << "Moving one way" << std::endl;
             // std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-            stepper_2.step(NUM_STEPS);
+            stepper_1.step(NUM_STEPS);
             std::cout << "Pausing" << std::endl;
             usleep(500000);
         }
         else if (userInput == "R")
         {
-            gpioWrite(STEPPER_2_STANDBY_PIN, 1);
+            gpioWrite(STEPPER_1_STANDBY_PIN, 1);
             usleep(1000000);
             std::cout << "Moving one way" << std::endl;
             // std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-            stepper_2.step(-NUM_STEPS);
+            stepper_1.step(-NUM_STEPS);
             std::cout << "Pausing" << std::endl;
             usleep(1000000);
         }
         else if (userInput == "S")
         {
-            gpioWrite(STEPPER_2_STANDBY_PIN, 0);
+            gpioWrite(STEPPER_1_STANDBY_PIN, 0);
             exit = true;
         }
     } while (!exit);

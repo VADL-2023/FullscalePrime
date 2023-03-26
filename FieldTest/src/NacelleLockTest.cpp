@@ -7,8 +7,8 @@ const int NACELLE_SERVO = 14;
 const uint16_t SERVO_PULSE_MIN = 100;
 const uint16_t SERVO_PULSE_MAX = 2500;
 const uint8_t SERVO_DEG_RANGE = 180;
-const int NACELLE_LOCK = 1375;
-const int NACELLE_UNLOCK = 2250;
+const int NACELLE_LOCK = 1600;
+const int NACELLE_UNLOCK = 755;
 
 double getCurrentTime()
 {

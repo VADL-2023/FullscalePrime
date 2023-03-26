@@ -21,6 +21,7 @@
 #include "State_RAFCO_Mission.h"
 #include "State_SDR1.h"
 #include "State_SDR2.h"
+#include "State_Camera_Check.h"
 #include <map>
 #include "pigpio.h"
 #include <unistd.h>
@@ -90,6 +91,9 @@ std::string getStateName(StateName stateType)
         break;
     case STATE_RAFCO_MISSION:
         name = "RAFCO Mission";
+        break;
+    case STATE_CAMERA_CHECK:
+        name = "Camera Check";
         break;
     case END_STATE:
         name = "End State";
@@ -168,14 +172,20 @@ int main()
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, END_STATE));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
-    // State Landing Detection
+    // State PDS Delay
     StateName pds_delay_name = STATE_PDS_DELAY;
     std::map<EventName, StateName> pds_delay_transitions;
-    pds_delay_transitions.insert(std::pair<EventName, StateName>(DELAY, STATE_FULL_RCB));
+    pds_delay_transitions.insert(std::pair<EventName, StateName>(DELAY, STATE_CAMERA_CHECK));
     State_PDS_Delay pds_delay(pds_delay_name, pds_delay_transitions, &root);
+
+    // State Camera Check
+    StateName camera_check_name = STATE_CAMERA_CHECK;
+    std::map<EventName, StateName> camera_check_transitions;
+    camera_check_transitions.insert(std::pair<EventName, StateName>(CAMERA_PICKED, STATE_FULL_RCB));
+    State_Camera_Check camera_check(camera_check_name, camera_check_transitions, &root);
 
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
@@ -222,6 +232,7 @@ int main()
     root.addState(&apogee_detection);
     root.addState(&landing_detection);
     root.addState(&pds_delay);
+    root.addState(&camera_check);
     root.addState(&full_rcb);
     root.addState(&full_lift);
     root.addState(&full_level);

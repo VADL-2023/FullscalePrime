@@ -4,13 +4,11 @@
 #include <chrono>
 
 const int LEVEL_SERVO = 3;
-const double MAX_UP_ANGLE = -15;
-const double MAX_DOWN_ANGLE = 15;
-const int SERVO_UP_POS = 0;
-const int SERVO_DOWN_POS = 45;
 const uint16_t SERVO_PULSE_MIN = 500;
 const uint16_t SERVO_PULSE_MAX = 2250;
 const uint8_t SERVO_DEG_RANGE = 90;
+const int LIFT_LOCK = 1500;
+const int LIFT_UNLOCK = 1150;
 
 double getCurrentTime()
 {
@@ -44,39 +42,29 @@ int main()
 
         // Wait for the user to signal that the parachute should be detached
         std::string userInput = "";
-        std::cout << "What do you want to do to the lift (U | D | Q): ";
+        std::cout << "What do you want to do to the lift (L | U | Q): ";
         std::cin >> userInput;
-
-        if (userInput == "U")
+        int pulseWidth = 1500;
+        if (userInput == "L")
         {
-            std::cout << "Start up" << std::endl;
-            int desired_servo_pos = SERVO_UP_POS + ((MAX_UP_ANGLE - MAX_UP_ANGLE) * (SERVO_DOWN_POS - SERVO_UP_POS)) / (MAX_DOWN_ANGLE - MAX_UP_ANGLE);
-            std::cout << "Desired Servo Pos: " << desired_servo_pos << std::endl;
-            float pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, desired_servo_pos);
-            std::cout << "Pulse width: " << pulse_width << std::endl;
-            gpioServo(LEVEL_SERVO, pulse_width);
+            pulseWidth += 100;
+            std::cout << "Pulse width: " << pulseWidth << std::endl;
+            gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);
-            std::cout << "End Up" << std::endl;
         }
-        else if (userInput == "D")
+        else if (userInput == "U")
         {
-            std::cout << "Start down" << std::endl;
-            int desired_servo_pos = SERVO_UP_POS + ((MAX_DOWN_ANGLE - MAX_UP_ANGLE) * (SERVO_DOWN_POS - SERVO_UP_POS)) / (MAX_DOWN_ANGLE - MAX_UP_ANGLE);
-            std::cout << "Desired Servo Pos: " << desired_servo_pos << std::endl;
-            float pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, desired_servo_pos);
-            std::cout << "Pulse width: " << pulse_width << std::endl;
-            gpioServo(LEVEL_SERVO, pulse_width);
+            pulseWidth -= 100;
+            std::cout << "Pulse width: " << pulseWidth << std::endl;
+            gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);
-            std::cout << "End Down" << std::endl;
         }
         else if (userInput == "Q")
         {
             run_again = false;
             std::cout << "Quitting" << std::endl;
-        }
-        else
-        {
-            std::cout << "Please select (U)p, (D)own, or (Q)uit" << std::endl;
+        } else {
+            std::cout << "Please select (L)ock, (U)nlock, or (Q)uit" << std::endl;
         }
 
     } while (run_again);

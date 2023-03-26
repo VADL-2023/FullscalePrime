@@ -5,6 +5,7 @@ SerialObject::SerialObject(std::string input) : input_(input), counter_(0), size
     memset(&size_buf_, '\0', sizeof(size_buf_));
     memset(&photo_buf_, '\0', sizeof(photo_buf_));
     serial_port = open((const char *)input_.c_str(), O_RDWR);
+    std::cout << "Input: " << input_.c_str() << std::endl;
     // Check for errors
     if (serial_port < 0)
     {
@@ -145,8 +146,9 @@ void SerialObject::readSerialImageOrganic()
     }
     std::cout << "\n";
 }
-void SerialObject::readSerialImage()
+bool SerialObject::readSerialImage(const char* pic_name)
 {
+    //std::cout << "Read serial image" << std::endl;
     char read_buf[256];
 
     // Clear buffer
@@ -154,7 +156,7 @@ void SerialObject::readSerialImage()
 
     // This read function comes from the unistd library
     int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
-
+    std::cout << "Byte num: " << num_bytes << std::endl;
     // Check for any errors
     if (num_bytes < 0)
     {
@@ -212,7 +214,7 @@ void SerialObject::readSerialImage()
             std::cout << "END" << std::endl;
             std::cout << "\n"
                       << std::endl;
-            const char *file_hello = "/home/vadl/Desktop/hope2.JPG";
+            const char *file_hello = pic_name;
             FILE *f = fopen(file_hello, "w");
             if (f == NULL)
             {
@@ -237,6 +239,7 @@ void SerialObject::readSerialImage()
             memset(&photo_buf_, '\0', sizeof(photo_buf_));
             photo_index_ = 0;
             counter_ = 0;
+            return true;
             /*for(int i = 0; i < size_index_; i++) {
                 std::cout << size_buf_[i];
             }
@@ -292,6 +295,7 @@ void SerialObject::readSerialImage()
             counter_ = 0;
         }*/
     }
+    return false;
 }
 
 std::string SerialObject::readSerial()
@@ -304,6 +308,14 @@ std::string SerialObject::readSerial()
     // This read function comes from the unistd library
     int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
 
+    char filtered_buf[256];
+    // Clear buffer
+    memset(&filtered_buf, '\0', sizeof(filtered_buf));
+    for(int i = 0;i < 256; i++) {
+        if(read_buf[i] != '\0') {
+            filtered_buf[i] = read_buf[i];
+        }
+    }
     // Check for any errors
     if (num_bytes < 0)
     {
@@ -311,7 +323,7 @@ std::string SerialObject::readSerial()
     }
 
     // Return string version of data that was read
-    return std::string(read_buf);
+    return std::string(filtered_buf);
 }
 
 std::string SerialObject::readSerial(int buff_size)

@@ -18,9 +18,10 @@ mIMU(imu)
         }
     }
     
+    timestamp_ = string_time.substr(0,string_time.find("."));
     // open flight and program data files
-    std::string flight_name = flightFilename + string_time.substr(0,string_time.find(".")) + ".txt";
-    std::string program_name = programFilename + string_time.substr(0,string_time.find(".")) + ".txt";
+    std::string flight_name = flightFilename + timestamp_ + ".txt";
+    std::string program_name = programFilename + timestamp_ + ".txt";
     std::cout << "Flight Data File: " << flight_name << std::endl;
     std::cout << "Program Data File: " << program_name << std::endl;
     mFlightLog.open(flight_name);
@@ -44,6 +45,10 @@ Log::~Log() {
     mFlightLog.close();
     mProgLog.close();
     mIMU = nullptr;
+}
+
+std::string Log::getTimestamp() {
+    return timestamp_;
 }
 
 // write IMU data to flight data file, will provide calculated altitude if baseline parameters are saved
