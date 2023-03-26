@@ -33,11 +33,15 @@ EventName State_Landing_Detection::execute()
 	// landing detected when a new min altitude has not been achieved for this->root_->num_data_points_checked_4_landing_
 	// and the current altitude is within the specified threshold
 	// Landing detection also occurs if the current time exceeds the maximum allowable flight time
+	double my_start_time = this->root_->getCurrentTime();
+	double my_end_time = my_start_time;
+	int measure_count = 0;
 	while (!this->root_->time_delay_enabled_ && !((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_)) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
 		{
 			this->root_->response_ = this->root_->m_vn_->readImuMeasurements();
+			measure_count++;
 			sample_num++;
 			if (!got_start_time)
 			{
@@ -57,51 +61,42 @@ EventName State_Landing_Detection::execute()
 				++samples_since_min_has_changed;
 			}
 
-			cv::Mat frame1;
-			cv::Mat frame2;
-			auto the_thing1 = this->root_->cap1.read(frame1);
-			auto the_thing2 = this->root_->cap2.read(frame2);
-			if (frame1.empty())
+			for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
 			{
-				std::cerr << "ERROR! blank frame1 grabbed\n";
-			}
-			else
-			{
-				cv::Mat display_frame1 = frame1;
-				// Need to rotate frame1 because of how camera is mounted
-				cv::rotate(display_frame1, display_frame1, cv::ROTATE_180);
+				cv::Mat frame;
+				cv::rotate(frame, frame, cv::ROTATE_180);
+				this->root_->aac_camera_captures_[i].read(frame);
+				if (frame.empty())
+				{
+					std::cerr << "ERROR! blank frame" << i << " grabbed\n";
+					break;
+				}
 				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
 				mkdir(folder_name_str.c_str(), 0777);
-				std::string cam1_str = folder_name_str + "/cam1";
-				mkdir(cam1_str.c_str(),0777);
+				std::string cam_str;
+				if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
+				{
+					cam_str = folder_name_str + "/cam1";
+					mkdir(cam_str.c_str(), 0777);
+				}
+				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
+				{
+					cam_str = folder_name_str + "/cam2";
+					mkdir(cam_str.c_str(), 0777);
+				}
+				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
+				{
+					cam_str = folder_name_str + "/cam3";
+					mkdir(cam_str.c_str(), 0777);
+				}
 				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
-				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_,aac_num_string.size());
-				aac_num_string.insert(0,precision,'0');
-				std::string pic_name_str = cam1_str + "/i" + aac_num_string + ".png";
-				cv::imwrite(pic_name_str, display_frame1);
-				this->root_->aac_pic_num_++;
-				this->root_->landing_time_ = this->root_->getCurrentTime();
+				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, aac_num_string.size());
+				aac_num_string.insert(0, precision, '0');
+				std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+				cv::imwrite(pic_name_str, frame);
 			}
-			if (frame2.empty())
-			{
-				std::cerr << "ERROR! blank frame2 grabbed\n";
-			}
-			else
-			{
-				cv::Mat display_frame2 = frame2;
-				// Need to rotate frame2 because of how camera is mounted
-				cv::rotate(display_frame2, display_frame2, cv::ROTATE_180);
-				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
-				mkdir(folder_name_str.c_str(), 0777);
-				std::string cam2_str = folder_name_str + "/cam2";
-				mkdir(cam2_str.c_str(),0777);
-				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
-				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_,aac_num_string.size());
-				aac_num_string.insert(0,precision,'0');
-				std::string pic_name_str = cam2_str + "/i" + aac_num_string + ".png";
-				cv::imwrite(pic_name_str, display_frame2);
-			}
-			
+			this->root_->aac_pic_num_++;
+			this->root_->landing_time_ = this->root_->getCurrentTime();
 		}
 		catch (const std::exception &e)
 		{
@@ -133,6 +128,7 @@ EventName State_Landing_Detection::execute()
 		this->root_->m_log_.write("Time exceeded max flight limit of " + std::to_string(this->root_->max_flight_time_) + " s");
 	}
 	end_measurement_time = this->root_->getCurrentTime() - this->root_->start_time_;
+	my_end_time = this->root_->getCurrentTime();
 	/*std::cout << "Start Time: " << start_measurement_time << std::endl;
 	std::cout << "End time: " << end_measurement_time << std::endl;
 	std::cout << "Num samples: " << sample_num << std::endl;
@@ -144,9 +140,14 @@ EventName State_Landing_Detection::execute()
 	}
 	delete this->root_->m_vn_;
 	this->root_->is_imu_connected_ = false;
-	this->root_->cap1.release();
-	this->root_->aac_fps_ = this->root_->aac_pic_num_ / ((this->root_->landing_time_ - this->root_->launch_time_)/1000);
+
+	for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
+	{
+		this->root_->aac_camera_captures_[i].release();
+	}
+	this->root_->aac_fps_ = this->root_->aac_pic_num_ / ((this->root_->landing_time_ - this->root_->launch_time_) / 1000);
 	std::cout << "FPS: " << this->root_->aac_fps_ << std::endl;
+	std::cout << "Freq: " << measure_count / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	return LANDING_DETECTED;
 }
 
