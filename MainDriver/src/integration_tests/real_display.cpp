@@ -278,7 +278,9 @@ int main()
             int numStates = END_STATE + 1;
             for (int i = 0; i < numStates; i++)
             {
-                std::cout << std::to_string(i + 1) << ". " << getStateName((StateName)i) << std::endl;
+                if (root.states_.count((StateName)i)){
+                    std::cout << std::to_string(i + 1) << ". " << getStateName((StateName)i) << std::endl;
+                }
             }
             std::cout << std::to_string(numStates + 1) << ". "
                       << "Quit" << std::endl;
