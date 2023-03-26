@@ -49,11 +49,11 @@ EventName State_Full_Lift::execute() {
 		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
 		
 	}
-	this->root_->lift_done_ = true;
-	t1.join();
 	gpioWrite(this->root_->rcb_lift_standby_,0);
 	gpioWrite(this->root_->lift_p_,0);
 	gpioPWM(this->root_->lift_enable_,0);
+	this->root_->lift_done_ = true;
+	t1.join();
 	cap.release();
 	if(is_time_up) {
 		this->root_->m_log_.write("Time Ran Out for Lift");

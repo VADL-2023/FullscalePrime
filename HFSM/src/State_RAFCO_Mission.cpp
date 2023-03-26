@@ -57,7 +57,9 @@ EventName State_RAFCO_Mission::execute()
   
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
-		/*if (sdr1_valid && this->root_->radio1_.packetAvailable())
+		std::string rafco_command = "";
+
+		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
 			// Read the packet from the SDR and print it out
 			p1 = this->root_->radio1_.getPacket();
@@ -68,6 +70,8 @@ EventName State_RAFCO_Mission::execute()
 			if (p1.msg.find("ERROR") != std::string::npos)
 			{
 				sdr1_valid = false;
+			} else {
+				rafco_command = p1.msg;
 			}
 		}
 
@@ -82,18 +86,19 @@ EventName State_RAFCO_Mission::execute()
 			if (p2.msg.find("ERROR") != std::string::npos)
 			{
 				sdr2_valid = false;
+			} else {
+				rafco_command = p2.msg;
 			}
-		}*/
+		}
     
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		std::string rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
+		// std::string rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
 		bool is_rotate = false;
 		int pic_num = 1;
-		std::cout << "Start" << std::endl;
 
 		while (rafco_stream >> command)
 		{ // Extract word from the stream.
