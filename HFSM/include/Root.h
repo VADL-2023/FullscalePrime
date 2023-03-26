@@ -62,6 +62,8 @@ public:
     cv::VideoCapture cap2;
     cv::VideoCapture cap3;
     bool launch_detected_ = false;
+    bool apogee_detected_ = false;
+    bool landing_detected_ = false;
     int aac_pic_num_cam_1_ = 1;
     int aac_pic_num_cam_2_ = 1;
     int aac_pic_num_cam_3_ = 1;
@@ -119,6 +121,7 @@ public:
     double max_up_angle_ = -15;
 
     std::map<StateName, State *> states_;
+    std::vector<std::thread> threads_;
 
     // conversion factors
     float ft_2_m_ = 0.3048;      // [m/ft]
@@ -138,7 +141,7 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 1.5;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 1.1;                                                                      // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -208,7 +211,11 @@ public:
     bool cameraCheck(std::string camera_check);
 
     //Takes pictures with camera
-    void camThread(cv::VideoCapture* cap,int cam_number);
+    void camThreadLaunch(cv::VideoCapture* cap,int cam_number);
+
+    void camThreadApogee(cv::VideoCapture* cap,int cam_number);
+
+    void camThreadLanding(cv::VideoCapture* cap,int cam_number);
 
 private:
 

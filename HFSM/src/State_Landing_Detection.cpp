@@ -36,6 +36,7 @@ EventName State_Landing_Detection::execute()
 	double my_start_time = this->root_->getCurrentTime();
 	double my_end_time = my_start_time;
 	int measure_count = 0;
+
 	while (!this->root_->time_delay_enabled_ && !((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_)) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
@@ -119,6 +120,11 @@ EventName State_Landing_Detection::execute()
 	}
 
 	this->root_->m_log_.writeDelim("Landing Detected");
+	my_end_time = this->root_->getCurrentTime();
+	this->root_->landing_detected_ = true;
+	for(int i = 0;i < this->root_->threads_.size();i++) {
+        this->root_->threads_[i].join();
+    }
 	if ((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_))
 	{
 		this->root_->m_log_.write("Altitude has not reached a new min for " + to_string(this->root_->num_data_points_checked_4_landing_) + " samples");
@@ -129,7 +135,7 @@ EventName State_Landing_Detection::execute()
 		this->root_->m_log_.write("Time exceeded max flight limit of " + std::to_string(this->root_->max_flight_time_) + " s");
 	}
 	end_measurement_time = this->root_->getCurrentTime() - this->root_->start_time_;
-	my_end_time = this->root_->getCurrentTime();
+	
 	/*std::cout << "Start Time: " << start_measurement_time << std::endl;
 	std::cout << "End time: " << end_measurement_time << std::endl;
 	std::cout << "Num samples: " << sample_num << std::endl;
@@ -147,7 +153,9 @@ EventName State_Landing_Detection::execute()
 		this->root_->aac_camera_captures_[i].release();
 	}
 	this->root_->aac_fps_ = this->root_->aac_pic_num_ / ((this->root_->landing_time_ - this->root_->launch_time_) / 1000);
-	std::cout << "FPS: " << this->root_->aac_fps_ << std::endl;
+	std::cout << "FPS 1: " << this->root_->aac_pic_num_cam_1_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
+	std::cout << "FPS 2: " << this->root_->aac_pic_num_cam_2_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
+	std::cout << "FPS 3: " << this->root_->aac_pic_num_cam_3_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	std::cout << "Freq: " << measure_count / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	return LANDING_DETECTED;
 }

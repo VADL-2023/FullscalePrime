@@ -87,7 +87,7 @@ EventName State_Apogee_Detection::execute()
 			this->root_->time_delay_enabled_ = true;
 		}
 	}
-
+	this->root_->apogee_detected_ = true;
 	this->root_->m_log_.writeDelim("Apogee Detected");
 	this->root_->m_log_.write("Altitude has not reached a new max for " + to_string(this->root_->num_data_points_checked_4_apogee_) + " samples");
 	return APOGEE_DETECTED;
