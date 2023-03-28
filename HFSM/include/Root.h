@@ -112,15 +112,17 @@ public:
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 45000;
+    int lift_time_threshold_ = 45000;   // [ms]
+    int lift_min_threshold_ = 5000;     // [ms]
+    int lift_slack_time_ = 2;           // [s]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
     double ideal_level_angle_ = 180;
-    int servo_up_pos_ = 0;
-    int servo_down_pos_ = 45;
-    double max_down_angle_ = 15;
-    double max_up_angle_ = -15;
+    int min_angle_ = -10;
+    int min_pulse_width_ = 1200;
+    int max_angle_ = 20;
+    int max_pulse_width_ = 1900;
 
     std::map<StateName, State *> states_;
     std::vector<std::thread> threads_;

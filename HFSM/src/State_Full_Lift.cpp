@@ -1,5 +1,6 @@
 #include "State_Full_Lift.h"
 #include "Root.h"
+#include <unistd.h> // sleep function
 
 State_Full_Lift::State_Full_Lift(): State() {
 
@@ -49,8 +50,24 @@ EventName State_Full_Lift::execute() {
 		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
 		
 	}
+	// Turn off lift
+	gpioWrite(this->root_->lift_p_,0);
+	gpioWrite(this->root_->lift_n_,0);
+	gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
+	usleep(10000);		// TODO: Does this need to be gpioSleep()?
+
+	// Run lift backwards
+	if (current_time - start_time > this->root_->lift_min_threshold_) {
+		gpioWrite(this->root_->lift_p_,0);
+		gpioWrite(this->root_->lift_n_,1);
+		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
+		sleep(this->root_->lift_slack_time_);		// TODO: Does this need to be gpioSleep()?
+	}
+
+	// Turn off lift
 	gpioWrite(this->root_->rcb_lift_standby_,0);
 	gpioWrite(this->root_->lift_p_,0);
+	gpioWrite(this->root_->lift_n_,0);
 	gpioPWM(this->root_->lift_enable_,0);
 	this->root_->lift_done_ = true;
 	t1.join();
