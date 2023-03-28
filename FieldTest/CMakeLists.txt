@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.18)
 include_directories(include)
 
 add_executable(liftServoTest src/LiftServoTest.cpp)
+add_executable(levelServoTest src/LevelServoTest.cpp)
+
 add_executable(nacelleServoTest src/NacelleLockTest.cpp)
 add_executable(liftArrowTest src/LiftArrowTest.cpp)
 add_executable(rcbArrowTest src/RCBArrowTest.cpp)
@@ -14,6 +16,8 @@ add_executable(swivel3TestStop src/Swivel3TestStop.cpp)
 
 
 target_link_libraries(liftServoTest pigpio)
+target_link_libraries(levelServoTest pigpio)
+
 target_link_libraries(nacelleServoTest pigpio)
 target_link_libraries(liftArrowTest pigpio)
 target_link_libraries(rcbArrowTest pigpio VN IMU)
@@ -27,6 +31,7 @@ target_link_libraries(swivel3TestStop pigpio Stepper ncurses)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 target_link_libraries(liftServoTest ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(levelServoTest ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(liftArrowTest ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(rcbArrowTest ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(swivel1Test ${CMAKE_THREAD_LIBS_INIT})

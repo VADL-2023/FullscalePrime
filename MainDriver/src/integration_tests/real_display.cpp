@@ -172,7 +172,7 @@ int main()
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_FULL_RCB));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
     // State PDS Delay
@@ -190,8 +190,8 @@ int main()
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, END_STATE));
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, END_STATE));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, STATE_RAFCO_MISSION));
     State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
     // State Full Lift

@@ -54,6 +54,8 @@ EventName State_RAFCO_Mission::execute()
   
   // Save the time that the radios are started
 	auto start_time = this->root_->getCurrentTime();
+
+	std::string prev_command = "";
   
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
@@ -100,91 +102,94 @@ EventName State_RAFCO_Mission::execute()
 		bool is_rotate = false;
 		int pic_num = 1;
 
-		while (rafco_stream >> command)
-		{ // Extract word from the stream.
-			std::cout << "Command: " << command << std::endl;
-			if (command == "A1")
-			{
-				this->root_->m_log_.write("Swivel clockwise");
-				gpioWrite(this->root_->stepper_2_standby_pin_, 1);
-				usleep(1000000);
-				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-				this->root_->stepper_2_.step(this->root_->num_steps_);
-				usleep(1000000);
-				// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
-			}
-			else if (command == "B2")
-			{
-				this->root_->m_log_.write("Swivel counterclockwise");
-				gpioWrite(this->root_->stepper_2_standby_pin_, 1);
-				usleep(1000000);
-				// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-				this->root_->stepper_2_.step(-this->root_->num_steps_);
-				usleep(1000000);
-				// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
-			}
-			else if (command == "C3")
-			{
-				cv::Mat frame;
-				usleep(1000000);
-				int i = 0;
-				while (i < 10)
+		if (rafco_command != prev_command) {
+			prev_command = rafco_command;
+			while (rafco_stream >> command)
+			{ // Extract word from the stream.
+				std::cout << "Command: " << command << std::endl;
+				if (command == "A1")
 				{
-					auto the_thing = cap.read(frame);
-					i++;
+					this->root_->m_log_.write("Swivel clockwise");
+					gpioWrite(this->root_->stepper_2_standby_pin_, 1);
+					usleep(1000000);
+					// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
+					this->root_->stepper_2_.step(this->root_->num_steps_);
+					usleep(1000000);
+					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
-				if (frame.empty())
+				else if (command == "B2")
 				{
-					std::cerr << "ERROR! blank frame grabbed\n";
+					this->root_->m_log_.write("Swivel counterclockwise");
+					gpioWrite(this->root_->stepper_2_standby_pin_, 1);
+					usleep(1000000);
+					// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
+					this->root_->stepper_2_.step(-this->root_->num_steps_);
+					usleep(1000000);
+					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
-				else
+				else if (command == "C3")
 				{
+					cv::Mat frame;
+					usleep(1000000);
+					int i = 0;
+					while (i < 10)
+					{
+						auto the_thing = cap.read(frame);
+						i++;
+					}
+					if (frame.empty())
+					{
+						std::cerr << "ERROR! blank frame grabbed\n";
+					}
+					else
+					{
 
-					cv::Mat display_frame = frame;
-					// Need to rotate frame because of how camera is mounted
-					cv::rotate(display_frame, display_frame, cv::ROTATE_180);
-					// cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
-					if (is_gray)
-					{
-						cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
-					}
-					if (is_rotate)
-					{
+						cv::Mat display_frame = frame;
+						// Need to rotate frame because of how camera is mounted
 						cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+						// cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
+						if (is_gray)
+						{
+							cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
+						}
+						if (is_rotate)
+						{
+							cv::rotate(display_frame, display_frame, cv::ROTATE_180);
+						}
+						if (is_blur)
+						{
+							cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
+						}
+						std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
+						mkdir(folder_name_str.c_str(), 0777);
+						std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
+						std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
+						cv::imwrite(pic_name_str, display_frame);
+						pic_num++;
 					}
-					if (is_blur)
-					{
-						cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
-					}
-					std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
-					mkdir(folder_name_str.c_str(), 0777);
-					std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
-					std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
-					cv::imwrite(pic_name_str, display_frame);
-					pic_num++;
 				}
-			}
-			else if (command == "D4")
-			{
-				is_gray = true;
-			}
-			else if (command == "E5")
-			{
-				is_gray = false;
-			}
-			else if (command == "F6")
-			{
-				is_rotate = !is_rotate;
-			}
-			else if (command == "G7")
-			{
-				is_blur = true;
-			}
-			else if (command == "H8")
-			{
-				is_blur = false;
-				is_rotate = false;
-				is_gray = false;
+				else if (command == "D4")
+				{
+					is_gray = true;
+				}
+				else if (command == "E5")
+				{
+					is_gray = false;
+				}
+				else if (command == "F6")
+				{
+					is_rotate = !is_rotate;
+				}
+				else if (command == "G7")
+				{
+					is_blur = true;
+				}
+				else if (command == "H8")
+				{
+					is_blur = false;
+					is_rotate = false;
+					is_gray = false;
+				}
 			}
 		}
     

@@ -45,21 +45,20 @@ EventName State_Full_Level::execute()
 		}
 	}
 	average_error /= this->root_->num_level_samples_;
-	int desired_servo_pos = this->root_->servo_up_pos_ + ((average_error - this->root_->max_up_angle_) * (this->root_->servo_down_pos_ - this->root_->servo_up_pos_)) / (this->root_->max_down_angle_ - this->root_->max_up_angle_);
+	int desired_servo_pos = (((this->root_->max_pulse_width_ - this->root_->min_pulse_width_) / (this->root_->max_angle_ - this->root_->min_angle_)) *(average_error - this->root_->min_angle_)) + this->root_->min_pulse_width_;
 	this->root_->m_log_.write("Average error: " + std::to_string(average_error));
 	this->root_->m_log_.write("Desired servo pos: " + std::to_string(desired_servo_pos));
-	if (desired_servo_pos > this->root_->servo_down_pos_)
+	if (desired_servo_pos > this->root_->max_pulse_width_)
 	{
-		this->root_->m_log_.write("At max down");
-		desired_servo_pos = this->root_->servo_down_pos_;
+		this->root_->m_log_.write("At max pulse width");
+		desired_servo_pos = this->root_->max_pulse_width_;
 	}
-	else if (desired_servo_pos < this->root_->servo_up_pos_)
+	else if (desired_servo_pos < this->root_->min_pulse_width_)
 	{
-		this->root_->m_log_.write("At max up");
-		desired_servo_pos = this->root_->servo_up_pos_;
+		this->root_->m_log_.write("At min pulse width");
+		desired_servo_pos = this->root_->min_pulse_width_;
 	}
-	float pulse_width = this->root_->angleToPulseWidth(this->root_->servo_pulse_max_, this->root_->servo_pulse_min_, this->root_->servo_deg_range_, desired_servo_pos);
-	gpioServo(this->root_->level_servo_, pulse_width);
+	gpioServo(this->root_->level_servo_, desired_servo_pos);
 	gpioSleep(0, 2, 0);
 	return LEVEL_SUCCESS;
 }

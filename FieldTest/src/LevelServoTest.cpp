@@ -37,6 +37,7 @@ int main()
     double angle = 0;
     float pulse_width;
     bool run_again = true;
+    int pulseWidth = 1500;
     do
     {
 
@@ -44,7 +45,7 @@ int main()
         std::string userInput = "";
         std::cout << "What do you want to do to the lift (L | U | Q): ";
         std::cin >> userInput;
-        int pulseWidth = 1500;
+        
         if (userInput == "L")
         {
             pulseWidth += 100;
