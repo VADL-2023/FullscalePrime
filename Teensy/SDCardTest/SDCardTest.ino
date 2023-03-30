@@ -1,10 +1,13 @@
-#include <SD.h>
+#include "SdFat.h"
+//#include <SD.h>
 
 #define SD_CARD_PIN 10
 
-File configFile;
-File programDataFile;
-File flightDataFile;
+SdFat sd;
+
+SdFile configFile;
+SdFile programDataFile;
+SdFile flightDataFile;
 
 String configFileName = "config.txt";
 
@@ -13,48 +16,69 @@ int fileNum = 0;
 void setup() {
   Serial.begin(115200);   // Communication with computer
   delay(3000);
+
+  Serial.println("Waiting for user input");
   while(!Serial.available()){}
+  while(Serial.available()){ Serial.read(); }
   
   // Initialize SD card reading
   pinMode(SD_CARD_PIN, OUTPUT);
-  
-  if (!SD.begin(SD_CARD_PIN)) {
+
+  uint32_t start_time = millis();
+  if (!sd.begin(SD_CARD_PIN, SPI_HALF_SPEED) && millis() - start_time < 2000) {
     Serial.println("SD card initialization failed");
+  }
+
+  if (configFile.open(configFileName.c_str(), O_WRITE | O_TRUNC)) {
+    configFile.print(String(fileNum));
+    Serial.println("Wrote to configFile");
+    configFile.close();
   }
 }
 
 void loop() {
-  configFile = SD.open(configFileName.c_str());
-  while(configFile.available()) {
-    fileNum = configFile.parseInt();
+  if (configFile.open(configFileName.c_str(), O_READ)) {
+    int data = configFile.read();
+    String fileNumStr = "";
+    while (48 <= data && data <= 57) {
+      fileNumStr += (char)data;
+      data = configFile.read();
+    }
+    fileNum = fileNumStr.toInt();
     Serial.println("Read from config file: " + String(fileNum));
+    configFile.close();
+  } else {
+    sd.errorHalt("Opening configFile for read failed");
   }
-  configFile.close();
   
   String programDataFileName = "programData" + String(fileNum) + ".txt";
-  programDataFile = SD.open(programDataFileName.c_str(), FILE_WRITE);
-  if (programDataFile) {
+  if (programDataFile.open(programDataFileName.c_str(), O_WRITE)) {
     programDataFile.println("Program data will go here");
     Serial.println("Wrote to programDataFile");
+    programDataFile.close();
+  } else {
+    sd.errorHalt("Opening programDataFile for write failed");
   }
-  programDataFile.close();
-
+  
   String flightDataFileName = "flightData" + String(fileNum) + ".txt";
-  flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
-  if (flightDataFileName) {
+  if (flightDataFile.open(flightDataFileName.c_str(), O_WRITE)) {
     flightDataFile.println("Flight data will go here");
     Serial.println("Wrote to flightDataFile");
+    flightDataFile.close();
+  } else {
+    sd.errorHalt("Opening flightDataFile for write failed");
   }
-  flightDataFile.close();
-
+  
   fileNum = fileNum + 1;
-  configFile = SD.open(configFileName.c_str(), FILE_WRITE);
-  if(configFile) {
-    configFile.seek(0);
-    configFile.println(String(fileNum));
-    Serial.println("Wrote to configFile");
+  if (configFile.open(configFileName.c_str(), O_WRITE | O_TRUNC)) {
+    configFile.print(String(fileNum));
+    Serial.println("Wrote to configFile: " + String(fileNum));
+    configFile.close();
+  } else {
+    sd.errorHalt("Opening configFile for write failed");
   }
-  configFile.close();  
 
-  while (true) {}
+  Serial.println("Waiting for user input");
+  while(!Serial.available()){}
+  while(Serial.available()){ Serial.read(); }
 }

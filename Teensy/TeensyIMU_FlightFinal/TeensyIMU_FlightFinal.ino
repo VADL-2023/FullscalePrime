@@ -4,6 +4,7 @@
 #define SERVO_PIN 9
 #define SD_CARD_PIN 10
 #define VNRRG_LEN 10
+#define LED_PIN 19
 
 // Conversions
 float ft2m = 0.3048; // [m/ft]
@@ -17,6 +18,7 @@ float B = 6.5*km2m;   // [K/m] variation of temperature within the troposphere
 // Fixed flight parameters
 float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 42; // [Hz] IMU sample rate
+uint32_t imuTimeout = 40;  // [ms] length of time to wait for the IMU to respond
 
 // Variable flight parameters
 float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
@@ -85,6 +87,11 @@ void setup() {
   delay(500);
   theServo.write(servoStart);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
+
+  // Initialize the LED pin as output
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+  delay(500);
   
   Serial.println("Initialization complete");
 }
@@ -117,12 +124,21 @@ void loop() {
   
   /* -------------------- P R E - F L I G H T  S T A G E -------------------- */
 
-  unsigned long startTime = millis();
+  bool imuConnected = true;
+
+  // uint32_t startTime = millis();
 
   // Flush IMU
   writeProgramFile("IMU Flushing");
   for (int i = 0; i < imuWait; ++i) {
-    readIMU();
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      }
+    }
   }
   writeProgramFile("IMU Flushed");
 
@@ -133,10 +149,18 @@ void loop() {
   float gravSum = 0;
   
   for (int i = 0; i < numSampleReadings; i++) {
-    data = readIMU();
-    pressureSum += data.pressure;
-    tempSum += data.temp;
-    gravSum += sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      } else {
+        pressureSum += data.pressure;
+        tempSum += data.temp;
+        gravSum += sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
+      }
+    }
   }
 
   P0 = pressureSum / numSampleReadings;
@@ -158,11 +182,22 @@ void loop() {
   int counter = 0;
 
   while (accelAvg < accelRoof * g0) {
-    data = readIMU();
-    accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
-    accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
-    ++counter;
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      } else {
+        accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
+        accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
+        ++counter;
+      }
+    }
   }
+
+  digitalWrite(LED_PIN, HIGH);
+  delay(500);
 
   writeProgramFile("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points");
   writeProgramFile("Rocket has launched");
@@ -172,8 +207,15 @@ void loop() {
 
   /* ------------------------ M O T O R  B U R N ------------------------ */
   unsigned long tBurnEnd = tBurn * 1000 + launchTime;
-  while (millis() < tBurnEnd) {
-    data = readIMU();
+  while (millis() - launchTime < tBurnEnd) {
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      }
+    }
   }
 
   writeProgramFile("Motor burn time complete");
@@ -188,15 +230,24 @@ void loop() {
   writeProgramFile("Looking for apogee");
   
   while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (millis() - launchTime) < maxFlightMillis) {
-    data = readIMU();
-    zCurrent = pressure2Altitude(data.pressure);
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      } else {
+        zCurrent = pressure2Altitude(data.pressure);
 
-    if (zCurrent >= maxAltitude) {
-      maxAltitude = zCurrent;
-      samplesSinceMaxHasChanged = 0;
-    } else {
-      ++samplesSinceMaxHasChanged;
+        if (zCurrent >= maxAltitude) {
+          maxAltitude = zCurrent;
+          samplesSinceMaxHasChanged = 0;
+        } else {
+          ++samplesSinceMaxHasChanged;
+        }
+      }
     }
+    
   }
 
   writeProgramFile("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples");
@@ -213,16 +264,25 @@ void loop() {
   long freqTestCount = 0;
 
   while (!landingDetected(samplesSinceMinHasChanged, zCurrent, launchTime, maxFlightMillis)) {
-    data = readIMU();
-    freqTestCount++;
-    zCurrent = pressure2Altitude(data.pressure);
+    // Read the IMU if it is connected
+    if (imuConnected) {
+      data = readIMU();
+      // Check to make sure that data was returned by the IMU
+      if (isIMUEmpty(data)) {
+        imuConnected = false;
+      } else {
+        freqTestCount++;
+        zCurrent = pressure2Altitude(data.pressure);
 
-    if (zCurrent < minAltitude) {
-      minAltitude = zCurrent;
-      samplesSinceMinHasChanged = 0;
-    } else {
-      ++samplesSinceMinHasChanged;
+        if (zCurrent < minAltitude) {
+          minAltitude = zCurrent;
+          samplesSinceMinHasChanged = 0;
+        } else {
+          ++samplesSinceMinHasChanged;
+        }
+      }
     }
+    
   }
 
   long freqTestEndTime = millis();
@@ -243,6 +303,9 @@ void loop() {
   theServo.write(servoEnd);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
 
+  digitalWrite(LED_PIN,HIGH);
+  delay(500);
+
   // Update config file
   fileNum = fileNum + 1;
   configFile = SD.open(configFileName.c_str(), FILE_WRITE);
@@ -251,8 +314,14 @@ void loop() {
     configFile.println(String(fileNum));
   }
   configFile.close();  
-  
-  while(true){} // Halt
+
+  // Blink LED indefinitelys
+  while(true){
+    digitalWrite(LED_PIN, HIGH);
+    delay(500);
+    digitalWrite(LED_PIN, LOW);
+    delay(500);
+  }
 }
 
 // given P [kPa], returns altitude above ground level
@@ -285,6 +354,22 @@ imuData readIMU() {
 
   // FIRST QUERY
   String response = queryIMU("$VNRRG,54*XX\r\n");
+
+  if (response.length() == 0) {
+    data.magX = 0;
+    data.magY = 0;
+    data.magZ = 0;
+    data.accelX = 0;
+    data.accelY = 0;
+    data.accelZ = 0;
+    data.yaw = 0;
+    data.pitch = 0;
+    data.roll = 0;
+    data.temp = 0;
+    data.pressure = 0; 
+    data.alt = 0;
+    return data;
+  }
 
   if (!response.substring(0,VNRRG_LEN - 1).equals("$VNRRG,54")) {
     Serial.println("ERROR: Received different response than expected from IMU");
@@ -391,6 +476,22 @@ imuData readIMU() {
   // SECOND QUERY
   response = queryIMU("$VNRRG,08*XX\r\n");
 
+  if (response.length() == 0) {
+    data.magX = 0;
+    data.magY = 0;
+    data.magZ = 0;
+    data.accelX = 0;
+    data.accelY = 0;
+    data.accelZ = 0;
+    data.yaw = 0;
+    data.pitch = 0;
+    data.roll = 0;
+    data.temp = 0;
+    data.pressure = 0; 
+    data.alt = 0;
+    return data;
+  }
+
   if (!response.substring(0,VNRRG_LEN - 1).equals("$VNRRG,08")) {
     Serial.println("ERROR: Received different response than expected from IMU");
     Serial.println("Expected: $VNRRG,08");
@@ -450,6 +551,8 @@ String queryIMU(String request) {
   // Send request to IMU
   Serial3.write(request.c_str());
 
+  uint32_t request_time = millis();
+
   bool valid = false;
   int attempt = 1;
 
@@ -460,6 +563,13 @@ String queryIMU(String request) {
       if (' ' <= c && c <= '~') {
         response += c;
       }
+
+      // Check if a timeout has occurred
+      if (response.length() == 0 && millis() - request_time > imuTimeout) {
+        // return an empty response
+        return response;
+      }
+
     } while (c != '*'); // Wait for the check sum
   
     // Read the check sum so it doesn't remain in the buffer
@@ -494,8 +604,15 @@ void writeDataFile(imuData data) {
   flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
   if (flightDataFileName) {
     char buf[256];
-    sprintf(buf, "%u\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
+    sprintf(buf, "%lu\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
     flightDataFile.println(buf);
   }
   flightDataFile.close();
+}
+
+bool isIMUEmpty(imuData data) {
+  return  (data.magX == 0) && (data.magY == 0) && (data.magZ == 0) &&
+          (data.accelX == 0) && (data.accelY == 0) && (data.accelZ == 0) &&
+          (data.yaw == 0) && (data.pitch == 0) && (data.roll == 0) &&
+          (data.temp == 0) && (data.pressure == 0) && (data.alt == 0);
 }
