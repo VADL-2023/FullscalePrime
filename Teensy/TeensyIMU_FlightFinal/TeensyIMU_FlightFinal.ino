@@ -4,6 +4,7 @@
 #define SERVO_PIN 9
 #define SD_CARD_PIN 10
 #define VNRRG_LEN 10
+#define LED_PIN 19
 
 // Conversions
 float ft2m = 0.3048; // [m/ft]
@@ -19,12 +20,13 @@ float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 42; // [Hz] IMU sample rate
 
 // Variable flight parameters
-float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.1; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 0.4 * samplingFrequency; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 int zThresholdForLanding = 175 * ft2m; // [m] threshold that the altitude must be within for landing
 int maxFlightTime = 150; // [s] max allowable flight time, if exceeded program ends
+long unsigned int LEDBlinkFrequency = 500; //[ms]
 
 // Calibration parameters
 uint16_t numSampleReadings = 60; // amount of samples taken and averaged to find ground P and T
@@ -75,15 +77,19 @@ void setup() {
 
   // Initialize SD card reading
   pinMode(SD_CARD_PIN, OUTPUT);
+
+  //Initialize LED Pin
+  pinMode(LED_PIN,OUTPUT);
  
   if (!SD.begin(SD_CARD_PIN)) {
     Serial.println("SD card initialization failed");
   }
 
-  // Initialize the servo
+  // Initialize the servo and turn on LED
   theServo.attach(SERVO_PIN);
   delay(500);
   theServo.write(servoStart);
+  digitalWrite(LED_PIN, HIGH);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
   
   Serial.println("Initialization complete");
@@ -164,6 +170,8 @@ void loop() {
     ++counter;
   }
 
+  // Launch Detected - log & shut off LED
+  digitalWrite(LED_PIN, LOW);
   writeProgramFile("Average acceleration exceeded " + String(accelRoof * g0) + " m/s^2 over " + String(numDataPointsChecked4Launch) + " data points");
   writeProgramFile("Rocket has launched");
   writeProgramFile("Waiting for motor burn time");
@@ -172,8 +180,15 @@ void loop() {
 
   /* ------------------------ M O T O R  B U R N ------------------------ */
   unsigned long tBurnEnd = tBurn * 1000 + launchTime;
-  while (millis() < tBurnEnd) {
+  unsigned long curTime = millis();
+  unsigned long lastBlink = millis();
+  while (curTime < tBurnEnd) {
     data = readIMU();
+    curTime = millis();
+    if ((curTime - lastBlink) > LEDBlinkFrequency){
+      switchLED(LED_PIN);
+      lastBlink = curTime;
+    }
   }
 
   writeProgramFile("Motor burn time complete");
@@ -186,8 +201,8 @@ void loop() {
   int samplesSinceMaxHasChanged = 0;
 
   writeProgramFile("Looking for apogee");
-  
-  while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (millis() - launchTime) < maxFlightMillis) {
+  curTime = millis();
+  while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (curTime - launchTime) < maxFlightMillis) {
     data = readIMU();
     zCurrent = pressure2Altitude(data.pressure);
 
@@ -196,6 +211,11 @@ void loop() {
       samplesSinceMaxHasChanged = 0;
     } else {
       ++samplesSinceMaxHasChanged;
+    }
+    curTime = millis();
+    if ((curTime - lastBlink) > LEDBlinkFrequency){
+      switchLED(LED_PIN);
+      lastBlink = curTime;
     }
   }
 
@@ -211,7 +231,8 @@ void loop() {
 
   long freqTestStartTime = millis();
   long freqTestCount = 0;
-
+  curTime = millis();
+  
   while (!landingDetected(samplesSinceMinHasChanged, zCurrent, launchTime, maxFlightMillis)) {
     data = readIMU();
     freqTestCount++;
@@ -222,6 +243,11 @@ void loop() {
       samplesSinceMinHasChanged = 0;
     } else {
       ++samplesSinceMinHasChanged;
+    }
+    curTime = millis();
+    if ((curTime - lastBlink) > LEDBlinkFrequency){
+      switchLED(LED_PIN);
+      lastBlink = curTime;
     }
   }
 
@@ -239,10 +265,10 @@ void loop() {
   
   /* -------------------- P O S T - L A N D I N G  S T A G E -------------------- */
 
-  // Move the servo to detach the parachute
+  // Move the servo to detach the parachute, shut off LED
   theServo.write(servoEnd);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
-
+  digitalWrite(LED_PIN, LOW);
   // Update config file
   fileNum = fileNum + 1;
   configFile = SD.open(configFileName.c_str(), FILE_WRITE);
@@ -498,4 +524,12 @@ void writeDataFile(imuData data) {
     flightDataFile.println(buf);
   }
   flightDataFile.close();
+}
+
+void switchLED(int LEDPin){
+  if (digitalRead(LEDPin)){
+    digitalWrite(LEDPin, LOW);
+  }else{
+    digitalWrite(LEDPin, HIGH);
+  }
 }
