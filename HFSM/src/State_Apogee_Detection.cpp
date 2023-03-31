@@ -52,7 +52,7 @@ EventName State_Apogee_Detection::execute()
 					std::cerr << "ERROR! blank frame" << i << " grabbed\n";
 					break;
 				}
-				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
+				std::string folder_name_str = this->root_->date_timestamp_ + "/SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
 				mkdir(folder_name_str.c_str(), 0777);
 				std::string cam_str;
 				if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")

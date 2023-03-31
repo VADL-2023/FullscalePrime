@@ -36,6 +36,7 @@ public:
     int unit_test_delay_ms_ = 1000000;
 
     int pds_delay_ = 60000;
+    std::string date_timestamp_ = "";
 
     int steps_per_revolution_ = 200;
     int stepper_speed_ = 10;
@@ -112,9 +113,9 @@ public:
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 45000;   // [ms]
+    int lift_time_threshold_ = 30000;   // [ms]
+    int lift_backwards_time_threshold_ = 2000;
     int lift_min_threshold_ = 5000;     // [ms]
-    int lift_slack_time_ = 2;           // [s]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;

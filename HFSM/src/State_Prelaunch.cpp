@@ -15,6 +15,16 @@ EventName State_Prelaunch::execute() {
     float pressure_sum;
     float temp_sum;
     float grav_sum;
+    auto start = std::chrono::system_clock::now();
+    // Some computation here
+    auto end = std::chrono::system_clock::now();
+ 
+    std::chrono::duration<double> elapsed_seconds = end-start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+ 
+    std::cout << "Date time " << std::ctime(&end_time)
+              << std::endl;
+    this->root_->date_timestamp_ = std::ctime(&end_time);
 
     // Get start time and date
     time_t raw_time;

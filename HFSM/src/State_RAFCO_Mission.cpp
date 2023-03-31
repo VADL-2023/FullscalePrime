@@ -21,10 +21,11 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
+	system("sudo ../../kill_direwolf_and_rtl.bash");
 	this->root_->m_log_.write("Starting the SDRs");
 	this->root_->radio1_.startSDR();
 	this->root_->radio2_.startSDR();
-	
+
 	this->root_->m_log_.write("Waiting for packets");
 
 	// These structs hold the output from the radios
@@ -34,7 +35,8 @@ EventName State_RAFCO_Mission::execute()
 	// These indicate whether or not errors have occurred on either SDR
 	bool sdr1_valid = true;
 	bool sdr2_valid = true;
-
+	bool backup_valid = false;
+	int angle = 0;
 	bool got_packet = false;
 
 	//--- INITIALIZE VIDEOCAPTURE
@@ -51,16 +53,19 @@ EventName State_RAFCO_Mission::execute()
 	{
 		std::cerr << "ERROR! Unable to open camera\n";
 	}
-  
-  // Save the time that the radios are started
+
+	// Save the time that the radios are started
 	auto start_time = this->root_->getCurrentTime();
 
 	std::string prev_command = "";
-  
+
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
 		std::string rafco_command = "";
-
+		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
+		{
+			backup_valid = true;
+		}
 		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
 			// Read the packet from the SDR and print it out
@@ -72,8 +77,11 @@ EventName State_RAFCO_Mission::execute()
 			if (p1.msg.find("ERROR") != std::string::npos)
 			{
 				sdr1_valid = false;
-			} else {
+			}
+			else
+			{
 				rafco_command = p1.msg;
+				got_packet = true;
 			}
 		}
 
@@ -88,42 +96,104 @@ EventName State_RAFCO_Mission::execute()
 			if (p2.msg.find("ERROR") != std::string::npos)
 			{
 				sdr2_valid = false;
-			} else {
+			}
+			else
+			{
 				rafco_command = p2.msg;
+				got_packet = true;
 			}
 		}
-    
+
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		// std::string rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
+		// std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
+		std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
 		bool is_rotate = false;
 		int pic_num = 1;
+		if (backup_valid && !got_packet)
+		{
+			rafco_stream.str(backup_rafco_command);
+		}
+		if (rafco_stream.str() != prev_command)
+		{
+			prev_command = rafco_stream.str();
+			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
+			usleep(5000000);
+			std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+			if(this->root_->date_timestamp_ == "") {
+				auto end = std::chrono::system_clock::now();
 
-		if (rafco_command != prev_command) {
-			prev_command = rafco_command;
+				std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+				std::cout << "Date time " << std::ctime(&end_time)
+						  << std::endl;
+				this->root_->date_timestamp_ = std::ctime(&end_time);
+			}
+			std::string base_folder = this->root_->date_timestamp_;
+			std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
+			if (!base_folder.empty())
+			{
+				base_folder.pop_back();
+			}
+			else
+			{
+				std::cout << "Got a weird date time error" << std::endl;
+			}
+
+			mkdir(base_folder.c_str(), 0777);
+			std::string folder_name_str;
+			if (backup_valid && !sdr1_valid && !sdr2_valid)
+			{
+				folder_name_str = base_folder + "/BackupPrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
+			}
+			else
+			{
+				folder_name_str = base_folder + "/PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
+			}
+			mkdir(folder_name_str.c_str(), 0777);
 			while (rafco_stream >> command)
 			{ // Extract word from the stream.
 				std::cout << "Command: " << command << std::endl;
+				std::cout << "Current angle: " << angle << std::endl;
 				if (command == "A1")
 				{
-					this->root_->m_log_.write("Swivel clockwise");
-					gpioWrite(this->root_->stepper_2_standby_pin_, 1);
-					usleep(1000000);
 					// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-					this->root_->stepper_2_.step(this->root_->num_steps_);
+					if (angle <= -180)
+					{
+						this->root_->m_log_.write("Swivel 300 degrees left");
+						this->root_->stepper_2_.step(-5 * this->root_->num_steps_);
+						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						angle += 300;
+					}
+					else
+					{
+						this->root_->m_log_.write("Swivel Right");
+						this->root_->stepper_2_.step(this->root_->num_steps_);
+						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						angle -= 60;
+					}
 					usleep(1000000);
 					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
 				else if (command == "B2")
 				{
-					this->root_->m_log_.write("Swivel counterclockwise");
-					gpioWrite(this->root_->stepper_2_standby_pin_, 1);
-					usleep(1000000);
-					// std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
-					this->root_->stepper_2_.step(-this->root_->num_steps_);
+					if (angle >= 180)
+					{
+						this->root_->m_log_.write("Swivel 300 degrees right");
+						this->root_->stepper_2_.step(5 * this->root_->num_steps_);
+						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						angle -= 300;
+					}
+					else
+					{
+						this->root_->m_log_.write("Swivel Left");
+						this->root_->stepper_2_.step(-this->root_->num_steps_);
+						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						angle += 60;
+					}
 					usleep(1000000);
 					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
@@ -132,7 +202,7 @@ EventName State_RAFCO_Mission::execute()
 					cv::Mat frame;
 					usleep(1000000);
 					int i = 0;
-					while (i < 10)
+					while (i < 5)
 					{
 						auto the_thing = cap.read(frame);
 						i++;
@@ -160,10 +230,19 @@ EventName State_RAFCO_Mission::execute()
 						{
 							cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
 						}
-						std::string folder_name_str = "PrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
-						mkdir(folder_name_str.c_str(), 0777);
+
 						std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
 						std::cout << "PIC NAME STR: " << pic_name_str << std::endl;
+						auto end = std::chrono::system_clock::now();
+						std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+						std::string date_time = std::ctime(&end_time);
+						date_time.pop_back();
+						cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
+						cv::Point the_org(0, text_size.height);
+						cv::Scalar color1(0, 0, 0);
+						cv::Scalar color2(255, 255, 255);
+						cv::putText(display_frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
+						cv::putText(display_frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
 						cv::imwrite(pic_name_str, display_frame);
 						pic_num++;
 					}
@@ -191,15 +270,18 @@ EventName State_RAFCO_Mission::execute()
 					is_gray = false;
 				}
 			}
+			usleep(5000000);
+			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+			std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
 		}
-    
+
 		// TODO: compare if the received values are the same
-    
+
 		p1.msg = "";
 		p2.msg = "";
 	}
 
-  gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+	gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
 	this->root_->radio1_.stopSDR();

@@ -21,6 +21,7 @@ void PacketReceiver::startSDR() {
     stopSDR();
     std::string input_filename = "sdr" + std::to_string(serial_num) +  "_output" + std::to_string(count++) + ".txt";
     std::string command = sdr_script + " -o " + input_filename + " -d " + std::to_string(serial_num) + " -f " + frequency + " -c " + configfile;
+    std::cout << "Command: " << command << std::endl;
     rtl_pid = std::stoi(exec(command.c_str()));
     sleep(1);
 
