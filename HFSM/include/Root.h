@@ -218,7 +218,7 @@ public:
     bool isTimeExceeded(double launch_time, double trigger_time);
 
     //check if a given camera stream is operational
-    bool cameraCheck(std::string camera_check,cv::VideoCapture &cap);
+    bool cameraCheck(std::string camera_check);
 
     //Takes pictures with camera
     void camThreadLaunch(cv::VideoCapture* cap,int cam_number);

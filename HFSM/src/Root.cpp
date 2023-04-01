@@ -621,13 +621,14 @@ bool Root::isTimeExceeded(double launch_time, double trigger_time)
     }
 }
 
-bool Root::cameraCheck(std::string camera_stream, cv::VideoCapture &cap)
+bool Root::cameraCheck(std::string camera_stream)
 {
     cv::Mat frame;
     //--- INITIALIZE VIDEOCAPTURE
     // open the default camera using default API
     // cap.open(0);
     // OR advance usage: select any API backend
+    cv::VideoCapture cap;
     int deviceID = 100;      // 0 = open default camera
     int apiID = cv::CAP_ANY; // 0 = autodetect default API
     bool isGray = false;

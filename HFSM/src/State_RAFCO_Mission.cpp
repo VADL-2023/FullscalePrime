@@ -107,8 +107,8 @@ EventName State_RAFCO_Mission::execute()
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
 		std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
-		//std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
-		//std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
+		// std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
+		// std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
@@ -121,10 +121,26 @@ EventName State_RAFCO_Mission::execute()
 		if (rafco_stream.str() != prev_command)
 		{
 			prev_command = rafco_stream.str();
-			gpioWrite(this->root_->stepper_2_standby_pin_, 1);
-			usleep(5000000);
-			std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
-			if(this->root_->date_timestamp_ == "") {
+			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+			{
+				//gpioWrite(this->root_->stepper_1_standby_pin_, 1);
+				usleep(5000000);
+				std::cout << "Standby Read: " << gpioRead(this->root_->stepper_1_standby_pin_) << std::endl;
+			}
+			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
+			{
+				//gpioWrite(this->root_->stepper_3_standby_pin_, 1);
+				usleep(5000000);
+				std::cout << "Standby Read: " << gpioRead(this->root_->stepper_3_standby_pin_) << std::endl;
+			}
+			else
+			{
+				//gpioWrite(this->root_->stepper_2_standby_pin_, 1);
+				usleep(5000000);
+				std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+			}
+			if (this->root_->date_timestamp_ == "")
+			{
 				auto end = std::chrono::system_clock::now();
 
 				std::time_t end_time = std::chrono::system_clock::to_time_t(end);
@@ -165,38 +181,88 @@ EventName State_RAFCO_Mission::execute()
 					if (angle <= -180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees left");
-						this->root_->stepper_2_.step(-5 * this->root_->num_steps_);
-						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+						{
+							this->root_->stepper_1_.step(-5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_1_standby_pin_) << std::endl;
+						}
+						else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
+						{
+							this->root_->stepper_3_.step(-5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_3_standby_pin_) << std::endl;
+						}
+						else
+						{
+							this->root_->stepper_2_.step(-5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						}
 						angle += 300;
 					}
 					else
 					{
 						this->root_->m_log_.write("Swivel Right");
-						this->root_->stepper_2_.step(this->root_->num_steps_);
-						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+						{
+							this->root_->stepper_1_.step(this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_1_standby_pin_) << std::endl;
+						}
+						else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
+						{
+							this->root_->stepper_3_.step(this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_3_standby_pin_) << std::endl;
+						}
+						else
+						{
+							this->root_->stepper_2_.step(this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						}
 						angle -= 60;
 					}
 					usleep(1000000);
-					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
 				else if (command == "B2")
 				{
 					if (angle >= 180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees right");
-						this->root_->stepper_2_.step(5 * this->root_->num_steps_);
-						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+						{
+							this->root_->stepper_1_.step(5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_1_standby_pin_) << std::endl;
+						}
+						else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
+						{
+							this->root_->stepper_3_.step(5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_3_standby_pin_) << std::endl;
+						}
+						else
+						{
+							this->root_->stepper_2_.step(5 * this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						}
 						angle -= 300;
 					}
 					else
 					{
 						this->root_->m_log_.write("Swivel Left");
-						this->root_->stepper_2_.step(-this->root_->num_steps_);
-						std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+						{
+							this->root_->stepper_1_.step(-this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_1_standby_pin_) << std::endl;
+						}
+						else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
+						{
+							this->root_->stepper_3_.step(-this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_3_standby_pin_) << std::endl;
+						}
+						else
+						{
+							this->root_->stepper_2_.step(-this->root_->num_steps_);
+							std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+						}
 						angle += 60;
 					}
 					usleep(1000000);
-					// gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 				}
 				else if (command == "C3")
 				{
@@ -272,8 +338,9 @@ EventName State_RAFCO_Mission::execute()
 				}
 			}
 			usleep(5000000);
+			gpioWrite(this->root_->stepper_1_standby_pin_, 0);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
-			std::cout << "Standby Read: " << gpioRead(this->root_->stepper_2_standby_pin_) << std::endl;
+			gpioWrite(this->root_->stepper_3_standby_pin_, 0);
 		}
 
 		// TODO: compare if the received values are the same
@@ -282,7 +349,9 @@ EventName State_RAFCO_Mission::execute()
 		p2.msg = "";
 	}
 
+	gpioWrite(this->root_->stepper_1_standby_pin_, 0);
 	gpioWrite(this->root_->stepper_2_standby_pin_, 0);
+	gpioWrite(this->root_->stepper_3_standby_pin_, 0);
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
 	this->root_->radio1_.stopSDR();

@@ -24,11 +24,11 @@ EventName State_Camera_Check::execute()
 	{
 		std::string camera_stream = this->root_->camera_streams_[i];
 		if(i == 0) {
-			cam1_online = this->root_->cameraCheck(camera_stream,this->root_->cap1);
+			cam1_online = this->root_->cameraCheck(camera_stream);
 		} else if(i == 1) {
-			cam2_online = this->root_->cameraCheck(camera_stream,this->root_->cap2);
+			cam2_online = this->root_->cameraCheck(camera_stream);
 		}else if(i == 2) {
-			cam3_online = this->root_->cameraCheck(camera_stream,this->root_->cap3);
+			cam3_online = this->root_->cameraCheck(camera_stream);
 		}
 	}
 	if(cam2_online) {

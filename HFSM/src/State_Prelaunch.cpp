@@ -145,90 +145,23 @@ EventName State_Prelaunch::execute()
             std::string camera_stream = this->root_->camera_streams_[i];
             if (i == 0)
             {
-                if (this->root_->cameraCheck(camera_stream, this->root_->cap1))
+                if (this->root_->cameraCheck(camera_stream))
                 {
                     this->root_->aac_camera_streams_.push_back(camera_stream);
                 }
             }
             else if (i == 1)
             {
-                if (this->root_->cameraCheck(camera_stream, this->root_->cap2))
+                if (this->root_->cameraCheck(camera_stream))
                 {
                     this->root_->aac_camera_streams_.push_back(camera_stream);
                 }
             }
             else if (i == 2)
             {
-                if (this->root_->cameraCheck(camera_stream, this->root_->cap3))
+                if (this->root_->cameraCheck(camera_stream))
                 {
                     this->root_->aac_camera_streams_.push_back(camera_stream);
-                }
-            }
-        }
-        for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
-        {
-            std::cout << this->root_->aac_camera_streams_[i] << std::endl;
-            if (i == 0)
-            {
-                if (!this->root_->cap1.isOpened())
-                {
-                    this->root_->cap1.open(this->root_->aac_camera_streams_[i]);
-                    this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-                }
-                if (!this->root_->cap1.isOpened())
-                {
-                    std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-                }
-                else
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        cv::Mat temp_frame;
-                        this->root_->cap1.read(temp_frame);
-                    }
-                    this->root_->aac_camera_captures_.push_back(this->root_->cap1);
-                }
-            }
-            else if (i == 1)
-            {
-                if (!this->root_->cap2.isOpened())
-                {
-                    this->root_->cap2.open(this->root_->aac_camera_streams_[i]);
-                    this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-                }
-                if (!this->root_->cap2.isOpened())
-                {
-                    std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-                }
-                else
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        cv::Mat temp_frame;
-                        this->root_->cap2.read(temp_frame);
-                    }
-                    this->root_->aac_camera_captures_.push_back(this->root_->cap2);
-                }
-            }
-            else if (i == 2)
-            {
-                if (!this->root_->cap3.isOpened())
-                {
-                    this->root_->cap3.open(this->root_->aac_camera_streams_[i]);
-                    this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-                }
-                if (!this->root_->cap3.isOpened())
-                {
-                    std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-                }
-                else
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        cv::Mat temp_frame;
-                        this->root_->cap3.read(temp_frame);
-                    }
-                    this->root_->aac_camera_captures_.push_back(this->root_->cap3);
                 }
             }
         }
@@ -244,23 +177,6 @@ EventName State_Prelaunch::execute()
         }
         sleep(10);
         */
-
-        for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
-        {
-            std::cout << "RESTARTING CAMERA " << this->root_->aac_camera_streams_[i] << std::endl;
-            if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
-            {
-                std::cout << "IS CAMERA 1 OPENED: " << this->root_->cap1.isOpened() << std::endl;
-            }
-            else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
-            {
-                std::cout << "IS CAMERA 2 OPENED: " << this->root_->cap2.isOpened() << std::endl;
-            }
-            else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
-            {
-                std::cout << "IS CAMERA 3 OPENED: " << this->root_->cap3.isOpened() << std::endl;
-            }
-        }
         this->root_->m_log_.writeTime("Are we a GO for flight?");
         std::cin >> userInput;
         if (userInput == "GO")
@@ -275,6 +191,73 @@ EventName State_Prelaunch::execute()
             this->root_->restart_ = true;
         }
         // kill(pid_radio_test + 3, SIGTERM);
+    }
+    for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
+    {
+        std::cout << this->root_->aac_camera_streams_[i] << std::endl;
+        if (i == 0)
+        {
+            if (!this->root_->cap1.isOpened())
+            {
+                this->root_->cap1.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap1.isOpened())
+            {
+                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap1.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap1);
+            }
+        }
+        else if (i == 1)
+        {
+            if (!this->root_->cap2.isOpened())
+            {
+                this->root_->cap2.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap2.isOpened())
+            {
+                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap2.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap2);
+            }
+        }
+        else if (i == 2)
+        {
+            if (!this->root_->cap3.isOpened())
+            {
+                this->root_->cap3.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap3.isOpened())
+            {
+                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap3.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap3);
+            }
+        }
     }
 
     this->root_->m_log_.writeTime("Pre-Flight Stage Completed");

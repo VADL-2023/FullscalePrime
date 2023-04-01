@@ -35,6 +35,10 @@ EventName State_Full_RCB::execute()
 	}
 	this->root_->is_imu_connected_ = true;
 	bool rcb_stable = false;
+	bool doing_backup = false;
+	if(this->root_->primary_camera_stream_ != "/dev/videoCam2") {
+		doing_backup = true;
+	}
 	gpioWrite(this->root_->rcb_lift_standby_, 1);
 	bool is_time_up = false;
 	double start_time = this->root_->getCurrentTime();
@@ -61,6 +65,11 @@ EventName State_Full_RCB::execute()
 		{
 			auto response_rpy = this->root_->m_vn_->readYawPitchRoll();
 			auto pitch_error = response_rpy[1];
+			if(this->root_->primary_camera_stream_ == "/dev/videoCam1") {
+				pitch_error -= 90;
+			} else if(this->root_->primary_camera_stream_ == "/dev/videoCam3") {
+				pitch_error += 90;
+			}
 			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(pitch_error));
 			if (pitch_error <= this->root_->rcb_angle_threshold_ && pitch_error >= -this->root_->rcb_angle_threshold_)
 			{
@@ -109,7 +118,7 @@ EventName State_Full_RCB::execute()
 	gpioSleep(0, 2, 0);
 	this->root_->m_log_.write("Initiating Nacelle servo lock");
 	cap.release();
-	if (is_time_up)
+	if (is_time_up || doing_backup)
 	{
 		this->root_->m_log_.write("RCB Timeout Error");
 		return RCB_FAILURE;
