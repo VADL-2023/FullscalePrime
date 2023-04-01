@@ -143,7 +143,7 @@ void Root::camThreadLaunch(cv::VideoCapture *cap, int cam_number)
             std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
             break;
         }
-        if (this->root_->date_timestamp_ == "")
+        if (this->date_timestamp_ == "")
         {
             auto end = std::chrono::system_clock::now();
 
@@ -151,7 +151,7 @@ void Root::camThreadLaunch(cv::VideoCapture *cap, int cam_number)
 
             std::cout << "Date time " << std::ctime(&end_time)
                       << std::endl;
-            this->root_->date_timestamp_ = std::ctime(&end_time);
+            this->date_timestamp_ = std::ctime(&end_time);
         }
         std::string base_folder = this->date_timestamp_;
         std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
@@ -219,7 +219,7 @@ void Root::camThreadApogee(cv::VideoCapture *cap, int cam_number)
             std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
             break;
         }
-        if (this->root_->date_timestamp_ == "")
+        if (this->date_timestamp_ == "")
         {
             auto end = std::chrono::system_clock::now();
 
@@ -227,7 +227,7 @@ void Root::camThreadApogee(cv::VideoCapture *cap, int cam_number)
 
             std::cout << "Date time " << std::ctime(&end_time)
                       << std::endl;
-            this->root_->date_timestamp_ = std::ctime(&end_time);
+            this->date_timestamp_ = std::ctime(&end_time);
         }
         std::string base_folder = this->date_timestamp_;
         std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
@@ -285,7 +285,7 @@ void Root::camThreadLift(cv::VideoCapture *cap)
 {
     std::vector<cv::Mat> frames;
     std::vector<std::string> date_times;
-    if (this->root_->date_timestamp_ == "")
+    if (this->date_timestamp_ == "")
     {
         auto end = std::chrono::system_clock::now();
 
@@ -293,7 +293,7 @@ void Root::camThreadLift(cv::VideoCapture *cap)
 
         std::cout << "Date time " << std::ctime(&end_time)
                   << std::endl;
-        this->root_->date_timestamp_ = std::ctime(&end_time);
+        this->date_timestamp_ = std::ctime(&end_time);
     }
     std::string base_folder = this->date_timestamp_;
     std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
@@ -352,7 +352,7 @@ void Root::camThreadRCB(cv::VideoCapture *cap)
 {
     std::vector<cv::Mat> frames;
     std::vector<std::string> date_times;
-    if (this->root_->date_timestamp_ == "")
+    if (this->date_timestamp_ == "")
     {
         auto end = std::chrono::system_clock::now();
 
@@ -360,7 +360,7 @@ void Root::camThreadRCB(cv::VideoCapture *cap)
 
         std::cout << "Date time " << std::ctime(&end_time)
                   << std::endl;
-        this->root_->date_timestamp_ = std::ctime(&end_time);
+        this->date_timestamp_ = std::ctime(&end_time);
     }
     std::string base_folder = this->date_timestamp_;
     std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
@@ -419,7 +419,7 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
     double prev_time = getCurrentTime();
     std::vector<cv::Mat> frames;
     std::vector<std::string> date_times;
-    if (this->root_->date_timestamp_ == "")
+    if (this->date_timestamp_ == "")
     {
         auto end = std::chrono::system_clock::now();
 
@@ -427,7 +427,7 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
 
         std::cout << "Date time " << std::ctime(&end_time)
                   << std::endl;
-        this->root_->date_timestamp_ = std::ctime(&end_time);
+        this->date_timestamp_ = std::ctime(&end_time);
     }
     std::string base_folder = this->date_timestamp_;
     std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
@@ -621,11 +621,10 @@ bool Root::isTimeExceeded(double launch_time, double trigger_time)
     }
 }
 
-bool Root::cameraCheck(std::string camera_stream)
+bool Root::cameraCheck(std::string camera_stream, cv::VideoCapture &cap)
 {
     cv::Mat frame;
     //--- INITIALIZE VIDEOCAPTURE
-    cv::VideoCapture cap;
     // open the default camera using default API
     // cap.open(0);
     // OR advance usage: select any API backend
@@ -635,13 +634,19 @@ bool Root::cameraCheck(std::string camera_stream)
     bool isRotated = false;
     bool isBlurred = false;
     int numPics = 0;
+    std::cout << "Trying to open camera stream: " << camera_stream << std::endl;
     // open selected camera using selected API
-    cap.open(camera_stream, apiID);
-    // check if we succeeded
     if (!cap.isOpened())
     {
-        std::cerr << "ERROR! Unable to open camera\n";
-        return false;
+        cap.open(camera_stream);
+
+        cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+        // check if we succeeded
+        if (!cap.isOpened())
+        {
+            std::cerr << "ERROR! Unable to open camera\n";
+            return false;
+        }
     }
     std::cout << "Opened camera " << camera_stream << std::endl;
     // wait for a new frame from camera and store it into 'frame'

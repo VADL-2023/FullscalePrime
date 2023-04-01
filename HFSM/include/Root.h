@@ -114,7 +114,7 @@ public:
     int lift_n_ = 16;
     int lift_enable_ = 12;
     int lift_time_threshold_ = 30000;   // [ms]
-    int lift_backwards_time_threshold_ = 2000;
+    int lift_backwards_time_threshold_ = 1680;
     int lift_min_threshold_ = 5000;     // [ms]
 
     int level_servo_ = 3;
@@ -218,7 +218,7 @@ public:
     bool isTimeExceeded(double launch_time, double trigger_time);
 
     //check if a given camera stream is operational
-    bool cameraCheck(std::string camera_check);
+    bool cameraCheck(std::string camera_check,cv::VideoCapture &cap);
 
     //Takes pictures with camera
     void camThreadLaunch(cv::VideoCapture* cap,int cam_number);

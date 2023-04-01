@@ -106,8 +106,9 @@ EventName State_RAFCO_Mission::execute()
 
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		// std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
-		std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
+		std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 G7 A1 C3 A1 D4 F6 C3 H8 C3";
+		//std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
+		//std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
@@ -145,7 +146,7 @@ EventName State_RAFCO_Mission::execute()
 
 			mkdir(base_folder.c_str(), 0777);
 			std::string folder_name_str;
-			if (backup_valid && !sdr1_valid && !sdr2_valid)
+			if (backup_valid && !(sdr1_valid && this->root_->radio1_.packetAvailable()) && !(sdr2_valid && this->root_->radio2_.packetAvailable()))
 			{
 				folder_name_str = base_folder + "/BackupPrimaryPayloadImages" + this->root_->m_log_.getTimestamp();
 			}

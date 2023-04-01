@@ -16,58 +16,7 @@ EventName State_Launch_Detection::execute()
 	float accelArray[this->root_->num_data_points_checked_4_launch_] = {0};
 	float accelAvg = 0;
 	int counter = 0;
-	system("sudo bash ../../cam_assignment.bash");
-	for (int i = 0; i < this->root_->camera_streams_.size(); i++)
-	{
-		std::string camera_stream = this->root_->camera_streams_[i];
-		if (this->root_->cameraCheck(camera_stream))
-		{
-			this->root_->aac_camera_streams_.push_back(camera_stream);
-		}
-	}
-	for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
-	{
-		std::cout << this->root_->aac_camera_streams_[i] << std::endl;
-		if (i == 0)
-		{
-			this->root_->cap1.open(this->root_->aac_camera_streams_[i]);
-			this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-			if (!this->root_->cap1.isOpened())
-			{
-				std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-			}
-			else
-			{
-				this->root_->aac_camera_captures_.push_back(this->root_->cap1);
-			}
-		}
-		else if (i == 1)
-		{
-			this->root_->cap2.open(this->root_->aac_camera_streams_[i]);
-			this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-			if (!this->root_->cap2.isOpened())
-			{
-				std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-			}
-			else
-			{
-				this->root_->aac_camera_captures_.push_back(this->root_->cap2);
-			}
-		}
-		else if (i == 2)
-		{
-			this->root_->cap3.open(this->root_->aac_camera_streams_[i]);
-			this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-			if (!this->root_->cap3.isOpened())
-			{
-				std::cerr << "ERROR! Unable to open camera " << i << std::endl;
-			}
-			else
-			{
-				this->root_->aac_camera_captures_.push_back(this->root_->cap3);
-			}
-		}
-	}
+	
 
 	// launch detected when avg accel exceeds accelRoof*g0 for numDataPointsChecked4Launch
 	while (accelAvg < this->root_->accel_roof_ * this->root_->g0_)
