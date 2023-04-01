@@ -20,17 +20,19 @@ float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 42; // [Hz] IMU sample rate
 
 // Variable flight parameters
-float accelRoof = 1.1; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.3; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 0.4 * samplingFrequency; // how many acceleration points are averaged to see if data set is over accelRoof
-int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
+int numDataPointsChecked4Apogee = 15 * samplingFrequency;//0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 int zThresholdForLanding = 175 * ft2m; // [m] threshold that the altitude must be within for landing
 int maxFlightTime = 150; // [s] max allowable flight time, if exceeded program ends
 long unsigned int LEDBlinkFrequency = 500; //[ms]
+uint32_t imuTimeout = 40; //[ms]
 
 // Calibration parameters
 uint16_t numSampleReadings = 60; // amount of samples taken and averaged to find ground P and T
 int imuWait = 60; //number of samples to get from IMU before actually starting to use + save data
+bool imuConnected = true;
 
 // Initialization values
 float P0;
@@ -106,9 +108,14 @@ void loop() {
   configFile = SD.open(configFileName.c_str());
   if(configFile.available()) {
     fileNum = configFile.parseInt();
+ 
   }
+  if(configFile) {
+      configFile.seek(0);
+      configFile.println(String(fileNum + 1));
+    }
   configFile.close();
-
+  
   programDataFileName = "programData" + String(fileNum) + ".txt";
   flightDataFileName = "flightData" + String(fileNum) + ".txt";
 
@@ -164,10 +171,14 @@ void loop() {
   int counter = 0;
 
   while (accelAvg < accelRoof * g0) {
+    if(imuConnected){
     data = readIMU();
     accelArray[counter%numDataPointsChecked4Launch] = sqrt(pow(data.accelX,2) + pow(data.accelY,2) + pow(data.accelZ,2));
     accelAvg = calcArrayAverage(accelArray, numDataPointsChecked4Launch);
     ++counter;
+    }else{
+      accelAvg = 0;
+    }
   }
 
   // Launch Detected - log & shut off LED
@@ -183,7 +194,9 @@ void loop() {
   unsigned long curTime = millis();
   unsigned long lastBlink = millis();
   while (curTime < tBurnEnd) {
+    if (imuConnected){
     data = readIMU();
+    }
     curTime = millis();
     if ((curTime - lastBlink) > LEDBlinkFrequency){
       switchLED(LED_PIN);
@@ -203,14 +216,16 @@ void loop() {
   writeProgramFile("Looking for apogee");
   curTime = millis();
   while (samplesSinceMaxHasChanged < numDataPointsChecked4Apogee && (curTime - launchTime) < maxFlightMillis) {
-    data = readIMU();
-    zCurrent = pressure2Altitude(data.pressure);
-
-    if (zCurrent >= maxAltitude) {
-      maxAltitude = zCurrent;
-      samplesSinceMaxHasChanged = 0;
-    } else {
-      ++samplesSinceMaxHasChanged;
+    if(imuConnected){
+      data = readIMU();
+      zCurrent = pressure2Altitude(data.pressure);
+  
+      if (zCurrent >= maxAltitude) {
+        maxAltitude = zCurrent;
+        samplesSinceMaxHasChanged = 0;
+      } else {
+        ++samplesSinceMaxHasChanged;
+      }
     }
     curTime = millis();
     if ((curTime - lastBlink) > LEDBlinkFrequency){
@@ -234,6 +249,7 @@ void loop() {
   curTime = millis();
   
   while (!landingDetected(samplesSinceMinHasChanged, zCurrent, launchTime, maxFlightMillis)) {
+    if(imuConnected){
     data = readIMU();
     freqTestCount++;
     zCurrent = pressure2Altitude(data.pressure);
@@ -243,6 +259,7 @@ void loop() {
       samplesSinceMinHasChanged = 0;
     } else {
       ++samplesSinceMinHasChanged;
+    }
     }
     curTime = millis();
     if ((curTime - lastBlink) > LEDBlinkFrequency){
@@ -269,14 +286,6 @@ void loop() {
   theServo.write(servoEnd);
   delay(500); // DON'T DELETE THIS DELAY OTHERWISE IT WON'T WORK
   digitalWrite(LED_PIN, LOW);
-  // Update config file
-  fileNum = fileNum + 1;
-  configFile = SD.open(configFileName.c_str(), FILE_WRITE);
-  if(configFile) {
-    configFile.seek(0);
-    configFile.println(String(fileNum));
-  }
-  configFile.close();  
   
   while(true){} // Halt
 }
@@ -475,7 +484,8 @@ String queryIMU(String request) {
 
   // Send request to IMU
   Serial3.write(request.c_str());
-
+  uint32_t requestTime = millis();
+  
   bool valid = false;
   int attempt = 1;
 
@@ -486,6 +496,11 @@ String queryIMU(String request) {
       if (' ' <= c && c <= '~') {
         response += c;
       }
+
+      if(millis() - requestTime > imuTimeout){
+        imuConnected = false;
+        writeProgramFile("IMU Timed Out :(");
+      }
     } while (c != '*'); // Wait for the check sum
   
     // Read the check sum so it doesn't remain in the buffer
@@ -495,6 +510,8 @@ String queryIMU(String request) {
         response += c;
         i = i + 1;
       }
+
+
     }
 
     if (response.substring(0,VNRRG_LEN-1).equals(request.substring(0,VNRRG_LEN-1)) || attempt++ == 2) {
@@ -512,13 +529,15 @@ void writeProgramFile(String data) {
   programDataFile = SD.open(programDataFileName.c_str(), FILE_WRITE);
   if (programDataFile) {
     programDataFile.println(data + " (" + String(millis()) + ")");
+  }else{
+    SD.begin(SD_CARD_PIN);
   }
   programDataFile.close();
 }
 
 void writeDataFile(imuData data) {
   flightDataFile = SD.open(flightDataFileName.c_str(), FILE_WRITE);
-  if (flightDataFileName) {
+  if (flightDataFile) {
     char buf[256];
     sprintf(buf, "%u\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f\t %6.3f",millis(), data.magX, data.magY, data.magZ, data.accelX, data.accelY, data.accelZ, data.yaw, data.pitch, data.roll, data.temp, data.pressure, data.alt);
     flightDataFile.println(buf);
