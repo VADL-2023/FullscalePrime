@@ -41,6 +41,26 @@ EventName State_Launch_Detection::execute()
 		++counter;
 	}
 
+	for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
+    {
+        if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
+        {
+            std::thread t1(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 1);
+            this->root_->threads_.push_back(move(t1));
+        }
+        else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
+        {
+            std::thread t2(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 2);
+            this->root_->threads_.push_back(move(t2));
+        }
+        else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
+        {
+            std::thread t3(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 3);
+            this->root_->threads_.push_back(move(t3));
+        }
+    }
+	this->root_->m_log_.write("Number of AAC Videos: " + this->root_->threads_.size());
+
 	this->root_->m_log_.write("Average acceleration exceeded " + to_string(this->root_->accel_roof_ * this->root_->g0_) + " m/s^2 over " + std::to_string(this->root_->num_data_points_checked_4_launch_) + " data points");
 	this->root_->m_log_.writeDelim("Rocket Has Launched");
 	this->root_->m_log_.write("Waiting for motor burn time");

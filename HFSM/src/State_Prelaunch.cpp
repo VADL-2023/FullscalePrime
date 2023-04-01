@@ -11,7 +11,6 @@ State_Prelaunch::State_Prelaunch(StateName name, std::map<EventName, StateName> 
 
 EventName State_Prelaunch::execute()
 {
-    std::cout << "In State_Prelaunch and will return end state." << std::endl;
     // variables for initializing pressure, temperature, and gravity
     float pressure_sum;
     float temp_sum;
@@ -23,8 +22,6 @@ EventName State_Prelaunch::execute()
     std::chrono::duration<double> elapsed_seconds = end - start;
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    std::cout << "Date time " << std::ctime(&end_time)
-              << std::endl;
     this->root_->date_timestamp_ = std::ctime(&end_time);
 
     // Get start time and date
@@ -34,6 +31,7 @@ EventName State_Prelaunch::execute()
     time_info = localtime(&raw_time);
     double start_time = this->root_->getCurrentTime();
     this->root_->m_log_.write("Date: " + std::to_string(time_info->tm_mon + 1) + "/" + std::to_string(time_info->tm_mday) + "\n");
+    this->root_->m_log_.write("Date time: " + this->root_->date_timestamp_);
     this->root_->m_log_.write("Flight Name: Subscale\n");
     this->root_->m_log_.write("Verify Critical Parameters: ");
     this->root_->m_log_.write("Motor Burn Time: " + to_string(this->root_->t_burn_) + " s");
@@ -143,26 +141,9 @@ EventName State_Prelaunch::execute()
         for (int i = 0; i < this->root_->camera_streams_.size(); i++)
         {
             std::string camera_stream = this->root_->camera_streams_[i];
-            if (i == 0)
+            if (this->root_->cameraCheck(camera_stream))
             {
-                if (this->root_->cameraCheck(camera_stream))
-                {
-                    this->root_->aac_camera_streams_.push_back(camera_stream);
-                }
-            }
-            else if (i == 1)
-            {
-                if (this->root_->cameraCheck(camera_stream))
-                {
-                    this->root_->aac_camera_streams_.push_back(camera_stream);
-                }
-            }
-            else if (i == 2)
-            {
-                if (this->root_->cameraCheck(camera_stream))
-                {
-                    this->root_->aac_camera_streams_.push_back(camera_stream);
-                }
+                this->root_->aac_camera_streams_.push_back(camera_stream);
             }
         }
 
@@ -190,11 +171,10 @@ EventName State_Prelaunch::execute()
         {
             this->root_->restart_ = true;
         }
-        // kill(pid_radio_test + 3, SIGTERM);
     }
     for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
     {
-        std::cout << this->root_->aac_camera_streams_[i] << std::endl;
+        this->root_->m_log_.write("Opening stream for AAC: " + this->root_->aac_camera_streams_[i]);
         if (i == 0)
         {
             if (!this->root_->cap1.isOpened())
@@ -204,7 +184,7 @@ EventName State_Prelaunch::execute()
             }
             if (!this->root_->cap1.isOpened())
             {
-                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
             }
             else
             {
@@ -225,7 +205,7 @@ EventName State_Prelaunch::execute()
             }
             if (!this->root_->cap2.isOpened())
             {
-                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
             }
             else
             {
@@ -246,7 +226,7 @@ EventName State_Prelaunch::execute()
             }
             if (!this->root_->cap3.isOpened())
             {
-                std::cerr << "ERROR! Unable to open camera " << i << std::endl;
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
             }
             else
             {

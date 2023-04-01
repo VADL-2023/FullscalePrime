@@ -30,13 +30,18 @@ EventName State_Full_Lift::execute()
 	int apiID = cv::CAP_ANY; // 0 = autodetect default API
 	int numPics = 0;
 	// open selected camera using selected API
-	cap.open(this->root_->primary_camera_stream_, apiID);
-	// check if we succeeded
-	if (!cap.isOpened())
+	std::thread t1_test;
+	if (this->root_->primary_camera_stream_ != "")
 	{
-		std::cerr << "ERROR! Unable to open camera\n";
+		cap.open(this->root_->primary_camera_stream_, apiID);
+		// check if we succeeded
+		if (!cap.isOpened())
+		{
+			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
+		}
+		std::thread t1(&Root::camThreadLift, this->root_, &cap);
+		t1_test = std::move(t1);
 	}
-	std::thread t1(&Root::camThreadLift, this->root_, &cap);
 	while (!is_done)
 	{
 		is_done = !gpioRead(this->root_->lift_final_limit_switch_);
@@ -59,7 +64,8 @@ EventName State_Full_Lift::execute()
 	gpioWrite(this->root_->lift_n_, 0);
 	gpioPWM(this->root_->lift_enable_, 0);
 	usleep(10000); // TODO: Does this need to be gpioSleep()?
-	std::cout << "Time for lift: " << current_time - start_time  << std::endl;
+	double lift_time_ms = current_time - start_time;
+	this->root_->m_log_.write("Time for lift " + std::to_string(lift_time_ms));
 
 	double backwards_time_start = this->root_->getCurrentTime();
 	double backwards_time_current = this->root_->getCurrentTime();
@@ -81,7 +87,7 @@ EventName State_Full_Lift::execute()
 	gpioWrite(this->root_->lift_n_, 0);
 	gpioPWM(this->root_->lift_enable_, 0);
 	this->root_->lift_done_ = true;
-	t1.join();
+	t1_test.join();
 	cap.release();
 	if (is_time_up)
 	{
