@@ -20,12 +20,12 @@ float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 42; // [Hz] IMU sample rate
 
 // Variable flight parameters
-float accelRoof = 1.3; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 0.4 * samplingFrequency; // how many acceleration points are averaged to see if data set is over accelRoof
-int numDataPointsChecked4Apogee = 15 * samplingFrequency;//0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
+int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
 int zThresholdForLanding = 175 * ft2m; // [m] threshold that the altitude must be within for landing
-int maxFlightTime = 150; // [s] max allowable flight time, if exceeded program ends
+int maxFlightTime = 600; // [s] max allowable flight time, if exceeded program ends
 long unsigned int LEDBlinkFrequency = 500; //[ms]
 uint32_t imuTimeout = 40; //[ms]
 
@@ -85,6 +85,11 @@ void setup() {
  
   if (!SD.begin(SD_CARD_PIN)) {
     Serial.println("SD card initialization failed");
+    // If not connected initially, abort
+    while(true){
+      switchLED(LED_PIN);
+      delay(100);
+    }
   }
 
   // Initialize the servo and turn on LED
@@ -108,8 +113,12 @@ void loop() {
   configFile = SD.open(configFileName.c_str());
   if(configFile.available()) {
     fileNum = configFile.parseInt();
- 
+    Serial.print("CONFIG FILE NUMBER ");
+    Serial.println(fileNum);
   }
+  configFile.close();
+
+  configFile = SD.open(configFileName.c_str(), FILE_WRITE);
   if(configFile) {
       configFile.seek(0);
       configFile.println(String(fileNum + 1));
@@ -234,6 +243,7 @@ void loop() {
     }
   }
 
+  if (samplesSinceMaxHasChanged > numDataPointsChecked4Apogee)
   writeProgramFile("Altitude has not reached a new max for " + String(numDataPointsChecked4Apogee) + " samples");
   writeProgramFile("Apogee detected");
 
@@ -529,8 +539,6 @@ void writeProgramFile(String data) {
   programDataFile = SD.open(programDataFileName.c_str(), FILE_WRITE);
   if (programDataFile) {
     programDataFile.println(data + " (" + String(millis()) + ")");
-  }else{
-    SD.begin(SD_CARD_PIN);
   }
   programDataFile.close();
 }
