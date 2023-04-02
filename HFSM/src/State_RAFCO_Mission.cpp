@@ -21,7 +21,7 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
-	system("sudo ../../kill_direwolf_and_rtl.bash");
+	//system("sudo ../../kill_direwolf_and_rtl.bash");
 	this->root_->m_log_.write("Starting the SDRs");
 	this->root_->radio1_.startSDR();
 	this->root_->radio2_.startSDR();
@@ -128,12 +128,14 @@ EventName State_RAFCO_Mission::execute()
 			prev_command = rafco_stream.str();
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
-				//gpioWrite(this->root_->stepper_1_standby_pin_, 1);
+				// TODO: uncomment
+				gpioWrite(this->root_->stepper_1_standby_pin_, 1);
 				usleep(5000000);
 			}
 			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 			{
-				//gpioWrite(this->root_->stepper_3_standby_pin_, 1);
+				// TODO: uncomment
+				gpioWrite(this->root_->stepper_3_standby_pin_, 1);
 				usleep(5000000);
 			}
 			else

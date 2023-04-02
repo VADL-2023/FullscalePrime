@@ -72,7 +72,7 @@ void PacketReceiver::startSDR(Log &m_log)
     stopSDR();
     std::string input_filename = "sdr" + std::to_string(serial_num) + "_output" + std::to_string(count++) + ".txt";
     std::string command = sdr_script + " -o " + input_filename + " -d " + std::to_string(serial_num) + " -f " + frequency + " -c " + configfile;
-    std::cout << "Command: " << command << std::endl;
+    //std::cout << "Command: " << command << std::endl;
     bool got_pid = false;
     for (int i = 0; i < 5 && !got_pid; i++)
     {

@@ -66,14 +66,14 @@ EventName State_Launch_Detection::execute()
 			}
 
 		}
-		else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
-		{
-			std::thread t2(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 2, max_photos);
-			this->root_->threads_.push_back(move(t2));
-		}
 		else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
 		{
-			std::thread t3(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 3, max_photos);
+			std::thread t2(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 3, max_photos);
+			this->root_->threads_.push_back(move(t2));
+		}
+		else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
+		{
+			std::thread t3(&Root::camThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], 2, max_photos);
 			this->root_->threads_.push_back(move(t3));
 		}
 	}

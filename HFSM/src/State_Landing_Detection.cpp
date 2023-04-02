@@ -36,8 +36,8 @@ EventName State_Landing_Detection::execute()
 	double my_start_time = this->root_->getCurrentTime();
 	double my_end_time = my_start_time;
 	int measure_count = 0;
-	while(this->root_->getCurrentTime() - my_start_time < 180000)
-	//while (!this->root_->time_delay_enabled_ && !((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_)) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
+	//while(this->root_->getCurrentTime() - my_start_time < 180000)
+	while (!this->root_->time_delay_enabled_ && !((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_)) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
 		{
