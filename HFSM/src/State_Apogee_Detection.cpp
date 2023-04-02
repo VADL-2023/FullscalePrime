@@ -24,7 +24,9 @@ EventName State_Apogee_Detection::execute()
 	this->root_->m_log_.write("Looking for Apogee");
 
 	// apogee detected when a new max altitude has not been achieved for this->root_->num_data_points_checked_4_apogee_
-	while ((!this->root_->time_delay_enabled_ && samples_since_max_has_changed < this->root_->num_data_points_checked_4_apogee_) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
+	double apogee_start_time = this->root_->getCurrentTime();
+	while(!this->root_->time_delay_enabled_ && this->root_->getCurrentTime() - apogee_start_time < 30000)
+	//while ((!this->root_->time_delay_enabled_ && samples_since_max_has_changed < this->root_->num_data_points_checked_4_apogee_) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
 		{

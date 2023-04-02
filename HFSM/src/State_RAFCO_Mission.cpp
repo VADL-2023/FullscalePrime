@@ -50,6 +50,8 @@ EventName State_RAFCO_Mission::execute()
 	if(this->root_->primary_camera_stream_ == "") {
 		this->root_->primary_camera_stream_ = "/dev/videoCam2";
 	}
+	std::string log_camera_stream = "Primary camera stream: " + this->root_->primary_camera_stream_;
+	this->root_->m_log_.write(log_camera_stream);
 	cap.open(this->root_->primary_camera_stream_, apiID);
 	// check if we succeeded
 	if (!cap.isOpened())
@@ -126,12 +128,12 @@ EventName State_RAFCO_Mission::execute()
 			prev_command = rafco_stream.str();
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
-				gpioWrite(this->root_->stepper_1_standby_pin_, 1);
+				//gpioWrite(this->root_->stepper_1_standby_pin_, 1);
 				usleep(5000000);
 			}
 			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 			{
-				gpioWrite(this->root_->stepper_3_standby_pin_, 1);
+				//gpioWrite(this->root_->stepper_3_standby_pin_, 1);
 				usleep(5000000);
 			}
 			else

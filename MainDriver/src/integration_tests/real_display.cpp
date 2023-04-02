@@ -230,7 +230,7 @@ int main()
     std::string userInput;
     int userInt = 0;
 
-    State *current_state = &prelaunch;
+    State *current_state = &camera_check;
     State *next_state = current_state;
     EventName curr_event;
 

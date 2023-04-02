@@ -408,7 +408,7 @@ void Root::camThreadRCB(cv::VideoCapture *cap)
     }
 }
 
-void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
+void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos)
 {
     double prev_time = getCurrentTime();
     std::vector<cv::Mat> frames;
@@ -438,7 +438,8 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
     mkdir(folder_name_str.c_str(), 0777);
     std::string cam_str;
 
-    while (!this->landing_detected_)
+    try {
+    while (!this->landing_detected_ && frames.size() < max_photos)
     {
         double curr_time = getCurrentTime();
         prev_time = curr_time;
@@ -457,6 +458,11 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
         date_time.pop_back();
         frames.push_back(frame);
         date_times.push_back(date_time);
+        //std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
+    }
+    } catch(...) {
+        std::string error_message = "Exception thrown capturing frames for camera " + std::to_string(cam_number);
+        this->m_log_.write(error_message);
     }
     if (cam_number == 1)
     {
@@ -476,6 +482,7 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
         mkdir(cam_str.c_str(), 0777);
         this->m_log_.write("Camera 3 Folder: " + cam_str);
     }
+    try {
     for (int i = 0; i < frames.size(); i++)
     {
         std::string aac_num_string = std::to_string(i);
@@ -490,6 +497,10 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number)
         cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
         cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
         cv::imwrite(pic_name_str, the_frame);
+    }
+    } catch(...) {
+        std::string error_message = "Exception thrown writing frames for camera " + std::to_string(cam_number);
+        this->m_log_.write(error_message);
     }
 }
 

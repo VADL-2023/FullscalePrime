@@ -229,7 +229,7 @@ public:
 
     void camThreadApogee(cv::VideoCapture* cap,int cam_number);
 
-    void camThreadLanding(cv::VideoCapture* cap,int cam_number);
+    void camThreadLanding(cv::VideoCapture* cap,int cam_number,int max_photos);
 
 private:
 
