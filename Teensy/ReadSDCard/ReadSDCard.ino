@@ -32,7 +32,7 @@ void loop() {
 
 void displayDirectoryContent(SdFile& aDirectory, byte tabulation) {
   SdFile file;
-  char fileName[20];
+  char fileName[40];
 
   if (!aDirectory.isDir()) return;
   aDirectory.rewind();

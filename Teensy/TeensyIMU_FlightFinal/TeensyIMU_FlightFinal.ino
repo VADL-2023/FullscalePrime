@@ -565,7 +565,7 @@ String queryIMU(String request) {
       }
 
       // Check if a timeout has occurred
-      if (response.length() == 0 && millis() - request_time > imuTimeout) {
+      if (millis() - request_time > imuTimeout) {
         // return an empty response
         return response;
       }
