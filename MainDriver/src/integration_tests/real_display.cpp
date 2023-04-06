@@ -208,18 +208,6 @@ int main()
     full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, STATE_RAFCO_MISSION));
     State_Full_Level full_level(full_level_name, full_level_transitions, &root);
 
-    // State Stepper 2
-    /*StateName stepper2_name = STATE_STEPPER2;
-    std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_SDR1));
-    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);*/
-
-    // State SDR 1
-    /*StateName sdr1_name = STATE_SDR1;
-    std::map<EventName, StateName> sdr1_transitions;
-    sdr1_transitions.insert(std::pair<EventName, StateName>(RECEIVED_PACKETS, END_STATE));
-    State_SDR1 sdr1(sdr1_name, sdr1_transitions, &root);*/
-
     // State RAFCO
     StateName rafco_mission_name = STATE_RAFCO_MISSION;
     std::map<EventName, StateName> rafco_mission_transitions;

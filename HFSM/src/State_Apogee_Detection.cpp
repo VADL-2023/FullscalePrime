@@ -24,6 +24,8 @@ EventName State_Apogee_Detection::execute()
 	this->root_->m_log_.write("Looking for Apogee");
 
 	// apogee detected when a new max altitude has not been achieved for this->root_->num_data_points_checked_4_apogee_
+	double apogee_start_time = this->root_->getCurrentTime();
+	//while(this->root_->getCurrentTime() - apogee_start_time < 30000)
 	while ((!this->root_->time_delay_enabled_ && samples_since_max_has_changed < this->root_->num_data_points_checked_4_apogee_) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
@@ -41,42 +43,7 @@ EventName State_Apogee_Detection::execute()
 			{
 				++samples_since_max_has_changed;
 			}
-			//for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
-			for(int i = 0;i < 0;i++)
-			{
-				cv::Mat frame;
-				cv::rotate(frame, frame, cv::ROTATE_180);
-				this->root_->aac_camera_captures_[i].read(frame);
-				if (frame.empty())
-				{
-					std::cerr << "ERROR! blank frame" << i << " grabbed\n";
-					break;
-				}
-				std::string folder_name_str = this->root_->date_timestamp_ + "/SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
-				mkdir(folder_name_str.c_str(), 0777);
-				std::string cam_str;
-				if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
-				{
-					cam_str = folder_name_str + "/cam1";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
-				{
-					cam_str = folder_name_str + "/cam2";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
-				{
-					cam_str = folder_name_str + "/cam3";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
-				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, aac_num_string.size());
-				aac_num_string.insert(0, precision, '0');
-				std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-				cv::imwrite(pic_name_str, frame);
-			}
-			this->root_->aac_pic_num_++;
+
 		}
 		catch (const std::exception &e)
 		{
