@@ -21,6 +21,7 @@
 #include "State_RAFCO_Mission.h"
 #include "State_SDR1.h"
 #include "State_SDR2.h"
+#include "State_Camera_Check.h"
 #include <map>
 #include "pigpio.h"
 #include <unistd.h>
@@ -90,6 +91,9 @@ std::string getStateName(StateName stateType)
         break;
     case STATE_RAFCO_MISSION:
         name = "RAFCO Mission";
+        break;
+    case STATE_CAMERA_CHECK:
+        name = "Camera Check";
         break;
     case END_STATE:
         name = "End State";
@@ -171,11 +175,17 @@ int main()
     landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
-    // State Landing Detection
+    // State PDS Delay
     StateName pds_delay_name = STATE_PDS_DELAY;
     std::map<EventName, StateName> pds_delay_transitions;
-    pds_delay_transitions.insert(std::pair<EventName, StateName>(DELAY, STATE_FULL_RCB));
+    pds_delay_transitions.insert(std::pair<EventName, StateName>(DELAY, STATE_CAMERA_CHECK));
     State_PDS_Delay pds_delay(pds_delay_name, pds_delay_transitions, &root);
+
+    // State Camera Check
+    StateName camera_check_name = STATE_CAMERA_CHECK;
+    std::map<EventName, StateName> camera_check_transitions;
+    camera_check_transitions.insert(std::pair<EventName, StateName>(CAMERA_PICKED, STATE_FULL_RCB));
+    State_Camera_Check camera_check(camera_check_name, camera_check_transitions, &root);
 
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
@@ -198,18 +208,6 @@ int main()
     full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, STATE_RAFCO_MISSION));
     State_Full_Level full_level(full_level_name, full_level_transitions, &root);
 
-    // State Stepper 2
-    /*StateName stepper2_name = STATE_STEPPER2;
-    std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_SDR1));
-    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);*/
-
-    // State SDR 1
-    /*StateName sdr1_name = STATE_SDR1;
-    std::map<EventName, StateName> sdr1_transitions;
-    sdr1_transitions.insert(std::pair<EventName, StateName>(RECEIVED_PACKETS, END_STATE));
-    State_SDR1 sdr1(sdr1_name, sdr1_transitions, &root);*/
-
     // State RAFCO
     StateName rafco_mission_name = STATE_RAFCO_MISSION;
     std::map<EventName, StateName> rafco_mission_transitions;
@@ -222,6 +220,7 @@ int main()
     root.addState(&apogee_detection);
     root.addState(&landing_detection);
     root.addState(&pds_delay);
+    root.addState(&camera_check);
     root.addState(&full_rcb);
     root.addState(&full_lift);
     root.addState(&full_level);
@@ -267,7 +266,9 @@ int main()
             int numStates = END_STATE + 1;
             for (int i = 0; i < numStates; i++)
             {
-                std::cout << std::to_string(i + 1) << ". " << getStateName((StateName)i) << std::endl;
+                if (root.states_.count((StateName)i)){
+                    std::cout << std::to_string(i + 1) << ". " << getStateName((StateName)i) << std::endl;
+                }
             }
             std::cout << std::to_string(numStates + 1) << ". "
                       << "Quit" << std::endl;

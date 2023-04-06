@@ -7,8 +7,8 @@
 
 const int TIME_THRESHOLD = 20000;
 const int STEPS_PER_REVOLUTION = 200;
-const int STEPPER_SPEED = 5;
-const int NUM_STEPS = 40;
+const int STEPPER_SPEED = 15;
+const int NUM_STEPS = 34;
 const int STEPPER_2_STANDBY_PIN = 27;
 const int STEPPER_2_PIN_1 = 17;
 const int STEPPER_2_PIN_2 = 4;
@@ -59,12 +59,12 @@ int main()
         else if (userInput == "R")
         {
             gpioWrite(STEPPER_2_STANDBY_PIN, 1);
-            usleep(1000000);
+            usleep(500000);
             std::cout << "Moving one way" << std::endl;
             // std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
             stepper_2.step(-NUM_STEPS);
             std::cout << "Pausing" << std::endl;
-            usleep(1000000);
+            usleep(500000);
             gpioWrite(STEPPER_2_STANDBY_PIN, 0);
         }
         else if (userInput == "S")
