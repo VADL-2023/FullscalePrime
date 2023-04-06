@@ -4,7 +4,7 @@
 
 int main() {
     std::string configfile = "/home/vadl/FullscalePrime/sdr1.conf";
-    PacketReceiver sdr1 = PacketReceiver(100, "144.97M", 8001, configfile);
+    PacketReceiver sdr1 = PacketReceiver(1, "144.97M", 8001, configfile);
     sdr1.startSDR();
 
     AX25Packet p;

@@ -162,12 +162,44 @@ AX25Packet PacketReceiver::getPacket() {
 
         // std::cout << std::endl;
 
+        //
+        if (data[0] == '`' || data[0] == '‘' || data[0] == '\'' || data[0] == 0x1C || data[0] == 0x1D) {
+            p.msg = decodeMicEComment(data, len_frame - 15);
+        } else {
+            p.msg = data;
+        }
+
         p.source = source_addr;
         p.dest = dest_addr;
-        p.msg = data;
     } 
 
     return p;
+}
+
+std::string PacketReceiver::decodeMicEComment(char* msg, int length) {
+    // Verify that it is a MicE packet
+    if (length < 9 || !(*msg == '`' || *msg == '‘' || *msg == '\'' || *msg == 0x1C || *msg == 0x1D)) {
+        return "";
+    }
+
+    // status text offset
+    int i = 10;
+    
+    // get status text
+    std::string status_text = "";
+    while (i < length && *(msg + i) != '_') {
+        char c = *(msg + i);
+        // make sure it is ascii
+        if (c >= 32 && c <= 127 ) {
+            status_text += c;
+            i++;
+        } else {
+            // return if it is not an ascii character
+            return "";
+        }
+    }
+
+    return status_text;
 }
 
 // Executes cmd on the command line

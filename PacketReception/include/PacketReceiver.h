@@ -37,6 +37,9 @@ class PacketReceiver {
         // returns the output from the command line
         std::string exec(std::string cmd);
 
+        // Decode Mic-E message
+        std::string decodeMicEComment(char* msg, int length);
+
     public:
 
         PacketReceiver(int serial_num, std::string frequency, int port, std::string configfile);

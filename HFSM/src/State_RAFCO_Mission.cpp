@@ -70,8 +70,7 @@ EventName State_RAFCO_Mission::execute()
 		{
 			// Read the packet from the SDR and print it out
 			p1 = this->root_->radio1_.getPacket();
-			this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
-
+			
 			// An error will be returned if the SDR becomes disconnected
 			// or if there is an issue with the ports
 			if (p1.msg.find("ERROR") != std::string::npos)
@@ -80,8 +79,14 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				rafco_command = p1.msg;
-				got_packet = true;
+				if (p1.source == root_->callsign_) {
+					rafco_command = p1.msg;
+					got_packet = true;
+					this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
+				} else {
+					this->root_->m_log_.write("Radio 1 received a packet from " + p1.source);
+					this->root_->m_log_.write("Packet received: " + p1.msg);
+				}
 			}
 		}
 
@@ -89,7 +94,6 @@ EventName State_RAFCO_Mission::execute()
 		{
 			// Read the packet from the SDR and print it out
 			p2 = this->root_->radio2_.getPacket();
-			this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
 
 			// An error will be returned if the SDR becomes disconnected
 			// or if there is an issue with the ports
@@ -99,8 +103,14 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				rafco_command = p2.msg;
-				got_packet = true;
+				if (p1.source == root_->callsign_) {
+					rafco_command = p2.msg;
+					got_packet = true;
+					this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
+				} else {
+					this->root_->m_log_.write("Radio 2 received a packet from " + p2.source);
+					this->root_->m_log_.write("Packet received: " + p2.msg);
+				}
 			}
 		}
 
