@@ -20,7 +20,7 @@ float tBurn = 1.9; // [s] motor burn time
 float samplingFrequency = 42; // [Hz] IMU sample rate
 
 // Variable flight parameters
-float accelRoof = 3.5; // how many g's does the program need to see in order for launch to be detected
+float accelRoof = 1.5; // how many g's does the program need to see in order for launch to be detected
 int numDataPointsChecked4Launch = 0.4 * samplingFrequency; // how many acceleration points are averaged to see if data set is over accelRoof
 int numDataPointsChecked4Apogee = 0.5 * samplingFrequency; // how many altitude points must a new max not be found for apogee to be declared
 int numDataPointsChecked4Landing = 10 * samplingFrequency; // how many altitude points must a new min not be found for landing to be declared
