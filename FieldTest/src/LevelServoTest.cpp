@@ -7,7 +7,7 @@ const int LEVEL_SERVO = 3;
 const uint16_t SERVO_PULSE_MIN = 500;
 const uint16_t SERVO_PULSE_MAX = 2250;
 const uint8_t SERVO_DEG_RANGE = 90;
-const int LIFT_LOCK = 1500;
+const int LIFT_LOCK = 1600;
 const int LIFT_UNLOCK = 1150;
 
 double getCurrentTime()
