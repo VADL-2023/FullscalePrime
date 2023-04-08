@@ -172,7 +172,7 @@ int main()
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, END_STATE));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
     // State PDS Delay
