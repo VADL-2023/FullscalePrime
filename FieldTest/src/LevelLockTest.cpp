@@ -7,7 +7,7 @@ const int LEVEL_SERVO = 3;
 const uint16_t SERVO_PULSE_MIN = 500;
 const uint16_t SERVO_PULSE_MAX = 2250;
 const uint8_t SERVO_DEG_RANGE = 90;
-const int LIFT_LOCK = 1600;
+const int LIFT_LOCK = 1500;
 const int LIFT_UNLOCK = 1150;
 
 double getCurrentTime()
@@ -37,25 +37,17 @@ int main()
     double angle = 0;
     float pulse_width;
     bool run_again = true;
-    int pulseWidth = 1500;
+    int pulseWidth = 1400;
     do
     {
 
         // Wait for the user to signal that the parachute should be detached
         std::string userInput = "";
-        std::cout << "What do you want to do to the lift (L | U | Q): ";
+        std::cout << "What do you want to do to the lift (L | Q): ";
         std::cin >> userInput;
         
         if (userInput == "L")
         {
-            pulseWidth += 100;
-            std::cout << "Pulse width: " << pulseWidth << std::endl;
-            gpioServo(LEVEL_SERVO, pulseWidth);
-            gpioSleep(0, 2, 0);
-        }
-        else if (userInput == "U")
-        {
-            pulseWidth -= 100;
             std::cout << "Pulse width: " << pulseWidth << std::endl;
             gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);

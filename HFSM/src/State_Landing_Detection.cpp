@@ -36,7 +36,7 @@ EventName State_Landing_Detection::execute()
 	double my_start_time = this->root_->getCurrentTime();
 	double my_end_time = my_start_time;
 	int measure_count = 0;
-
+	//while(this->root_->getCurrentTime() - my_start_time < 180000)
 	while (!this->root_->time_delay_enabled_ && !((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_)) && !this->root_->isTimeExceeded(this->root_->launch_time_, this->root_->max_flight_time_))
 	{
 		try
@@ -62,42 +62,6 @@ EventName State_Landing_Detection::execute()
 				++samples_since_min_has_changed;
 			}
 
-			//for (int i = 0; i < this->root_->aac_camera_captures_.size(); i++)
-			for(int i = 0; i < 0; i++)
-			{
-				cv::Mat frame;
-				cv::rotate(frame, frame, cv::ROTATE_180);
-				this->root_->aac_camera_captures_[i].read(frame);
-				if (frame.empty())
-				{
-					std::cerr << "ERROR! blank frame" << i << " grabbed\n";
-					break;
-				}
-				std::string folder_name_str = "SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
-				mkdir(folder_name_str.c_str(), 0777);
-				std::string cam_str;
-				if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
-				{
-					cam_str = folder_name_str + "/cam1";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
-				{
-					cam_str = folder_name_str + "/cam2";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
-				{
-					cam_str = folder_name_str + "/cam3";
-					mkdir(cam_str.c_str(), 0777);
-				}
-				std::string aac_num_string = std::to_string(this->root_->aac_pic_num_);
-				int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, aac_num_string.size());
-				aac_num_string.insert(0, precision, '0');
-				std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-				cv::imwrite(pic_name_str, frame);
-			}
-			this->root_->aac_pic_num_++;
 			this->root_->landing_time_ = this->root_->getCurrentTime();
 		}
 		catch (const std::exception &e)
@@ -152,11 +116,6 @@ EventName State_Landing_Detection::execute()
 	{
 		this->root_->aac_camera_captures_[i].release();
 	}
-	this->root_->aac_fps_ = this->root_->aac_pic_num_ / ((this->root_->landing_time_ - this->root_->launch_time_) / 1000);
-	std::cout << "FPS 1: " << this->root_->aac_pic_num_cam_1_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
-	std::cout << "FPS 2: " << this->root_->aac_pic_num_cam_2_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
-	std::cout << "FPS 3: " << this->root_->aac_pic_num_cam_3_ / ((my_end_time - my_start_time) / 1000 )<< std::endl;
-	std::cout << "Freq: " << measure_count / ((my_end_time - my_start_time) / 1000 )<< std::endl;
 	this->root_->cap1.release();
     this->root_->cap2.release();
     this->root_->cap3.release();

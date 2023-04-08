@@ -35,7 +35,8 @@ public:
     bool is_unit_fsm_;
     int unit_test_delay_ms_ = 1000000;
 
-    int pds_delay_ = 60000;
+    
+    std::string date_timestamp_ = "";
 
     int steps_per_revolution_ = 200;
     int stepper_speed_ = 10;
@@ -89,7 +90,6 @@ public:
     int full_rcb_time_threshold_ = 40000;
 
     double landing_time_;
-    double aac_fps_;
     size_t n_photo_bit_size_ = 5;
 
     int nacelle_servo_ = 14;
@@ -112,15 +112,17 @@ public:
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 45000;
+    int lift_time_threshold_ = 30000;   // [ms]
+    int lift_backwards_time_threshold_ = 1680;
+    int lift_min_threshold_ = 5000;     // [ms]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
     double ideal_level_angle_ = 180;
-    int servo_up_pos_ = 0;
-    int servo_down_pos_ = 45;
-    double max_down_angle_ = 15;
-    double max_up_angle_ = -15;
+    int min_angle_ = -10;
+    int min_pulse_width_ = 1200;
+    int max_angle_ = 20;
+    int max_pulse_width_ = 1900;
 
     std::map<StateName, State *> states_;
     std::vector<std::thread> threads_;
@@ -143,17 +145,18 @@ public:
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 1.1;                                                                      // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 3.5;                                                                    // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
     int num_data_points_checked_4_landing_ = num_seconds_no_new_minimum_ * sampling_frequency_; // how many altitude points must a new min not be found for landing to be declared
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
-    int max_flight_time_ = 150;                                                                 // [s] max allowable flight time, if exceeded program ends
+    int max_flight_time_ = 600;                                                                 // [s] max allowable flight time, if exceeded program ends
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 20;                                                             // TODO CHA4 * 60; // [s] amount of time to collect RAFCO signals and perform image processing
+    int length_collect_rafco_ = 30 * 60; // TODO CHA4 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
     std::string rafco_freq_ = "144.97M";                                                        // Frequency for RAFCO transmissions
     std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
+    int pds_delay_ = 60 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
 
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
@@ -226,7 +229,7 @@ public:
 
     void camThreadApogee(cv::VideoCapture* cap,int cam_number);
 
-    void camThreadLanding(cv::VideoCapture* cap,int cam_number);
+    void camThreadLanding(cv::VideoCapture* cap,int cam_number,int max_photos);
 
 private:
 

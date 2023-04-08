@@ -1,26 +1,28 @@
 #include "State_Full_Lift.h"
 #include "Root.h"
+#include <unistd.h> // sleep function
 
-State_Full_Lift::State_Full_Lift(): State() {
-
+State_Full_Lift::State_Full_Lift() : State()
+{
 }
 
-State_Full_Lift::State_Full_Lift(StateName name, std::map<EventName, StateName> &state_transitions, Root* root) : State(name, state_transitions, root) {
-
+State_Full_Lift::State_Full_Lift(StateName name, std::map<EventName, StateName> &state_transitions, Root *root) : State(name, state_transitions, root)
+{
 }
 
-EventName State_Full_Lift::execute() {
+EventName State_Full_Lift::execute()
+{
 	this->root_->m_log_.write("In State full lift");
 	this->root_->m_log_.write("Initiate lift servo unlock");
-	gpioServo(this->root_->lift_servo_,this->root_->lift_unlock_);
-	gpioSleep(0,2,0);
+	gpioServo(this->root_->lift_servo_, this->root_->lift_unlock_);
+	gpioSleep(0, 2, 0);
 	this->root_->m_log_.write("Initiate lift servo lock");
 	bool is_done = false;
 	bool is_time_up = false;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;
 	this->root_->m_log_.write("Starting winch");
-	gpioWrite(this->root_->rcb_lift_standby_,1);
+	gpioWrite(this->root_->rcb_lift_standby_, 1);
 	cv::VideoCapture cap;
 	// open the default camera using default API
 	// cap.open(0);
@@ -28,43 +30,78 @@ EventName State_Full_Lift::execute() {
 	int apiID = cv::CAP_ANY; // 0 = autodetect default API
 	int numPics = 0;
 	// open selected camera using selected API
-	cap.open(this->root_->primary_camera_stream_, apiID);
-	// check if we succeeded
-	if (!cap.isOpened())
+	std::thread t1_test;
+	if (this->root_->primary_camera_stream_ != "")
 	{
-		std::cerr << "ERROR! Unable to open camera\n";
+		cap.open(this->root_->primary_camera_stream_, apiID);
+		// check if we succeeded
+		if (!cap.isOpened())
+		{
+			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
+		}
+		std::thread t1(&Root::camThreadLift, this->root_, &cap);
+		t1_test = std::move(t1);
 	}
-	std::thread t1(&Root::camThreadLift, this->root_, &cap);
-	while(!is_done) {
-		std::cout << "Base Limit switch: " << gpioRead(this->root_->lift_base_limit_switch_) << std::endl;
-		std::cout << "Final Limit switch: " << gpioRead(this->root_->lift_final_limit_switch_) << std::endl;
+	while (!is_done)
+	{
 		is_done = !gpioRead(this->root_->lift_final_limit_switch_);
 		current_time = this->root_->getCurrentTime();
-		if(current_time - start_time > this->root_->lift_time_threshold_) {
+		if (current_time - start_time > this->root_->lift_time_threshold_)
+		{
 			is_time_up = true;
 			is_done = true;
 		}
-		gpioWrite(this->root_->lift_p_,1);
-		gpioWrite(this->root_->lift_n_,0);
-		gpioPWM(this->root_->lift_enable_,this->root_->pwm_motor_max_);
-		
+		if (current_time - start_time < this->root_->lift_min_threshold_)
+		{
+			is_done = false;
+		}
+		gpioWrite(this->root_->lift_p_, 1);
+		gpioWrite(this->root_->lift_n_, 0);
+		gpioPWM(this->root_->lift_enable_, this->root_->pwm_motor_max_);
 	}
+	// Turn off lift
+	gpioWrite(this->root_->lift_p_, 0);
+	gpioWrite(this->root_->lift_n_, 0);
+	gpioPWM(this->root_->lift_enable_, 0);
+	usleep(10000); // TODO: Does this need to be gpioSleep()?
+	double lift_time_ms = current_time - start_time;
+	this->root_->m_log_.write("Time for lift " + std::to_string(lift_time_ms));
+
+	double backwards_time_start = this->root_->getCurrentTime();
+	double backwards_time_current = this->root_->getCurrentTime();
+	// Run lift backwards
+	if (current_time - start_time > this->root_->lift_min_threshold_)
+	{
+		while (backwards_time_current - backwards_time_start < this->root_->lift_backwards_time_threshold_)
+		{
+			gpioWrite(this->root_->lift_p_, 0);
+			gpioWrite(this->root_->lift_n_, 1);
+			gpioPWM(this->root_->lift_enable_, this->root_->pwm_motor_max_);
+			backwards_time_current = this->root_->getCurrentTime();
+		}
+	}
+
+	// Turn off lift
+	gpioWrite(this->root_->rcb_lift_standby_, 0);
+	gpioWrite(this->root_->lift_p_, 0);
+	gpioWrite(this->root_->lift_n_, 0);
+	gpioPWM(this->root_->lift_enable_, 0);
 	this->root_->lift_done_ = true;
-	t1.join();
-	gpioWrite(this->root_->rcb_lift_standby_,0);
-	gpioWrite(this->root_->lift_p_,0);
-	gpioPWM(this->root_->lift_enable_,0);
+	t1_test.join();
 	cap.release();
-	if(is_time_up) {
+	if (is_time_up)
+	{
 		this->root_->m_log_.write("Time Ran Out for Lift");
 		return LIFT_FAILURE;
-	} else {
-		this->root_->m_log_.write("Lift success");
-		return LIFT_SUCCESS; 
 	}
-	
+	else
+	{
+		this->root_->m_log_.write("Lift success");
+		return LIFT_SUCCESS;
+	}
 }
 
-EventName State_Full_Lift::unitExecute() {
+EventName State_Full_Lift::unitExecute()
+{
 	return this->execute();
 }

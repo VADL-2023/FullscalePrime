@@ -1,20 +1,28 @@
 #include "State_Prelaunch.h"
 #include "Root.h"
 
-State_Prelaunch::State_Prelaunch(): State() {
-
+State_Prelaunch::State_Prelaunch() : State()
+{
 }
 
-State_Prelaunch::State_Prelaunch(StateName name, std::map<EventName, StateName> &state_transitions, Root* root) : State(name, state_transitions, root) {
-
+State_Prelaunch::State_Prelaunch(StateName name, std::map<EventName, StateName> &state_transitions, Root *root) : State(name, state_transitions, root)
+{
 }
 
-EventName State_Prelaunch::execute() {
-	std::cout << "In State_Prelaunch and will return end state." << std::endl;
-	// variables for initializing pressure, temperature, and gravity
+EventName State_Prelaunch::execute()
+{
+    // variables for initializing pressure, temperature, and gravity
     float pressure_sum;
     float temp_sum;
     float grav_sum;
+    auto start = std::chrono::system_clock::now();
+    // Some computation here
+    auto end = std::chrono::system_clock::now();
+
+    std::chrono::duration<double> elapsed_seconds = end - start;
+    std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+    this->root_->date_timestamp_ = std::ctime(&end_time);
 
     // Get start time and date
     time_t raw_time;
@@ -23,6 +31,7 @@ EventName State_Prelaunch::execute() {
     time_info = localtime(&raw_time);
     double start_time = this->root_->getCurrentTime();
     this->root_->m_log_.write("Date: " + std::to_string(time_info->tm_mon + 1) + "/" + std::to_string(time_info->tm_mday) + "\n");
+    this->root_->m_log_.write("Date time: " + this->root_->date_timestamp_);
     this->root_->m_log_.write("Flight Name: Subscale\n");
     this->root_->m_log_.write("Verify Critical Parameters: ");
     this->root_->m_log_.write("Motor Burn Time: " + to_string(this->root_->t_burn_) + " s");
@@ -39,18 +48,22 @@ EventName State_Prelaunch::execute() {
     this->root_->m_log_.write("Length of Time to Collect RAFCO: " + to_string(this->root_->length_collect_rafco_) + " s");
     this->root_->m_log_.write("Time Delay Enabled: " + std::to_string(this->root_->time_delay_enabled_));
     this->root_->m_log_.write("-----------------------------------\n\n\n");
-    sleep(3);    
-    
+    sleep(3);
+
     // begin GO-NOGO protocol
     bool nogo = true;
     string userInput = "";
 
-    while (nogo) {
+    while (nogo)
+    {
 
         // disconnect VN if we had a NOGO response
-        if (this->root_->restart_) {
+        if (this->root_->restart_)
+        {
             this->root_->m_vn_->disconnect();
             this->root_->restart_ = false;
+            this->root_->aac_camera_streams_.clear();
+            this->root_->aac_camera_captures_.clear();
         }
 
         // IMU connection and configuration
@@ -58,10 +71,13 @@ EventName State_Prelaunch::execute() {
 
         // connect to IMU
         this->root_->m_log_.write("IMU Connecting");
-        try {
+        try
+        {
             this->root_->m_vn_->connect(IMU_PORT, IMU_BAUD_RATE);
             this->root_->m_log_.write("IMU Connected");
-        } catch(const std::exception &e) {
+        }
+        catch (const std::exception &e)
+        {
             this->root_->m_log_.write("Exception: ");
             this->root_->m_log_.write(e.what());
             this->root_->m_log_.write("IMU failed to connect... restart program");
@@ -71,11 +87,15 @@ EventName State_Prelaunch::execute() {
 
         // flush IMU data during init
         this->root_->m_log_.write("IMU Flushing");
-        for (int i = 0; i < this->root_->imu_wait_; ++i){
-            try{
+        for (int i = 0; i < this->root_->imu_wait_; ++i)
+        {
+            try
+            {
                 this->root_->response_ = this->root_->m_vn_->readImuMeasurements();
                 this->root_->m_log_.write(this->root_->response_);
-            } catch(const std::exception &e) {
+            }
+            catch (const std::exception &e)
+            {
                 this->root_->m_log_.write("Exception: ");
                 this->root_->m_log_.write(e.what());
                 this->root_->m_log_.write("IMU disconnected... restart program");
@@ -84,20 +104,24 @@ EventName State_Prelaunch::execute() {
         }
         this->root_->m_log_.write("IMU Flushed");
 
-        // calibrate ground level, pressure, temperature, and gravity 
+        // calibrate ground level, pressure, temperature, and gravity
         pressure_sum = 0;
         temp_sum = 0;
         grav_sum = 0;
         this->root_->m_log_.writeTime("Calibrating Baseline Parameters...");
 
-        for (int i = 0; i < this->root_->num_sample_readings_; ++i) {
-            try {
+        for (int i = 0; i < this->root_->num_sample_readings_; ++i)
+        {
+            try
+            {
                 this->root_->response_ = this->root_->m_vn_->readImuMeasurements();
                 this->root_->m_log_.write(this->root_->response_);
                 pressure_sum += this->root_->response_.pressure;
                 temp_sum += this->root_->response_.temp;
-                grav_sum += sqrt(pow(this->root_->response_.accel[0],2) + pow(this->root_->response_.accel[1],2) + pow(this->root_->response_.accel[2],2));
-            } catch(const std::exception &e) {
+                grav_sum += sqrt(pow(this->root_->response_.accel[0], 2) + pow(this->root_->response_.accel[1], 2) + pow(this->root_->response_.accel[2], 2));
+            }
+            catch (const std::exception &e)
+            {
                 this->root_->m_log_.write("Exception: ");
                 this->root_->m_log_.write(e.what());
                 this->root_->m_log_.write("IMU disconnected... restart program");
@@ -105,14 +129,23 @@ EventName State_Prelaunch::execute() {
             }
         }
 
-        this->root_->p0_ = pressure_sum/this->root_->num_sample_readings_;
-        this->root_->t0_ = temp_sum/this->root_->num_sample_readings_ + this->root_->c_2_k_;
-        this->root_->g0_ = grav_sum/this->root_->num_sample_readings_;
+        this->root_->p0_ = pressure_sum / this->root_->num_sample_readings_;
+        this->root_->t0_ = temp_sum / this->root_->num_sample_readings_ + this->root_->c_2_k_;
+        this->root_->g0_ = grav_sum / this->root_->num_sample_readings_;
 
         this->root_->m_log_.write("Calibrated Temperature: " + to_string(this->root_->t0_ - this->root_->c_2_k_) + " C");
         this->root_->m_log_.write("Calibrated Pressure: " + to_string(this->root_->p0_) + " kPa");
         this->root_->m_log_.write("Calibrated Gravity: " + to_string(this->root_->g0_) + " m/s^2");
         this->root_->m_log_.saveBaselineParameters(this->root_->r_, this->root_->b_, this->root_->p0_, this->root_->t0_, this->root_->g0_);
+        system("sudo bash ../../cam_assignment.bash");
+        for (int i = 0; i < this->root_->camera_streams_.size(); i++)
+        {
+            std::string camera_stream = this->root_->camera_streams_[i];
+            if (this->root_->cameraCheck(camera_stream))
+            {
+                this->root_->aac_camera_streams_.push_back(camera_stream);
+            }
+        }
 
         // RADIO TEST BLOCK: Maybe gotta make a separate silent script?
         /*
@@ -125,25 +158,93 @@ EventName State_Prelaunch::execute() {
         }
         sleep(10);
         */
-
         this->root_->m_log_.writeTime("Are we a GO for flight?");
         std::cin >> userInput;
-        if (userInput == "GO") {
+        if (userInput == "GO")
+        {
             nogo = false;
         }
-        this->root_->m_log_.writeTime(nogo? "NOGO" : "GO");
+        this->root_->m_log_.writeTime(nogo ? "NOGO" : "GO");
         this->root_->m_log_.write("");
-        
-        if (nogo){
+
+        if (nogo)
+        {
             this->root_->restart_ = true;
         }
-        //kill(pid_radio_test + 3, SIGTERM);
+    }
+    for (int i = 0; i < this->root_->aac_camera_streams_.size(); ++i)
+    {
+        this->root_->m_log_.write("Opening stream for AAC: " + this->root_->aac_camera_streams_[i]);
+        if (i == 0)
+        {
+            if (!this->root_->cap1.isOpened())
+            {
+                this->root_->cap1.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap1.isOpened())
+            {
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap1.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap1);
+            }
+        }
+        else if (i == 1)
+        {
+            if (!this->root_->cap2.isOpened())
+            {
+                this->root_->cap2.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap2.isOpened())
+            {
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap2.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap2);
+            }
+        }
+        else if (i == 2)
+        {
+            if (!this->root_->cap3.isOpened())
+            {
+                this->root_->cap3.open(this->root_->aac_camera_streams_[i]);
+                this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+            }
+            if (!this->root_->cap3.isOpened())
+            {
+                this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->aac_camera_streams_[i]);
+            }
+            else
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cv::Mat temp_frame;
+                    this->root_->cap3.read(temp_frame);
+                }
+                this->root_->aac_camera_captures_.push_back(this->root_->cap3);
+            }
+        }
     }
 
     this->root_->m_log_.writeTime("Pre-Flight Stage Completed");
-	return PRELAUNCH_COMPLETE;
+    return PRELAUNCH_COMPLETE;
 }
 
-EventName State_Prelaunch::unitExecute() {
-	return this->execute();
+EventName State_Prelaunch::unitExecute()
+{
+    return this->execute();
 }

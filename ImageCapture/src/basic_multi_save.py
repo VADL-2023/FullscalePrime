@@ -11,6 +11,8 @@ def nothing(x):
 # open video0
 cap1 = cv2.VideoCapture("/dev/videoCam1")
 cap1.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
+cap1_extra = cv2.VideoCapture("/dev/videoCam1")
+cap1_extra.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))
 
 cap2 = cv2.VideoCapture("/dev/videoCam2")
 cap2.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc('M','J','P','G'))

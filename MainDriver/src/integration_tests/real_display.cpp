@@ -172,7 +172,7 @@ int main()
     // State Landing Detection
     StateName landing_detection_name = STATE_LANDING_DETECTION;
     std::map<EventName, StateName> landing_detection_transitions;
-    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, END_STATE));
+    landing_detection_transitions.insert(std::pair<EventName, StateName>(LANDING_DETECTED, STATE_PDS_DELAY));
     State_Landing_Detection landing_detection(landing_detection_name, landing_detection_transitions, &root);
 
     // State PDS Delay
@@ -190,8 +190,8 @@ int main()
     // State RCB Detection
     StateName full_rcb_name = STATE_FULL_RCB;
     std::map<EventName, StateName> full_rcb_transitions;
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, END_STATE));
-    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, END_STATE));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_SUCCESS, STATE_FULL_LIFT));
+    full_rcb_transitions.insert(std::pair<EventName, StateName>(RCB_FAILURE, STATE_RAFCO_MISSION));
     State_Full_RCB full_rcb(full_rcb_name, full_rcb_transitions, &root);
 
     // State Full Lift
@@ -207,18 +207,6 @@ int main()
     full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_SUCCESS, STATE_RAFCO_MISSION));
     full_level_transitions.insert(std::pair<EventName, StateName>(LEVEL_FAILURE, STATE_RAFCO_MISSION));
     State_Full_Level full_level(full_level_name, full_level_transitions, &root);
-
-    // State Stepper 2
-    /*StateName stepper2_name = STATE_STEPPER2;
-    std::map<EventName, StateName> stepper2_transitions;
-    stepper2_transitions.insert(std::pair<EventName, StateName>(BASIC_SWIVEL, STATE_SDR1));
-    State_Stepper2 stepper2(stepper2_name, stepper2_transitions, &root);*/
-
-    // State SDR 1
-    /*StateName sdr1_name = STATE_SDR1;
-    std::map<EventName, StateName> sdr1_transitions;
-    sdr1_transitions.insert(std::pair<EventName, StateName>(RECEIVED_PACKETS, END_STATE));
-    State_SDR1 sdr1(sdr1_name, sdr1_transitions, &root);*/
 
     // State RAFCO
     StateName rafco_mission_name = STATE_RAFCO_MISSION;

@@ -5,11 +5,13 @@ set (CMAKE_PREFIX_PATH "/home/vadl/opencv/build")
 find_package( OpenCV REQUIRED )
 
 add_executable(imageCapTest src/image_capture_test.cpp)
+add_executable(cameraCheckTest src/camera_check_test.cpp)
 add_executable(usbDisplayTest src/usb_display_test.cpp)
 add_executable(usbSavePNGTest src/usb_save_png_test.cpp)
 
 
 target_link_libraries(imageCapTest SerialObject ${OpenCV_LIBS})
+target_link_libraries(cameraCheckTest ${OpenCV_LIBS})
 target_link_libraries(usbDisplayTest ${OpenCV_LIBS})
 target_link_libraries(usbSavePNGTest ${OpenCV_LIBS})
 

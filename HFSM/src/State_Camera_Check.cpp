@@ -16,24 +16,21 @@ State_Camera_Check::State_Camera_Check(StateName name, std::map<EventName, State
 EventName State_Camera_Check::execute()
 {
 	system("sudo bash ../../cam_assignment.bash");
-	std::cout << this->root_->m_log_.getTimestamp() << std::endl;
-	bool cam1_online = false;
-	bool cam2_online = false;
-	bool cam3_online = false;
-	for (int i = 0; i < this->root_->camera_streams_.size(); i++)
+	bool cam1_online = this->root_->cameraCheck("/dev/videoCam1");
+	bool cam2_online = this->root_->cameraCheck("/dev/videoCam2");
+	bool cam3_online = this->root_->cameraCheck("/dev/videoCam3");
+
+	/*for (int i = 0; i < this->root_->camera_streams_.size(); i++)
 	{
 		std::string camera_stream = this->root_->camera_streams_[i];
-		bool cam_result = this->root_->cameraCheck(camera_stream);
-		if(cam_result) {
-			if(i == 0) {
-				cam1_online = true;
-			}else if(i == 1) {
-				cam2_online = true;
-			} else if(i == 2) {
-				cam3_online = true;
-			}
+		if(i == 0) {
+			cam1_online = this->root_->cameraCheck(camera_stream);
+		} else if(i == 1) {
+			cam2_online = this->root_->cameraCheck(camera_stream);
+		}else if(i == 2) {
+			cam3_online = this->root_->cameraCheck(camera_stream);
 		}
-	}
+	}*/
 	if(cam2_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
 	} else if(cam3_online) {
@@ -41,11 +38,11 @@ EventName State_Camera_Check::execute()
 	} else if(cam1_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[0];
 	} else {
-		std::cout << "No cameras work" << std::endl;
+		this->root_->m_log_.write("Unable to open any of the camera streams");
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
 
 	}
-	std::cout << "Primary camera: " << this->root_->primary_camera_stream_ << std::endl;
+	this->root_->m_log_.write("Primary camera: " + this->root_->primary_camera_stream_ );
 	return CAMERA_PICKED;
 }
 

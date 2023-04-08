@@ -48,24 +48,24 @@ int main()
         if (userInput == "L")
         {
             gpioWrite(STEPPER_3_STANDBY_PIN, 1);
-            usleep(1000000);
+            usleep(500000);
             std::cout << "Moving one way" << std::endl;
             // std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
             stepper_3.step(NUM_STEPS);
             std::cout << "Pausing" << std::endl;
-            usleep(1000000);
-            //gpioWrite(STEPPER_3_STANDBY_PIN, 0);
+            usleep(500000);
+            gpioWrite(STEPPER_3_STANDBY_PIN, 0);
         }
         else if (userInput == "R")
         {
             gpioWrite(STEPPER_3_STANDBY_PIN, 1);
-            usleep(1000000);
+            usleep(500000);
             std::cout << "Moving one way" << std::endl;
             // std::cout << "Standby: " << gpioRead(standby_pin) << std::endl;
             stepper_3.step(-NUM_STEPS);
             std::cout << "Pausing" << std::endl;
-            usleep(1000000);
-            //gpioWrite(STEPPER_3_STANDBY_PIN, 0);
+            usleep(500000);
+            gpioWrite(STEPPER_3_STANDBY_PIN, 0);
         }
         else if (userInput == "S")
         {

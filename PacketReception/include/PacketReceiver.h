@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include "Log.h"
 
 #ifndef PACKETRECEIVER_H
 #define PACKETRECEIVER_H
@@ -22,7 +23,7 @@ class PacketReceiver {
         int port_num;               // TCP port that direwolf
         std::string configfile;     // name of config file for direwolf
 
-        std::string sdr_script = "../../runSDR.sh";
+        std::string sdr_script = "sudo ../../runSDR.sh";
         bool rtl_active = false;    // indicates whether the radio is currently running
         int rtl_pid;                // process id for rtl_fm the last time it was started
 
@@ -37,12 +38,17 @@ class PacketReceiver {
         // returns the output from the command line
         std::string exec(std::string cmd);
 
+        // Decode Mic-E message
+        std::string decodeMicEComment(char* msg, int length);
+
     public:
 
         PacketReceiver(int serial_num, std::string frequency, int port, std::string configfile);
         ~PacketReceiver();
 
         void startSDR();
+
+        void startSDR(Log& m_log);
         void stopSDR();
         
         int packetAvailable();
