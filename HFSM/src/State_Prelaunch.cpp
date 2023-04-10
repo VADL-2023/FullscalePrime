@@ -175,6 +175,22 @@ EventName State_Prelaunch::execute()
     //We are limiting to two cameras
     int potential_camera_num = this->root_->aac_camera_streams_.size();
     int num_successful_cams = 0;
+    std::string base_folder = this->root_->date_timestamp_;
+    std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
+    if (!base_folder.empty())
+    {
+        base_folder.pop_back();
+    }
+    else
+    {
+        std::cout << "Invalid date/time format" << std::endl;
+    }
+
+    mkdir(base_folder.c_str(), 0777);
+    std::string folder_name_str = base_folder + "/SecondaryPayloadImages" + this->root_->m_log_.getTimestamp();
+    std::cout << "AAC Video Folder: " << folder_name_str << std::endl;
+    mkdir(folder_name_str.c_str(), 0777);
+    std::string cam_str;
     for (int i = 0; num_successful_cams < 2 && i < potential_camera_num; ++i)
     {
         std::cout << "Trying to open stream for AAC: " << this->root_->aac_camera_streams_[i] << std::endl;
@@ -190,8 +206,8 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X','V','I','D'));
-                this->root_->cap1.set(cv::CAP_PROP_FPS,24);
+                this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                this->root_->cap1.set(cv::CAP_PROP_FPS, 24);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
                 {
@@ -206,8 +222,20 @@ EventName State_Prelaunch::execute()
                 if (functional)
                 {
                     this->root_->aac_camera_captures_.push_back(this->root_->cap1);
+                    this->root_->aac_camera_captures_strings_.push_back("/dev/videoCam1");
                     num_successful_cams++;
-                    std::cout << "Successfully opened Camera 1" << std::endl;
+                    cam_str = folder_name_str + "/cam1";
+                    mkdir(cam_str.c_str(), 0777);
+                    for (int i = 0; i < this->root_->max_proper_flight_time_ / this->root_->vid_clip_time_; i++)
+                    {
+                        std::string num_string = std::to_string(i);
+                        int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
+                        num_string.insert(0, precision, '0');
+                        std::string video_name = cam_str + "/i" + num_string + ".avi";
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        this->root_->videos1_.emplace_back(video);
+                    }
+                    std::cout << "Successfully opened Camera 1 at " << cam_str << std::endl;
                 }
             }
         }
@@ -223,8 +251,8 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X','V','I','D'));
-                this->root_->cap2.set(cv::CAP_PROP_FPS,24);
+                this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                this->root_->cap2.set(cv::CAP_PROP_FPS, 24);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
                 {
@@ -239,8 +267,20 @@ EventName State_Prelaunch::execute()
                 if (functional)
                 {
                     this->root_->aac_camera_captures_.push_back(this->root_->cap2);
+                    this->root_->aac_camera_captures_strings_.push_back("/dev/videoCam2");
                     num_successful_cams++;
-                    std::cout << "Successfully opened Camera 2" << std::endl;
+                    cam_str = folder_name_str + "/cam2";
+                    mkdir(cam_str.c_str(), 0777);
+                    for (int i = 0; i < this->root_->max_proper_flight_time_ / this->root_->vid_clip_time_; i++)
+                    {
+                        std::string num_string = std::to_string(i);
+                        int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
+                        num_string.insert(0, precision, '0');
+                        std::string video_name = cam_str + "/i" + num_string + ".avi";
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        this->root_->videos2_.emplace_back(video);
+                    }
+                    std::cout << "Successfully opened Camera 2 at " << cam_str << std::endl;
                 }
             }
         }
@@ -256,8 +296,8 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X','V','I','D'));
-                this->root_->cap3.set(cv::CAP_PROP_FPS,24);
+                this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                this->root_->cap3.set(cv::CAP_PROP_FPS, this->root_->fps_);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
                 {
@@ -272,8 +312,20 @@ EventName State_Prelaunch::execute()
                 if (functional)
                 {
                     this->root_->aac_camera_captures_.push_back(this->root_->cap3);
+                    this->root_->aac_camera_captures_strings_.push_back("/dev/videoCam3");
                     num_successful_cams++;
-                    std::cout << "Successfully opened Camera 3" << std::endl;
+                    cam_str = folder_name_str + "/cam3";
+                    mkdir(cam_str.c_str(), 0777);
+                    for (int i = 0; i < this->root_->max_proper_flight_time_ / this->root_->vid_clip_time_; i++)
+                    {
+                        std::string num_string = std::to_string(i);
+                        int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
+                        num_string.insert(0, precision, '0');
+                        std::string video_name = cam_str + "/i" + num_string + ".avi";
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        this->root_->videos3_.emplace_back(video);
+                    }
+                    std::cout << "Successfully opened Camera 3 at " << cam_str << std::endl;
                 }
             }
         }

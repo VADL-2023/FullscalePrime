@@ -35,7 +35,6 @@ public:
     bool is_unit_fsm_;
     int unit_test_delay_ms_ = 1000000;
 
-    
     std::string date_timestamp_ = "";
 
     int steps_per_revolution_ = 200;
@@ -58,8 +57,9 @@ public:
 
     std::vector<std::string> aac_camera_streams_;
     std::vector<cv::VideoCapture> aac_camera_captures_;
+    std::vector<std::string> aac_camera_captures_strings_;
     //--- INITIALIZE VIDEOCAPTURE
-	cv::VideoCapture cap1;
+    cv::VideoCapture cap1;
     cv::VideoCapture cap2;
     cv::VideoCapture cap3;
     bool launch_detected_ = false;
@@ -112,9 +112,9 @@ public:
     int lift_p_ = 20;
     int lift_n_ = 16;
     int lift_enable_ = 12;
-    int lift_time_threshold_ = 30000;   // [ms]
+    int lift_time_threshold_ = 30000; // [ms]
     int lift_backwards_time_threshold_ = 1680;
-    int lift_min_threshold_ = 5000;     // [ms]
+    int lift_min_threshold_ = 5000; // [ms]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
@@ -142,10 +142,20 @@ public:
     float sampling_frequency_ = 20; // [Hz] how fast does the IMU sample data
     bool restart_ = false;          // tells the program whether or not we NO-GOed
     bool time_delay_enabled_ = false;
+    int fps_ = 24;
+    int frame_width_ = 640;
+    int frame_height_ = 480;
+    int max_proper_flight_time_ = 3 * 60; // using this one for the cameras
+    int vid_clip_time_ = 3;
+    int frames_per_vid_ = fps_ * vid_clip_time_;
+
+    std::vector<cv::VideoWriter> videos1_;
+    std::vector<cv::VideoWriter> videos2_;
+    std::vector<cv::VideoWriter> videos3_;
 
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 1.5;                                                                    // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 1.1;                                                                    // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
@@ -153,10 +163,10 @@ public:
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
     int max_flight_time_ = 600;                                                                 // [s] max allowable flight time, if exceeded program ends
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 1 * 60; // TODO CHA4 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    int length_collect_rafco_ = 1 * 60;                                                         // TODO CHA4 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
     std::string rafco_freq_ = "144.97M";                                                        // Frequency for RAFCO transmissions
     std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
-    int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
+    int pds_delay_ = 10 * 1000;                                                                 //TODO                                                             // [ms] aditional time to wait for PDS
 
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
@@ -177,7 +187,7 @@ public:
     std::string program_log_name_ = "programDataLog";
     Log m_log_;
     bool is_imu_connected_ = false;
-    
+
     std::string config1_ = "/home/vadl/FullscalePrime/sdr1.conf";
     std::string config2_ = "/home/vadl/FullscalePrime/sdr2.conf";
     PacketReceiver radio1_ = PacketReceiver(100, rafco_freq_, 8001, config1_);
@@ -221,17 +231,18 @@ public:
     bool cameraCheck(std::string camera_check);
 
     //Takes pictures with camera
-    void camThreadLaunch(cv::VideoCapture* cap,int cam_number);
+    void camThreadLaunch(cv::VideoCapture *cap, int cam_number);
 
-    void camThreadRCB(cv::VideoCapture* cap);
+    void camThreadRCB(cv::VideoCapture *cap);
 
-    void camThreadLift(cv::VideoCapture* cap);
+    void camThreadLift(cv::VideoCapture *cap);
 
-    void camThreadApogee(cv::VideoCapture* cap,int cam_number);
+    void camThreadApogee(cv::VideoCapture *cap, int cam_number);
 
-    void camThreadLanding(cv::VideoCapture* cap,int cam_number,int max_photos);
+    void camThreadLanding(cv::VideoCapture *cap, int cam_number, int max_photos);
+
+    void realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number);
 
 private:
-
 };
 #endif

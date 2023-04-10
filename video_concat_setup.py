@@ -7,7 +7,7 @@ num_vids_str = args.number_of_videos
 num_vids = int(num_vids_str)
 print(num_vids)
 f = open('newlist.txt','w')
-name_precision = 6
+name_precision = 5
 i = 0
 while(i < num_vids):
   i_str = str(i)

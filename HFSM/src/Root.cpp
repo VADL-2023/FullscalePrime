@@ -505,6 +505,62 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos
     }
 }
 
+void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number) {
+    bool is_first = true;
+    int i = 0;
+    int index = 0;
+    double max_time = 0;
+    double min_time = 10000000;
+    while (!this->landing_detected_)
+    {
+        cv::Mat frame;
+        auto start_time = getCurrentTime();
+        (*cap) >> frame;
+        if (frame.empty())
+        {
+            break;
+        }
+        auto end = std::chrono::system_clock::now();
+        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+        std::string date_time = std::ctime(&end_time);
+
+        cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
+        cv::Point the_org(0, text_size.height);
+        cv::Scalar color1(0, 0, 0);
+        cv::Scalar color2(255, 255, 255);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
+        index = i / this->frames_per_vid_;
+        if (index >= this->max_proper_flight_time_ / this->vid_clip_time_)
+        {
+            index = (this->max_flight_time_ / this->vid_clip_time_) - 1;
+        }
+        (*videos)[index].write(frame);
+        auto write_time = getCurrentTime();
+        /*if(cam_number == 2) {
+          std::cout << "Time: " << write_time - start_time << std::endl;
+        }*/
+        if (!is_first && write_time - start_time > max_time)
+        {
+            max_time = write_time - start_time;
+        }
+        if (!is_first && write_time - start_time < min_time)
+        {
+            min_time = write_time - start_time;
+        }
+        is_first = false;
+        i++;
+    }
+    std::cout << "Thread " << cam_number << ": Max time: " << max_time << std::endl;
+    std::cout << "Thread " << cam_number << ": Min time: " << min_time << std::endl;
+    for (int i = 0; i < this->max_proper_flight_time_ / this->vid_clip_time_; i++)
+    {
+        (*videos)[i].release();
+    }
+    cap->release();
+    std::cout << "Thread " << cam_number << ": Done" << std::endl;
+}
+
 void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time)
 {
     double current_time = this->getCurrentTime();
