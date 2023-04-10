@@ -12,7 +12,6 @@ State_Full_RCB::State_Full_RCB(StateName name, std::map<EventName, StateName> &s
 EventName State_Full_RCB::execute()
 {
 	this->root_->m_log_.write("In State Full RCB");
-	exit(0);
 	if (!this->root_->is_imu_connected_)
 	{
 		try
@@ -48,22 +47,49 @@ EventName State_Full_RCB::execute()
 	this->root_->m_log_.write("Starting RCB");
 	bool first_imu_disconnect = true;
 	cv::VideoCapture cap;
+	cv::VideoWriter video;
 	// open the default camera using default API
 	// cap.open(0);
 	// OR advance usage: select any API backend
-	int apiID = cv::CAP_ANY; // 0 = autodetect default API
 	int numPics = 0;
 	std::thread t1_test;
 	if (this->root_->primary_camera_stream_ != "")
 	{
 		// open selected camera using selected API
-		cap.open(this->root_->primary_camera_stream_, apiID);
+		if (!cap.isOpened())
+		{
+			cap.open(this->root_->primary_camera_stream_);
+		}
 		// check if we succeeded
 		if (!cap.isOpened())
 		{
 			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
 		}
-		std::thread t1(&Root::camThreadRCB, this->root_, &cap);
+		if (this->root_->date_timestamp_ == "")
+		{
+			auto end = std::chrono::system_clock::now();
+
+			std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+			this->root_->date_timestamp_ = std::ctime(&end_time);
+		}
+		std::string base_folder = this->root_->date_timestamp_;
+		std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
+		if (!base_folder.empty())
+		{
+			base_folder.pop_back();
+		}
+		else
+		{
+			std::cout << "Invalid date/time format" << std::endl;
+		}
+
+		mkdir(base_folder.c_str(), 0777);
+		std::string folder_name_str = base_folder + "/RCB" + this->root_->m_log_.getTimestamp();
+		std::cout << "RCB Video Folder: " << folder_name_str << std::endl;
+		mkdir(folder_name_str.c_str(), 0777);
+		std::string video_name = folder_name_str + "/rcb.avi";
+		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		std::thread t1(&Root::realCamThreadRCB, this->root_, &cap, &video);
 		t1_test = std::move(t1);
 	}
 	if (this->root_->primary_camera_stream_ == "/dev/videoCam1")

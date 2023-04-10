@@ -245,6 +245,8 @@ public:
 
     void realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video);
 
+    void realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video);
+
 private:
 };
 #endif

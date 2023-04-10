@@ -64,7 +64,6 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
     this->camera_streams_.push_back("/dev/videoCam1");
     this->camera_streams_.push_back("/dev/videoCam3");
     this->camera_streams_.push_back("/dev/videoCam2");
-    
 }
 
 Root::~Root()
@@ -366,7 +365,7 @@ void Root::camThreadRCB(cv::VideoCapture *cap)
     }
     else
     {
-       this->m_log_.write("Invalid Date time format");
+        this->m_log_.write("Invalid Date time format");
     }
 
     mkdir(base_folder.c_str(), 0777);
@@ -409,7 +408,7 @@ void Root::camThreadRCB(cv::VideoCapture *cap)
     }
 }
 
-void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos)
+void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number, int max_photos)
 {
     double prev_time = getCurrentTime();
     std::vector<cv::Mat> frames;
@@ -439,29 +438,32 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos
     mkdir(folder_name_str.c_str(), 0777);
     std::string cam_str;
 
-    try {
-    while (!this->landing_detected_ && frames.size() < max_photos)
+    try
     {
-        double curr_time = getCurrentTime();
-        prev_time = curr_time;
-        cv::Mat frame;
-
-        (*cap).read(frame);
-        cv::rotate(frame, frame, cv::ROTATE_180);
-        if (frame.empty())
+        while (!this->landing_detected_ && frames.size() < max_photos)
         {
-            this->m_log_.write("ERROR! Blank frame from camera " + cam_number);
-            break;
+            double curr_time = getCurrentTime();
+            prev_time = curr_time;
+            cv::Mat frame;
+
+            (*cap).read(frame);
+            cv::rotate(frame, frame, cv::ROTATE_180);
+            if (frame.empty())
+            {
+                this->m_log_.write("ERROR! Blank frame from camera " + cam_number);
+                break;
+            }
+            auto end = std::chrono::system_clock::now();
+            std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+            std::string date_time = std::ctime(&end_time);
+            date_time.pop_back();
+            frames.push_back(frame);
+            date_times.push_back(date_time);
+            //std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
         }
-        auto end = std::chrono::system_clock::now();
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-        std::string date_time = std::ctime(&end_time);
-        date_time.pop_back();
-        frames.push_back(frame);
-        date_times.push_back(date_time);
-        //std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
     }
-    } catch(...) {
+    catch (...)
+    {
         std::string error_message = "Exception thrown capturing frames for camera " + std::to_string(cam_number);
         this->m_log_.write(error_message);
     }
@@ -483,32 +485,131 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos
         mkdir(cam_str.c_str(), 0777);
         this->m_log_.write("Camera 3 Folder: " + cam_str);
     }
-    try {
-    for (int i = 0; i < frames.size(); i++)
+    try
     {
-        std::string aac_num_string = std::to_string(i);
-        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-        aac_num_string.insert(0, precision, '0');
-        std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-        auto the_frame = frames[i];
-        cv::Size text_size = cv::getTextSize(date_times[i], cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
-        cv::Point the_org(0, text_size.height);
-        cv::Scalar color1(0, 0, 0);
-        cv::Scalar color2(255, 255, 255);
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
-        cv::imwrite(pic_name_str, the_frame);
+        for (int i = 0; i < frames.size(); i++)
+        {
+            std::string aac_num_string = std::to_string(i);
+            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
+            aac_num_string.insert(0, precision, '0');
+            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
+            auto the_frame = frames[i];
+            cv::Size text_size = cv::getTextSize(date_times[i], cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
+            cv::Point the_org(0, text_size.height);
+            cv::Scalar color1(0, 0, 0);
+            cv::Scalar color2(255, 255, 255);
+            cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
+            cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
+            cv::imwrite(pic_name_str, the_frame);
+        }
     }
-    } catch(...) {
+    catch (...)
+    {
         std::string error_message = "Exception thrown writing frames for camera " + std::to_string(cam_number);
         this->m_log_.write(error_message);
     }
 }
 
-void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video) {
-    
+void Root::realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video)
+{
+    bool is_first = true;
+    int i = 0;
+    int index = 0;
+    double max_time = 0;
+    double min_time = 10000000;
+    while (!this->lift_done_)
+    {
+        cv::Mat frame;
+        auto start_time = getCurrentTime();
+        (*cap) >> frame;
+        if (frame.empty())
+        {
+            break;
+        }
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        auto end = std::chrono::system_clock::now();
+        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+        std::string date_time = std::ctime(&end_time);
+        date_time.pop_back();
+
+        cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
+        cv::Point the_org(0, text_size.height);
+        cv::Scalar color1(0, 0, 0);
+        cv::Scalar color2(255, 255, 255);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
+        (*video).write(frame);
+        auto write_time = getCurrentTime();
+        /*if(cam_number == 2) {
+          std::cout << "Time: " << write_time - start_time << std::endl;
+        }*/
+        if (!is_first && write_time - start_time > max_time)
+        {
+            max_time = write_time - start_time;
+        }
+        if (!is_first && write_time - start_time < min_time)
+        {
+            min_time = write_time - start_time;
+        }
+        is_first = false;
+        i++;
+    }
+    std::cout << "Lift Max time: " << max_time << std::endl;
+    std::cout << "Lift Min time: " << min_time << std::endl;
+    (*video).release();
+    cap->release();
 }
-void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number) {
+
+void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video)
+{
+    bool is_first = true;
+    int i = 0;
+    int index = 0;
+    double max_time = 0;
+    double min_time = 10000000;
+    while (!this->rcb_done_)
+    {
+        cv::Mat frame;
+        auto start_time = getCurrentTime();
+        (*cap) >> frame;
+        if (frame.empty())
+        {
+            break;
+        }
+        cv::rotate(frame, frame, cv::ROTATE_180);
+        auto end = std::chrono::system_clock::now();
+        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+        std::string date_time = std::ctime(&end_time);
+        date_time.pop_back();
+        cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
+        cv::Point the_org(0, text_size.height);
+        cv::Scalar color1(0, 0, 0);
+        cv::Scalar color2(255, 255, 255);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
+        cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
+        (*video).write(frame);
+        auto write_time = getCurrentTime();
+        /*if(cam_number == 2) {
+          std::cout << "Time: " << write_time - start_time << std::endl;
+        }*/
+        if (!is_first && write_time - start_time > max_time)
+        {
+            max_time = write_time - start_time;
+        }
+        if (!is_first && write_time - start_time < min_time)
+        {
+            min_time = write_time - start_time;
+        }
+        is_first = false;
+        i++;
+    }
+    std::cout << "RCB Max time: " << max_time << std::endl;
+    std::cout << "RCB Min time: " << min_time << std::endl;
+    (*video).release();
+    cap->release();
+}
+void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number)
+{
     bool is_first = true;
     int i = 0;
     int index = 0;
@@ -523,10 +624,11 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
         {
             break;
         }
+        cv::rotate(frame, frame, cv::ROTATE_180);
         auto end = std::chrono::system_clock::now();
         std::time_t end_time = std::chrono::system_clock::to_time_t(end);
         std::string date_time = std::ctime(&end_time);
-
+        date_time.pop_back();
         cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
         cv::Point the_org(0, text_size.height);
         cv::Scalar color1(0, 0, 0);
