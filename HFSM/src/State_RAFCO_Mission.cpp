@@ -84,12 +84,12 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				if (p1.source == root_->callsign_) {
+				if (p1.source == root_->callsign_ && p1.source_ssid == root_->source_ssid_) {
 					rafco_command = p1.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
 				} else {
-					this->root_->m_log_.write("Radio 1 received a packet from " + p1.source);
+					this->root_->m_log_.write("Radio 1 received a packet from " + p1.source + "-" + std::to_string(p1.source_ssid));
 					this->root_->m_log_.write("Packet received: " + p1.msg);
 				}
 			}
@@ -108,12 +108,12 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				if (p1.source == root_->callsign_) {
+				if (p2.source == root_->callsign_ && p2.source_ssid == root_->source_ssid_) {
 					rafco_command = p2.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
 				} else {
-					this->root_->m_log_.write("Radio 2 received a packet from " + p2.source);
+					this->root_->m_log_.write("Radio 2 received a packet from " + p2.source + "-" + std::to_string(p2.source_ssid));
 					this->root_->m_log_.write("Packet received: " + p2.msg);
 				}
 			}
