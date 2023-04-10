@@ -243,6 +243,8 @@ public:
 
     void realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number);
 
+    void realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video);
+
 private:
 };
 #endif

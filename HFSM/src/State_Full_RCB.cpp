@@ -12,6 +12,7 @@ State_Full_RCB::State_Full_RCB(StateName name, std::map<EventName, StateName> &s
 EventName State_Full_RCB::execute()
 {
 	this->root_->m_log_.write("In State Full RCB");
+	exit(0);
 	if (!this->root_->is_imu_connected_)
 	{
 		try

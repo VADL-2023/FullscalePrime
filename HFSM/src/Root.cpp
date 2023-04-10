@@ -505,6 +505,9 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number,int max_photos
     }
 }
 
+void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video) {
+    
+}
 void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWriter> *videos, int cam_number) {
     bool is_first = true;
     int i = 0;
