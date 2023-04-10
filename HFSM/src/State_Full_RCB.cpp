@@ -85,11 +85,13 @@ EventName State_Full_RCB::execute()
 			auto pitch_error = response_rpy[1];
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
-				pitch_error -= 90;
+				pitch_error -= 90 + 3;
+				pitch_error += 90 - 3;
 			}
 			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 			{
-				pitch_error += 90;
+				pitch_error += 90 - 3;
+				pitch_error -= 90 + 3;
 			}
 
 			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(pitch_error));
@@ -141,8 +143,11 @@ EventName State_Full_RCB::execute()
 		}
 	}
 	this->root_->rcb_done_ = true;
+	gpioWrite(this->root_->rcb_lift_standby_, 0);
+	gpioWrite(this->root_->rcb_p_, 0);
+	gpioWrite(this->root_->rcb_n_, 0);
+	gpioPWM(this->root_->rcb_enable_, 0);
 	t1_test.join();
-
 	this->root_->m_log_.write("Initiating Nacelle servo unlock");
 	gpioServo(this->root_->nacelle_servo_, this->root_->nacelle_unlock_);
 	gpioSleep(0, 2, 0);

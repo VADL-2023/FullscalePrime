@@ -250,14 +250,13 @@ int main()
     threads.push_back(move(t1));
     std::thread t2(theCaptureThread, &cap2, &videos2,2);
     threads.push_back(move(t2));
-    // std::thread t3(theCaptureThread, &cap3, &videos3,3);
-    // threads.push_back(move(t3));
+    //std::thread t3(theCaptureThread, &cap3, &videos3,3);
+    //threads.push_back(move(t3));
     auto start_time = getCurrentTime();
     auto current_time = getCurrentTime();
-    while (current_time - start_time < 0.5 * 60 * 1000)
+    while (current_time - start_time < 5 * 60 * 1000)
     {
         current_time = getCurrentTime();
-        // std::cout << "Time: " << current_time - start_time << std::endl;
     }
     is_done = true;
     for (int i = 0; i < threads.size(); i++)

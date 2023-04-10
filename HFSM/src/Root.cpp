@@ -62,8 +62,9 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
 
     // Instantiate camera streams
     this->camera_streams_.push_back("/dev/videoCam1");
-    this->camera_streams_.push_back("/dev/videoCam2");
     this->camera_streams_.push_back("/dev/videoCam3");
+    this->camera_streams_.push_back("/dev/videoCam2");
+    
 }
 
 Root::~Root()
@@ -598,5 +599,6 @@ bool Root::cameraCheck(std::string camera_stream)
         this->m_log_.write("ERROR! Blank frame grabbed from " + camera_stream);
         return false;
     }
+    cap.release();
     return true;
 }
