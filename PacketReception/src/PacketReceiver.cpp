@@ -30,6 +30,7 @@ void PacketReceiver::startSDR()
         try
         {
             rtl_pid = std::stoi(exec(command.c_str()));
+            return;
         }
         catch (...)
         {

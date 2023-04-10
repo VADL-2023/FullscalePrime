@@ -270,7 +270,7 @@ EventName State_RAFCO_Mission::execute()
 					cv::Mat frame;
 					usleep(500000);
 					int i = 0;
-					while (i < 5)
+					while (i < 7)
 					{
 						auto the_thing = cap.read(frame);
 						i++;
