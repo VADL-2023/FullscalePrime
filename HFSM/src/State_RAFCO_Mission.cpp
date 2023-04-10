@@ -58,15 +58,16 @@ EventName State_RAFCO_Mission::execute()
 	{
 		this->root_->m_log_.write("ERROR! Unable to open camera");
 	}
-
+	cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
 	// Save the time that the radios are started
 	auto start_time = this->root_->getCurrentTime();
 
 	std::string prev_command = "";
+	std::string rafco_command = "";
 
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
-		std::string rafco_command = "";
+		// std::string rafco_command = "";
 		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
 		{
 			backup_valid = true;
