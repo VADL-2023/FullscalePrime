@@ -21,7 +21,7 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
-	//system("sudo ../../kill_direwolf_and_rtl.bash");
+	// system("sudo ../../kill_direwolf_and_rtl.bash");
 	this->root_->m_log_.write("Starting the SDRs");
 	this->root_->radio1_.startSDR();
 	this->root_->radio2_.startSDR();
@@ -47,7 +47,8 @@ EventName State_RAFCO_Mission::execute()
 	int apiID = cv::CAP_ANY; // 0 = autodetect default API
 	int numPics = 0;
 	// open selected camera using selected API
-	if(this->root_->primary_camera_stream_ == "") {
+	if (this->root_->primary_camera_stream_ == "")
+	{
 		this->root_->primary_camera_stream_ = "/dev/videoCam2";
 	}
 	std::string log_camera_stream = "Primary camera stream: " + this->root_->primary_camera_stream_;
@@ -75,7 +76,7 @@ EventName State_RAFCO_Mission::execute()
 		{
 			// Read the packet from the SDR and print it out
 			p1 = this->root_->radio1_.getPacket();
-			
+
 			// An error will be returned if the SDR becomes disconnected
 			// or if there is an issue with the ports
 			if (p1.msg.find("ERROR") != std::string::npos)
@@ -84,11 +85,14 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				if (p1.source == root_->callsign_) {
+				if (p1.source == root_->callsign_)
+				{
 					rafco_command = p1.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
-				} else {
+				}
+				else
+				{
 					this->root_->m_log_.write("Radio 1 received a packet from " + p1.source);
 					this->root_->m_log_.write("Packet received: " + p1.msg);
 				}
@@ -108,11 +112,14 @@ EventName State_RAFCO_Mission::execute()
 			}
 			else
 			{
-				if (p1.source == root_->callsign_) {
+				if (p1.source == root_->callsign_)
+				{
 					rafco_command = p2.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
-				} else {
+				}
+				else
+				{
 					this->root_->m_log_.write("Radio 2 received a packet from " + p2.source);
 					this->root_->m_log_.write("Packet received: " + p2.msg);
 				}
@@ -299,19 +306,28 @@ EventName State_RAFCO_Mission::execute()
 						}
 
 						std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
-						if(is_gray) {
+						if (is_gray)
+						{
 							this->root_->m_log_.write("Current Image is gray");
-						} else {
+						}
+						else
+						{
 							this->root_->m_log_.write("Current Image is not gray");
 						}
-						if(is_rotate) {
+						if (is_rotate)
+						{
 							this->root_->m_log_.write("Current Image is rotated");
-						} else {
+						}
+						else
+						{
 							this->root_->m_log_.write("Current Image is not rotated");
 						}
-						if(is_blur) {
+						if (is_blur)
+						{
 							this->root_->m_log_.write("Current Image is blurred");
-						} else {
+						}
+						else
+						{
 							this->root_->m_log_.write("Current Image is not blurred");
 						}
 						this->root_->m_log_.write("Saving picture at " + pic_name_str);
@@ -371,7 +387,15 @@ EventName State_RAFCO_Mission::execute()
 	this->root_->m_log_.write("Shutting down SDRs");
 	this->root_->radio1_.stopSDR();
 	this->root_->radio2_.stopSDR();
-	return RAFCO_COMPLETE;
+	if (this->root_->primary_camera_stream_ != "/dev/videoCam2")
+	{
+		this->root_->primary_camera_stream_ = "/dev/videoCam2";
+		return RAFCO_REDO;
+	}
+	else
+	{
+		return RAFCO_COMPLETE;
+	}
 }
 
 EventName State_RAFCO_Mission::unitExecute()

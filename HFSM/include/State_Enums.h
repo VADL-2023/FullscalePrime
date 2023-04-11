@@ -45,5 +45,6 @@ enum EventName {
     RCB_SUCCESS,
     RCB_FAILURE,
     RAFCO_COMPLETE,
+    RAFCO_REDO,
     CAMERA_PICKED
 };

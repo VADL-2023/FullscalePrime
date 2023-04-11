@@ -112,23 +112,29 @@ EventName State_Full_RCB::execute()
 			auto pitch_error = response_rpy[1];
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
-				pitch_error -= 90 + 3;
-				pitch_error += 90 - 3;
+				pitch_error -= 90 - 7;
 			}
 			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 			{
-				pitch_error += 90 - 3;
-				pitch_error -= 90 + 3;
+				pitch_error += 90 - 7;
 			}
 
-			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(pitch_error));
+			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(response_rpy[1]));
 			if (pitch_error <= this->root_->rcb_angle_threshold_ && pitch_error >= -this->root_->rcb_angle_threshold_)
 			{
 				rcb_stable = true;
-				gpioWrite(this->root_->rcb_lift_standby_, 0);
-				gpioWrite(this->root_->rcb_p_, 0);
-				gpioWrite(this->root_->rcb_n_, 0);
-				gpioPWM(this->root_->rcb_enable_, 0);
+				if (this->root_->primary_camera_stream_ == "/dev/videoCam2" && std::abs(response_rpy[2]) < 90)
+				{
+					std::cout << "Static nacelle on top" << std::endl;
+					rcb_stable = false;
+				}
+				if(rcb_stable)
+				{
+					gpioWrite(this->root_->rcb_lift_standby_, 0);
+					gpioWrite(this->root_->rcb_p_, 0);
+					gpioWrite(this->root_->rcb_n_, 0);
+					gpioPWM(this->root_->rcb_enable_, 0);
+				}
 			}
 			else if (pitch_error > this->root_->rcb_angle_threshold_)
 			{
