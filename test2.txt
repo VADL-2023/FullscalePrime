@@ -1,0 +1,35 @@
+Dire Wolf version 1.6
+Includes optional support for:  cm108-ptt
+
+Reading config file /home/vadl/FullscalePrime/sdr2.conf
+Audio input device for receive: stdin  (channel 0)
+Audio out device for transmit: null  (channel 0)
+Channel 0: 1200 baud, AFSK 1200 & 2200 Hz, E+, 24000 sample rate.
+Note: PTT not configured for channel 0. (Ignore this if using VOX.)
+Ready to accept AGW client application 0 on port 9000 ...
+Ready to accept KISS TCP client application 0 on port 9001 ...
+
+KQ4DPB audio level = 21(6/9)   [NONE]   ||||_____
+[0.1] KQ4DPB>BEACON:we are 10 ft away<0x0d>
+Unknown APRS Data Type Indicator "w"
+
+KQ4DPB audio level = 21(6/9)   [NONE]   ||||_____
+[0.1] KQ4DPB>BEACON:second 10 ft<0x0d>
+Unknown APRS Data Type Indicator "s"
+
+KQ4DPB audio level = 21(6/10)   [NONE]   |||||____
+[0.2] KQ4DPB>BEACON:third 10 ft<0x0d>
+Raw Touch Tone Data
+hird 10 ft
+
+KQ4DPB audio level = 22(7/9)   [NONE]   ||||_____
+[0.1] KQ4DPB>BEACON:driving away pt 1<0x0d>
+Unknown APRS Data Type Indicator "d"
+
+KQ4DPB audio level = 28(7/11)   [NONE]   ||||_____
+[0.1] KQ4DPB>BEACON:payload out of window 1<0x0d>
+Unknown APRS Data Type Indicator "p"
+
+KQ4DPB audio level = 42(8/11)   [NONE]   ||_______
+[0.0] KQ4DPB>BEACON:payload out of window 2<0x0d>
+Unknown APRS Data Type Indicator "p"

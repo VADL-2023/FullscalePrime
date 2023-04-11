@@ -24,22 +24,50 @@ EventName State_Full_Lift::execute()
 	this->root_->m_log_.write("Starting winch");
 	gpioWrite(this->root_->rcb_lift_standby_, 1);
 	cv::VideoCapture cap;
+	cv::VideoWriter video;
 	// open the default camera using default API
 	// cap.open(0);
 	// OR advance usage: select any API backend
-	int apiID = cv::CAP_ANY; // 0 = autodetect default API
 	int numPics = 0;
 	// open selected camera using selected API
 	std::thread t1_test;
 	if (this->root_->primary_camera_stream_ != "")
 	{
-		cap.open(this->root_->primary_camera_stream_, apiID);
+		// open selected camera using selected API
+		if (!cap.isOpened())
+		{
+			cap.open(this->root_->primary_camera_stream_);
+		}
 		// check if we succeeded
 		if (!cap.isOpened())
 		{
 			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
 		}
-		std::thread t1(&Root::camThreadLift, this->root_, &cap);
+		if (this->root_->date_timestamp_ == "")
+		{
+			auto end = std::chrono::system_clock::now();
+
+			std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+			this->root_->date_timestamp_ = std::ctime(&end_time);
+		}
+		std::string base_folder = this->root_->date_timestamp_;
+		std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
+		if (!base_folder.empty())
+		{
+			base_folder.pop_back();
+		}
+		else
+		{
+			std::cout << "Invalid date/time format" << std::endl;
+		}
+
+		mkdir(base_folder.c_str(), 0777);
+		std::string folder_name_str = base_folder + "/Lift" + this->root_->m_log_.getTimestamp();
+		std::cout << "Lift Video Folder: " << folder_name_str << std::endl;
+		mkdir(folder_name_str.c_str(), 0777);
+		std::string video_name = folder_name_str + "/lift.avi";
+		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		std::thread t1(&Root::realCamThreadLift, this->root_, &cap, &video);
 		t1_test = std::move(t1);
 	}
 	while (!is_done)

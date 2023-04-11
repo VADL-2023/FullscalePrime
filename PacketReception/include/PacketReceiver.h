@@ -10,6 +10,7 @@
 
 struct AX25Packet {
     std::string source;
+    int source_ssid;
     std::string dest;
     std::string msg;
 };
