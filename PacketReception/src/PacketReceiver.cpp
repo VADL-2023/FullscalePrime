@@ -30,7 +30,7 @@ void PacketReceiver::startSDR()
         try
         {
             rtl_pid = std::stoi(exec(command.c_str()));
-            return;
+            got_pid = true;
         }
         catch (...)
         {
@@ -211,7 +211,7 @@ AX25Packet PacketReceiver::getPacket()
             }
             else if (i < 7)
             {
-                dest_ssid = message[i];
+                dest_ssid = (message[i] >> 1) & 0x0F;
 
                 // Extract the source address
             }
@@ -223,7 +223,7 @@ AX25Packet PacketReceiver::getPacket()
             }
             else if (i < 14)
             {
-                source_ssid = message[i];
+                source_ssid = (message[i] >> 1) & 0x0F;
 
                 // Extract the control bits
             }
@@ -259,6 +259,7 @@ AX25Packet PacketReceiver::getPacket()
         }
 
         p.source = source_addr;
+        p.source_ssid = source_ssid;
         p.dest = dest_addr;
     } 
 

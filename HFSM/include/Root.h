@@ -163,10 +163,11 @@ public:
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
     int max_flight_time_ = 600;                                                                 // [s] max allowable flight time, if exceeded program ends
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 1 * 60;                                                         // TODO CHA4 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    int length_collect_rafco_ = 1 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
     std::string rafco_freq_ = "144.97M";                                                        // Frequency for RAFCO transmissions
     std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
-    int pds_delay_ = 10 * 1000;                                                                 //TODO                                                             // [ms] aditional time to wait for PDS
+    int source_ssid_ = 0;
+    int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
 
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T

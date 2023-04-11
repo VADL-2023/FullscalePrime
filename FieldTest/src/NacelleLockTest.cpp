@@ -42,7 +42,7 @@ int main()
 
         // Wait for the user to signal that the parachute should be detached
         std::string userInput = "";
-        std::cout << "What do you want to do to the lift (L | U | Q): ";
+        std::cout << "What do you want to do to the nacelle lock (L | U | Q): ";
         std::cin >> userInput;
 
         if (userInput == "L")
