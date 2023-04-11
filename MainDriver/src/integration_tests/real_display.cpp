@@ -212,6 +212,7 @@ int main()
     StateName rafco_mission_name = STATE_RAFCO_MISSION;
     std::map<EventName, StateName> rafco_mission_transitions;
     rafco_mission_transitions.insert(std::pair<EventName, StateName>(RAFCO_COMPLETE, END_STATE));
+    rafco_mission_transitions.insert(std::pair<EventName, StateName>(RAFCO_REDO, STATE_FULL_RCB));
     State_RAFCO_Mission rafco_mission(rafco_mission_name, rafco_mission_transitions, &root);
 
     // Add States to Machine
