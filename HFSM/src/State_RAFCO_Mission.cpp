@@ -125,7 +125,7 @@ EventName State_RAFCO_Mission::execute()
 
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 A1 C3 A1 D4 F6 C3 H8 C3";
+		std::string backup_rafco_command = "C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3";
 		// std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
 		// std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
 		std::stringstream rafco_stream(rafco_command);
@@ -195,7 +195,7 @@ EventName State_RAFCO_Mission::execute()
 				this->root_->m_log_.write(angle_str);
 				if (command == "A1")
 				{
-					/* if (angle <= -180)
+					if (angle <= -180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees left");
 						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
@@ -229,13 +229,9 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle -= 60;
 					}
-					*/
-					std::cout << "Swivel right" << std::endl;
-					// usleep(500000);
 				}
 				else if (command == "B2")
 				{
-					/*
 					if (angle >= 180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees right");
@@ -270,9 +266,6 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle += 60;
 					}
-					*/
-					std::cout << "Swivel left" << std::endl;
-					// usleep(500000);
 				}
 				else if (command == "C3")
 				{
