@@ -1,0 +1,24 @@
+Dire Wolf version 1.6
+Includes optional support for:  cm108-ptt
+
+Reading config file /home/vadl/FullscalePrime/sdr2.conf
+Audio input device for receive: stdin  (channel 0)
+Audio out device for transmit: null  (channel 0)
+Channel 0: 1200 baud, AFSK 1200 & 2200 Hz, E+, 24000 sample rate.
+Note: PTT not configured for channel 0. (Ignore this if using VOX.)
+Ready to accept AGW client application 0 on port 9000 ...
+Ready to accept KISS TCP client application 0 on port 9001 ...
+
+KQ4CTL-6 audio level = 27(10/10)   [NONE]   ||||||___
+[0.2] KQ4CTL-6>STZZLZ:`rX<0x1c>l <0x1c>X/`C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1<0x0d>
+MIC-E, HELO, Mic-Emsg, Off Duty
+N 34 00.0000, W 086 00.0000, 0 MPH
+C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1
+
+KQ4CTL-6 audio level = 31(10/11)   [NONE]   _||||____
+[0.2] KQ4CTL-6>STZZLZ:`rX<0x1c>l <0x1c>X/`C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1<0x0d>
+MIC-E, HELO, Mic-Emsg, Off Duty
+N 34 00.0000, W 086 00.0000, 0 MPH
+C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1
+
+End of file on stdin.  Exiting.

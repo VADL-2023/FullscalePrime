@@ -145,8 +145,8 @@ public:
     int fps_ = 24;
     int frame_width_ = 640;
     int frame_height_ = 480;
-    int max_proper_flight_time_ = 3 * 60; // using this one for the cameras
-    int vid_clip_time_ = 3;
+    int max_proper_flight_time_ = 10 * 60; // using this one for the cameras
+    int vid_clip_time_ = 10 * 60;
     int frames_per_vid_ = fps_ * vid_clip_time_;
 
     std::vector<cv::VideoWriter> videos1_;
@@ -163,10 +163,10 @@ public:
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
     int max_flight_time_ = 600;                                                                 // [s] max allowable flight time, if exceeded program ends
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 1 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
-    std::string rafco_freq_ = "144.97M";                                                        // Frequency for RAFCO transmissions
-    std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
-    int source_ssid_ = 0;
+    int length_collect_rafco_ = 0.8 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    std::string rafco_freq_ = "144.900M";                                                        // Frequency for RAFCO transmissions
+    std::string callsign_ = "KQ4CTL";                                                           // Callsign to look for
+    int source_ssid_ = 6;
     int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
 
     // calibration parameters

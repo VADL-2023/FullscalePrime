@@ -82,6 +82,7 @@ EventName State_RAFCO_Mission::execute()
 			// or if there is an issue with the ports
 			if (p1.msg.find("ERROR") != std::string::npos)
 			{
+				this->root_->m_log_.write("Radio 1 TCP port disconnected");
 				sdr1_valid = false;
 			}
 			else
@@ -106,6 +107,7 @@ EventName State_RAFCO_Mission::execute()
 			// or if there is an issue with the ports
 			if (p2.msg.find("ERROR") != std::string::npos)
 			{
+				this->root_->m_log_.write("Radio 2 TCP disconnected");
 				sdr2_valid = false;
 			}
 			else
@@ -193,7 +195,7 @@ EventName State_RAFCO_Mission::execute()
 				this->root_->m_log_.write(angle_str);
 				if (command == "A1")
 				{
-					if (angle <= -180)
+					/* if (angle <= -180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees left");
 						if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
@@ -227,10 +229,13 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle -= 60;
 					}
-					usleep(500000);
+					*/
+					std::cout << "Swivel right" << std::endl;
+					// usleep(500000);
 				}
 				else if (command == "B2")
 				{
+					/*
 					if (angle >= 180)
 					{
 						this->root_->m_log_.write("Swivel 300 degrees right");
@@ -265,7 +270,9 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle += 60;
 					}
-					usleep(500000);
+					*/
+					std::cout << "Swivel left" << std::endl;
+					// usleep(500000);
 				}
 				else if (command == "C3")
 				{

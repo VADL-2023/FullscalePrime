@@ -96,7 +96,7 @@ EventName State_Full_RCB::execute()
 	{
 		this->root_->m_log_.write("Rotating to camera 1");
 	}
-	else if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+	else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 	{
 		this->root_->m_log_.write("Rotating to camera 3");
 	}
@@ -104,12 +104,16 @@ EventName State_Full_RCB::execute()
 	{
 		this->root_->m_log_.write("Rotating to camera 2");
 	}
+	float last_angle = 0;
+	float last_yaw = 0;
 	while (!rcb_stable)
 	{
 		try
 		{
 			auto response_rpy = this->root_->m_vn_->readYawPitchRoll();
 			auto pitch_error = response_rpy[1];
+			last_angle = pitch_error;
+			last_yaw = response_rpy[2];
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
 				pitch_error -= 90 - 7;
@@ -128,7 +132,7 @@ EventName State_Full_RCB::execute()
 					std::cout << "Static nacelle on top" << std::endl;
 					rcb_stable = false;
 				}
-				if(rcb_stable)
+				if (rcb_stable)
 				{
 					gpioWrite(this->root_->rcb_lift_standby_, 0);
 					gpioWrite(this->root_->rcb_p_, 0);
@@ -166,6 +170,18 @@ EventName State_Full_RCB::execute()
 			gpioSleep(0, 2, 0);
 			this->root_->m_log_.write("Initiating Nacelle servo lock");
 			cap.release();
+			if (last_angle <= 45 && last_angle >= -45 && std::abs(last_yaw) > 90)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam2";
+			}
+			else if (last_angle >= 0)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam1";
+			}
+			else if (last_angle <= 0)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam3";
+			}
 			return RCB_FAILURE;
 		}
 		current_time = this->root_->getCurrentTime();
@@ -189,6 +205,18 @@ EventName State_Full_RCB::execute()
 	if (is_time_up)
 	{
 		this->root_->m_log_.write("RCB Timeout Error");
+		if (last_angle <= 45 && last_angle >= -45 && std::abs(last_yaw) > 90)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam2";
+		}
+		else if (last_angle >= 0)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam1";
+		}
+		else if (last_angle <= 0)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam3";
+		}
 		return RCB_FAILURE;
 	}
 	else if (doing_backup)

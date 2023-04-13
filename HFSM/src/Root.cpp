@@ -761,5 +761,6 @@ bool Root::cameraCheck(std::string camera_stream)
         return false;
     }
     cap.release();
+    usleep(1000000);
     return true;
 }

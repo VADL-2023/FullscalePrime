@@ -191,7 +191,7 @@ EventName State_Prelaunch::execute()
     std::cout << "AAC Video Folder: " << folder_name_str << std::endl;
     mkdir(folder_name_str.c_str(), 0777);
     std::string cam_str;
-    for (int i = 0; num_successful_cams < 2 && i < potential_camera_num; ++i)
+    for (int i = 0; num_successful_cams < 1 && i < potential_camera_num; ++i)
     {
         std::cout << "Trying to open stream for AAC: " << this->root_->aac_camera_streams_[i] << std::endl;
         if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")

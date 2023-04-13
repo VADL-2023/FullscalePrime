@@ -27,7 +27,6 @@ int main(int, char **)
     // open selected camera using selected API
     cap1.open("/dev/videoCam1",cv::CAP_ANY);
     cap1.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
-    cap1.open("/dev/videoCam1",cv::CAP_ANY);
     cap2.open("/dev/videoCam2");
     cap2.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
     cap3.open("/dev/videoCam3",cv::CAP_ANY);
@@ -53,6 +52,7 @@ int main(int, char **)
          << "Press any key to terminate" << std::endl;
     for (int i = 0;i < 10;i++)
     {
+        std::cout << "I: " << i << std::endl;
         // wait for a new frame from camera and store it into 'frame'
         cap1.read(frame1);
         cap2.read(frame2);
@@ -78,58 +78,6 @@ int main(int, char **)
         
     }
 
-     cap1.open("/dev/videoCam1",cv::CAP_ANY);
-    cap1.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
-    cap1.open("/dev/videoCam1",cv::CAP_ANY);
-    cap2.open("/dev/videoCam2");
-    cap2.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
-    cap3.open("/dev/videoCam3",cv::CAP_ANY);
-    cap3.set(cv::CAP_PROP_FOURCC,cv::VideoWriter::fourcc('M','J','P','G'));
-    // check if we succeeded
-    if (!cap1.isOpened())
-    {
-        std::cerr << "ERROR! Unable to open camera 1\n";
-        //return -1;
-    }
-    if (!cap2.isOpened())
-    {
-        std::cerr << "ERROR! Unable to open camera 2\n";
-        //return -1;
-    }
-    if (!cap3.isOpened())
-    {
-        std::cerr << "ERROR! Unable to open camera 3\n";
-        //return -1;
-    }
-    //--- GRAB AND WRITE LOOP
-    std::cout << "Start grabbing" << std::endl
-         << "Press any key to terminate" << std::endl;
-    for (int i = 0;i < 10;i++)
-    {
-        // wait for a new frame from camera and store it into 'frame'
-        cap1.read(frame1);
-        cap2.read(frame2);
-        cap3.read(frame3);
-        // check if we succeeded
-        if (frame1.empty())
-        {
-            std::cerr << "ERROR! blank frame 1 grabbed\n";
-            break;
-        }
-        if (frame2.empty())
-        {
-            std::cerr << "ERROR! blank frame 2 grabbed\n";
-            break;
-        }
-        if (frame3.empty()) {
-            std::cerr << "ERROR! blank frame 3 grabbed \n";
-            break;
-        }
-        cv::imwrite("test.png",frame1);
-        cv::imwrite("test2.png",frame2);
-        cv::imwrite("test3.png",frame3);
-        
-    }
     // the camera will be deinitialized automatically in VideoCapture destructor
     return 0;
 }
