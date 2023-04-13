@@ -113,14 +113,14 @@ public:
     int lift_n_ = 16;
     int lift_enable_ = 12;
     int lift_time_threshold_ = 30000; // [ms]
-    int lift_backwards_time_threshold_ = 1680;
+    int lift_backwards_time_threshold_ = 1068;
     int lift_min_threshold_ = 5000; // [ms]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
     double ideal_level_angle_ = 180;
     int min_angle_ = -10;
-    int min_pulse_width_ = 1200;
+    int min_pulse_width_ = 1150;
     int max_angle_ = 20;
     int max_pulse_width_ = 1900;
 
