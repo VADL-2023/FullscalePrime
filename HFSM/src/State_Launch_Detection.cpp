@@ -42,15 +42,15 @@ EventName State_Launch_Detection::execute()
 	int capture_size = this->root_->aac_camera_captures_.size();
 	for(int i = 0;i < capture_size;i++) {
 		if(this->root_->aac_camera_captures_strings_[i] == "/dev/videoCam1") {
-			std::cout << "In Cap 1" << std::endl;
+			this->root_->m_log_.write("In Cap 1");
 			std::thread t1(&Root::realCamThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], &this->root_->videos1_, 1);
 			this->root_->threads_.push_back(move(t1));
 		} else if(this->root_->aac_camera_captures_strings_[i] == "/dev/videoCam2") {
-			std::cout << "In Cap 2" << std::endl;
+			this->root_->m_log_.write("In Cap 2");
 			std::thread t2(&Root::realCamThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], &this->root_->videos2_, 2);
 			this->root_->threads_.push_back(move(t2));
 		}else if(this->root_->aac_camera_captures_strings_[i] == "/dev/videoCam3") {
-			std::cout << "In Cap 3" << std::endl;
+			this->root_->m_log_.write("In Cap 3");
 			std::thread t3(&Root::realCamThreadLanding, this->root_, &this->root_->aac_camera_captures_[i], &this->root_->videos3_, 3);
 			this->root_->threads_.push_back(move(t3));
 		}

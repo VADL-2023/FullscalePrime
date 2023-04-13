@@ -80,12 +80,13 @@ EventName State_Full_RCB::execute()
 		}
 		else
 		{
-			std::cout << "Invalid date/time format" << std::endl;
+			this->root_->m_log_.write("Invalid date/time format");
 		}
 
 		mkdir(base_folder.c_str(), 0777);
 		std::string folder_name_str = base_folder + "/RCB" + this->root_->m_log_.getTimestamp();
-		std::cout << "RCB Video Folder: " << folder_name_str << std::endl;
+		std::string folder_write_str = "RCB Video Folder: " + folder_name_str;
+		this->root_->m_log_.write(folder_write_str);
 		mkdir(folder_name_str.c_str(), 0777);
 		std::string video_name = folder_name_str + "/rcb.avi";
 		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
@@ -129,7 +130,7 @@ EventName State_Full_RCB::execute()
 				rcb_stable = true;
 				if (this->root_->primary_camera_stream_ == "/dev/videoCam2" && std::abs(response_rpy[2]) < 90)
 				{
-					std::cout << "Static nacelle on top" << std::endl;
+					this->root_->m_log_.write("Static nacelle on top");
 					rcb_stable = false;
 				}
 				if (rcb_stable)

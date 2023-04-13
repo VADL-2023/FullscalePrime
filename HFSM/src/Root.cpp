@@ -615,6 +615,8 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     int index = 0;
     double max_time = 0;
     double min_time = 10000000;
+    //MAYBE TODO: Mutex addition
+    //MAYBE TODO: Release video when you change index, check with power disconnection testing
     while (!this->landing_detected_)
     {
         cv::Mat frame;
@@ -760,6 +762,7 @@ bool Root::cameraCheck(std::string camera_stream)
         this->m_log_.write("ERROR! Blank frame grabbed from " + camera_stream);
         return false;
     }
+    this->m_log_.write("Camera " + camera_stream + " captured frame.");
     cap.release();
     usleep(1000000);
     return true;
