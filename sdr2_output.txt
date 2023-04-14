@@ -9,16 +9,9 @@ Note: PTT not configured for channel 0. (Ignore this if using VOX.)
 Ready to accept AGW client application 0 on port 9000 ...
 Ready to accept KISS TCP client application 0 on port 9001 ...
 
-KQ4CTL-6 audio level = 27(10/10)   [NONE]   ||||||___
-[0.2] KQ4CTL-6>STZZLZ:`rX<0x1c>l <0x1c>X/`C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1<0x0d>
-MIC-E, HELO, Mic-Emsg, Off Duty
-N 34 00.0000, W 086 00.0000, 0 MPH
-C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1
+Attached to KISS TCP client application 0...
 
-KQ4CTL-6 audio level = 31(10/11)   [NONE]   _||||____
-[0.2] KQ4CTL-6>STZZLZ:`rX<0x1c>l <0x1c>X/`C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1<0x0d>
-MIC-E, HELO, Mic-Emsg, Off Duty
-N 34 00.0000, W 086 00.0000, 0 MPH
-C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3_1
+Ready to accept KISS TCP client application 1 on port 9001 ...
 
-End of file on stdin.  Exiting.
+KISS client application 0 has gone away.
+

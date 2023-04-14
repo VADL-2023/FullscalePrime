@@ -21,7 +21,7 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
-	// system("sudo ../../kill_direwolf_and_rtl.bash");
+	system("sudo ../../kill_sdr.bash");
 	this->root_->m_log_.write("Starting the SDRs");
 	this->root_->radio1_.startSDR();
 	this->root_->radio2_.startSDR();
@@ -59,7 +59,7 @@ EventName State_RAFCO_Mission::execute()
 	{
 		this->root_->m_log_.write("ERROR! Unable to open camera");
 	}
-	cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+	cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 	// Save the time that the radios are started
 	auto start_time = this->root_->getCurrentTime();
 
@@ -68,13 +68,16 @@ EventName State_RAFCO_Mission::execute()
 
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
+		std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
 		// std::string rafco_command = "";
 		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
 		{
+			std::cout << "Backup valid" << std::endl;
 			backup_valid = true;
 		}
 		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
+			std::cout << "In packet 1 available" << std::endl;
 			// Read the packet from the SDR and print it out
 			p1 = this->root_->radio1_.getPacket();
 
@@ -100,6 +103,7 @@ EventName State_RAFCO_Mission::execute()
 
 		if (sdr2_valid && this->root_->radio2_.packetAvailable())
 		{
+			std::cout << "In packet 2 available" << std::endl;
 			// Read the packet from the SDR and print it out
 			p2 = this->root_->radio2_.getPacket();
 
@@ -125,7 +129,7 @@ EventName State_RAFCO_Mission::execute()
 
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		std::string backup_rafco_command = "C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3";
+		std::string backup_rafco_command = "C3 A1 D4 C3 E5 B2 G7 C3 H8 A1 F6 C3";
 		// std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
 		// std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
 		std::stringstream rafco_stream(rafco_command);
@@ -380,6 +384,7 @@ EventName State_RAFCO_Mission::execute()
 	gpioWrite(this->root_->stepper_3_standby_pin_, 0);
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
+	cap.release();
 	this->root_->radio1_.stopSDR();
 	this->root_->radio2_.stopSDR();
 	if (this->root_->primary_camera_stream_ != "/dev/videoCam2")
