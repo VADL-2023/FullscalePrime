@@ -65,7 +65,7 @@ EventName State_RAFCO_Mission::execute()
 
 	std::string prev_command = "";
 	std::string rafco_command = "";
-
+	int pic_num = 1;
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
 		std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
@@ -136,7 +136,7 @@ EventName State_RAFCO_Mission::execute()
 		bool is_gray = false;
 		bool is_blur = false;
 		bool is_rotate = false;
-		int pic_num = 1;
+		
 		if (backup_valid && !got_packet)
 		{
 			rafco_stream.str(backup_rafco_command);

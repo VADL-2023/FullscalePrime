@@ -69,6 +69,9 @@ EventName State_Full_Level::execute()
 			this->root_->m_log_.write("Couldn't read from IMU. About to try again");
 		}
 	}
+	this->root_->lift_done_ = true;
+	this->root_->lift_thread_.join();
+	this->root_->lift_and_level_cap_.release();
 	return LEVEL_SUCCESS;
 }
 

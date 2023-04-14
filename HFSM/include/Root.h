@@ -153,6 +153,10 @@ public:
     std::vector<cv::VideoWriter> videos2_;
     std::vector<cv::VideoWriter> videos3_;
 
+    cv::VideoCapture lift_and_level_cap_;
+	cv::VideoWriter lift_and_level_video_;
+    std::thread lift_thread_;
+
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
     float accel_roof_ = 1.1;                                                                    // how many g's does the program need to see in order for launch to be detected
