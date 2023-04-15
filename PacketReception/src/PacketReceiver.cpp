@@ -40,7 +40,7 @@ void PacketReceiver::startSDR()
     sleep(1);
 
     // Connect to TCP port
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
     if (sockfd < 0)
     {
         fprintf(stderr, "ERROR opening socket\n");
@@ -90,7 +90,7 @@ void PacketReceiver::startSDR(Log &m_log)
     sleep(1);
 
     // Connect to TCP port
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
     if (sockfd < 0)
     {
         fprintf(stderr, "ERROR opening socket\n");
@@ -172,7 +172,7 @@ AX25Packet PacketReceiver::getPacket()
         int j = 0;
 
         // Extract the KISS frame
-        for (int i = 0; i < buffer_len; i++)
+        for (int i = 0; i < n; i++)
         {
             c = buffer[i];
             if (c == 0xc0)
@@ -190,9 +190,9 @@ AX25Packet PacketReceiver::getPacket()
         int len_frame = j;
 
         char dest_addr[7];
-        char dest_ssid;
+        char dest_ssid = 0;
         char source_addr[7];
-        char source_ssid;
+        char source_ssid = 0;
         char control[2];
         char data[len_frame - 15];
 
