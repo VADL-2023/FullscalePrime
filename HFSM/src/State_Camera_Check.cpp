@@ -33,11 +33,11 @@ EventName State_Camera_Check::execute()
 	}*/
 	if(cam2_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[2];
-	} else if(cam3_online) {
-		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
 	} else if(cam1_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[0];
-	} else {
+	} else if(cam3_online) {
+		this->root_->primary_camera_stream_ = this->root_->camera_streams_[1];
+	}  else {
 		this->root_->m_log_.write("Unable to open any of the camera streams");
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[2];
 
