@@ -615,10 +615,13 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     int index = 0;
     double max_time = 0;
     double min_time = 10000000;
+    double flight_start_video = getCurrentTime();
+    double flight_current_video = flight_start_video;
     // MAYBE TODO: Mutex addition
     // MAYBE TODO: Release video when you change index, check with power disconnection testing
-    while (!this->landing_detected_)
+    while (!this->landing_detected_ && flight_current_video - flight_start_video < 180000 )
     {
+        flight_current_video = getCurrentTime();
         cv::Mat frame;
         auto start_time = getCurrentTime();
         (*cap) >> frame;

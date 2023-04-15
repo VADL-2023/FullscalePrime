@@ -166,12 +166,12 @@ public:
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
     int num_data_points_checked_4_landing_ = num_seconds_no_new_minimum_ * sampling_frequency_; // how many altitude points must a new min not be found for landing to be declared
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
-    int max_flight_time_ = 180;                                                                 // [s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main)
+    int max_flight_time_ = 10 * 60;                                                                 // [s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main)
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 120; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
-    std::string rafco_freq_ = "144.970M";                                                        // Frequency for RAFCO transmissions
-    std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
-    int source_ssid_ = 0;
+    int length_collect_rafco_ = 2 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    std::string rafco_freq_ = "144.900M";                                                        // Frequency for RAFCO transmissions
+    std::string callsign_ = "KQ4CTL";                                                           // Callsign to look for
+    int source_ssid_ = 6;
     int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
     bool rafco_redo_ = false;
     // calibration parameters

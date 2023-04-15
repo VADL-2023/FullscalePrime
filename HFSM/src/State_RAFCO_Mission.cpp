@@ -310,7 +310,7 @@ EventName State_RAFCO_Mission::execute()
 						}
 						cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 					}
-					//try {
+					try {
 					cv::Mat display_frame = frame;
 						// Need to rotate frame because of how camera is mounted
 						cv::rotate(display_frame, display_frame, cv::ROTATE_180);
@@ -366,9 +366,9 @@ EventName State_RAFCO_Mission::execute()
 						cv::putText(display_frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
 						cv::imwrite(pic_name_str, display_frame);
 						this->root_->rafco_pic_num_++;
-					/*} catch (...) {
+					} catch (...) {
 						this->root_->m_log_.write("Couldn't write out the photo");
-					}*/
+					}
 				}
 				else if (command == "D4")
 				{
