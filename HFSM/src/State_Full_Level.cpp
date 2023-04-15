@@ -71,11 +71,14 @@ EventName State_Full_Level::execute()
 	}
 	this->root_->lift_done_ = true;
 	try {
-	this->root_->lift_thread_.join();
+		this->root_->lift_thread_.join();
+		std::cout << "Wrote lift and level video" << std::endl;
 	} catch(...) {
 		std::cout << "No video thread" << std::endl;
 	}
 	this->root_->lift_and_level_cap_.release();
+	//usleep(10000000);
+	this->root_->m_log_.tempSaveProgLog();
 	return LEVEL_SUCCESS;
 }
 

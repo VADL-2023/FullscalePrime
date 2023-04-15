@@ -52,7 +52,7 @@ class PacketReceiver {
         void startSDR(Log& m_log);
         void stopSDR();
         
-        int packetAvailable();
+        bool packetAvailable();
         AX25Packet getPacket();
 };
 

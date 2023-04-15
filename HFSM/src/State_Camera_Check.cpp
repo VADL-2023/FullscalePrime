@@ -43,6 +43,7 @@ EventName State_Camera_Check::execute()
 
 	}
 	this->root_->m_log_.write("Primary camera: " + this->root_->primary_camera_stream_ );
+	this->root_->m_log_.tempSaveProgLog();
 	return CAMERA_PICKED;
 }
 

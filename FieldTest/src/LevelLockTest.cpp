@@ -37,7 +37,7 @@ int main()
     double angle = 0;
     float pulse_width;
     bool run_again = true;
-    int pulseWidth = 1400;
+    int pulseWidth = 1450;
     do
     {
 

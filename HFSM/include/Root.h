@@ -120,9 +120,10 @@ public:
     int num_level_samples_ = 20;
     double ideal_level_angle_ = 180;
     int min_angle_ = -10;
-    int min_pulse_width_ = 1150;
+    int min_pulse_width_ = 1200;
     int max_angle_ = 20;
-    int max_pulse_width_ = 1900;
+    int max_pulse_width_ = 1950;
+    int rafco_pic_num_ = 1;
 
     std::map<StateName, State *> states_;
     std::vector<std::thread> threads_;
@@ -167,12 +168,12 @@ public:
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
     int max_flight_time_ = 180;                                                                 // [s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main)
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 2 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    int length_collect_rafco_ = 120; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
     std::string rafco_freq_ = "144.970M";                                                        // Frequency for RAFCO transmissions
     std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
     int source_ssid_ = 0;
     int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
-
+    bool rafco_redo_ = false;
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
     int imu_wait_ = 60;                 // number of samples to get from IMU before actually starting to use + save data

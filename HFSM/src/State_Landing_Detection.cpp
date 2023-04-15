@@ -116,6 +116,7 @@ EventName State_Landing_Detection::execute()
 	this->root_->cap1.release();
 	this->root_->cap2.release();
 	this->root_->cap3.release();
+	this->root_->m_log_.tempSaveProgLog();
 	return LANDING_DETECTED;
 }
 

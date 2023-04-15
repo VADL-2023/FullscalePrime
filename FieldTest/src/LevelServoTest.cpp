@@ -48,14 +48,14 @@ int main()
         
         if (userInput == "L")
         {
-            pulseWidth += 100;
+            pulseWidth += 50;
             std::cout << "Pulse width: " << pulseWidth << std::endl;
             gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);
         }
         else if (userInput == "U")
         {
-            pulseWidth -= 100;
+            pulseWidth -= 50;
             std::cout << "Pulse width: " << pulseWidth << std::endl;
             gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);

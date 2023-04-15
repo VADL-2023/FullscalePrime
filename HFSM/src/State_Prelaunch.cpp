@@ -208,7 +208,7 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                //this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
                 this->root_->cap1.set(cv::CAP_PROP_FPS, this->root_->fps_);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
@@ -234,7 +234,7 @@ EventName State_Prelaunch::execute()
                         int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
                         num_string.insert(0, precision, '0');
                         std::string video_name = cam_str + "/i" + num_string + ".avi";
-                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
                         this->root_->videos1_.emplace_back(video);
                     }
                     std::string cam_1_success = "Successfully opened Camera 1 at " + cam_str;
@@ -254,7 +254,7 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                //this->root_->cap2.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
                 this->root_->cap2.set(cv::CAP_PROP_FPS, this->root_->fps_);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
@@ -280,7 +280,7 @@ EventName State_Prelaunch::execute()
                         int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
                         num_string.insert(0, precision, '0');
                         std::string video_name = cam_str + "/i" + num_string + ".avi";
-                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
                         this->root_->videos2_.emplace_back(video);
                     }
                     std::string cam_2_success = "Successfully opened Camera 2 at " + cam_str;
@@ -300,7 +300,7 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+                //this->root_->cap3.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
                 this->root_->cap3.set(cv::CAP_PROP_FPS, this->root_->fps_);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
@@ -326,7 +326,7 @@ EventName State_Prelaunch::execute()
                         int precision = this->root_->n_photo_bit_size_ - std::min(this->root_->n_photo_bit_size_, num_string.size());
                         num_string.insert(0, precision, '0');
                         std::string video_name = cam_str + "/i" + num_string + ".avi";
-                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+                        cv::VideoWriter video(video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
                         this->root_->videos3_.emplace_back(video);
                     }
                     std::string cam_3_success = "Successfully opened Camera 3 at " + cam_str;

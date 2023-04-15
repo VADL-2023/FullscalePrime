@@ -65,7 +65,7 @@ EventName State_Full_Lift::execute()
 		std::cout << "Lift Video Folder: " << folder_name_str << std::endl;
 		mkdir(folder_name_str.c_str(), 0777);
 		std::string lift_and_level_video_name = folder_name_str + "/lift.avi";
-		this->root_->lift_and_level_video_.open(lift_and_level_video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		this->root_->lift_and_level_video_.open(lift_and_level_video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
 		std::thread t1(&Root::realCamThreadLift, this->root_, &this->root_->lift_and_level_cap_, &this->root_->lift_and_level_video_);
 		this->root_->lift_thread_ = std::move(t1);
 	}
@@ -120,11 +120,13 @@ EventName State_Full_Lift::execute()
 		this->root_->lift_done_ = true;
 		this->root_->lift_thread_.join();
 		this->root_->lift_and_level_cap_.release();
+		this->root_->m_log_.tempSaveProgLog();
 		return LIFT_FAILURE;
 	}
 	else
 	{
 		this->root_->m_log_.write("Lift success");
+		this->root_->m_log_.tempSaveProgLog();
 		return LIFT_SUCCESS;
 	}
 }

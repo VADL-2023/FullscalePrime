@@ -12,6 +12,9 @@ State_Full_RCB::State_Full_RCB(StateName name, std::map<EventName, StateName> &s
 EventName State_Full_RCB::execute()
 {
 	this->root_->m_log_.write("In State Full RCB");
+	if(this->root_->rafco_redo_) {
+		system("sudo bash ../../cam_assignment.bash");
+	}
 	if (!this->root_->is_imu_connected_)
 	{
 		try
@@ -30,6 +33,7 @@ EventName State_Full_RCB::execute()
 			gpioServo(this->root_->nacelle_servo_, this->root_->nacelle_unlock_);
 			gpioSleep(0, 2, 0);
 			this->root_->m_log_.write("Initiating Nacelle servo lock");
+			this->root_->m_log_.tempSaveProgLog();
 			return RCB_FAILURE;
 		}
 	}
@@ -65,6 +69,7 @@ EventName State_Full_RCB::execute()
 		{
 			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
 		}
+		//cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 		if (this->root_->date_timestamp_ == "")
 		{
 			auto end = std::chrono::system_clock::now();
@@ -89,7 +94,7 @@ EventName State_Full_RCB::execute()
 		this->root_->m_log_.write(folder_write_str);
 		mkdir(folder_name_str.c_str(), 0777);
 		std::string video_name = folder_name_str + "/rcb.avi";
-		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		video.open(video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
 		std::thread t1(&Root::realCamThreadRCB, this->root_, &cap, &video);
 		t1_test = std::move(t1);
 	}
@@ -183,6 +188,7 @@ EventName State_Full_RCB::execute()
 			{
 				this->root_->primary_camera_stream_ = "/dev/videoCam3";
 			}
+			this->root_->m_log_.tempSaveProgLog();
 			return RCB_FAILURE;
 		}
 		current_time = this->root_->getCurrentTime();
@@ -218,16 +224,19 @@ EventName State_Full_RCB::execute()
 		{
 			this->root_->primary_camera_stream_ = "/dev/videoCam3";
 		}
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_FAILURE;
 	}
 	else if (doing_backup)
 	{
 		this->root_->m_log_.write("RCB Backup Success");
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_FAILURE;
 	}
 	else
 	{
 		this->root_->m_log_.write("RCB Success");
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_SUCCESS;
 	}
 }

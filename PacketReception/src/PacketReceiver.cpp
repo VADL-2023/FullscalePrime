@@ -6,6 +6,7 @@
 #include <string.h>
 #include <poll.h>
 #include </usr/include/signal.h>
+#include <errno.h>
 
 #include "../include/PacketReceiver.h"
 
@@ -40,7 +41,7 @@ void PacketReceiver::startSDR()
     sleep(1);
 
     // Connect to TCP port
-    sockfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM , 0);
     if (sockfd < 0)
     {
         fprintf(stderr, "ERROR opening socket\n");
@@ -62,6 +63,7 @@ void PacketReceiver::startSDR()
     if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     {
         fprintf(stderr, "ERROR connecting\n");
+        fprintf(stderr, "ERROR: %s\n", strerror(errno));
         return;
     }
 
@@ -90,7 +92,7 @@ void PacketReceiver::startSDR(Log &m_log)
     sleep(1);
 
     // Connect to TCP port
-    sockfd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
     {
         fprintf(stderr, "ERROR opening socket\n");
@@ -130,7 +132,7 @@ void PacketReceiver::stopSDR()
     rtl_active = false;
 }
 
-int PacketReceiver::packetAvailable()
+bool PacketReceiver::packetAvailable()
 {
     if (!rtl_active)
         return 0;
@@ -142,7 +144,11 @@ int PacketReceiver::packetAvailable()
     fds.fd = sockfd;
     fds.events = POLLIN;
     int r = ppoll(&fds, 1, &ts, NULL);
-    return r == 1;
+    if (r > 0 && (fds.events & POLLIN)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 AX25Packet PacketReceiver::getPacket()
@@ -262,7 +268,6 @@ AX25Packet PacketReceiver::getPacket()
         p.source_ssid = source_ssid;
         p.dest = dest_addr;
     } 
-
     return p;
 }
 
