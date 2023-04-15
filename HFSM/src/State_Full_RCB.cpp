@@ -123,8 +123,8 @@ EventName State_Full_RCB::execute()
 			{
 				pitch_error += 90 - 7;
 			}
-
-			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(response_rpy[1]));
+			std::string rcb_error_str = "RCB Angle Error: " + std::to_string(pitch_error);
+			this->root_->m_log_.write(rcb_error_str);
 			if (pitch_error <= this->root_->rcb_angle_threshold_ && pitch_error >= -this->root_->rcb_angle_threshold_)
 			{
 				rcb_stable = true;

@@ -68,11 +68,11 @@ EventName State_RAFCO_Mission::execute()
 	int pic_num = 1;
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
-		std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
+		// std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
 		// std::string rafco_command = "";
 		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
 		{
-			std::cout << "Backup valid" << std::endl;
+			// std::cout << "Backup valid" << std::endl;
 			backup_valid = true;
 		}
 		if (sdr1_valid && this->root_->radio1_.packetAvailable())

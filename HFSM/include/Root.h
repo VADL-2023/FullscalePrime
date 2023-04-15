@@ -87,7 +87,7 @@ public:
     int rcb_time_threshold_ = 5000;
     double rcb_angle_threshold_ = 1;
     bool is_aligned_ = false;
-    int full_rcb_time_threshold_ = 40000;
+    int full_rcb_time_threshold_ = 75000;
 
     double landing_time_;
     size_t n_photo_bit_size_ = 5;
@@ -168,7 +168,7 @@ public:
     int max_flight_time_ = 180;                                                                 // [s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main)
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
     int length_collect_rafco_ = 2 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
-    std::string rafco_freq_ = "144.900M";                                                        // Frequency for RAFCO transmissions
+    std::string rafco_freq_ = "144.970M";                                                        // Frequency for RAFCO transmissions
     std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
     int source_ssid_ = 0;
     int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS

@@ -70,7 +70,11 @@ EventName State_Full_Level::execute()
 		}
 	}
 	this->root_->lift_done_ = true;
+	try {
 	this->root_->lift_thread_.join();
+	} catch(...) {
+		std::cout << "No video thread" << std::endl;
+	}
 	this->root_->lift_and_level_cap_.release();
 	return LEVEL_SUCCESS;
 }

@@ -142,7 +142,7 @@ int PacketReceiver::packetAvailable()
     fds.fd = sockfd;
     fds.events = POLLIN;
     int r = ppoll(&fds, 1, &ts, NULL);
-    return r;
+    return r == 1;
 }
 
 AX25Packet PacketReceiver::getPacket()
