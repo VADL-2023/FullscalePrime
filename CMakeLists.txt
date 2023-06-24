@@ -1,6 +1,8 @@
+# For every CMakeLists, need project and cmake minimum defined
 project(prime_project)
 cmake_minimum_required(VERSION 3.18)
 
+# add_subdirectory will run the CMakeLists for the specified folder
 add_subdirectory(pigpio-master)
 add_subdirectory(IMU)
 add_subdirectory(Log)
