@@ -12,6 +12,9 @@ State_Full_RCB::State_Full_RCB(StateName name, std::map<EventName, StateName> &s
 EventName State_Full_RCB::execute()
 {
 	this->root_->m_log_.write("In State Full RCB");
+	if(this->root_->rafco_redo_) {
+		system("sudo bash ../../cam_assignment.bash");
+	}
 	if (!this->root_->is_imu_connected_)
 	{
 		try
@@ -30,6 +33,7 @@ EventName State_Full_RCB::execute()
 			gpioServo(this->root_->nacelle_servo_, this->root_->nacelle_unlock_);
 			gpioSleep(0, 2, 0);
 			this->root_->m_log_.write("Initiating Nacelle servo lock");
+			this->root_->m_log_.tempSaveProgLog();
 			return RCB_FAILURE;
 		}
 	}
@@ -65,6 +69,7 @@ EventName State_Full_RCB::execute()
 		{
 			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
 		}
+		//cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 		if (this->root_->date_timestamp_ == "")
 		{
 			auto end = std::chrono::system_clock::now();
@@ -80,15 +85,16 @@ EventName State_Full_RCB::execute()
 		}
 		else
 		{
-			std::cout << "Invalid date/time format" << std::endl;
+			this->root_->m_log_.write("Invalid date/time format");
 		}
 
 		mkdir(base_folder.c_str(), 0777);
 		std::string folder_name_str = base_folder + "/RCB" + this->root_->m_log_.getTimestamp();
-		std::cout << "RCB Video Folder: " << folder_name_str << std::endl;
+		std::string folder_write_str = "RCB Video Folder: " + folder_name_str;
+		this->root_->m_log_.write(folder_write_str);
 		mkdir(folder_name_str.c_str(), 0777);
 		std::string video_name = folder_name_str + "/rcb.avi";
-		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		video.open(video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
 		std::thread t1(&Root::realCamThreadRCB, this->root_, &cap, &video);
 		t1_test = std::move(t1);
 	}
@@ -96,7 +102,7 @@ EventName State_Full_RCB::execute()
 	{
 		this->root_->m_log_.write("Rotating to camera 1");
 	}
-	else if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
+	else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 	{
 		this->root_->m_log_.write("Rotating to camera 3");
 	}
@@ -104,12 +110,16 @@ EventName State_Full_RCB::execute()
 	{
 		this->root_->m_log_.write("Rotating to camera 2");
 	}
+	float last_angle = 0;
+	float last_yaw = 0;
 	while (!rcb_stable)
 	{
 		try
 		{
 			auto response_rpy = this->root_->m_vn_->readYawPitchRoll();
 			auto pitch_error = response_rpy[1];
+			last_angle = pitch_error;
+			last_yaw = response_rpy[2];
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
 				pitch_error -= 90 - 7;
@@ -118,17 +128,17 @@ EventName State_Full_RCB::execute()
 			{
 				pitch_error += 90 - 7;
 			}
-
-			this->root_->m_log_.write("RCB Angle Error: " + std::to_string(response_rpy[1]));
+			std::string rcb_error_str = "RCB Angle Error: " + std::to_string(pitch_error);
+			this->root_->m_log_.write(rcb_error_str);
 			if (pitch_error <= this->root_->rcb_angle_threshold_ && pitch_error >= -this->root_->rcb_angle_threshold_)
 			{
 				rcb_stable = true;
 				if (this->root_->primary_camera_stream_ == "/dev/videoCam2" && std::abs(response_rpy[2]) < 90)
 				{
-					std::cout << "Static nacelle on top" << std::endl;
+					this->root_->m_log_.write("Static nacelle on top");
 					rcb_stable = false;
 				}
-				if(rcb_stable)
+				if (rcb_stable)
 				{
 					gpioWrite(this->root_->rcb_lift_standby_, 0);
 					gpioWrite(this->root_->rcb_p_, 0);
@@ -166,6 +176,19 @@ EventName State_Full_RCB::execute()
 			gpioSleep(0, 2, 0);
 			this->root_->m_log_.write("Initiating Nacelle servo lock");
 			cap.release();
+			if (last_angle <= 45 && last_angle >= -45 && std::abs(last_yaw) > 90)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam2";
+			}
+			else if (last_angle >= 0)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam1";
+			}
+			else if (last_angle <= 0)
+			{
+				this->root_->primary_camera_stream_ = "/dev/videoCam3";
+			}
+			this->root_->m_log_.tempSaveProgLog();
 			return RCB_FAILURE;
 		}
 		current_time = this->root_->getCurrentTime();
@@ -189,16 +212,31 @@ EventName State_Full_RCB::execute()
 	if (is_time_up)
 	{
 		this->root_->m_log_.write("RCB Timeout Error");
+		if (last_angle <= 45 && last_angle >= -45 && std::abs(last_yaw) > 90)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam2";
+		}
+		else if (last_angle >= 0)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam1";
+		}
+		else if (last_angle <= 0)
+		{
+			this->root_->primary_camera_stream_ = "/dev/videoCam3";
+		}
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_FAILURE;
 	}
 	else if (doing_backup)
 	{
 		this->root_->m_log_.write("RCB Backup Success");
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_FAILURE;
 	}
 	else
 	{
 		this->root_->m_log_.write("RCB Success");
+		this->root_->m_log_.tempSaveProgLog();
 		return RCB_SUCCESS;
 	}
 }

@@ -459,7 +459,7 @@ void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number, int max_photo
             date_time.pop_back();
             frames.push_back(frame);
             date_times.push_back(date_time);
-            //std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
+            // std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
         }
     }
     catch (...)
@@ -615,8 +615,13 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     int index = 0;
     double max_time = 0;
     double min_time = 10000000;
-    while (!this->landing_detected_)
+    double flight_start_video = getCurrentTime();
+    double flight_current_video = flight_start_video;
+    // MAYBE TODO: Mutex addition
+    // MAYBE TODO: Release video when you change index, check with power disconnection testing
+    while (!this->landing_detected_ && flight_current_video - flight_start_video < 180000 )
     {
+        flight_current_video = getCurrentTime();
         cv::Mat frame;
         auto start_time = getCurrentTime();
         (*cap) >> frame;
@@ -742,15 +747,15 @@ bool Root::cameraCheck(std::string camera_stream)
     if (!cap.isOpened())
     {
         cap.open(camera_stream);
-
-        cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
-        // check if we succeeded
-        if (!cap.isOpened())
-        {
-            this->m_log_.write("ERROR! Unable to open camera " + camera_stream);
-            return false;
-        }
+        
     }
+    // check if we succeeded
+    if (!cap.isOpened())
+    {
+        this->m_log_.write("ERROR! Unable to open camera " + camera_stream);
+        return false;
+    }
+    cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
     this->m_log_.write("Opened camera " + camera_stream);
     // wait for a new frame from camera and store it into 'frame'
     cap.read(frame);
@@ -760,6 +765,8 @@ bool Root::cameraCheck(std::string camera_stream)
         this->m_log_.write("ERROR! Blank frame grabbed from " + camera_stream);
         return false;
     }
+    this->m_log_.write("Camera " + camera_stream + " captured frame.");
     cap.release();
+    usleep(1000000);
     return true;
 }

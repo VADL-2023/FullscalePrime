@@ -87,7 +87,7 @@ public:
     int rcb_time_threshold_ = 5000;
     double rcb_angle_threshold_ = 1;
     bool is_aligned_ = false;
-    int full_rcb_time_threshold_ = 40000;
+    int full_rcb_time_threshold_ = 75000;
 
     double landing_time_;
     size_t n_photo_bit_size_ = 5;
@@ -113,8 +113,8 @@ public:
     int lift_n_ = 16;
     int lift_enable_ = 12;
     int lift_time_threshold_ = 30000; // [ms]
-    int lift_backwards_time_threshold_ = 1680;
-    int lift_min_threshold_ = 5000; // [ms]
+    int lift_backwards_time_threshold_ = 1068;
+    int lift_min_threshold_ = 15000; // [ms]
 
     int level_servo_ = 3;
     int num_level_samples_ = 20;
@@ -122,7 +122,8 @@ public:
     int min_angle_ = -10;
     int min_pulse_width_ = 1200;
     int max_angle_ = 20;
-    int max_pulse_width_ = 1900;
+    int max_pulse_width_ = 1950;
+    int rafco_pic_num_ = 1;
 
     std::map<StateName, State *> states_;
     std::vector<std::thread> threads_;
@@ -142,10 +143,10 @@ public:
     float sampling_frequency_ = 20; // [Hz] how fast does the IMU sample data
     bool restart_ = false;          // tells the program whether or not we NO-GOed
     bool time_delay_enabled_ = false;
-    int fps_ = 24;
+    int fps_ = 30;
     int frame_width_ = 640;
     int frame_height_ = 480;
-    int max_proper_flight_time_ = 3 * 60; // using this one for the cameras
+    int max_proper_flight_time_ = 3 * 60; // using this one for the cameras, assumes we got proper drogue and main
     int vid_clip_time_ = 3;
     int frames_per_vid_ = fps_ * vid_clip_time_;
 
@@ -153,22 +154,26 @@ public:
     std::vector<cv::VideoWriter> videos2_;
     std::vector<cv::VideoWriter> videos3_;
 
+    cv::VideoCapture lift_and_level_cap_;
+	cv::VideoWriter lift_and_level_video_;
+    std::thread lift_thread_;
+
     // TODO: double check these flight parameters
     // possibly variable flight parameters (stuff we might change)
-    float accel_roof_ = 1.1;                                                                    // how many g's does the program need to see in order for launch to be detected
+    float accel_roof_ = 3.5; // TODO: 3.5;                                                                    // how many g's does the program need to see in order for launch to be detected
     int num_data_points_checked_4_launch_ = 8;                                                  // how many acceleration points are averaged to see if data set is over accel_roof_
     int num_data_points_checked_4_apogee_ = 10;                                                 // how many altitude points must a new max not be found for apogee to be declared
     int num_seconds_no_new_minimum_ = 10;                                                       // [s] number of seconds to wait for no new minimum to determine landing
     int num_data_points_checked_4_landing_ = num_seconds_no_new_minimum_ * sampling_frequency_; // how many altitude points must a new min not be found for landing to be declared
     int z_threshold_for_landing_ = 175 * ft_2_m_;                                               // [m] threshold that the altitude must be within for landing
-    int max_flight_time_ = 600;                                                                 // [s] max allowable flight time, if exceeded program ends
+    int max_flight_time_ = 10 * 60;                                                                 // [s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main)
     int max_parachute_detach_wait_time_ = 2;                                                    // [s] maximum time to wait for the parachute detach signal to be returned from the Teensy before continuing
-    int length_collect_rafco_ = 1 * 60; // TODO 30 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
-    std::string rafco_freq_ = "144.97M";                                                        // Frequency for RAFCO transmissions
-    std::string callsign_ = "KQ4DPB";                                                           // Callsign to look for
-    int source_ssid_ = 0;
-    int pds_delay_ = 10 * 1000;    //TODO                                                             // [ms] aditional time to wait for PDS
-
+    int length_collect_rafco_ = 20 * 60; // TODO 20 * 60;                                          // [s] amount of time to collect RAFCO signals and perform image processing
+    std::string rafco_freq_ = "144.900M";                                                        // Frequency for RAFCO transmissions
+    std::string callsign_ = "KQ4CTL";                                                           // Callsign to look for
+    int source_ssid_ = 6;
+    int pds_delay_ = 60 * 1000;    //TODO: 60 sec                                                             // [ms] aditional time to wait for PDS
+    bool rafco_redo_ = false;
     // calibration parameters
     uint16_t num_sample_readings_ = 60; // amount of samples taken and averaged to find ground P and T
     int imu_wait_ = 60;                 // number of samples to get from IMU before actually starting to use + save data

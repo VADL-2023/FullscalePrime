@@ -6,6 +6,7 @@
 #include <string.h>
 #include <poll.h>
 #include </usr/include/signal.h>
+#include <errno.h>
 
 #include "../include/PacketReceiver.h"
 
@@ -40,7 +41,7 @@ void PacketReceiver::startSDR()
     sleep(1);
 
     // Connect to TCP port
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM , 0);
     if (sockfd < 0)
     {
         fprintf(stderr, "ERROR opening socket\n");
@@ -62,6 +63,7 @@ void PacketReceiver::startSDR()
     if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
     {
         fprintf(stderr, "ERROR connecting\n");
+        fprintf(stderr, "ERROR: %s\n", strerror(errno));
         return;
     }
 
@@ -130,7 +132,7 @@ void PacketReceiver::stopSDR()
     rtl_active = false;
 }
 
-int PacketReceiver::packetAvailable()
+bool PacketReceiver::packetAvailable()
 {
     if (!rtl_active)
         return 0;
@@ -142,7 +144,11 @@ int PacketReceiver::packetAvailable()
     fds.fd = sockfd;
     fds.events = POLLIN;
     int r = ppoll(&fds, 1, &ts, NULL);
-    return r;
+    if (r > 0 && (fds.events & POLLIN)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 AX25Packet PacketReceiver::getPacket()
@@ -172,7 +178,7 @@ AX25Packet PacketReceiver::getPacket()
         int j = 0;
 
         // Extract the KISS frame
-        for (int i = 0; i < buffer_len; i++)
+        for (int i = 0; i < n; i++)
         {
             c = buffer[i];
             if (c == 0xc0)
@@ -190,9 +196,9 @@ AX25Packet PacketReceiver::getPacket()
         int len_frame = j;
 
         char dest_addr[7];
-        char dest_ssid;
+        char dest_ssid = 0;
         char source_addr[7];
-        char source_ssid;
+        char source_ssid = 0;
         char control[2];
         char data[len_frame - 15];
 
@@ -262,7 +268,6 @@ AX25Packet PacketReceiver::getPacket()
         p.source_ssid = source_ssid;
         p.dest = dest_addr;
     } 
-
     return p;
 }
 

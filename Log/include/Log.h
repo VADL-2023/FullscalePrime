@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sys/time.h>
 #include <ctime>
+#include <unistd.h> // sleep function
+
 
 #ifndef MYPROJECT_NEWLOG_H
 #define MYPROJECT_NEWLOG_H
@@ -35,6 +37,8 @@ private:
     std::string specialCharacters[10] = {"/", "\\", "*", "<", ">", ",", ".", "`", "~", "|"}; // not all of these are invalid but rather be safe than sorry
     std::string delim;
     std::string timestamp_;
+    std::string flight_name_;
+    std::string program_name_;
     
 public:
 
@@ -47,6 +51,8 @@ public:
     void write(std::string outputString);
 
     void writeTime(std::string outputString);
+
+    void tempSaveProgLog();
     
     void writeDelim(std::string outputString);
     

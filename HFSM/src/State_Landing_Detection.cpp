@@ -89,7 +89,7 @@ EventName State_Landing_Detection::execute()
 	for(int i = 0;i < this->root_->threads_.size();i++) {
         this->root_->threads_[i].join();
     }
-	std::cout << "Made it" << std::endl;
+	this->root_->m_log_.write("Secondary Payload threads completed");
 	if ((samples_since_min_has_changed >= this->root_->num_data_points_checked_4_landing_) && (abs(this->root_->z_current_) < this->root_->z_threshold_for_landing_))
 	{
 		this->root_->m_log_.write("Altitude has not reached a new min for " + to_string(this->root_->num_data_points_checked_4_landing_) + " samples");
@@ -116,6 +116,7 @@ EventName State_Landing_Detection::execute()
 	this->root_->cap1.release();
 	this->root_->cap2.release();
 	this->root_->cap3.release();
+	this->root_->m_log_.tempSaveProgLog();
 	return LANDING_DETECTED;
 }
 

@@ -23,23 +23,22 @@ EventName State_Full_Lift::execute()
 	double current_time = start_time;
 	this->root_->m_log_.write("Starting winch");
 	gpioWrite(this->root_->rcb_lift_standby_, 1);
-	cv::VideoCapture cap;
-	cv::VideoWriter video;
+
 	// open the default camera using default API
-	// cap.open(0);
+	// this->root_->lift_and_level_cap_.open(0);
 	// OR advance usage: select any API backend
 	int numPics = 0;
 	// open selected camera using selected API
-	std::thread t1_test;
+
 	if (this->root_->primary_camera_stream_ != "")
 	{
 		// open selected camera using selected API
-		if (!cap.isOpened())
+		if (!this->root_->lift_and_level_cap_.isOpened())
 		{
-			cap.open(this->root_->primary_camera_stream_);
+			this->root_->lift_and_level_cap_.open(this->root_->primary_camera_stream_);
 		}
 		// check if we succeeded
-		if (!cap.isOpened())
+		if (!this->root_->lift_and_level_cap_.isOpened())
 		{
 			this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
 		}
@@ -65,10 +64,10 @@ EventName State_Full_Lift::execute()
 		std::string folder_name_str = base_folder + "/Lift" + this->root_->m_log_.getTimestamp();
 		std::cout << "Lift Video Folder: " << folder_name_str << std::endl;
 		mkdir(folder_name_str.c_str(), 0777);
-		std::string video_name = folder_name_str + "/lift.avi";
-		video.open(video_name, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
-		std::thread t1(&Root::realCamThreadLift, this->root_, &cap, &video);
-		t1_test = std::move(t1);
+		std::string lift_and_level_video_name = folder_name_str + "/lift.avi";
+		this->root_->lift_and_level_video_.open(lift_and_level_video_name, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), this->root_->fps_, cv::Size(this->root_->frame_width_, this->root_->frame_height_));
+		std::thread t1(&Root::realCamThreadLift, this->root_, &this->root_->lift_and_level_cap_, &this->root_->lift_and_level_video_);
+		this->root_->lift_thread_ = std::move(t1);
 	}
 	while (!is_done)
 	{
@@ -114,17 +113,20 @@ EventName State_Full_Lift::execute()
 	gpioWrite(this->root_->lift_p_, 0);
 	gpioWrite(this->root_->lift_n_, 0);
 	gpioPWM(this->root_->lift_enable_, 0);
-	this->root_->lift_done_ = true;
-	t1_test.join();
-	cap.release();
+
 	if (is_time_up)
 	{
 		this->root_->m_log_.write("Time Ran Out for Lift");
+		this->root_->lift_done_ = true;
+		this->root_->lift_thread_.join();
+		this->root_->lift_and_level_cap_.release();
+		this->root_->m_log_.tempSaveProgLog();
 		return LIFT_FAILURE;
 	}
 	else
 	{
 		this->root_->m_log_.write("Lift success");
+		this->root_->m_log_.tempSaveProgLog();
 		return LIFT_SUCCESS;
 	}
 }

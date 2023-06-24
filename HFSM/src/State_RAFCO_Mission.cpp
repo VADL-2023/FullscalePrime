@@ -21,7 +21,8 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
-	// system("sudo ../../kill_direwolf_and_rtl.bash");
+	usleep(1000000);
+	system("sudo ../../kill_sdr.bash");
 	this->root_->m_log_.write("Starting the SDRs");
 	this->root_->radio1_.startSDR();
 	this->root_->radio2_.startSDR();
@@ -44,7 +45,7 @@ EventName State_RAFCO_Mission::execute()
 	// open the default camera using default API
 	// cap.open(0);
 	// OR advance usage: select any API backend
-	int apiID = cv::CAP_ANY; // 0 = autodetect default API
+	int apiID = 0; // 0 = autodetect default API
 	int numPics = 0;
 	// open selected camera using selected API
 	if (this->root_->primary_camera_stream_ == "")
@@ -53,13 +54,19 @@ EventName State_RAFCO_Mission::execute()
 	}
 	std::string log_camera_stream = "Primary camera stream: " + this->root_->primary_camera_stream_;
 	this->root_->m_log_.write(log_camera_stream);
-	cap.open(this->root_->primary_camera_stream_, apiID);
+	if (!cap.isOpened())
+	{
+		std::cout << "Camera not open" << std::endl;
+		cap.open(this->root_->primary_camera_stream_, 0);
+	}
 	// check if we succeeded
 	if (!cap.isOpened())
 	{
-		this->root_->m_log_.write("ERROR! Unable to open camera");
+		this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
+	} else {
+		std::cout << "Camera already open" << std::endl;
 	}
-	cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('X', 'V', 'I', 'D'));
+	cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 	// Save the time that the radios are started
 	auto start_time = this->root_->getCurrentTime();
 
@@ -68,13 +75,17 @@ EventName State_RAFCO_Mission::execute()
 
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
+		usleep(10000);
+		// std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
 		// std::string rafco_command = "";
 		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
 		{
+			// std::cout << "Backup valid" << std::endl;
 			backup_valid = true;
 		}
 		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
+			std::cout << "In packet 1 available" << std::endl;
 			// Read the packet from the SDR and print it out
 			p1 = this->root_->radio1_.getPacket();
 
@@ -82,15 +93,19 @@ EventName State_RAFCO_Mission::execute()
 			// or if there is an issue with the ports
 			if (p1.msg.find("ERROR") != std::string::npos)
 			{
+				this->root_->m_log_.write("Radio 1 TCP port disconnected");
 				sdr1_valid = false;
 			}
 			else
 			{
-				if (p1.source == root_->callsign_ && p1.source_ssid == root_->source_ssid_) {
+				if (p1.source == root_->callsign_ && p1.source_ssid == root_->source_ssid_)
+				{
 					rafco_command = p1.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 1 Received: " + p1.msg);
-				} else {
+				}
+				else
+				{
 					this->root_->m_log_.write("Radio 1 received a packet from " + p1.source + "-" + std::to_string(p1.source_ssid));
 					this->root_->m_log_.write("Packet received: " + p1.msg);
 				}
@@ -99,6 +114,7 @@ EventName State_RAFCO_Mission::execute()
 
 		if (sdr2_valid && this->root_->radio2_.packetAvailable())
 		{
+			std::cout << "In packet 2 available" << std::endl;
 			// Read the packet from the SDR and print it out
 			p2 = this->root_->radio2_.getPacket();
 
@@ -106,15 +122,19 @@ EventName State_RAFCO_Mission::execute()
 			// or if there is an issue with the ports
 			if (p2.msg.find("ERROR") != std::string::npos)
 			{
+				this->root_->m_log_.write("Radio 2 TCP disconnected");
 				sdr2_valid = false;
 			}
 			else
 			{
-				if (p2.source == root_->callsign_ && p2.source_ssid == root_->source_ssid_) {
+				if (p2.source == root_->callsign_ && p2.source_ssid == root_->source_ssid_)
+				{
 					rafco_command = p2.msg;
 					got_packet = true;
 					this->root_->m_log_.write("Radio 2 Received: " + p2.msg);
-				} else {
+				}
+				else
+				{
 					this->root_->m_log_.write("Radio 2 received a packet from " + p2.source + "-" + std::to_string(p2.source_ssid));
 					this->root_->m_log_.write("Packet received: " + p2.msg);
 				}
@@ -123,14 +143,14 @@ EventName State_RAFCO_Mission::execute()
 
 		std::string command = "";
 		// std::string rafco_command = sdr1_output;
-		std::string backup_rafco_command = "C3 A1 D4 C3 B2 E5 B2 F6 B2 C3 A1 A1 E5 A1 A1 A1 C3 A1 D4 F6 C3 H8 C3";
+		std::string backup_rafco_command = "C3 A1 D4 C3 E5 A1 G7 C3 H8 A1 F6 C3";
 		// std::string backup_rafco_command = "B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2";
 		// std::string backup_rafco_command = "A1 C3 A1 A1 C3 A1 A1 A1 A1 C3 A1 A1 C3 A1";
 		std::stringstream rafco_stream(rafco_command);
 		bool is_gray = false;
 		bool is_blur = false;
 		bool is_rotate = false;
-		int pic_num = 1;
+
 		if (backup_valid && !got_packet)
 		{
 			rafco_stream.str(backup_rafco_command);
@@ -227,7 +247,6 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle -= 60;
 					}
-					usleep(500000);
 				}
 				else if (command == "B2")
 				{
@@ -265,12 +284,11 @@ EventName State_RAFCO_Mission::execute()
 						}
 						angle += 60;
 					}
-					usleep(500000);
 				}
 				else if (command == "C3")
 				{
 					cv::Mat frame;
-					usleep(500000);
+					usleep(1000000);
 					int i = 0;
 					while (i < 7)
 					{
@@ -280,10 +298,20 @@ EventName State_RAFCO_Mission::execute()
 					if (frame.empty())
 					{
 						this->root_->m_log_.write("ERROR! Blank frame returned from camera");
+						system("sudo bash ../../cam_assignment.bash");
+						if (!cap.isOpened())
+						{
+							cap.open(this->root_->primary_camera_stream_, 0);
+						}
+						// check if we succeeded
+						if (!cap.isOpened())
+						{
+							this->root_->m_log_.write("ERROR! Unable to open camera " + this->root_->primary_camera_stream_);
+						}
+						cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 					}
-					else
-					{
-						cv::Mat display_frame = frame;
+					try {
+					cv::Mat display_frame = frame;
 						// Need to rotate frame because of how camera is mounted
 						cv::rotate(display_frame, display_frame, cv::ROTATE_180);
 						// cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
@@ -300,7 +328,7 @@ EventName State_RAFCO_Mission::execute()
 							cv::GaussianBlur(display_frame, display_frame, cv::Size(51, 51), 0);
 						}
 
-						std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(pic_num) + ".png";
+						std::string pic_name_str = folder_name_str + "/primary_image_" + std::to_string(this->root_->rafco_pic_num_) + ".png";
 						if (is_gray)
 						{
 							this->root_->m_log_.write("Current Image is gray");
@@ -337,7 +365,9 @@ EventName State_RAFCO_Mission::execute()
 						cv::putText(display_frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
 						cv::putText(display_frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
 						cv::imwrite(pic_name_str, display_frame);
-						pic_num++;
+						this->root_->rafco_pic_num_++;
+					} catch (...) {
+						this->root_->m_log_.write("Couldn't write out the photo");
 					}
 				}
 				else if (command == "D4")
@@ -380,15 +410,19 @@ EventName State_RAFCO_Mission::execute()
 	gpioWrite(this->root_->stepper_3_standby_pin_, 0);
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
+	cap.release();
 	this->root_->radio1_.stopSDR();
 	this->root_->radio2_.stopSDR();
 	if (this->root_->primary_camera_stream_ != "/dev/videoCam2")
 	{
 		this->root_->primary_camera_stream_ = "/dev/videoCam2";
+		this->root_->m_log_.tempSaveProgLog();
+		this->root_->rafco_redo_ = true;
 		return RAFCO_REDO;
 	}
 	else
 	{
+		this->root_->m_log_.tempSaveProgLog();
 		return RAFCO_COMPLETE;
 	}
 }

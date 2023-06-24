@@ -20,12 +20,12 @@ mIMU(imu)
     
     timestamp_ = string_time.substr(0,string_time.find("."));
     // open flight and program data files
-    std::string flight_name = flightFilename + timestamp_ + ".txt";
-    std::string program_name = programFilename + timestamp_ + ".txt";
-    std::cout << "Flight Data File: " << flight_name << std::endl;
-    std::cout << "Program Data File: " << program_name << std::endl;
-    mFlightLog.open(flight_name);
-    mProgLog.open(program_name);
+    flight_name_ = flightFilename + timestamp_ + ".txt";
+    program_name_ = programFilename + timestamp_ + ".txt";
+    std::cout << "Flight Data File: " << flight_name_ << std::endl;
+    std::cout << "Program Data File: " << program_name_ << std::endl;
+    mFlightLog.open(flight_name_);
+    mProgLog.open(program_name_);
 
     if (!(mFlightLog.is_open() && mProgLog.is_open())){
         std::cout << "Redundant error in file message" << std::endl;
@@ -49,6 +49,16 @@ Log::~Log() {
 
 std::string Log::getTimestamp() {
     return timestamp_;
+}
+
+void Log::tempSaveProgLog() {
+    std::cout << "About to close file" << std::endl;
+    mProgLog.close();
+    mFlightLog.close();
+    usleep(1000000);
+    std::cout << "About to open file" << std::endl;
+    mProgLog.open(program_name_,std::ios::app);
+    mFlightLog.open(flight_name_,std::ios::app);
 }
 
 // write IMU data to flight data file, will provide calculated altitude if baseline parameters are saved
