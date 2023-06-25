@@ -1,26 +1,48 @@
+/**
+ * @file LiftArrowTest.cpp
+ * @brief Runs lift up or down
+ * 
+ */
 #include <iostream>
 #include <ctime>
 #include "pigpio.h"
 #include <chrono>
 
-const int TIME_THRESHOLD = 20000;
-
+/**
+ * @brief RPi GPIO Pin for positive lift motor terminal
+ * 
+ */
 const int LIFT_P = 20;
+
+/**
+ * @brief RPi GPIO Pin for negative lift motor terminal
+ * 
+ */
 const int LIFT_N = 16;
+
+/**
+ * @brief RPi GPIO Pin for lift motor enable
+ * 
+ */
 const int LIFT_ENABLE = 12;
+
+/**
+ * @brief RPi GPIO Pin for lift motor controller standby
+ * 
+ */
 const int LIFT_STANDBY = 21;
+
+/**
+ * @brief Max PWM Signal for motor to run full speed
+ * 
+ */
 const int PWM_MOTOR_MAX = 255;
 
-double getCurrentTime()
-{
-    return double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
-}
-
-float angleToPulseWidth(double pulse_max, double pulse_min, double range, float angle)
-{
-    return (pulse_max - pulse_min) * angle / range + (pulse_max + pulse_min) / 2.0;
-}
-
+/**
+ * @brief Main method: Runs lift up or down
+ * 
+ * @return exit status 
+ */
 int main()
 {
     // Temporary initialization thing
@@ -44,6 +66,7 @@ int main()
         std::string userInput = "";
         std::cout << "What do you want to do to the lift ((U)p | (D)own | (S)top): ";
         std::cin >> userInput;
+        // Lift up
         if (userInput == "U")
         {
             gpioWrite(LIFT_STANDBY, 1);
@@ -51,6 +74,7 @@ int main()
             gpioWrite(LIFT_N, 0);
             gpioPWM(LIFT_ENABLE, PWM_MOTOR_MAX);
         }
+        //Lift down
         else if (userInput == "D")
         {
             gpioWrite(LIFT_STANDBY, 1);

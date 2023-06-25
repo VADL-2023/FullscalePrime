@@ -1,25 +1,40 @@
+
+/**
+ * @file LiftServoTest.cpp 
+ * 
+ * @brief Runs lift servo to either lock or unlock the lift
+ * WARNING: Change servo parameters since it has been a while and the servo may be in a different configuration
+ * 
+ */
+
 #include <iostream>
 #include <ctime>
 #include "pigpio.h"
 #include <chrono>
 
+/**
+ * @brief RPI GPIO pin for servo
+ * 
+ */
 const int LIFT_SERVO = 2;
-const uint16_t SERVO_PULSE_MIN = 500;
-const uint16_t SERVO_PULSE_MAX = 2250;
-const uint8_t SERVO_DEG_RANGE = 90;
+
+/**
+ * @brief Servo pulse width for lock configuration
+ * 
+ */
 const int LIFT_LOCK = 1750;
+
+/**
+ * @brief Servo pulse width for unlock configuration
+ * 
+ */
 const int LIFT_UNLOCK = 1300;
 
-double getCurrentTime()
-{
-    return double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
-}
-
-float angleToPulseWidth(double pulse_max, double pulse_min, double range, float angle)
-{
-    return (pulse_max - pulse_min) * angle / range + (pulse_max + pulse_min) / 2.0;
-}
-
+/**
+ * @brief Main Method: Runs lift servo to either lock or unlock the lift
+ * 
+ * @return Method status
+ */
 int main()
 {
     // Temporary initialization thing
@@ -34,13 +49,10 @@ int main()
     gpioSetMode(LIFT_SERVO, PI_OUTPUT);
 
     // Wait for the user to signal the lift servo
-    double angle = 0;
-    float pulse_width;
     bool run_again = true;
     do
     {
 
-        // Wait for the user to signal that the parachute should be detached
         std::string userInput = "";
         std::cout << "What do you want to do to the lift (L | U | Q): ";
         std::cin >> userInput;
@@ -48,8 +60,6 @@ int main()
         if (userInput == "L")
         {
             std::cout << "Start lock" << std::endl;
-            angle = 60;
-            pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
             gpioServo(LIFT_SERVO, LIFT_LOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End lock" << std::endl;
@@ -57,8 +67,6 @@ int main()
         else if (userInput == "U")
         {
             std::cout << "Start unlock" << std::endl;
-            angle = 15;
-            pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
             gpioServo(LIFT_SERVO, LIFT_UNLOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End unlock" << std::endl;

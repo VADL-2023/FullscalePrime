@@ -102,7 +102,7 @@ Based on this link: https://learnopencv.com/install-opencv-4-on-raspberry-pi/
 Since we get pigpio from source, it should automatically compile. You may be missing a few installations here and there, but you should be able to install them with apt.
 
 ## Package Explanations/Running the Code
-To compile and build the code, run the following. You will see that all the other packages will build first, then the MainDriver package. This is because the MainDriver relies on the other packages to be compiled libraries before it can compile. The full payload code can be run with the following executable, but it is not recommended to run this cold as it relies on the payload to be perfectly setup.
+To compile and build the code, run the following. You will see that all the other packages will build first, then the MainDriver package. This is because the MainDriver relies on the other packages to be compiled libraries before it can compile. The full payload code can be run with the following executable, but it is not recommended to run this cold as it relies on the payload to be perfectly setup. Also, always compile from the FullscalePrime directory, don't individually compile stuff in their own folders, just makes things messy.
 ```
 mkdir build
 cd build
