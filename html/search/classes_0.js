@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['log_312',['Log',['../classLog.html',1,'']]]
+  ['ax25packet_325',['AX25Packet',['../structAX25Packet.html',1,'']]]
 ];

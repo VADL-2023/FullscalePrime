@@ -1,4 +1,9 @@
 #include <iostream> 
+/**
+ * @file TCPTest.cpp
+ * @brief Tests if we can receive APRS Packet through TCP
+ * 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,6 +14,11 @@
 #include <netdb.h>
 #include "./include/PacketReceiver.h"
 
+/**
+ * @brief Main Method to test TCP Port
+ * 
+ * @return int representing exit status
+ */
 int main() {
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;

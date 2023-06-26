@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['root_313',['Root',['../classRoot.html',1,'']]]
+  ['log_326',['Log',['../classLog.html',1,'']]]
 ];

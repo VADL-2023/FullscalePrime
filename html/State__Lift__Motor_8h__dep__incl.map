@@ -1,0 +1,5 @@
+<map id="HFSM/include/State_Lift_Motor.h" name="HFSM/include/State_Lift_Motor.h">
+<area shape="rect" id="node1" title=" " alt="" coords="135,5,283,47"/>
+<area shape="rect" id="node2" href="$display_8cpp.html" title="Runs a mini payload with no perception and verifies all the motors work." alt="" coords="5,95,197,136"/>
+<area shape="rect" id="node3" href="$real__display_8cpp.html" title="Runs the payload from the USLI 2023 competition." alt="" coords="221,95,413,136"/>
+</map>

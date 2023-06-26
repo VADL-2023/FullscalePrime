@@ -1,0 +1,107 @@
+\hypertarget{real__display_8cpp}{}\doxysection{Main\+Driver/src/integration\+\_\+tests/real\+\_\+display.cpp File Reference}
+\label{real__display_8cpp}\index{MainDriver/src/integration\_tests/real\_display.cpp@{MainDriver/src/integration\_tests/real\_display.cpp}}
+
+
+Runs the payload from the USLI 2023 competition.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Prelaunch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Enums.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Root.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper3.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+RCB\+\_\+\+Motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Nacelle\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Lift\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Lift\+\_\+\+Motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Level\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Launch\+\_\+\+Detection.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Apogee\+\_\+\+Detection.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Landing\+\_\+\+Detection.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Full\+\_\+\+Lift.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Full\+\_\+\+Level.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Full\+\_\+\+RCB.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+PDS\+\_\+\+Delay.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+RAFCO\+\_\+\+Mission.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+SDR1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+SDR2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Camera\+\_\+\+Check.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for real\+\_\+display.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{real__display_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{real__display_8cpp_a27eef83b5a1a670463b28120b3191285}{get\+State\+Name}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} state\+Type)
+\begin{DoxyCompactList}\small\item\em Get the state name as a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{real__display_8cpp_a6c60a194eeb6424036076abdabdc4d2b}{run\+Full\+State\+Machine}} (\mbox{\hyperlink{classRoot}{Root}} \&root, \mbox{\hyperlink{classState}{State}} $\ast$initial\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Runs the entire state machine. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{real__display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main method to run the full payload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs the payload from the USLI 2023 competition. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{real__display_8cpp_a27eef83b5a1a670463b28120b3191285}\label{real__display_8cpp_a27eef83b5a1a670463b28120b3191285}} 
+\index{real\_display.cpp@{real\_display.cpp}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!real\_display.cpp@{real\_display.cpp}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily std\+::string get\+State\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{state\+Type }\end{DoxyParamCaption})}
+
+
+
+Get the state name as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+Type} & The state name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string representing the state name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{real__display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{real__display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{real\_display.cpp@{real\_display.cpp}!main@{main}}
+\index{main@{main}!real\_display.cpp@{real\_display.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main method to run the full payload. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{real__display_8cpp_a6c60a194eeb6424036076abdabdc4d2b}\label{real__display_8cpp_a6c60a194eeb6424036076abdabdc4d2b}} 
+\index{real\_display.cpp@{real\_display.cpp}!runFullStateMachine@{runFullStateMachine}}
+\index{runFullStateMachine@{runFullStateMachine}!real\_display.cpp@{real\_display.cpp}}
+\doxysubsubsection{\texorpdfstring{runFullStateMachine()}{runFullStateMachine()}}
+{\footnotesize\ttfamily void run\+Full\+State\+Machine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRoot}{Root}} \&}]{root,  }\item[{\mbox{\hyperlink{classState}{State}} $\ast$}]{initial\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Runs the entire state machine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} containing variables and methods shared between all states \\
+\hline
+{\em initial\+\_\+state} & Starting state for state machine \\
+\hline
+\end{DoxyParams}

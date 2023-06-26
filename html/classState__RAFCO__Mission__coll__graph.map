@@ -1,6 +1,7 @@
 <map id="State_RAFCO_Mission" name="State_RAFCO_Mission">
-<area shape="rect" id="node1" title="State responsible for receiving APRS packets and perform image processing with camera nacelles." alt="" coords="5,260,171,287"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="60,184,116,211"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="62,95,114,121"/>
-<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="65,5,111,32"/>
+<area shape="rect" id="node1" title="State responsible for receiving APRS packets and perform image processing with camera nacelles." alt="" coords="5,275,171,301"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="60,199,116,225"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="62,109,114,136"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="12,5,57,32"/>
+<area shape="rect" id="node5" href="$classPacketReceiver.html" title="PacketReceiver Object for APRS." alt="" coords="82,5,203,32"/>
 </map>

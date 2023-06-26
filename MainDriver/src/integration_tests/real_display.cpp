@@ -1,3 +1,8 @@
+/**
+ * @file real_display.cpp
+ * @brief Runs the payload from the USLI 2023 competition
+ * 
+ */
 #include <iostream>
 #include "State_Prelaunch.h"
 #include "State_Enums.h"
@@ -27,6 +32,12 @@
 #include <unistd.h>
 #include <iostream>
 
+/**
+ * @brief Get the state name as a string
+ * 
+ * @param stateType The state name
+ * @return string representing the state name 
+ */
 std::string getStateName(StateName stateType)
 {
     std::string name;
@@ -103,6 +114,12 @@ std::string getStateName(StateName stateType)
     return name;
 }
 
+/**
+ * @brief Runs the entire state machine
+ * 
+ * @param root Root containing variables and methods shared between all states
+ * @param initial_state Starting state for state machine
+ */
 void runFullStateMachine(Root &root, State *initial_state)
 {
     State *current_state = initial_state;
@@ -111,6 +128,7 @@ void runFullStateMachine(Root &root, State *initial_state)
     std::cout << "Start machine" << std::endl;
     EventName curr_event;
 
+    // realDisplayTest is not a unit fsm, so we will run execute to have the state act normally
     if (root.is_unit_fsm_)
     {
         curr_event = current_state->unitExecute();
@@ -121,6 +139,7 @@ void runFullStateMachine(Root &root, State *initial_state)
         curr_event = current_state->execute();
     }
     StateName next_state = current_state->getNextState(curr_event);
+    // Until we get to end state, execute the current state, then get the next state, and run that
     while (next_state != END_STATE)
     {
         current_state = root.states_[next_state];
@@ -141,6 +160,11 @@ void runFullStateMachine(Root &root, State *initial_state)
     std::cout << "State Machine Completed" << std::endl;
 }
 
+/**
+ * @brief Main method to run the full payload
+ * 
+ * @return exit status 
+ */
 int main()
 {
     bool is_unit_fsm = false;

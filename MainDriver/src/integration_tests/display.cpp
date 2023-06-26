@@ -1,3 +1,9 @@
+/**
+ * @file display.cpp
+ * @brief Runs a mini payload with no perception and verifies all the motors work
+ * 
+ */
+
 #include <iostream>
 #include "Root.h"
 #include "State.h"
@@ -14,6 +20,12 @@
 #include <map>
 #include "pigpio.h"
 
+/**
+ * @brief Get the state name as a string
+ * 
+ * @param stateType The state name
+ * @return string representing the state name 
+ */
 std::string getStateName(StateName stateType) {
     std::string name;
 
@@ -59,6 +71,12 @@ std::string getStateName(StateName stateType) {
     return name;
 }
 
+/**
+ * @brief Runs the entire state machine
+ * 
+ * @param root Root containing variables and methods shared between all states
+ * @param initial_state Starting state for state machine
+ */
 void runFullStateMachine(Root &root, State &initial_state) {
     State *current_state = &initial_state;
 
@@ -66,6 +84,7 @@ void runFullStateMachine(Root &root, State &initial_state) {
     std::cout << "Start machine" << std::endl;
     EventName curr_event;
 
+    // displayTest is a unit fsm, so we will run unit execute meaning we just want to move the motors and have no perception
     if (root.is_unit_fsm_)
     {
         curr_event = current_state->unitExecute();
@@ -76,6 +95,8 @@ void runFullStateMachine(Root &root, State &initial_state) {
         curr_event = current_state->execute();
     }
     StateName next_state = current_state->getNextState(curr_event);
+
+    // Until we get to end state, execute the current state, then get the next state, and run that
     while (next_state != END_STATE)
     {
         current_state = root.states_[next_state];
@@ -96,6 +117,11 @@ void runFullStateMachine(Root &root, State &initial_state) {
     std::cout << "State Machine Completed" << std::endl;
 }
 
+/**
+ * @brief Main method to run mini payload demo
+ * 
+ * @return exit status 
+ */
 int main() {
     bool is_unit_fsm = true;
     Root root(is_unit_fsm);
@@ -172,6 +198,7 @@ int main() {
     State *next_state = current_state;
     EventName curr_event;
 
+    // User interface to allow user to either run the full state machine or just an individual state
     while (runTests) {
         std::cout << "------------OPTIONS------------" << std::endl;
         std::cout << "1. Run whole state machine" << std::endl;

@@ -1,7 +1,17 @@
+/**
+ * @file PacketTest.cpp
+ * @brief Simply tests if we can receive APRS Packet
+ * 
+ */
 #include <iostream>
 #include <unistd.h>
 #include "./include/PacketReceiver.h"
 
+/**
+ * @brief Main method to test APRS Packet Reception
+ * 
+ * @return int representing exit status 
+ */
 int main() {
     std::string configfile = "/home/vadl/FullscalePrime/sdr1.conf";
     PacketReceiver sdr1 = PacketReceiver(1, "144.97M", 8001, configfile);
