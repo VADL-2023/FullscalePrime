@@ -3,7 +3,6 @@
  * @file LiftServoTest.cpp 
  * 
  * @brief Runs lift servo to either lock or unlock the lift
- * WARNING: Change servo parameters since it has been a while and the servo may be in a different configuration
  * 
  */
 

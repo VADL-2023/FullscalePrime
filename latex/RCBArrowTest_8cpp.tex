@@ -1,0 +1,64 @@
+\hypertarget{RCBArrowTest_8cpp}{}\doxysection{Field\+Test/src/\+RCBArrow\+Test.cpp File Reference}
+\label{RCBArrowTest_8cpp}\index{FieldTest/src/RCBArrowTest.cpp@{FieldTest/src/RCBArrowTest.cpp}}
+
+
+Runs RCB Motor clockwise or counterclockwise.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include \char`\"{}sensors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}config\+\_\+\+IMU.\+hpp\char`\"{}}\newline
+Include dependency graph for RCBArrow\+Test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RCBArrowTest_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{RCBArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main Method\+: Runs RCB Motor clockwise or counterclockwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{RCBArrowTest_8cpp_ac9a528b4e5880c885fd92e36c19f76ca}\label{RCBArrowTest_8cpp_ac9a528b4e5880c885fd92e36c19f76ca}} 
+const int \mbox{\hyperlink{RCBArrowTest_8cpp_ac9a528b4e5880c885fd92e36c19f76ca}{RCB\+\_\+P}} = 26
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for positive RCB motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{RCBArrowTest_8cpp_a5704a930c222112ad0073aaa17b4a7ee}\label{RCBArrowTest_8cpp_a5704a930c222112ad0073aaa17b4a7ee}} 
+const int \mbox{\hyperlink{RCBArrowTest_8cpp_a5704a930c222112ad0073aaa17b4a7ee}{RCB\+\_\+N}} = 19
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for negative RCB motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{RCBArrowTest_8cpp_ae487eb8e88a4aef4450dd9b198eebeb2}\label{RCBArrowTest_8cpp_ae487eb8e88a4aef4450dd9b198eebeb2}} 
+const int \mbox{\hyperlink{RCBArrowTest_8cpp_ae487eb8e88a4aef4450dd9b198eebeb2}{RCB\+\_\+\+ENABLE}} = 13
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for RCB motor enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{RCBArrowTest_8cpp_abc0a80760952f1fee837c69aa419253e}\label{RCBArrowTest_8cpp_abc0a80760952f1fee837c69aa419253e}} 
+const int \mbox{\hyperlink{RCBArrowTest_8cpp_abc0a80760952f1fee837c69aa419253e}{RCB\+\_\+\+STANDBY}} = 21
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for RCB motor controller standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{RCBArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}\label{RCBArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}} 
+const int \mbox{\hyperlink{RCBArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}{PWM\+\_\+\+MOTOR\+\_\+\+MAX}} = 255
+\begin{DoxyCompactList}\small\item\em Max PWM Signal for motor to run full speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs RCB Motor clockwise or counterclockwise. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{RCBArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{RCBArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{RCBArrowTest.cpp@{RCBArrowTest.cpp}!main@{main}}
+\index{main@{main}!RCBArrowTest.cpp@{RCBArrowTest.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Method\+: Runs RCB Motor clockwise or counterclockwise. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}

@@ -2,6 +2,7 @@ include_directories(include)
 set (CMAKE_PREFIX_PATH "/home/vadl/opencv/build")
 find_package( OpenCV REQUIRED )
 
+# Add all states and root to HFSM library
 add_library(HFSM
         src/State_RAFCO_Mission.cpp
         src/State_SDR2.cpp

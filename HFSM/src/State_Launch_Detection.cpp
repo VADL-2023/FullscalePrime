@@ -62,7 +62,7 @@ EventName State_Launch_Detection::execute()
 	this->root_->launch_time_ = this->root_->getCurrentTime();
 
 	// Wait for motor burn to complete while still collecting IMU data
-	this->root_->activeSleep(this->root_->t_burn_, this->root_->m_vn_, this->root_->response_, this->root_->m_log_, this->root_->start_time_);
+	this->root_->activeSleep(this->root_->t_burn_, this->root_->m_vn_, this->root_->response_, this->root_->m_log_);
 	return LAUNCH_DETECTED;
 }
 

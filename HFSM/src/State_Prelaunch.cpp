@@ -42,7 +42,6 @@ EventName State_Prelaunch::execute()
     this->root_->m_log_.write("Landing Detection Samples: " + to_string(this->root_->num_data_points_checked_4_landing_));
     this->root_->m_log_.write("Landing Vertical Threshold: " + to_string(this->root_->z_threshold_for_landing_ * this->root_->m_2_ft_) + " ft");
     this->root_->m_log_.write("Max Flight Time For Landing Detection: " + to_string(this->root_->max_flight_time_) + " s");
-    this->root_->m_log_.write("Max Parachute Detach Wait Time: " + to_string(this->root_->max_parachute_detach_wait_time_) + " s");
     this->root_->m_log_.write("Callsign to Look For: " + this->root_->callsign_ + "-" + std::to_string(this->root_->source_ssid_));
     this->root_->m_log_.write("RAFCO Frequency: " + this->root_->rafco_freq_ + "Hz");
     this->root_->m_log_.write("Length of Time to Collect RAFCO: " + to_string(this->root_->length_collect_rafco_) + " s");

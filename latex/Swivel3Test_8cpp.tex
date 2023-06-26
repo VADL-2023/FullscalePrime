@@ -1,0 +1,73 @@
+\hypertarget{Swivel3Test_8cpp}{}\doxysection{Field\+Test/src/\+Swivel3\+Test.cpp File Reference}
+\label{Swivel3Test_8cpp}\index{FieldTest/src/Swivel3Test.cpp@{FieldTest/src/Swivel3Test.cpp}}
+
+
+Swivels nacelle 3 left or right.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include \char`\"{}Stepper.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for Swivel3\+Test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Swivel3Test_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Swivel3Test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main Method\+: Swivels nacelle 3 left or right. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_ad3dba6928b5b1a4145fefcc55d095a6d}\label{Swivel3Test_8cpp_ad3dba6928b5b1a4145fefcc55d095a6d}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_ad3dba6928b5b1a4145fefcc55d095a6d}{STEPS\+\_\+\+PER\+\_\+\+REVOLUTION}} = 200
+\begin{DoxyCompactList}\small\item\em Number of steps for full revolution for stepper motor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a80a5632dbabf3f0ae999da101166a771}\label{Swivel3Test_8cpp_a80a5632dbabf3f0ae999da101166a771}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a80a5632dbabf3f0ae999da101166a771}{STEPPER\+\_\+\+SPEED}} = 5
+\begin{DoxyCompactList}\small\item\em Speed of stepper motor (unitless) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a2e1772fd8a2831ba847a5bdf2b03cf2e}\label{Swivel3Test_8cpp_a2e1772fd8a2831ba847a5bdf2b03cf2e}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a2e1772fd8a2831ba847a5bdf2b03cf2e}{NUM\+\_\+\+STEPS}} = 60
+\begin{DoxyCompactList}\small\item\em Number of steps run in single key press. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a89ee9ac3ab759fe4125dcf785ad9f80b}\label{Swivel3Test_8cpp_a89ee9ac3ab759fe4125dcf785ad9f80b}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a89ee9ac3ab759fe4125dcf785ad9f80b}{STEPPER\+\_\+3\+\_\+\+STANDBY\+\_\+\+PIN}} = 8
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 3 standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_aa8ecdfb5be1b586a4761d3a401f0e463}\label{Swivel3Test_8cpp_aa8ecdfb5be1b586a4761d3a401f0e463}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_aa8ecdfb5be1b586a4761d3a401f0e463}{STEPPER\+\_\+3\+\_\+\+PIN\+\_\+1}} = 7
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 3 pin 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a142758d05f1ff2f7cffcd53d2cedc4af}\label{Swivel3Test_8cpp_a142758d05f1ff2f7cffcd53d2cedc4af}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a142758d05f1ff2f7cffcd53d2cedc4af}{STEPPER\+\_\+3\+\_\+\+PIN\+\_\+2}} = 1
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 3 pin 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a2a3d74165d127a23734d09baf85f6330}\label{Swivel3Test_8cpp_a2a3d74165d127a23734d09baf85f6330}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a2a3d74165d127a23734d09baf85f6330}{STEPPER\+\_\+3\+\_\+\+PIN\+\_\+3}} = 25
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 3 pin 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Swivel3Test_8cpp_a18bb6ef7709fc445a9631c6181f296b8}\label{Swivel3Test_8cpp_a18bb6ef7709fc445a9631c6181f296b8}} 
+const int \mbox{\hyperlink{Swivel3Test_8cpp_a18bb6ef7709fc445a9631c6181f296b8}{STEPPER\+\_\+3\+\_\+\+PIN\+\_\+4}} = 24
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 3 pin 4. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Swivels nacelle 3 left or right. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Swivel3Test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{Swivel3Test_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{Swivel3Test.cpp@{Swivel3Test.cpp}!main@{main}}
+\index{main@{main}!Swivel3Test.cpp@{Swivel3Test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Method\+: Swivels nacelle 3 left or right. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}

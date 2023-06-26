@@ -1,0 +1,62 @@
+\hypertarget{LiftArrowTest_8cpp}{}\doxysection{Field\+Test/src/\+Lift\+Arrow\+Test.cpp File Reference}
+\label{LiftArrowTest_8cpp}\index{FieldTest/src/LiftArrowTest.cpp@{FieldTest/src/LiftArrowTest.cpp}}
+
+
+Runs lift up or down.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+Include dependency graph for Lift\+Arrow\+Test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{LiftArrowTest_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{LiftArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main method\+: Runs lift up or down. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{LiftArrowTest_8cpp_a537cf0d55b6a6480dbad45e7902b9cc2}\label{LiftArrowTest_8cpp_a537cf0d55b6a6480dbad45e7902b9cc2}} 
+const int \mbox{\hyperlink{LiftArrowTest_8cpp_a537cf0d55b6a6480dbad45e7902b9cc2}{LIFT\+\_\+P}} = 20
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for positive lift motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftArrowTest_8cpp_aa4782fef8f007fff79a00626dcd5c2e8}\label{LiftArrowTest_8cpp_aa4782fef8f007fff79a00626dcd5c2e8}} 
+const int \mbox{\hyperlink{LiftArrowTest_8cpp_aa4782fef8f007fff79a00626dcd5c2e8}{LIFT\+\_\+N}} = 16
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for negative lift motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftArrowTest_8cpp_a5452efebe5bae197f7bcf2c36750f804}\label{LiftArrowTest_8cpp_a5452efebe5bae197f7bcf2c36750f804}} 
+const int \mbox{\hyperlink{LiftArrowTest_8cpp_a5452efebe5bae197f7bcf2c36750f804}{LIFT\+\_\+\+ENABLE}} = 12
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for lift motor enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftArrowTest_8cpp_a73d66d904bb57198d3e255542615223d}\label{LiftArrowTest_8cpp_a73d66d904bb57198d3e255542615223d}} 
+const int \mbox{\hyperlink{LiftArrowTest_8cpp_a73d66d904bb57198d3e255542615223d}{LIFT\+\_\+\+STANDBY}} = 21
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for lift motor controller standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}\label{LiftArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}} 
+const int \mbox{\hyperlink{LiftArrowTest_8cpp_a905b42e4cf35058ea62ef1cc495d6e40}{PWM\+\_\+\+MOTOR\+\_\+\+MAX}} = 255
+\begin{DoxyCompactList}\small\item\em Max PWM Signal for motor to run full speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs lift up or down. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{LiftArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{LiftArrowTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{LiftArrowTest.cpp@{LiftArrowTest.cpp}!main@{main}}
+\index{main@{main}!LiftArrowTest.cpp@{LiftArrowTest.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main method\+: Runs lift up or down. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}
