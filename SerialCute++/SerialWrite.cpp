@@ -1,3 +1,8 @@
+/**
+ * @file SerialWrite.cpp
+ * @brief Alternate Serial test (maybe used for images, probably should be deprecated)
+ * 
+ */
 // C Library headers
 #include <stdio.h>
 #include <cstring>
@@ -9,6 +14,11 @@
 #include <termios.h>
 #include <unistd.h> // write(), read(), close()
 
+/**
+ * @brief Main method trying to test Serial Object
+ * 
+ * @return int representing exit status
+ */
 int main()
 {
     // Open serial port

@@ -1,7 +1,8 @@
 <map id="State_Apogee_Detection" name="State_Apogee_Detection">
-<area shape="rect" id="node1" title="State responsible for detecting apogee with IMU." alt="" coords="5,275,188,301"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="69,199,125,225"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="71,109,123,136"/>
-<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="21,5,66,32"/>
-<area shape="rect" id="node5" href="$classPacketReceiver.html" title="PacketReceiver Object for APRS." alt="" coords="91,5,212,32"/>
+<area shape="rect" id="node1" title="State responsible for detecting apogee with IMU." alt="" coords="19,289,202,316"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="83,213,139,240"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="85,124,137,151"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="5,5,51,32"/>
+<area shape="rect" id="node5" href="$classStepper.html" title="Stepper Library Interface." alt="" coords="75,5,147,32"/>
+<area shape="rect" id="node6" href="$classPacketReceiver.html" title="PacketReceiver Object for APRS." alt="" coords="171,5,293,32"/>
 </map>

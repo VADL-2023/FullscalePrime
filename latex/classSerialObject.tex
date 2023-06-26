@@ -1,0 +1,129 @@
+\hypertarget{classSerialObject}{}\doxysection{Serial\+Object Class Reference}
+\label{classSerialObject}\index{SerialObject@{SerialObject}}
+
+
+Serial Communication object.  
+
+
+
+
+{\ttfamily \#include $<$Serial\+Object.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSerialObject_a7cf3a1318e75b9f9b8ca24a4ad0eb9f8}\label{classSerialObject_a7cf3a1318e75b9f9b8ca24a4ad0eb9f8}} 
+\mbox{\hyperlink{classSerialObject_a7cf3a1318e75b9f9b8ca24a4ad0eb9f8}{Serial\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Serial Object object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSerialObject_a766ae412dbed64118ff7aa6080c9aa74}{Serial\+Object}} (std\+::string input)
+\begin{DoxyCompactList}\small\item\em Construct a new Serial Object object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialObject_aa73aabd2ef3912966f56ce5df1c8a8fe}\label{classSerialObject_aa73aabd2ef3912966f56ce5df1c8a8fe}} 
+\mbox{\hyperlink{classSerialObject_aa73aabd2ef3912966f56ce5df1c8a8fe}{$\sim$\+Serial\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Serial Object object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSerialObject_a82f8123aad06f9d859ab6898795f0ae2}{write\+Serial}} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em Writes message. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSerialObject_a697676cd4cf42b62f6700fcea4309493}{read\+Serial}} ()
+\begin{DoxyCompactList}\small\item\em Reads message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSerialObject_a2a9b0a800ae23746c348c015f8f4b5fd}\label{classSerialObject_a2a9b0a800ae23746c348c015f8f4b5fd}} 
+void \mbox{\hyperlink{classSerialObject_a2a9b0a800ae23746c348c015f8f4b5fd}{read\+Serial\+Image\+Organic}} ()
+\begin{DoxyCompactList}\small\item\em Attempt to read image serially. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSerialObject_a5f58f86c1ff3daf975841a636a081e98}{read\+Serial\+Image}} (const char $\ast$pic\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Another attempt to read image serially (see Serial Prime alive commit to find the real one) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSerialObject_a7a4262375bbca82b43d5e48f02b4d7f0}{read\+Serial}} (int buff\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Reads serial message up to a certain size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Serial Communication object. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSerialObject_a766ae412dbed64118ff7aa6080c9aa74}\label{classSerialObject_a766ae412dbed64118ff7aa6080c9aa74}} 
+\index{SerialObject@{SerialObject}!SerialObject@{SerialObject}}
+\index{SerialObject@{SerialObject}!SerialObject@{SerialObject}}
+\doxysubsubsection{\texorpdfstring{SerialObject()}{SerialObject()}}
+{\footnotesize\ttfamily Serial\+Object\+::\+Serial\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{input }\end{DoxyParamCaption})}
+
+
+
+Construct a new Serial Object object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & String representing Serial input \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSerialObject_a697676cd4cf42b62f6700fcea4309493}\label{classSerialObject_a697676cd4cf42b62f6700fcea4309493}} 
+\index{SerialObject@{SerialObject}!readSerial@{readSerial}}
+\index{readSerial@{readSerial}!SerialObject@{SerialObject}}
+\doxysubsubsection{\texorpdfstring{readSerial()}{readSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Serial\+Object\+::read\+Serial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads message. 
+
+\begin{DoxyReturn}{Returns}
+The message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialObject_a7a4262375bbca82b43d5e48f02b4d7f0}\label{classSerialObject_a7a4262375bbca82b43d5e48f02b4d7f0}} 
+\index{SerialObject@{SerialObject}!readSerial@{readSerial}}
+\index{readSerial@{readSerial}!SerialObject@{SerialObject}}
+\doxysubsubsection{\texorpdfstring{readSerial()}{readSerial()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Serial\+Object\+::read\+Serial (\begin{DoxyParamCaption}\item[{int}]{buff\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Reads serial message up to a certain size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buff\+\_\+size} & Maximum size of the message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The serial message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialObject_a5f58f86c1ff3daf975841a636a081e98}\label{classSerialObject_a5f58f86c1ff3daf975841a636a081e98}} 
+\index{SerialObject@{SerialObject}!readSerialImage@{readSerialImage}}
+\index{readSerialImage@{readSerialImage}!SerialObject@{SerialObject}}
+\doxysubsubsection{\texorpdfstring{readSerialImage()}{readSerialImage()}}
+{\footnotesize\ttfamily bool Serial\+Object\+::read\+Serial\+Image (\begin{DoxyParamCaption}\item[{const char $\ast$}]{pic\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Another attempt to read image serially (see Serial Prime alive commit to find the real one) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pic\+\_\+name} & Filename of image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Successfully read image 
+
+false Error in reading image 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSerialObject_a82f8123aad06f9d859ab6898795f0ae2}\label{classSerialObject_a82f8123aad06f9d859ab6898795f0ae2}} 
+\index{SerialObject@{SerialObject}!writeSerial@{writeSerial}}
+\index{writeSerial@{writeSerial}!SerialObject@{SerialObject}}
+\doxysubsubsection{\texorpdfstring{writeSerial()}{writeSerial()}}
+{\footnotesize\ttfamily void Serial\+Object\+::write\+Serial (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+Writes message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The message \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Serial\+Cute++/include/\mbox{\hyperlink{SerialObject_8h}{Serial\+Object.\+h}}\item 
+Serial\+Cute++/src/Serial\+Object.\+cpp\end{DoxyCompactItemize}

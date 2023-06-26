@@ -1,0 +1,150 @@
+\hypertarget{classStepper}{}\doxysection{Stepper Class Reference}
+\label{classStepper}\index{Stepper@{Stepper}}
+
+
+\mbox{\hyperlink{classStepper}{Stepper}} Library Interface.  
+
+
+
+
+{\ttfamily \#include $<$Stepper.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStepper_af3be15bfd38efba27858cc5ec00d84b9}\label{classStepper_af3be15bfd38efba27858cc5ec00d84b9}} 
+\mbox{\hyperlink{classStepper_af3be15bfd38efba27858cc5ec00d84b9}{Stepper}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classStepper}{Stepper}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classStepper_a00cc1024bdc9af29c0cf946e345d346c}{Stepper}} (int number\+\_\+of\+\_\+steps, int motor\+\_\+pin\+\_\+1, int motor\+\_\+pin\+\_\+2, int motor\+\_\+pin\+\_\+3, int motor\+\_\+pin\+\_\+4, bool gpio\+\_\+initialized)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classStepper}{Stepper}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStepper_a873ad8f0bc8af4eeebe6ddb8a0fe218e}{initialize}} (int number\+\_\+of\+\_\+steps, int motor\+\_\+pin\+\_\+1, int motor\+\_\+pin\+\_\+2, int motor\+\_\+pin\+\_\+3, int motor\+\_\+pin\+\_\+4, bool gpio\+\_\+initialized)
+\begin{DoxyCompactList}\small\item\em Initializes \mbox{\hyperlink{classStepper}{Stepper}} motor. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classStepper_ad81a677b8431bcf856d19113bc233577}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get the current time in ms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStepper_a84421be64d1435e57f73f402e938aa3f}{set\+Speed}} (double what\+Speed)
+\begin{DoxyCompactList}\small\item\em Set the stepper motor speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStepper_a23f1ada8f077bcb8691009648cf29f27}{step}} (int number\+\_\+of\+\_\+steps)
+\begin{DoxyCompactList}\small\item\em Perform step for stepper. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classStepper_a2b737f8eb9641728af2fb1c24a2560da}{version}} (void)
+\begin{DoxyCompactList}\small\item\em Returns stepper library version. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classStepper}{Stepper}} Library Interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classStepper_a00cc1024bdc9af29c0cf946e345d346c}\label{classStepper_a00cc1024bdc9af29c0cf946e345d346c}} 
+\index{Stepper@{Stepper}!Stepper@{Stepper}}
+\index{Stepper@{Stepper}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{Stepper()}{Stepper()}}
+{\footnotesize\ttfamily Stepper\+::\+Stepper (\begin{DoxyParamCaption}\item[{int}]{number\+\_\+of\+\_\+steps,  }\item[{int}]{motor\+\_\+pin\+\_\+1,  }\item[{int}]{motor\+\_\+pin\+\_\+2,  }\item[{int}]{motor\+\_\+pin\+\_\+3,  }\item[{int}]{motor\+\_\+pin\+\_\+4,  }\item[{bool}]{gpio\+\_\+initialized = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classStepper}{Stepper}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+of\+\_\+steps} & Number of steps per revolution \\
+\hline
+{\em motor\+\_\+pin\+\_\+1} & GPIO Pin 1 \\
+\hline
+{\em motor\+\_\+pin\+\_\+2} & GPIO Pin 2 \\
+\hline
+{\em motor\+\_\+pin\+\_\+3} & GPIO Pin 3 \\
+\hline
+{\em motor\+\_\+pin\+\_\+4} & GPIO Pin 4 \\
+\hline
+{\em gpio\+\_\+initialized} & Boolean indicating if GPIO has been initialized yet \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStepper_ad81a677b8431bcf856d19113bc233577}\label{classStepper_ad81a677b8431bcf856d19113bc233577}} 
+\index{Stepper@{Stepper}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily double Stepper\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current time in ms. 
+
+\begin{DoxyReturn}{Returns}
+double representing the time in ms 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStepper_a873ad8f0bc8af4eeebe6ddb8a0fe218e}\label{classStepper_a873ad8f0bc8af4eeebe6ddb8a0fe218e}} 
+\index{Stepper@{Stepper}!initialize@{initialize}}
+\index{initialize@{initialize}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Stepper\+::initialize (\begin{DoxyParamCaption}\item[{int}]{number\+\_\+of\+\_\+steps,  }\item[{int}]{motor\+\_\+pin\+\_\+1,  }\item[{int}]{motor\+\_\+pin\+\_\+2,  }\item[{int}]{motor\+\_\+pin\+\_\+3,  }\item[{int}]{motor\+\_\+pin\+\_\+4,  }\item[{bool}]{gpio\+\_\+initialized = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Initializes \mbox{\hyperlink{classStepper}{Stepper}} motor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+of\+\_\+steps} & Number of steps per revolution \\
+\hline
+{\em motor\+\_\+pin\+\_\+1} & GPIO Pin 1 \\
+\hline
+{\em motor\+\_\+pin\+\_\+2} & GPIO Pin 2 \\
+\hline
+{\em motor\+\_\+pin\+\_\+3} & GPIO Pin 3 \\
+\hline
+{\em motor\+\_\+pin\+\_\+4} & GPIO Pin 4 \\
+\hline
+{\em gpio\+\_\+initialized} & Boolean indicating if GPIO has been initialized yet \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStepper_a84421be64d1435e57f73f402e938aa3f}\label{classStepper_a84421be64d1435e57f73f402e938aa3f}} 
+\index{Stepper@{Stepper}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Stepper\+::set\+Speed (\begin{DoxyParamCaption}\item[{double}]{what\+Speed }\end{DoxyParamCaption})}
+
+
+
+Set the stepper motor speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em what\+Speed} & \mbox{\hyperlink{classStepper}{Stepper}} speed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStepper_a23f1ada8f077bcb8691009648cf29f27}\label{classStepper_a23f1ada8f077bcb8691009648cf29f27}} 
+\index{Stepper@{Stepper}!step@{step}}
+\index{step@{step}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Stepper\+::step (\begin{DoxyParamCaption}\item[{int}]{number\+\_\+of\+\_\+steps }\end{DoxyParamCaption})}
+
+
+
+Perform step for stepper. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+of\+\_\+steps} & The number of steps the motor must rotate \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classStepper_a2b737f8eb9641728af2fb1c24a2560da}\label{classStepper_a2b737f8eb9641728af2fb1c24a2560da}} 
+\index{Stepper@{Stepper}!version@{version}}
+\index{version@{version}!Stepper@{Stepper}}
+\doxysubsubsection{\texorpdfstring{version()}{version()}}
+{\footnotesize\ttfamily int Stepper\+::version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns stepper library version. 
+
+\begin{DoxyReturn}{Returns}
+int representing library version 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Stepper/include/\mbox{\hyperlink{Stepper_8h}{Stepper.\+h}}\item 
+Stepper/src/Stepper.\+cpp\end{DoxyCompactItemize}
