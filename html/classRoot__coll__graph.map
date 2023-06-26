@@ -1,0 +1,4 @@
+<map id="Root" name="Root">
+<area shape="rect" id="node1" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="5,95,57,121"/>
+<area shape="rect" id="node2" href="$classLog.html" title="Log class to record flight results." alt="" coords="9,5,54,32"/>
+</map>

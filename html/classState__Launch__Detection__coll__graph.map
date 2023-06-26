@@ -1,5 +1,6 @@
 <map id="State_Launch_Detection" name="State_Launch_Detection">
-<area shape="rect" id="node1" title="State responsible for detecting launch with IMU." alt="" coords="5,171,184,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="67,95,123,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="69,5,121,32"/>
+<area shape="rect" id="node1" title="State responsible for detecting launch with IMU." alt="" coords="5,260,184,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="67,184,123,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="69,95,121,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="72,5,117,32"/>
 </map>

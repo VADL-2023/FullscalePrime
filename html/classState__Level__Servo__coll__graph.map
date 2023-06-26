@@ -1,5 +1,6 @@
 <map id="State_Level_Servo" name="State_Level_Servo">
-<area shape="rect" id="node1" title="State responsible for testing movement for the level servo." alt="" coords="5,171,148,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="49,95,105,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="51,5,103,32"/>
+<area shape="rect" id="node1" title="State responsible for testing movement for the level servo." alt="" coords="5,260,148,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="49,184,105,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="51,95,103,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="54,5,99,32"/>
 </map>

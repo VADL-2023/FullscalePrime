@@ -1,5 +1,6 @@
 <map id="State_PDS_Delay" name="State_PDS_Delay">
-<area shape="rect" id="node1" title="State responsible for program to &quot;sleep&quot; while waiting for Teensy parachute to detach." alt="" coords="5,171,140,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="45,95,101,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="47,5,99,32"/>
+<area shape="rect" id="node1" title="State responsible for program to &quot;sleep&quot; while waiting for Teensy parachute to detach." alt="" coords="5,260,140,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="45,184,101,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="47,95,99,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="50,5,95,32"/>
 </map>

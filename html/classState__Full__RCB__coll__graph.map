@@ -1,5 +1,6 @@
 <map id="State_Full_RCB" name="State_Full_RCB">
-<area shape="rect" id="node1" title="State responsible for RCB to rotate key nacelle on top." alt="" coords="5,171,125,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="37,95,93,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="39,5,91,32"/>
+<area shape="rect" id="node1" title="State responsible for RCB to rotate key nacelle on top." alt="" coords="5,260,125,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="37,184,93,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="39,95,91,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="43,5,88,32"/>
 </map>

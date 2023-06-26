@@ -1,0 +1,181 @@
+\hypertarget{classLog}{}\doxysection{Log Class Reference}
+\label{classLog}\index{Log@{Log}}
+
+
+\mbox{\hyperlink{classLog}{Log}} class to record flight results.  
+
+
+
+
+{\ttfamily \#include $<$Log.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLog_a7bdf3a02a000f59e1a43898664ae37ae}{Log}} (std\+::string flight\+Filename, std\+::string program\+Filename, vn\+::sensors\+::\+Vn\+Sensor $\ast$imu, double s\+Time)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classLog}{Log}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLog_a0fbfda88fbee5027c89f6eb121059360}\label{classLog_a0fbfda88fbee5027c89f6eb121059360}} 
+\mbox{\hyperlink{classLog_a0fbfda88fbee5027c89f6eb121059360}{$\sim$\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classLog}{Log}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLog_a3a03dcce69eb61ad1414a7f4750aa30c}{write}} (vn\+::sensors\+::\+Imu\+Measurements\+Register \&data)
+\begin{DoxyCompactList}\small\item\em Writes IMU data to flight log. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLog_ac2c7f802daf43678fecddb1c8e2dec64}{write}} (std\+::string output\+String)
+\begin{DoxyCompactList}\small\item\em Writes print statements to program log. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLog_ae0bb35da300c57bcfbdb644c733b530e}{write\+Time}} (std\+::string output\+String)
+\begin{DoxyCompactList}\small\item\em Write string to program data file with timestamp and to console. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLog_aedf3a10cb2b62dc6de2f6ed8274e9476}\label{classLog_aedf3a10cb2b62dc6de2f6ed8274e9476}} 
+void \mbox{\hyperlink{classLog_aedf3a10cb2b62dc6de2f6ed8274e9476}{temp\+Save\+Prog\+Log}} ()
+\begin{DoxyCompactList}\small\item\em Saves the program log file while still keeping it open to writing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLog_a5242f7dbe3b7037e4c7b3df9179e1ab5}{write\+Delim}} (std\+::string output\+String)
+\begin{DoxyCompactList}\small\item\em Write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLog_ab8312bed26b9acf5755bb5b4aae92a62}{elapsed\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Calculate time in milliseconds since \mbox{\hyperlink{classLog}{Log}} pointer was created. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLog_a05e8a199e82d1adf6471c532fc4997e3}{save\+Baseline\+Parameters}} (float Rconst, float Bconst, float pressure, float temperature, float accelg)
+\begin{DoxyCompactList}\small\item\em Save baseline parameters to calculate altitude. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLog_a8de9fb083271564281cefe2c165c4c4b}{get\+Timestamp}} ()
+\begin{DoxyCompactList}\small\item\em Get the start timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classLog}{Log}} class to record flight results. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLog_a7bdf3a02a000f59e1a43898664ae37ae}\label{classLog_a7bdf3a02a000f59e1a43898664ae37ae}} 
+\index{Log@{Log}!Log@{Log}}
+\index{Log@{Log}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily Log\+::\+Log (\begin{DoxyParamCaption}\item[{std\+::string}]{flight\+Filename,  }\item[{std\+::string}]{program\+Filename,  }\item[{vn\+::sensors\+::\+Vn\+Sensor $\ast$}]{imu,  }\item[{double}]{s\+Time }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classLog}{Log}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flight\+Filename} & Name for flight log file \\
+\hline
+{\em program\+Filename} & Name for program log file \\
+\hline
+{\em imu} & Pointer to VN-\/100 sensor object \\
+\hline
+{\em s\+Time} & Timestamp that we don\textquotesingle{}t use \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLog_ab8312bed26b9acf5755bb5b4aae92a62}\label{classLog_ab8312bed26b9acf5755bb5b4aae92a62}} 
+\index{Log@{Log}!elapsedTime@{elapsedTime}}
+\index{elapsedTime@{elapsedTime}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{elapsedTime()}{elapsedTime()}}
+{\footnotesize\ttfamily double Log\+::elapsed\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate time in milliseconds since \mbox{\hyperlink{classLog}{Log}} pointer was created. 
+
+\begin{DoxyReturn}{Returns}
+double representing the time in ms since \mbox{\hyperlink{classLog}{Log}} was created 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLog_a8de9fb083271564281cefe2c165c4c4b}\label{classLog_a8de9fb083271564281cefe2c165c4c4b}} 
+\index{Log@{Log}!getTimestamp@{getTimestamp}}
+\index{getTimestamp@{getTimestamp}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{getTimestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily std\+::string Log\+::get\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the start timestamp. 
+
+\begin{DoxyReturn}{Returns}
+string representing the timestamp 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classLog_a05e8a199e82d1adf6471c532fc4997e3}\label{classLog_a05e8a199e82d1adf6471c532fc4997e3}} 
+\index{Log@{Log}!saveBaselineParameters@{saveBaselineParameters}}
+\index{saveBaselineParameters@{saveBaselineParameters}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{saveBaselineParameters()}{saveBaselineParameters()}}
+{\footnotesize\ttfamily void Log\+::save\+Baseline\+Parameters (\begin{DoxyParamCaption}\item[{float}]{Rconst,  }\item[{float}]{Bconst,  }\item[{float}]{pressure,  }\item[{float}]{temperature,  }\item[{float}]{accelg }\end{DoxyParamCaption})}
+
+
+
+Save baseline parameters to calculate altitude. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Rconst} & Gas Constant \\
+\hline
+{\em Bconst} & Variation of temperature within the troposphere \\
+\hline
+{\em pressure} & Baseline pressure \\
+\hline
+{\em temperature} & Baseline temperature \\
+\hline
+{\em accelg} & Baseline gravity reading \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLog_ac2c7f802daf43678fecddb1c8e2dec64}\label{classLog_ac2c7f802daf43678fecddb1c8e2dec64}} 
+\index{Log@{Log}!write@{write}}
+\index{write@{write}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Log\+::write (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+String }\end{DoxyParamCaption})}
+
+
+
+Writes print statements to program log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+String} & Print statements \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLog_a3a03dcce69eb61ad1414a7f4750aa30c}\label{classLog_a3a03dcce69eb61ad1414a7f4750aa30c}} 
+\index{Log@{Log}!write@{write}}
+\index{write@{write}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Log\+::write (\begin{DoxyParamCaption}\item[{vn\+::sensors\+::\+Imu\+Measurements\+Register \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Writes IMU data to flight log. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & IMU Data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLog_a5242f7dbe3b7037e4c7b3df9179e1ab5}\label{classLog_a5242f7dbe3b7037e4c7b3df9179e1ab5}} 
+\index{Log@{Log}!writeDelim@{writeDelim}}
+\index{writeDelim@{writeDelim}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{writeDelim()}{writeDelim()}}
+{\footnotesize\ttfamily void Log\+::write\+Delim (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+String }\end{DoxyParamCaption})}
+
+
+
+Write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+String} & The string written in the \mbox{\hyperlink{classLog}{Log}} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLog_ae0bb35da300c57bcfbdb644c733b530e}\label{classLog_ae0bb35da300c57bcfbdb644c733b530e}} 
+\index{Log@{Log}!writeTime@{writeTime}}
+\index{writeTime@{writeTime}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{writeTime()}{writeTime()}}
+{\footnotesize\ttfamily void Log\+::write\+Time (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+String }\end{DoxyParamCaption})}
+
+
+
+Write string to program data file with timestamp and to console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+String} & The timestamp \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Log/include/\mbox{\hyperlink{Log_8h}{Log.\+h}}\item 
+Log/src/Log.\+cpp\end{DoxyCompactItemize}

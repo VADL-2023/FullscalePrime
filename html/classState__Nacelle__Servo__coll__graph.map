@@ -1,5 +1,6 @@
 <map id="State_Nacelle_Servo" name="State_Nacelle_Servo">
-<area shape="rect" id="node1" title="State responsible for testing nacelle locking servo movement." alt="" coords="5,171,161,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="55,95,111,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="57,5,109,32"/>
+<area shape="rect" id="node1" title="State responsible for testing nacelle locking servo movement." alt="" coords="5,260,161,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="55,184,111,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="57,95,109,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="61,5,106,32"/>
 </map>

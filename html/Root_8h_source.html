@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;sensors.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;config_IMU.hpp&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;Log.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Log_8h.html">Log.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;PacketReceiver.h&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;Stepper.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;opencv2/core.hpp&gt;</span></div>
@@ -356,7 +356,7 @@ $(function() {
 <div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160; </div>
 <div class="line"><a name="l00791"></a><span class="lineno"><a class="line" href="classRoot.html#a19f12ee9bf2918a057f4944fb7a033aa">  791</a></span>&#160;    std::string <a class="code" href="classRoot.html#a19f12ee9bf2918a057f4944fb7a033aa">program_log_name_</a> = <span class="stringliteral">&quot;programDataLog&quot;</span>;</div>
 <div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160; </div>
-<div class="line"><a name="l00797"></a><span class="lineno"><a class="line" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">  797</a></span>&#160;    Log <a class="code" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">m_log_</a>;</div>
+<div class="line"><a name="l00797"></a><span class="lineno"><a class="line" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">  797</a></span>&#160;    <a class="code" href="classLog.html">Log</a> <a class="code" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">m_log_</a>;</div>
 <div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160; </div>
 <div class="line"><a name="l00803"></a><span class="lineno"><a class="line" href="classRoot.html#aacc555363da6ccd6fae0a499b9109998">  803</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classRoot.html#aacc555363da6ccd6fae0a499b9109998">is_imu_connected_</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160; </div>
@@ -397,7 +397,7 @@ $(function() {
 <div class="line"><a name="l00922"></a><span class="lineno">  922</span>&#160; </div>
 <div class="line"><a name="l00923"></a><span class="lineno">  923</span>&#160;    <span class="comment">// functional the same as sleep() command but still records and logs IMU data</span></div>
 <div class="line"><a name="l00924"></a><span class="lineno">  924</span>&#160;    <span class="comment">// sleep_time given in seconds</span></div>
-<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43">activeSleep</a>(<span class="keywordtype">float</span> sleep_time, VnSensor *imu, ImuMeasurementsRegister &amp;response, Log &amp;log);</div>
+<div class="line"><a name="l00933"></a><span class="lineno">  933</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43">activeSleep</a>(<span class="keywordtype">float</span> sleep_time, VnSensor *imu, ImuMeasurementsRegister &amp;response, <a class="code" href="classLog.html">Log</a> &amp;log);</div>
 <div class="line"><a name="l00934"></a><span class="lineno">  934</span>&#160; </div>
 <div class="line"><a name="l00935"></a><span class="lineno">  935</span>&#160;    <span class="comment">// checks if flight has gone on for too long, if so returns true to end program</span></div>
 <div class="line"><a name="l00936"></a><span class="lineno">  936</span>&#160;    <span class="comment">// launchTime given in milliseconds; triggerTime given in seconds</span></div>
@@ -415,7 +415,9 @@ $(function() {
 <div class="line"><a name="l00982"></a><span class="lineno">  982</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00983"></a><span class="lineno">  983</span>&#160;};</div>
 <div class="line"><a name="l00984"></a><span class="lineno">  984</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aLog_8h_html"><div class="ttname"><a href="Log_8h.html">Log.h</a></div></div>
 <div class="ttc" id="aState__Enums_8h_html"><div class="ttname"><a href="State__Enums_8h.html">State_Enums.h</a></div></div>
+<div class="ttc" id="aclassLog_html"><div class="ttname"><a href="classLog.html">Log</a></div><div class="ttdoc">Log class to record flight results.</div><div class="ttdef"><b>Definition:</b> Log.h:21</div></div>
 <div class="ttc" id="aclassRoot_html"><div class="ttname"><a href="classRoot.html">Root</a></div><div class="ttdoc">Contains all common variables and functions accessible to every state in the state machine.</div><div class="ttdef"><b>Definition:</b> Root.h:37</div></div>
 <div class="ttc" id="aclassRoot_html_a001e83bfa05e9795fa44b1bd5010f54d"><div class="ttname"><a href="classRoot.html#a001e83bfa05e9795fa44b1bd5010f54d">Root::t_burn_</a></div><div class="ttdeci">float t_burn_</div><div class="ttdoc">Motor burn time (s)</div><div class="ttdef"><b>Definition:</b> Root.h:549</div></div>
 <div class="ttc" id="aclassRoot_html_a00bc8007506cc866df4910e555ff3d8e"><div class="ttname"><a href="classRoot.html#a00bc8007506cc866df4910e555ff3d8e">Root::aac_pic_num_cam_3_</a></div><div class="ttdeci">int aac_pic_num_cam_3_</div><div class="ttdoc">Number of pictures taken by camera 3 during flight.</div><div class="ttdef"><b>Definition:</b> Root.h:231</div></div>

@@ -75,6 +75,15 @@ $(function() {
  <a href="classRoot.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Root_8h_source.html">Root.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Root:</div>
+<div class="dyncontent">
+<div class="center"><img src="classRoot__coll__graph.png" border="0" usemap="#aRoot_coll__map" alt="Collaboration graph"/></div>
+<map name="aRoot_coll__map" id="aRoot_coll__map">
+<area shape="rect" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="5,95,57,121"/>
+<area shape="rect" href="classLog.html" title="Log class to record flight results." alt="" coords="9,5,54,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,7 +116,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab434a46ca42a975927e0e070b3257077"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#ab434a46ca42a975927e0e070b3257077">terminateConnections</a> (VnSensor *imu)</td></tr>
 <tr class="memdesc:ab434a46ca42a975927e0e070b3257077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects IMU.  <a href="classRoot.html#ab434a46ca42a975927e0e070b3257077">More...</a><br /></td></tr>
 <tr class="separator:ab434a46ca42a975927e0e070b3257077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf8bbf612528d0b7f4af793e9e470f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43">activeSleep</a> (float sleep_time, VnSensor *imu, ImuMeasurementsRegister &amp;response, Log &amp;log)</td></tr>
+<tr class="memitem:aaf8bbf612528d0b7f4af793e9e470f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43">activeSleep</a> (float sleep_time, VnSensor *imu, ImuMeasurementsRegister &amp;response, <a class="el" href="classLog.html">Log</a> &amp;log)</td></tr>
 <tr class="memdesc:aaf8bbf612528d0b7f4af793e9e470f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to sleep() command but still records and logs IMU data.  <a href="classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43">More...</a><br /></td></tr>
 <tr class="separator:aaf8bbf612528d0b7f4af793e9e470f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfce70fe2c9363f44c62c15c14589a96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#adfce70fe2c9363f44c62c15c14589a96">isTimeExceeded</a> (double launch_time, double trigger_time)</td></tr>
@@ -629,8 +638,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memdesc:a19f12ee9bf2918a057f4944fb7a033aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">String with name for program data log. <br /></td></tr>
 <tr class="separator:a19f12ee9bf2918a057f4944fb7a033aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a881827e74cebdcfc4a74d444b9bb76d4"><td class="memItemLeft" align="right" valign="top"><a id="a881827e74cebdcfc4a74d444b9bb76d4"></a>
-Log&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">m_log_</a></td></tr>
-<tr class="memdesc:a881827e74cebdcfc4a74d444b9bb76d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log object for flight data. <br /></td></tr>
+<a class="el" href="classLog.html">Log</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4">m_log_</a></td></tr>
+<tr class="memdesc:a881827e74cebdcfc4a74d444b9bb76d4"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLog.html" title="Log class to record flight results.">Log</a> object for flight data. <br /></td></tr>
 <tr class="separator:a881827e74cebdcfc4a74d444b9bb76d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacc555363da6ccd6fae0a499b9109998"><td class="memItemLeft" align="right" valign="top"><a id="aacc555363da6ccd6fae0a499b9109998"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRoot.html#aacc555363da6ccd6fae0a499b9109998">is_imu_connected_</a> = false</td></tr>
@@ -722,7 +731,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Log &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classLog.html">Log</a> &amp;&#160;</td>
           <td class="paramname"><em>log</em>&#160;</td>
         </tr>
         <tr>
@@ -739,7 +748,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
     <tr><td class="paramname">sleep_time</td><td>Amount of time to sleep for </td></tr>
     <tr><td class="paramname">imu</td><td>VN-100 sensor </td></tr>
     <tr><td class="paramname">response</td><td>Register containing IMU data </td></tr>
-    <tr><td class="paramname">log</td><td>Log output file </td></tr>
+    <tr><td class="paramname">log</td><td><a class="el" href="classLog.html" title="Log class to record flight results.">Log</a> output file </td></tr>
   </table>
   </dd>
 </dl>

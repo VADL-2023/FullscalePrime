@@ -9,6 +9,16 @@ Contains all common variables and functions accessible to every state in the sta
 
 {\ttfamily \#include $<$Root.\+h$>$}
 
+
+
+Collaboration diagram for Root\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=139pt]{classRoot__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,7 +42,7 @@ float \mbox{\hyperlink{classRoot_aee702e519c44a9bc38edca8c6f6bb235}{calc\+Array\
 \begin{DoxyCompactList}\small\item\em Calculates average of all array values. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classRoot_ab434a46ca42a975927e0e070b3257077}{terminate\+Connections}} (Vn\+Sensor $\ast$imu)
 \begin{DoxyCompactList}\small\item\em Disconnects IMU. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classRoot_aaf8bbf612528d0b7f4af793e9e470f43}{active\+Sleep}} (float sleep\+\_\+time, Vn\+Sensor $\ast$imu, Imu\+Measurements\+Register \&response, Log \&log)
+void \mbox{\hyperlink{classRoot_aaf8bbf612528d0b7f4af793e9e470f43}{active\+Sleep}} (float sleep\+\_\+time, Vn\+Sensor $\ast$imu, Imu\+Measurements\+Register \&response, \mbox{\hyperlink{classLog}{Log}} \&log)
 \begin{DoxyCompactList}\small\item\em Similar to sleep() command but still records and logs IMU data. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classRoot_adfce70fe2c9363f44c62c15c14589a96}{is\+Time\+Exceeded}} (double launch\+\_\+time, double trigger\+\_\+time)
 \begin{DoxyCompactList}\small\item\em Checks if flight has gone on for too long. \end{DoxyCompactList}\item 
@@ -423,8 +433,8 @@ std\+::string \mbox{\hyperlink{classRoot_a73701a5eca3d9df006ebda64cb105d8b}{flig
 std\+::string \mbox{\hyperlink{classRoot_a19f12ee9bf2918a057f4944fb7a033aa}{program\+\_\+log\+\_\+name\+\_\+}} = \char`\"{}program\+Data\+Log\char`\"{}
 \begin{DoxyCompactList}\small\item\em String with name for program data log. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}\label{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}} 
-Log \mbox{\hyperlink{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}{m\+\_\+log\+\_\+}}
-\begin{DoxyCompactList}\small\item\em Log object for flight data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLog}{Log}} \mbox{\hyperlink{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}{m\+\_\+log\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classLog}{Log}} object for flight data. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classRoot_aacc555363da6ccd6fae0a499b9109998}\label{classRoot_aacc555363da6ccd6fae0a499b9109998}} 
 bool \mbox{\hyperlink{classRoot_aacc555363da6ccd6fae0a499b9109998}{is\+\_\+imu\+\_\+connected\+\_\+}} = false
 \begin{DoxyCompactList}\small\item\em Boolean indicating if the IMU is still connected. \end{DoxyCompactList}\item 
@@ -477,7 +487,7 @@ Construct a new \mbox{\hyperlink{classRoot}{Root}} object.
 \index{Root@{Root}!activeSleep@{activeSleep}}
 \index{activeSleep@{activeSleep}!Root@{Root}}
 \doxysubsubsection{\texorpdfstring{activeSleep()}{activeSleep()}}
-{\footnotesize\ttfamily void Root\+::active\+Sleep (\begin{DoxyParamCaption}\item[{float}]{sleep\+\_\+time,  }\item[{Vn\+Sensor $\ast$}]{imu,  }\item[{Imu\+Measurements\+Register \&}]{response,  }\item[{Log \&}]{log }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Root\+::active\+Sleep (\begin{DoxyParamCaption}\item[{float}]{sleep\+\_\+time,  }\item[{Vn\+Sensor $\ast$}]{imu,  }\item[{Imu\+Measurements\+Register \&}]{response,  }\item[{\mbox{\hyperlink{classLog}{Log}} \&}]{log }\end{DoxyParamCaption})}
 
 
 
@@ -491,7 +501,7 @@ Similar to sleep() command but still records and logs IMU data.
 \hline
 {\em response} & Register containing IMU data \\
 \hline
-{\em log} & Log output file \\
+{\em log} & \mbox{\hyperlink{classLog}{Log}} output file \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classRoot_a0e98881d2cddd732762b3a417cf57179}\label{classRoot_a0e98881d2cddd732762b3a417cf57179}} 

@@ -1,0 +1,2 @@
+# IMU
+This IMU library was written in a previous year. It wraps the VN Sensor library to help setup the async packet setup to safely get IMU data. This package won't be documented as well as the others because we didn't really edit it this year. It works pretty well out of the box, see MainDriver package for how to use this.

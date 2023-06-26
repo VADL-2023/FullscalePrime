@@ -1,5 +1,6 @@
 <map id="State_Stepper1" name="State_Stepper1">
-<area shape="rect" id="node1" title="State responsible for testing movement for nacelle 1." alt="" coords="5,171,127,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="38,95,94,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="40,5,92,32"/>
+<area shape="rect" id="node1" title="State responsible for testing movement for nacelle 1." alt="" coords="5,260,127,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="38,184,94,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="40,95,92,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="43,5,89,32"/>
 </map>

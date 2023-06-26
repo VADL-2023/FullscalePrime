@@ -1,5 +1,6 @@
 <map id="State_Apogee_Detection" name="State_Apogee_Detection">
-<area shape="rect" id="node1" title="State responsible for detecting apogee with IMU." alt="" coords="5,171,188,197"/>
-<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="69,95,125,121"/>
-<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="71,5,123,32"/>
+<area shape="rect" id="node1" title="State responsible for detecting apogee with IMU." alt="" coords="5,260,188,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="69,184,125,211"/>
+<area shape="rect" id="node3" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="71,95,123,121"/>
+<area shape="rect" id="node4" href="$classLog.html" title="Log class to record flight results." alt="" coords="74,5,119,32"/>
 </map>
