@@ -1,19 +1,13 @@
 var searchData=
 [
-  ['n_5fphoto_5fbit_5fsize_5f_85',['n_photo_bit_size_',['../classRoot.html#ae7eda1b1be61959bdfde63fa5e1c67f0',1,'Root']]],
-  ['nacelle_5flock_86',['NACELLE_LOCK',['../NacelleLockTest_8cpp.html#a0b54c6720c2ba75bf85a123ad7308812',1,'NacelleLockTest.cpp']]],
-  ['nacelle_5flock_5f_87',['nacelle_lock_',['../classRoot.html#a65b637e743a54ca50d4ceb093c3877a2',1,'Root']]],
-  ['nacelle_5fservo_88',['NACELLE_SERVO',['../NacelleLockTest_8cpp.html#a151dc709610877be48800971a77821d8',1,'NacelleLockTest.cpp']]],
-  ['nacelle_5fservo_5f_89',['nacelle_servo_',['../classRoot.html#a2eea06c7f2bbb3a8cac9074cb99fd63f',1,'Root']]],
-  ['nacelle_5funlock_90',['NACELLE_UNLOCK',['../NacelleLockTest_8cpp.html#a43253fbdf84766da2be3f87cb831e7ea',1,'NacelleLockTest.cpp']]],
-  ['nacelle_5funlock_5f_91',['nacelle_unlock_',['../classRoot.html#a40ee4980933d5161ab6e27c3db68860f',1,'Root']]],
-  ['nacellelocktest_2ecpp_92',['NacelleLockTest.cpp',['../NacelleLockTest_8cpp.html',1,'']]],
-  ['num_5fdata_5fpoints_5fchecked_5f4_5fapogee_5f_93',['num_data_points_checked_4_apogee_',['../classRoot.html#ad557ad221897541b7a07007c3c409403',1,'Root']]],
-  ['num_5fdata_5fpoints_5fchecked_5f4_5flanding_5f_94',['num_data_points_checked_4_landing_',['../classRoot.html#ad423ff02a83293ed66a82470eb6eda2a',1,'Root']]],
-  ['num_5fdata_5fpoints_5fchecked_5f4_5flaunch_5f_95',['num_data_points_checked_4_launch_',['../classRoot.html#aa225be3ed75e68b564b2351278b0b2b4',1,'Root']]],
-  ['num_5flevel_5fsamples_5f_96',['num_level_samples_',['../classRoot.html#ab71a63a9f7a23d569ebc598ec51bc2ca',1,'Root']]],
-  ['num_5fsample_5freadings_5f_97',['num_sample_readings_',['../classRoot.html#a31d14f2ee737027c2c14e826ca590003',1,'Root']]],
-  ['num_5fseconds_5fno_5fnew_5fminimum_5f_98',['num_seconds_no_new_minimum_',['../classRoot.html#a9038f7fe50ca4e3574d809ead3deeebe',1,'Root']]],
-  ['num_5fsteps_99',['NUM_STEPS',['../Swivel1Test_8cpp.html#a2e1772fd8a2831ba847a5bdf2b03cf2e',1,'NUM_STEPS():&#160;Swivel1Test.cpp'],['../Swivel2Test_8cpp.html#a2e1772fd8a2831ba847a5bdf2b03cf2e',1,'NUM_STEPS():&#160;Swivel2Test.cpp'],['../Swivel3Test_8cpp.html#a2e1772fd8a2831ba847a5bdf2b03cf2e',1,'NUM_STEPS():&#160;Swivel3Test.cpp']]],
-  ['num_5fsteps_5f_100',['num_steps_',['../classRoot.html#af4c69235873088deec800bbb76bf8666',1,'Root']]]
+  ['m_5f2_5fft_5f_94',['m_2_ft_',['../classRoot.html#a6ffc6171860743e3f998ed45dcfdbb5f',1,'Root']]],
+  ['m_5flog_5f_95',['m_log_',['../classRoot.html#a881827e74cebdcfc4a74d444b9bb76d4',1,'Root']]],
+  ['m_5fvn_5f_96',['m_vn_',['../classRoot.html#a1b57f61d9a3ae56eb1860d7bf5c9f563',1,'Root']]],
+  ['main_97',['main',['../Swivel3Test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Swivel3Test.cpp'],['../Swivel2Test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Swivel2Test.cpp'],['../Swivel1Test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Swivel1Test.cpp'],['../RCBArrowTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;RCBArrowTest.cpp'],['../NacelleLockTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;NacelleLockTest.cpp'],['../LiftServoTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;LiftServoTest.cpp'],['../LiftArrowTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;LiftArrowTest.cpp'],['../LevelServoTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;LevelServoTest.cpp'],['../LevelLockTest_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;LevelLockTest.cpp']]],
+  ['max_5fangle_5f_98',['max_angle_',['../classRoot.html#a265140c8de53ce90dbdae0c7f181ca3b',1,'Root']]],
+  ['max_5fflight_5ftime_5f_99',['max_flight_time_',['../classRoot.html#a66e70c26e83bef350aaf12cadfe32480',1,'Root']]],
+  ['max_5fproper_5fflight_5ftime_5f_100',['max_proper_flight_time_',['../classRoot.html#a7eb1fb3124360476191d9465cc7e8235',1,'Root']]],
+  ['max_5fpulse_5fwidth_5f_101',['max_pulse_width_',['../classRoot.html#a8f9d5a1e4f677cc7d954c4613567058c',1,'Root']]],
+  ['min_5fangle_5f_102',['min_angle_',['../classRoot.html#a13235d7d0df024df0268f44d3625ac19',1,'Root']]],
+  ['min_5fpulse_5fwidth_5f_103',['min_pulse_width_',['../classRoot.html#a49d5b3706ce3555614d779f86184171f',1,'Root']]]
 ];

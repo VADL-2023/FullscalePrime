@@ -2,8 +2,16 @@
 \label{classState__Prelaunch}\index{State\_Prelaunch@{State\_Prelaunch}}
 
 
-Inheritance diagram for State\+\_\+\+Prelaunch\+:
-\nopagebreak
+\mbox{\hyperlink{classState}{State}} responsible for verifying parameters before launch detection.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Prelaunch.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Prelaunch\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +20,7 @@ Inheritance diagram for State\+\_\+\+Prelaunch\+:
 \end{figure}
 
 
-Collaboration diagram for State\+\_\+\+Prelaunch\+:
-\nopagebreak
+Collaboration diagram for State\+\_\+\+Prelaunch\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,19 +30,81 @@ Collaboration diagram for State\+\_\+\+Prelaunch\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classState__Prelaunch_a45ddf4472d7b1da1083442c8a8ad5ae8}\label{classState__Prelaunch_a45ddf4472d7b1da1083442c8a8ad5ae8}} 
-{\bfseries State\+\_\+\+Prelaunch} (State\+Name name, std\+::map$<$ Event\+Name, State\+Name $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
-\item 
-\mbox{\Hypertarget{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}\label{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}} 
-Event\+Name {\bfseries execute} () override
-\item 
-\mbox{\Hypertarget{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}\label{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}} 
-Event\+Name {\bfseries unit\+Execute} () override
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classState__Prelaunch_a85a825fd0a02918f8735dfa6dd39cbad}\label{classState__Prelaunch_a85a825fd0a02918f8735dfa6dd39cbad}} 
+\mbox{\hyperlink{classState__Prelaunch_a85a825fd0a02918f8735dfa6dd39cbad}{State\+\_\+\+Prelaunch}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Prelaunch}{State\+\_\+\+Prelaunch}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Prelaunch_a45ddf4472d7b1da1083442c8a8ad5ae8}{State\+\_\+\+Prelaunch}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Prelaunch}{State\+\_\+\+Prelaunch}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for verifying parameters before launch detection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Prelaunch_a45ddf4472d7b1da1083442c8a8ad5ae8}\label{classState__Prelaunch_a45ddf4472d7b1da1083442c8a8ad5ae8}} 
+\index{State\_Prelaunch@{State\_Prelaunch}!State\_Prelaunch@{State\_Prelaunch}}
+\index{State\_Prelaunch@{State\_Prelaunch}!State\_Prelaunch@{State\_Prelaunch}}
+\doxysubsubsection{\texorpdfstring{State\_Prelaunch()}{State\_Prelaunch()}}
+{\footnotesize\ttfamily State\+\_\+\+Prelaunch\+::\+State\+\_\+\+Prelaunch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Prelaunch}{State\+\_\+\+Prelaunch}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}\label{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}} 
+\index{State\_Prelaunch@{State\_Prelaunch}!execute@{execute}}
+\index{execute@{execute}!State\_Prelaunch@{State\_Prelaunch}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Prelaunch\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}\label{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}} 
+\index{State\_Prelaunch@{State\_Prelaunch}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Prelaunch@{State\_Prelaunch}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Prelaunch\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-HFSM/include/State\+\_\+\+Prelaunch.\+h\item 
+HFSM/include/\mbox{\hyperlink{State__Prelaunch_8h}{State\+\_\+\+Prelaunch.\+h}}\item 
 HFSM/src/State\+\_\+\+Prelaunch.\+cpp\end{DoxyCompactItemize}

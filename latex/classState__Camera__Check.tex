@@ -2,8 +2,16 @@
 \label{classState__Camera__Check}\index{State\_Camera\_Check@{State\_Camera\_Check}}
 
 
-Inheritance diagram for State\+\_\+\+Camera\+\_\+\+Check\+:
-\nopagebreak
+\mbox{\hyperlink{classState}{State}} responsible for determining primary camera for RCB.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Camera\+\_\+\+Check.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Camera\+\_\+\+Check\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +20,7 @@ Inheritance diagram for State\+\_\+\+Camera\+\_\+\+Check\+:
 \end{figure}
 
 
-Collaboration diagram for State\+\_\+\+Camera\+\_\+\+Check\+:
-\nopagebreak
+Collaboration diagram for State\+\_\+\+Camera\+\_\+\+Check\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,19 +30,81 @@ Collaboration diagram for State\+\_\+\+Camera\+\_\+\+Check\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classState__Camera__Check_a16c9d329dc99e6dbafbee2bc4dd0b95d}\label{classState__Camera__Check_a16c9d329dc99e6dbafbee2bc4dd0b95d}} 
-{\bfseries State\+\_\+\+Camera\+\_\+\+Check} (State\+Name name, std\+::map$<$ Event\+Name, State\+Name $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
-\item 
-\mbox{\Hypertarget{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}\label{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}} 
-Event\+Name {\bfseries execute} () override
-\item 
-\mbox{\Hypertarget{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}\label{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}} 
-Event\+Name {\bfseries unit\+Execute} () override
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classState__Camera__Check_a825f36a1aba42bca9ec0b67c83637e2f}\label{classState__Camera__Check_a825f36a1aba42bca9ec0b67c83637e2f}} 
+\mbox{\hyperlink{classState__Camera__Check_a825f36a1aba42bca9ec0b67c83637e2f}{State\+\_\+\+Camera\+\_\+\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Camera__Check}{State\+\_\+\+Camera\+\_\+\+Check}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Camera__Check_a16c9d329dc99e6dbafbee2bc4dd0b95d}{State\+\_\+\+Camera\+\_\+\+Check}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Camera__Check}{State\+\_\+\+Camera\+\_\+\+Check}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for determining primary camera for RCB. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Camera__Check_a16c9d329dc99e6dbafbee2bc4dd0b95d}\label{classState__Camera__Check_a16c9d329dc99e6dbafbee2bc4dd0b95d}} 
+\index{State\_Camera\_Check@{State\_Camera\_Check}!State\_Camera\_Check@{State\_Camera\_Check}}
+\index{State\_Camera\_Check@{State\_Camera\_Check}!State\_Camera\_Check@{State\_Camera\_Check}}
+\doxysubsubsection{\texorpdfstring{State\_Camera\_Check()}{State\_Camera\_Check()}}
+{\footnotesize\ttfamily State\+\_\+\+Camera\+\_\+\+Check\+::\+State\+\_\+\+Camera\+\_\+\+Check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Camera__Check}{State\+\_\+\+Camera\+\_\+\+Check}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}\label{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}} 
+\index{State\_Camera\_Check@{State\_Camera\_Check}!execute@{execute}}
+\index{execute@{execute}!State\_Camera\_Check@{State\_Camera\_Check}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Camera\+\_\+\+Check\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}\label{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}} 
+\index{State\_Camera\_Check@{State\_Camera\_Check}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Camera\_Check@{State\_Camera\_Check}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Camera\+\_\+\+Check\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-HFSM/include/State\+\_\+\+Camera\+\_\+\+Check.\+h\item 
+HFSM/include/\mbox{\hyperlink{State__Camera__Check_8h}{State\+\_\+\+Camera\+\_\+\+Check.\+h}}\item 
 HFSM/src/State\+\_\+\+Camera\+\_\+\+Check.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,265 @@
+\hypertarget{State__Enums_8h}{}\doxysection{HFSM/include/\+State\+\_\+\+Enums.h File Reference}
+\label{State__Enums_8h}\index{HFSM/include/State\_Enums.h@{HFSM/include/State\_Enums.h}}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{State__Enums_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \{ \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ad6449fcdbfd903fc01ea0d587e04e635}{STATE\+\_\+\+RCB\+\_\+\+MOTOR}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a37ffbe8a8de7005790b06cde84852d47}{STATE\+\_\+\+NACELLE\+\_\+\+SERVO}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080afab79eb7cd4306d8ed151882d80e8ca6}{STATE\+\_\+\+LIFT\+\_\+\+SERVO}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a89594d7d8c1a5b41cb441a645e8605a4}{STATE\+\_\+\+LIFT\+\_\+\+MOTOR}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6387e9160cf2092e474d11f33eaababd}{STATE\+\_\+\+LEVEL\+\_\+\+SERVO}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080abb6c0e66a2b770413771a2c8c65b91d8}{STATE\+\_\+\+STEPPER1}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1e6294fa02fdfed9f4540202eea70955}{STATE\+\_\+\+STEPPER2}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aeb58cbfa6702a8a6f472948139d1307f}{STATE\+\_\+\+STEPPER3}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a006c9ad863eee2899b8d86bf4f46f3f3}{STATE\+\_\+\+SDR1}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aec95dce537e1fa3f663652efe0bc1bba}{STATE\+\_\+\+SDR2}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a13833a969780606eda96665d3b6790ac}{STATE\+\_\+\+PRELAUNCH}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6c7ee00864c30bb7140826aaa87360e8}{STATE\+\_\+\+LAUNCH\+\_\+\+DETECTION}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080acdc70ab16de42a448a1c0c0d0d27af6a}{STATE\+\_\+\+APOGEE\+\_\+\+DETECTION}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1a27ced791344382e34a0fc713ea62fd}{STATE\+\_\+\+LANDING\+\_\+\+DETECTION}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aaa8b5de2a607f036ffac70a5224656e8}{STATE\+\_\+\+FULL\+\_\+\+LIFT}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a904c665859a30811c334cd579e51feec}{STATE\+\_\+\+FULL\+\_\+\+LEVEL}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6141031ee53c7b3e2d3acd23d42a9e94}{STATE\+\_\+\+FULL\+\_\+\+RCB}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a664dc9bddaae2a9de1a2925a177b1e7d}{STATE\+\_\+\+PDS\+\_\+\+DELAY}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ac14947806211d1790af7cce5e8331a17}{STATE\+\_\+\+RAFCO\+\_\+\+MISSION}}
+, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a36010d2a75172f0f2ec20944d694987c}{STATE\+\_\+\+CAMERA\+\_\+\+CHECK}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a3b8fcb01cbfafaacda7074a210e8b1de}{END\+\_\+\+STATE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Different possible states that can be run in this state machine. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \{ \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab0c48e95b68bff1f7820e23b8fd0bc98}{INITIALIZE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecac0470da2347bf87efe19872e3e5b5c78}{BASIC\+\_\+\+SWIVEL}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca6566aa06357d2a8b970955751bb7e0cc}{BASIC\+\_\+\+ROTATE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0d72060465f03068eeab2e08f1cfda1c}{BASIC\+\_\+\+SERVO}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca956ecc3c7549c73ce4e20425514360ff}{RECEIVED\+\_\+\+PACKETS}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab3bed43c06882fbd96878ed5989b8dfb}{DELAY\+\_\+1\+\_\+\+SECOND}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca1debdb60dab652d8ee4ab62c6129f487}{DELAY}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22}{TERMINATE}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca7a96cdaec0fa2c63b96dd1ff3c4d3fae}{PRELAUNCH\+\_\+\+COMPLETE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecad35adbf96aca4c59b4664aa9e24ebc84}{LAUNCH\+\_\+\+DETECTED}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca287421844f42e527e111aec70dfde639}{APOGEE\+\_\+\+DETECTED}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca48cb1aff1d386f0905196b128b20e7d1}{LANDING\+\_\+\+DETECTED}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca068c3bc9a1b0534e788c9060464c9a8b}{LIFT\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca3a659773b8d46fe8bcf343601f371d98}{LIFT\+\_\+\+FAILURE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecaf654be96ac74a2ba172cc6f10064c77d}{LEVEL\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0aeaf689272c45b9482ea2c3bab82b2a}{LEVEL\+\_\+\+FAILURE}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca175c0870f0ceda55219307557922b1b4}{RCB\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ecae544f5fb01a8ba9d1bb5aaa8dcb6c0db}{RCB\+\_\+\+FAILURE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca5d57cffb7b58b684f2fd58868a267848}{RAFCO\+\_\+\+COMPLETE}}
+, \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca34b7c0aafc4577e0ae228f2112dd63c0}{RAFCO\+\_\+\+REDO}}
+, \newline
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488eca8416ae9efe441008f2ce2e9374b94b48}{CAMERA\+\_\+\+PICKED}}
+ \}
+\begin{DoxyCompactList}\small\item\em Different possible events that can occur in this state machine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}} 
+\index{State\_Enums.h@{State\_Enums.h}!EventName@{EventName}}
+\index{EventName@{EventName}!State\_Enums.h@{State\_Enums.h}}
+\doxysubsubsection{\texorpdfstring{EventName}{EventName}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}}
+
+
+
+Different possible events that can occur in this state machine. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INITIALIZE@{INITIALIZE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!INITIALIZE@{INITIALIZE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab0c48e95b68bff1f7820e23b8fd0bc98}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab0c48e95b68bff1f7820e23b8fd0bc98}} 
+INITIALIZE&Occurs when state machine has been initialized. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BASIC\_SWIVEL@{BASIC\_SWIVEL}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!BASIC\_SWIVEL@{BASIC\_SWIVEL}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecac0470da2347bf87efe19872e3e5b5c78}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecac0470da2347bf87efe19872e3e5b5c78}} 
+BASIC\+\_\+\+SWIVEL&Occurs when stepper motor has swiveled nacelle. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BASIC\_ROTATE@{BASIC\_ROTATE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!BASIC\_ROTATE@{BASIC\_ROTATE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca6566aa06357d2a8b970955751bb7e0cc}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca6566aa06357d2a8b970955751bb7e0cc}} 
+BASIC\+\_\+\+ROTATE&Occurs when DC motor has rotated. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BASIC\_SERVO@{BASIC\_SERVO}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!BASIC\_SERVO@{BASIC\_SERVO}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0d72060465f03068eeab2e08f1cfda1c}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0d72060465f03068eeab2e08f1cfda1c}} 
+BASIC\+\_\+\+SERVO&Occurs when servo moves. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVED\_PACKETS@{RECEIVED\_PACKETS}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!RECEIVED\_PACKETS@{RECEIVED\_PACKETS}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca956ecc3c7549c73ce4e20425514360ff}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca956ecc3c7549c73ce4e20425514360ff}} 
+RECEIVED\+\_\+\+PACKETS&Occurs when program receives packets. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DELAY\_1\_SECOND@{DELAY\_1\_SECOND}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!DELAY\_1\_SECOND@{DELAY\_1\_SECOND}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab3bed43c06882fbd96878ed5989b8dfb}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecab3bed43c06882fbd96878ed5989b8dfb}} 
+DELAY\+\_\+1\+\_\+\+SECOND&Occurs when the program has been delayed by a second. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DELAY@{DELAY}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!DELAY@{DELAY}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca1debdb60dab652d8ee4ab62c6129f487}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca1debdb60dab652d8ee4ab62c6129f487}} 
+DELAY&Occurs when the program has been delayed by some time threshold. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TERMINATE@{TERMINATE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!TERMINATE@{TERMINATE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22}} 
+TERMINATE&Occurs when the program needs to be terminated. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRELAUNCH\_COMPLETE@{PRELAUNCH\_COMPLETE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!PRELAUNCH\_COMPLETE@{PRELAUNCH\_COMPLETE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca7a96cdaec0fa2c63b96dd1ff3c4d3fae}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca7a96cdaec0fa2c63b96dd1ff3c4d3fae}} 
+PRELAUNCH\+\_\+\+COMPLETE&Occurs when the prelaunch state has been completed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LAUNCH\_DETECTED@{LAUNCH\_DETECTED}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LAUNCH\_DETECTED@{LAUNCH\_DETECTED}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecad35adbf96aca4c59b4664aa9e24ebc84}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecad35adbf96aca4c59b4664aa9e24ebc84}} 
+LAUNCH\+\_\+\+DETECTED&Occurs when launch has been detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APOGEE\_DETECTED@{APOGEE\_DETECTED}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!APOGEE\_DETECTED@{APOGEE\_DETECTED}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca287421844f42e527e111aec70dfde639}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca287421844f42e527e111aec70dfde639}} 
+APOGEE\+\_\+\+DETECTED&Occurs when apogee has been detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LANDING\_DETECTED@{LANDING\_DETECTED}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LANDING\_DETECTED@{LANDING\_DETECTED}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca48cb1aff1d386f0905196b128b20e7d1}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca48cb1aff1d386f0905196b128b20e7d1}} 
+LANDING\+\_\+\+DETECTED&Occurs when landing has been detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIFT\_SUCCESS@{LIFT\_SUCCESS}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LIFT\_SUCCESS@{LIFT\_SUCCESS}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca068c3bc9a1b0534e788c9060464c9a8b}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca068c3bc9a1b0534e788c9060464c9a8b}} 
+LIFT\+\_\+\+SUCCESS&Occurs when the lift is successful. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LIFT\_FAILURE@{LIFT\_FAILURE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LIFT\_FAILURE@{LIFT\_FAILURE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca3a659773b8d46fe8bcf343601f371d98}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca3a659773b8d46fe8bcf343601f371d98}} 
+LIFT\+\_\+\+FAILURE&Occurs when there has been an error in the lift state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL\_SUCCESS@{LEVEL\_SUCCESS}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LEVEL\_SUCCESS@{LEVEL\_SUCCESS}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecaf654be96ac74a2ba172cc6f10064c77d}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecaf654be96ac74a2ba172cc6f10064c77d}} 
+LEVEL\+\_\+\+SUCCESS&Occurs when the level is successful. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEVEL\_FAILURE@{LEVEL\_FAILURE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!LEVEL\_FAILURE@{LEVEL\_FAILURE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0aeaf689272c45b9482ea2c3bab82b2a}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca0aeaf689272c45b9482ea2c3bab82b2a}} 
+LEVEL\+\_\+\+FAILURE&Occurs when there has been an error in the level. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCB\_SUCCESS@{RCB\_SUCCESS}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!RCB\_SUCCESS@{RCB\_SUCCESS}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca175c0870f0ceda55219307557922b1b4}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca175c0870f0ceda55219307557922b1b4}} 
+RCB\+\_\+\+SUCCESS&Occurs when the RCB state is successful. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCB\_FAILURE@{RCB\_FAILURE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!RCB\_FAILURE@{RCB\_FAILURE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488ecae544f5fb01a8ba9d1bb5aaa8dcb6c0db}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488ecae544f5fb01a8ba9d1bb5aaa8dcb6c0db}} 
+RCB\+\_\+\+FAILURE&Occurs when there has been an error in the RCB state. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RAFCO\_COMPLETE@{RAFCO\_COMPLETE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!RAFCO\_COMPLETE@{RAFCO\_COMPLETE}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca5d57cffb7b58b684f2fd58868a267848}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca5d57cffb7b58b684f2fd58868a267848}} 
+RAFCO\+\_\+\+COMPLETE&Occurs when RAFCO state is successfully completed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RAFCO\_REDO@{RAFCO\_REDO}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!RAFCO\_REDO@{RAFCO\_REDO}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca34b7c0aafc4577e0ae228f2112dd63c0}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca34b7c0aafc4577e0ae228f2112dd63c0}} 
+RAFCO\+\_\+\+REDO&Occurs when backup RAFCO is completed, and want to try it with primary. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CAMERA\_PICKED@{CAMERA\_PICKED}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!CAMERA\_PICKED@{CAMERA\_PICKED}}}\mbox{\Hypertarget{State__Enums_8h_ab10943c68f32680aedb347755b5488eca8416ae9efe441008f2ce2e9374b94b48}\label{State__Enums_8h_ab10943c68f32680aedb347755b5488eca8416ae9efe441008f2ce2e9374b94b48}} 
+CAMERA\+\_\+\+PICKED&Occurs when camera has been selected. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}} 
+\index{State\_Enums.h@{State\_Enums.h}!StateName@{StateName}}
+\index{StateName@{StateName}!State\_Enums.h@{State\_Enums.h}}
+\doxysubsubsection{\texorpdfstring{StateName}{StateName}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}
+
+
+
+Different possible states that can be run in this state machine. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_RCB\_MOTOR@{STATE\_RCB\_MOTOR}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_RCB\_MOTOR@{STATE\_RCB\_MOTOR}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ad6449fcdbfd903fc01ea0d587e04e635}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ad6449fcdbfd903fc01ea0d587e04e635}} 
+STATE\+\_\+\+RCB\+\_\+\+MOTOR&\mbox{\hyperlink{classState}{State}} to test RCB Motor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_NACELLE\_SERVO@{STATE\_NACELLE\_SERVO}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_NACELLE\_SERVO@{STATE\_NACELLE\_SERVO}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a37ffbe8a8de7005790b06cde84852d47}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a37ffbe8a8de7005790b06cde84852d47}} 
+STATE\+\_\+\+NACELLE\+\_\+\+SERVO&\mbox{\hyperlink{classState}{State}} to test nacelle servo. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LIFT\_SERVO@{STATE\_LIFT\_SERVO}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_LIFT\_SERVO@{STATE\_LIFT\_SERVO}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080afab79eb7cd4306d8ed151882d80e8ca6}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080afab79eb7cd4306d8ed151882d80e8ca6}} 
+STATE\+\_\+\+LIFT\+\_\+\+SERVO&\mbox{\hyperlink{classState}{State}} to test lift locking servo. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LIFT\_MOTOR@{STATE\_LIFT\_MOTOR}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_LIFT\_MOTOR@{STATE\_LIFT\_MOTOR}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a89594d7d8c1a5b41cb441a645e8605a4}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a89594d7d8c1a5b41cb441a645e8605a4}} 
+STATE\+\_\+\+LIFT\+\_\+\+MOTOR&\mbox{\hyperlink{classState}{State}} to test lift motor. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LEVEL\_SERVO@{STATE\_LEVEL\_SERVO}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_LEVEL\_SERVO@{STATE\_LEVEL\_SERVO}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6387e9160cf2092e474d11f33eaababd}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6387e9160cf2092e474d11f33eaababd}} 
+STATE\+\_\+\+LEVEL\+\_\+\+SERVO&\mbox{\hyperlink{classState}{State}} to test level servo. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_STEPPER1@{STATE\_STEPPER1}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_STEPPER1@{STATE\_STEPPER1}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080abb6c0e66a2b770413771a2c8c65b91d8}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080abb6c0e66a2b770413771a2c8c65b91d8}} 
+STATE\+\_\+\+STEPPER1&\mbox{\hyperlink{classState}{State}} to test stepper for nacelle 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_STEPPER2@{STATE\_STEPPER2}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_STEPPER2@{STATE\_STEPPER2}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1e6294fa02fdfed9f4540202eea70955}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1e6294fa02fdfed9f4540202eea70955}} 
+STATE\+\_\+\+STEPPER2&\mbox{\hyperlink{classState}{State}} to test stepper for nacelle 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_STEPPER3@{STATE\_STEPPER3}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_STEPPER3@{STATE\_STEPPER3}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aeb58cbfa6702a8a6f472948139d1307f}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aeb58cbfa6702a8a6f472948139d1307f}} 
+STATE\+\_\+\+STEPPER3&\mbox{\hyperlink{classState}{State}} to test stepper for nacelle 3. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_SDR1@{STATE\_SDR1}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_SDR1@{STATE\_SDR1}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a006c9ad863eee2899b8d86bf4f46f3f3}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a006c9ad863eee2899b8d86bf4f46f3f3}} 
+STATE\+\_\+\+SDR1&\mbox{\hyperlink{classState}{State}} to test SDR 1. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_SDR2@{STATE\_SDR2}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_SDR2@{STATE\_SDR2}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aec95dce537e1fa3f663652efe0bc1bba}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aec95dce537e1fa3f663652efe0bc1bba}} 
+STATE\+\_\+\+SDR2&\mbox{\hyperlink{classState}{State}} to test SDR 2. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_PRELAUNCH@{STATE\_PRELAUNCH}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_PRELAUNCH@{STATE\_PRELAUNCH}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a13833a969780606eda96665d3b6790ac}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a13833a969780606eda96665d3b6790ac}} 
+STATE\+\_\+\+PRELAUNCH&\mbox{\hyperlink{classState}{State}} run before launch detection to double check parameters. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LAUNCH\_DETECTION@{STATE\_LAUNCH\_DETECTION}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_LAUNCH\_DETECTION@{STATE\_LAUNCH\_DETECTION}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6c7ee00864c30bb7140826aaa87360e8}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6c7ee00864c30bb7140826aaa87360e8}} 
+STATE\+\_\+\+LAUNCH\+\_\+\+DETECTION&\mbox{\hyperlink{classState}{State}} responsible for detecting launch. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_APOGEE\_DETECTION@{STATE\_APOGEE\_DETECTION}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_APOGEE\_DETECTION@{STATE\_APOGEE\_DETECTION}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080acdc70ab16de42a448a1c0c0d0d27af6a}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080acdc70ab16de42a448a1c0c0d0d27af6a}} 
+STATE\+\_\+\+APOGEE\+\_\+\+DETECTION&\mbox{\hyperlink{classState}{State}} responsible for detecting apogee. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_LANDING\_DETECTION@{STATE\_LANDING\_DETECTION}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_LANDING\_DETECTION@{STATE\_LANDING\_DETECTION}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1a27ced791344382e34a0fc713ea62fd}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a1a27ced791344382e34a0fc713ea62fd}} 
+STATE\+\_\+\+LANDING\+\_\+\+DETECTION&\mbox{\hyperlink{classState}{State}} responsible for detecting landing. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_FULL\_LIFT@{STATE\_FULL\_LIFT}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_FULL\_LIFT@{STATE\_FULL\_LIFT}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aaa8b5de2a607f036ffac70a5224656e8}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080aaa8b5de2a607f036ffac70a5224656e8}} 
+STATE\+\_\+\+FULL\+\_\+\+LIFT&\mbox{\hyperlink{classState}{State}} responsible for elevating the lift during the payload mission. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_FULL\_LEVEL@{STATE\_FULL\_LEVEL}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_FULL\_LEVEL@{STATE\_FULL\_LEVEL}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a904c665859a30811c334cd579e51feec}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a904c665859a30811c334cd579e51feec}} 
+STATE\+\_\+\+FULL\+\_\+\+LEVEL&\mbox{\hyperlink{classState}{State}} responsible for leveling the key nacelle parallel with the horizon. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_FULL\_RCB@{STATE\_FULL\_RCB}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_FULL\_RCB@{STATE\_FULL\_RCB}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6141031ee53c7b3e2d3acd23d42a9e94}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a6141031ee53c7b3e2d3acd23d42a9e94}} 
+STATE\+\_\+\+FULL\+\_\+\+RCB&\mbox{\hyperlink{classState}{State}} responsible for rotating RCB to put key nacelle on top. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_PDS\_DELAY@{STATE\_PDS\_DELAY}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_PDS\_DELAY@{STATE\_PDS\_DELAY}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a664dc9bddaae2a9de1a2925a177b1e7d}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a664dc9bddaae2a9de1a2925a177b1e7d}} 
+STATE\+\_\+\+PDS\+\_\+\+DELAY&\mbox{\hyperlink{classState}{State}} responsible for \char`\"{}sleeping\char`\"{} the program until PDS is detached from Teensy. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_RAFCO\_MISSION@{STATE\_RAFCO\_MISSION}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_RAFCO\_MISSION@{STATE\_RAFCO\_MISSION}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ac14947806211d1790af7cce5e8331a17}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080ac14947806211d1790af7cce5e8331a17}} 
+STATE\+\_\+\+RAFCO\+\_\+\+MISSION&\mbox{\hyperlink{classState}{State}} responsible for receiving RAFCO packets and performing the proper image filtering. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_CAMERA\_CHECK@{STATE\_CAMERA\_CHECK}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!STATE\_CAMERA\_CHECK@{STATE\_CAMERA\_CHECK}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a36010d2a75172f0f2ec20944d694987c}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a36010d2a75172f0f2ec20944d694987c}} 
+STATE\+\_\+\+CAMERA\+\_\+\+CHECK&\mbox{\hyperlink{classState}{State}} responsible for determining the primary nacelle. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END\_STATE@{END\_STATE}!State\_Enums.h@{State\_Enums.h}}\index{State\_Enums.h@{State\_Enums.h}!END\_STATE@{END\_STATE}}}\mbox{\Hypertarget{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a3b8fcb01cbfafaacda7074a210e8b1de}\label{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080a3b8fcb01cbfafaacda7074a210e8b1de}} 
+END\+\_\+\+STATE&\mbox{\hyperlink{classState}{State}} responsible for terminating the program. \\
+\hline
+
+\end{DoxyEnumFields}

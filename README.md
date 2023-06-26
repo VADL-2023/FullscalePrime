@@ -139,7 +139,7 @@ ServoTest: Mini test to see how to move servo in C++ (Not Useful)
 
 Stepper: Includes stepper motor library for Raspberry Pi. Based on Arduino library. (Useful)
 
-VectorNav: VN-100 library provided by VectorNav. Allows us to read IMU data from each register at 20 Hz. If you want 2 registers, you get 10 Hz.
+VectorNav: VN-100 library provided by VectorNav. Allows us to read IMU data from each register at 20 Hz. If you want 2 registers, you get 10 Hz. (Useful)
 
 ## Bash/Python Script Explanations
 cam_assignment.bash: Looks at which cameras are connected to the Pi, assigns them with static names based on which port they are plugged in (Useful)

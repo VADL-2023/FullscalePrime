@@ -1,4 +1,4 @@
 <map id="State_Camera_Check" name="State_Camera_Check">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,167,107"/>
-<area shape="rect" id="node2" href="$classState.html" title=" " alt="" coords="58,5,114,32"/>
+<area shape="rect" id="node1" title="State responsible for determining primary camera for RCB." alt="" coords="5,80,167,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="58,5,114,32"/>
 </map>

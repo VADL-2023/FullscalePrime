@@ -2,8 +2,16 @@
 \label{classState__Landing__Detection}\index{State\_Landing\_Detection@{State\_Landing\_Detection}}
 
 
-Inheritance diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:
-\nopagebreak
+\mbox{\hyperlink{classState}{State}} responsible for detecting landing with the IMU.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Landing\+\_\+\+Detection.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +20,7 @@ Inheritance diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:
 \end{figure}
 
 
-Collaboration diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:
-\nopagebreak
+Collaboration diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,19 +30,81 @@ Collaboration diagram for State\+\_\+\+Landing\+\_\+\+Detection\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classState__Landing__Detection_a878dc8b5849758012d7ea62651bb2cb6}\label{classState__Landing__Detection_a878dc8b5849758012d7ea62651bb2cb6}} 
-{\bfseries State\+\_\+\+Landing\+\_\+\+Detection} (State\+Name name, std\+::map$<$ Event\+Name, State\+Name $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
-\item 
-\mbox{\Hypertarget{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}\label{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}} 
-Event\+Name {\bfseries execute} () override
-\item 
-\mbox{\Hypertarget{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}\label{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}} 
-Event\+Name {\bfseries unit\+Execute} () override
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classState__Landing__Detection_a913324fc685aea047862da6b2ae552de}\label{classState__Landing__Detection_a913324fc685aea047862da6b2ae552de}} 
+\mbox{\hyperlink{classState__Landing__Detection_a913324fc685aea047862da6b2ae552de}{State\+\_\+\+Landing\+\_\+\+Detection}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Landing__Detection}{State\+\_\+\+Landing\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Landing__Detection_a878dc8b5849758012d7ea62651bb2cb6}{State\+\_\+\+Landing\+\_\+\+Detection}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Landing__Detection}{State\+\_\+\+Landing\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for detecting landing with the IMU. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Landing__Detection_a878dc8b5849758012d7ea62651bb2cb6}\label{classState__Landing__Detection_a878dc8b5849758012d7ea62651bb2cb6}} 
+\index{State\_Landing\_Detection@{State\_Landing\_Detection}!State\_Landing\_Detection@{State\_Landing\_Detection}}
+\index{State\_Landing\_Detection@{State\_Landing\_Detection}!State\_Landing\_Detection@{State\_Landing\_Detection}}
+\doxysubsubsection{\texorpdfstring{State\_Landing\_Detection()}{State\_Landing\_Detection()}}
+{\footnotesize\ttfamily State\+\_\+\+Landing\+\_\+\+Detection\+::\+State\+\_\+\+Landing\+\_\+\+Detection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Landing__Detection}{State\+\_\+\+Landing\+\_\+\+Detection}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}\label{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}} 
+\index{State\_Landing\_Detection@{State\_Landing\_Detection}!execute@{execute}}
+\index{execute@{execute}!State\_Landing\_Detection@{State\_Landing\_Detection}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Landing\+\_\+\+Detection\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}\label{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}} 
+\index{State\_Landing\_Detection@{State\_Landing\_Detection}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Landing\_Detection@{State\_Landing\_Detection}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Landing\+\_\+\+Detection\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-HFSM/include/State\+\_\+\+Landing\+\_\+\+Detection.\+h\item 
+HFSM/include/\mbox{\hyperlink{State__Landing__Detection_8h}{State\+\_\+\+Landing\+\_\+\+Detection.\+h}}\item 
 HFSM/src/State\+\_\+\+Landing\+\_\+\+Detection.\+cpp\end{DoxyCompactItemize}

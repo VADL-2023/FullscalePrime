@@ -12,15 +12,17 @@ State_Full_Lift::State_Full_Lift(StateName name, std::map<EventName, StateName> 
 
 EventName State_Full_Lift::execute()
 {
+	// Unlock lift servo
 	this->root_->m_log_.write("In State full lift");
 	this->root_->m_log_.write("Initiate lift servo unlock");
 	gpioServo(this->root_->lift_servo_, this->root_->lift_unlock_);
 	gpioSleep(0, 2, 0);
-	this->root_->m_log_.write("Initiate lift servo lock");
 	bool is_done = false;
 	bool is_time_up = false;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;
+
+	// Start the lift
 	this->root_->m_log_.write("Starting winch");
 	gpioWrite(this->root_->rcb_lift_standby_, 1);
 
@@ -49,6 +51,8 @@ EventName State_Full_Lift::execute()
 			std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 			this->root_->date_timestamp_ = std::ctime(&end_time);
 		}
+
+		// Get folder setup for lift video and start the thread
 		std::string base_folder = this->root_->date_timestamp_;
 		std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
 		if (!base_folder.empty())
@@ -69,6 +73,8 @@ EventName State_Full_Lift::execute()
 		std::thread t1(&Root::realCamThreadLift, this->root_, &this->root_->lift_and_level_cap_, &this->root_->lift_and_level_video_);
 		this->root_->lift_thread_ = std::move(t1);
 	}
+
+	// Run lift until final limit switch is hit
 	while (!is_done)
 	{
 		is_done = !gpioRead(this->root_->lift_final_limit_switch_);
@@ -90,7 +96,7 @@ EventName State_Full_Lift::execute()
 	gpioWrite(this->root_->lift_p_, 0);
 	gpioWrite(this->root_->lift_n_, 0);
 	gpioPWM(this->root_->lift_enable_, 0);
-	usleep(10000); // TODO: Does this need to be gpioSleep()?
+	usleep(10000); 
 	double lift_time_ms = current_time - start_time;
 	this->root_->m_log_.write("Time for lift " + std::to_string(lift_time_ms));
 

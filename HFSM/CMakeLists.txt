@@ -23,7 +23,6 @@ add_library(HFSM
         src/State_RCB_Motor.cpp
         src/State_Stepper2.cpp
         src/State_Stepper1.cpp
-        src/State_RAFCO_Mission.cpp
         src/State_Camera_Check.cpp
         src/Root.cpp
         src/State.cpp

@@ -136,6 +136,8 @@ EventName State_Prelaunch::execute()
         this->root_->m_log_.write("Calibrated Pressure: " + to_string(this->root_->p0_) + " kPa");
         this->root_->m_log_.write("Calibrated Gravity: " + to_string(this->root_->g0_) + " m/s^2");
         this->root_->m_log_.saveBaselineParameters(this->root_->r_, this->root_->b_, this->root_->p0_, this->root_->t0_, this->root_->g0_);
+
+        // Determine which cameras work
         system("sudo bash ../../cam_assignment.bash");
         for (int i = 0; i < this->root_->camera_streams_.size(); i++)
         {
@@ -171,7 +173,7 @@ EventName State_Prelaunch::execute()
             this->root_->restart_ = true;
         }
     }
-    //We are limiting to one camera
+    // Establish camera streams to record flight
     int potential_camera_num = this->root_->aac_camera_streams_.size();
     int num_successful_cams = 0;
     std::string base_folder = this->root_->date_timestamp_;
@@ -191,10 +193,14 @@ EventName State_Prelaunch::execute()
     this->root_->m_log_.write(aac_log_str);
     mkdir(folder_name_str.c_str(), 0777);
     std::string cam_str;
+
+    // Only recording flight video off 1 camera
     for (int i = 0; num_successful_cams < 1 && i < potential_camera_num; ++i)
     {
         std::string opening_stream_str = "Trying to open stream for AAC: " + this->root_->aac_camera_streams_[i];
         this->root_->m_log_.write(opening_stream_str);
+        
+        // Check camera stream 1
         if (this->root_->aac_camera_streams_[i] == "/dev/videoCam1")
         {
             if (!this->root_->cap1.isOpened())
@@ -207,7 +213,7 @@ EventName State_Prelaunch::execute()
             }
             else
             {
-                //this->root_->cap1.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
+                // Setup video capture object to verify functionality
                 this->root_->cap1.set(cv::CAP_PROP_FPS, this->root_->fps_);
                 bool functional = true;
                 for (int j = 0; j < 3; j++)
@@ -220,6 +226,8 @@ EventName State_Prelaunch::execute()
                         functional = false;
                     }
                 }
+
+                // Ensure we can open camera and save video
                 if (functional)
                 {
                     this->root_->aac_camera_captures_.push_back(this->root_->cap1);
@@ -241,6 +249,8 @@ EventName State_Prelaunch::execute()
                 }
             }
         }
+
+        // Repeat process for camera 2
         else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam2")
         {
             if (!this->root_->cap2.isOpened())
@@ -287,6 +297,8 @@ EventName State_Prelaunch::execute()
                 }
             }
         }
+
+        // Repeat process for camera 3
         else if (this->root_->aac_camera_streams_[i] == "/dev/videoCam3")
         {
             if (!this->root_->cap3.isOpened())

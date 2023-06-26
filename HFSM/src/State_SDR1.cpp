@@ -17,6 +17,7 @@ EventName State_SDR1::execute()
 
 EventName State_SDR1::unitExecute()
 {
+	// Setup APRS packet reception
 	this->root_->m_log_.write("Starting SDR");
 	this->root_->radio1_.startSDR();
 	
@@ -26,6 +27,8 @@ EventName State_SDR1::unitExecute()
 	{
 		p1 = this->root_->radio1_.getPacket();
 		this->root_->m_log_.write(p1.msg);
+
+		// Swivel right
 		if (p1.msg.find("A1") == 0)
 		{
 			this->root_->m_log_.write("Swivel one way");
@@ -35,6 +38,8 @@ EventName State_SDR1::unitExecute()
 			this->root_->stepper_2_.step(this->root_->num_steps_);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 		}
+
+		// Swivel left
 		else if (p1.msg.find("B2") == 0)
 		{
 			this->root_->m_log_.write("Swivel other way");

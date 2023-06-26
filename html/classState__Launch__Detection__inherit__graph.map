@@ -1,4 +1,4 @@
 <map id="State_Launch_Detection" name="State_Launch_Detection">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,184,107"/>
-<area shape="rect" id="node2" href="$classState.html" title=" " alt="" coords="67,5,123,32"/>
+<area shape="rect" id="node1" title="State responsible for detecting launch with IMU." alt="" coords="5,80,184,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="67,5,123,32"/>
 </map>

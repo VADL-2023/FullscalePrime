@@ -15,10 +15,14 @@ EventName State_SDR2::execute() {
 }
 
 EventName State_SDR2::unitExecute() {
+
+	// Setup APRS Packet Reception
 	std::cout << "Starting SDR" << std::endl;
 	this->root_->radio2_.startSDR();
 	std::cout << "Waiting for packets" << std::endl;
 	AX25Packet p1;
+
+	// Print the packet
 	while (p1.msg.find("shutdown") == std::string::npos && p1.msg.find("ERROR") == std::string::npos) {
         p1 = this->root_->radio2_.getPacket();
         std::cout << p1.msg << std::endl;

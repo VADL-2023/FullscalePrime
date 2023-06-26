@@ -42,9 +42,6 @@ std::string getStateName(StateName stateType) {
         case STATE_STEPPER3:
             name = "Stepper 3";
             break;
-        case STATE_DELAY:
-            name = "Delay";
-            break;
         case END_STATE:
             name = "End State";
             break;

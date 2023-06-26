@@ -10,5 +10,6 @@ var searchData=
   ['activesleep_7',['activeSleep',['../classRoot.html#aaf8bbf612528d0b7f4af793e9e470f43',1,'Root']]],
   ['addstate_8',['addState',['../classRoot.html#a0e98881d2cddd732762b3a417cf57179',1,'Root']]],
   ['angletopulsewidth_9',['angleToPulseWidth',['../classRoot.html#aff48369e29cdf0800a8be86c36721d3d',1,'Root']]],
-  ['apogee_5fdetected_5f_10',['apogee_detected_',['../classRoot.html#a28569cfd12f8c3da33ec45b7a37c744d',1,'Root']]]
+  ['apogee_5fdetected_10',['APOGEE_DETECTED',['../State__Enums_8h.html#ab10943c68f32680aedb347755b5488eca287421844f42e527e111aec70dfde639',1,'State_Enums.h']]],
+  ['apogee_5fdetected_5f_11',['apogee_detected_',['../classRoot.html#a28569cfd12f8c3da33ec45b7a37c744d',1,'Root']]]
 ];

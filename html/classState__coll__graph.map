@@ -1,4 +1,4 @@
 <map id="State" name="State">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,61,121"/>
+<area shape="rect" id="node1" title="Base state." alt="" coords="5,95,61,121"/>
 <area shape="rect" id="node2" href="$classRoot.html" title="Contains all common variables and functions accessible to every state in the state machine." alt="" coords="7,5,59,32"/>
 </map>

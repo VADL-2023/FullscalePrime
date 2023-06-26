@@ -2,8 +2,16 @@
 \label{classState__Level__Servo}\index{State\_Level\_Servo@{State\_Level\_Servo}}
 
 
-Inheritance diagram for State\+\_\+\+Level\+\_\+\+Servo\+:
-\nopagebreak
+\mbox{\hyperlink{classState}{State}} responsible for testing movement for the level servo.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Level\+\_\+\+Servo.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Level\+\_\+\+Servo\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +20,7 @@ Inheritance diagram for State\+\_\+\+Level\+\_\+\+Servo\+:
 \end{figure}
 
 
-Collaboration diagram for State\+\_\+\+Level\+\_\+\+Servo\+:
-\nopagebreak
+Collaboration diagram for State\+\_\+\+Level\+\_\+\+Servo\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,19 +30,81 @@ Collaboration diagram for State\+\_\+\+Level\+\_\+\+Servo\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classState__Level__Servo_ac8b5e057f0f54415d3430cd741d57a11}\label{classState__Level__Servo_ac8b5e057f0f54415d3430cd741d57a11}} 
-{\bfseries State\+\_\+\+Level\+\_\+\+Servo} (State\+Name name, std\+::map$<$ Event\+Name, State\+Name $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
-\item 
-\mbox{\Hypertarget{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}\label{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}} 
-Event\+Name {\bfseries execute} () override
-\item 
-\mbox{\Hypertarget{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}\label{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}} 
-Event\+Name {\bfseries unit\+Execute} () override
-\end{DoxyCompactItemize}
+\mbox{\Hypertarget{classState__Level__Servo_a8e1feff6a56319b3cbf1c2d11a1bc28c}\label{classState__Level__Servo_a8e1feff6a56319b3cbf1c2d11a1bc28c}} 
+\mbox{\hyperlink{classState__Level__Servo_a8e1feff6a56319b3cbf1c2d11a1bc28c}{State\+\_\+\+Level\+\_\+\+Servo}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Level__Servo}{State\+\_\+\+Level\+\_\+\+Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Level__Servo_ac8b5e057f0f54415d3430cd741d57a11}{State\+\_\+\+Level\+\_\+\+Servo}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Level__Servo}{State\+\_\+\+Level\+\_\+\+Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for testing movement for the level servo. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Level__Servo_ac8b5e057f0f54415d3430cd741d57a11}\label{classState__Level__Servo_ac8b5e057f0f54415d3430cd741d57a11}} 
+\index{State\_Level\_Servo@{State\_Level\_Servo}!State\_Level\_Servo@{State\_Level\_Servo}}
+\index{State\_Level\_Servo@{State\_Level\_Servo}!State\_Level\_Servo@{State\_Level\_Servo}}
+\doxysubsubsection{\texorpdfstring{State\_Level\_Servo()}{State\_Level\_Servo()}}
+{\footnotesize\ttfamily State\+\_\+\+Level\+\_\+\+Servo\+::\+State\+\_\+\+Level\+\_\+\+Servo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Level__Servo}{State\+\_\+\+Level\+\_\+\+Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}\label{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}} 
+\index{State\_Level\_Servo@{State\_Level\_Servo}!execute@{execute}}
+\index{execute@{execute}!State\_Level\_Servo@{State\_Level\_Servo}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Level\+\_\+\+Servo\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}\label{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}} 
+\index{State\_Level\_Servo@{State\_Level\_Servo}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Level\_Servo@{State\_Level\_Servo}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Level\+\_\+\+Servo\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-HFSM/include/State\+\_\+\+Level\+\_\+\+Servo.\+h\item 
+HFSM/include/\mbox{\hyperlink{State__Level__Servo_8h}{State\+\_\+\+Level\+\_\+\+Servo.\+h}}\item 
 HFSM/src/State\+\_\+\+Level\+\_\+\+Servo.\+cpp\end{DoxyCompactItemize}

@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['ideal_5flevel_5fangle_5f_34',['ideal_level_angle_',['../classRoot.html#ac4d3c1196a55572750069077f4a1a29a',1,'Root']]],
-  ['imu_5fwait_5f_35',['imu_wait_',['../classRoot.html#ad9df27e6b9f94e9636d118d1c9f26e00',1,'Root']]],
-  ['input_5ffile_5fname_5f_36',['input_file_name_',['../classRoot.html#a8be5285e171824ff214da225bebcd072',1,'Root']]],
-  ['is_5faligned_5f_37',['is_aligned_',['../classRoot.html#acc0091fae3a5c305df045698189c1166',1,'Root']]],
-  ['is_5fimu_5fconnected_5f_38',['is_imu_connected_',['../classRoot.html#aacc555363da6ccd6fae0a499b9109998',1,'Root']]],
-  ['is_5funit_5ffsm_5f_39',['is_unit_fsm_',['../classRoot.html#ad35c4bab054fb58e16a104548b002da0',1,'Root']]],
-  ['istimeexceeded_40',['isTimeExceeded',['../classRoot.html#adfce70fe2c9363f44c62c15c14589a96',1,'Root']]]
+  ['g0_5f_41',['g0_',['../classRoot.html#a0fb18e0da95608de1fe32738b3004431',1,'Root']]],
+  ['getcurrenttime_42',['getCurrentTime',['../classRoot.html#a1806fd2e246ba5807fa04d4f2c4f5bad',1,'Root']]],
+  ['getname_43',['getName',['../classState.html#a73a816d1fe3d0873085685a407d9d4b3',1,'State']]],
+  ['getnextstate_44',['getNextState',['../classState.html#a7b93492451b30498b550556bdf333203',1,'State']]],
+  ['gpio_5finitialized_5f_45',['gpio_initialized_',['../classRoot.html#a9a1c5e993879a802f3eebd6a78974d79',1,'Root']]]
 ];

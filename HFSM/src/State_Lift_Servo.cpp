@@ -15,6 +15,7 @@ EventName State_Lift_Servo::execute() {
 }
 
 EventName State_Lift_Servo::unitExecute() {
+	// Move lift servo one way and then the other way
 	std::cout << "Started Lift Servo Test" << std::endl;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;

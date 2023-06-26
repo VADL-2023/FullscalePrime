@@ -70,27 +70,38 @@ $(function() {
 <div class="title">State_SDR1.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATE_SDR1_H</span></div>
+<a href="State__SDR1_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATE_SDR1_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STATE_SDR1_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;State.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;pigpio.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="classRoot.html">Root</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classState__SDR1.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classState__SDR1.html">State_SDR1</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classState__SDR1.html">State_SDR1</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classState__SDR1.html">State_SDR1</a>(StateName name, std::map&lt;EventName, StateName&gt; &amp;state_transitions, <a class="code" href="classRoot.html">Root</a>* root);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        EventName execute() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        EventName unitExecute() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classState__SDR1.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classState__SDR1.html">State_SDR1</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classState__SDR1.html#abd5c67780da63e9ddf0113ce792b8003">State_SDR1</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classState__SDR1.html#abd5c67780da63e9ddf0113ce792b8003">State_SDR1</a>(<a class="code" href="State__Enums_8h.html#ac99446a312a3e7b8497ac6ec1f3ae080">StateName</a> name, std::map&lt;EventName, StateName&gt; &amp;state_transitions, <a class="code" href="classRoot.html">Root</a>* root);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a> <a class="code" href="classState__SDR1.html#aed8312e1e5d63a770306f2780866d4d7">execute</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a> <a class="code" href="classState__SDR1.html#a95dc596db72ea2ca80b49f942b3acfb3">unitExecute</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aState_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div></div>
+<div class="ttc" id="aState__Enums_8h_html_ab10943c68f32680aedb347755b5488ec"><div class="ttname"><a href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a></div><div class="ttdeci">EventName</div><div class="ttdoc">Different possible events that can occur in this state machine.</div><div class="ttdef"><b>Definition:</b> State_Enums.h:146</div></div>
+<div class="ttc" id="aState__Enums_8h_html_ac99446a312a3e7b8497ac6ec1f3ae080"><div class="ttname"><a href="State__Enums_8h.html#ac99446a312a3e7b8497ac6ec1f3ae080">StateName</a></div><div class="ttdeci">StateName</div><div class="ttdoc">Different possible states that can be run in this state machine.</div><div class="ttdef"><b>Definition:</b> State_Enums.h:12</div></div>
 <div class="ttc" id="aclassRoot_html"><div class="ttname"><a href="classRoot.html">Root</a></div><div class="ttdoc">Contains all common variables and functions accessible to every state in the state machine.</div><div class="ttdef"><b>Definition:</b> Root.h:37</div></div>
-<div class="ttc" id="aclassState__SDR1_html"><div class="ttname"><a href="classState__SDR1.html">State_SDR1</a></div><div class="ttdef"><b>Definition:</b> State_SDR1.h:11</div></div>
-<div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> State.h:11</div></div>
+<div class="ttc" id="aclassState__SDR1_html"><div class="ttname"><a href="classState__SDR1.html">State_SDR1</a></div><div class="ttdoc">State responsible for debugging SDR 1.</div><div class="ttdef"><b>Definition:</b> State_SDR1.h:18</div></div>
+<div class="ttc" id="aclassState__SDR1_html_a95dc596db72ea2ca80b49f942b3acfb3"><div class="ttname"><a href="classState__SDR1.html#a95dc596db72ea2ca80b49f942b3acfb3">State_SDR1::unitExecute</a></div><div class="ttdeci">EventName unitExecute() override</div><div class="ttdoc">Execution method for state in display mode (DOESN'T WORK)</div><div class="ttdef"><b>Definition:</b> State_SDR1.cpp:18</div></div>
+<div class="ttc" id="aclassState__SDR1_html_abd5c67780da63e9ddf0113ce792b8003"><div class="ttname"><a href="classState__SDR1.html#abd5c67780da63e9ddf0113ce792b8003">State_SDR1::State_SDR1</a></div><div class="ttdeci">State_SDR1()</div><div class="ttdoc">Construct a new State_SDR1 object.</div><div class="ttdef"><b>Definition:</b> State_SDR1.cpp:4</div></div>
+<div class="ttc" id="aclassState__SDR1_html_aed8312e1e5d63a770306f2780866d4d7"><div class="ttname"><a href="classState__SDR1.html#aed8312e1e5d63a770306f2780866d4d7">State_SDR1::execute</a></div><div class="ttdeci">EventName execute() override</div><div class="ttdoc">Main execution method for state.</div><div class="ttdef"><b>Definition:</b> State_SDR1.cpp:12</div></div>
+<div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdoc">Base state.</div><div class="ttdef"><b>Definition:</b> State.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

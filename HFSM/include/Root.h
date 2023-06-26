@@ -27,7 +27,7 @@
 
 class State;
 
-/**
+ /**
  * @file Root.h
  * @class Root
  * @brief Contains all common variables and functions accessible to every state in the state machine

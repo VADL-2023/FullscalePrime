@@ -1,4 +1,4 @@
 <map id="State_SDR2" name="State_SDR2">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,104,107"/>
-<area shape="rect" id="node2" href="$classState.html" title=" " alt="" coords="27,5,83,32"/>
+<area shape="rect" id="node1" title="State responsible for debugging SDR 2." alt="" coords="5,80,104,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="27,5,83,32"/>
 </map>

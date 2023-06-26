@@ -40,6 +40,8 @@ EventName State_Launch_Detection::execute()
 		++counter;
 	}
 	int capture_size = this->root_->aac_camera_captures_.size();
+
+	// Determines which cameras can be used for image capture, and start the threads
 	for(int i = 0;i < capture_size;i++) {
 		if(this->root_->aac_camera_captures_strings_[i] == "/dev/videoCam1") {
 			this->root_->m_log_.write("In Cap 1");

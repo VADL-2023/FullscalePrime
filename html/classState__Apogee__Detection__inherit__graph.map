@@ -1,4 +1,4 @@
 <map id="State_Apogee_Detection" name="State_Apogee_Detection">
-<area shape="rect" id="node1" title=" " alt="" coords="5,80,188,107"/>
-<area shape="rect" id="node2" href="$classState.html" title=" " alt="" coords="69,5,125,32"/>
+<area shape="rect" id="node1" title="State responsible for detecting apogee with IMU." alt="" coords="5,80,188,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="69,5,125,32"/>
 </map>

@@ -12,6 +12,7 @@ State_Full_Level::State_Full_Level(StateName name, std::map<EventName, StateName
 EventName State_Full_Level::execute()
 {
 	this->root_->m_log_.write("In State_Full_Level and will return end state.");
+
 	if (!this->root_->is_imu_connected_)
 	{
 		try
@@ -31,6 +32,8 @@ EventName State_Full_Level::execute()
 	}
 	this->root_->is_imu_connected_ = true;
 	bool got_level_reading = false;
+
+	// Find average pitch error
 	for (int i = 0; i < 5 && !got_level_reading; i++)
 	{
 		try {
@@ -49,9 +52,13 @@ EventName State_Full_Level::execute()
 			}
 		}
 		average_error /= this->root_->num_level_samples_;
+
+		// Interpolate to find proper servo position to level nacelle 
 		int desired_servo_pos = (((this->root_->max_pulse_width_ - this->root_->min_pulse_width_) / (this->root_->max_angle_ - this->root_->min_angle_)) * (average_error - this->root_->min_angle_)) + this->root_->min_pulse_width_;
 		this->root_->m_log_.write("Average error: " + std::to_string(average_error));
 		this->root_->m_log_.write("Desired servo pulsewidth: " + std::to_string(desired_servo_pos));
+
+		// Move the servo
 		if (desired_servo_pos > this->root_->max_pulse_width_)
 		{
 			this->root_->m_log_.write("At max pulse width");
@@ -69,6 +76,8 @@ EventName State_Full_Level::execute()
 			this->root_->m_log_.write("Couldn't read from IMU. About to try again");
 		}
 	}
+
+	// If we are recording lift video, write it out here
 	this->root_->lift_done_ = true;
 	try {
 		this->root_->lift_thread_.join();

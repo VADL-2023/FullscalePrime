@@ -21,6 +21,7 @@ State_RAFCO_Mission::State_RAFCO_Mission(StateName name, std::map<EventName, Sta
 
 EventName State_RAFCO_Mission::execute()
 {
+	// Kill previous SDRs and properly start them
 	usleep(1000000);
 	system("sudo ../../kill_sdr.bash");
 	this->root_->m_log_.write("Starting the SDRs");
@@ -73,16 +74,19 @@ EventName State_RAFCO_Mission::execute()
 	std::string prev_command = "";
 	std::string rafco_command = "";
 
+	// Run loop while SDRs are functional and below RAFCO time threshold
 	while ((sdr1_valid || sdr2_valid) && this->root_->getCurrentTime() - start_time < this->root_->length_collect_rafco_ * 1000)
 	{
 		usleep(10000);
-		// std::cout << "Time waiting: " << this->root_->getCurrentTime() - start_time <<  " < " << this->root_->length_collect_rafco_ * 1000 << std::endl;
-		// std::string rafco_command = "";
+		
+		// Run backup RAFCO sequence if we are close to running out of time
 		if (this->root_->getCurrentTime() - start_time > this->root_->length_collect_rafco_ * 1000 * 0.8)
 		{
 			// std::cout << "Backup valid" << std::endl;
 			backup_valid = true;
 		}
+
+		// Get APRS packet from SDR 1 and set rafco_command string
 		if (sdr1_valid && this->root_->radio1_.packetAvailable())
 		{
 			std::cout << "In packet 1 available" << std::endl;
@@ -112,6 +116,7 @@ EventName State_RAFCO_Mission::execute()
 			}
 		}
 
+		// Get APRS packet from SDR 2 and set rafco_command string
 		if (sdr2_valid && this->root_->radio2_.packetAvailable())
 		{
 			std::cout << "In packet 2 available" << std::endl;
@@ -151,22 +156,25 @@ EventName State_RAFCO_Mission::execute()
 		bool is_blur = false;
 		bool is_rotate = false;
 
+		// Execute backup command
 		if (backup_valid && !got_packet)
 		{
 			rafco_stream.str(backup_rafco_command);
 		}
+
+		// If we received unique command, run imaging payload
 		if (rafco_stream.str() != prev_command)
 		{
 			prev_command = rafco_stream.str();
+
+			// Turn on stepper motors
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
-				// TODO: uncomment
 				gpioWrite(this->root_->stepper_1_standby_pin_, 1);
 				usleep(5000000);
 			}
 			else if (this->root_->primary_camera_stream_ == "/dev/videoCam3")
 			{
-				// TODO: uncomment
 				gpioWrite(this->root_->stepper_3_standby_pin_, 1);
 				usleep(5000000);
 			}
@@ -175,6 +183,8 @@ EventName State_RAFCO_Mission::execute()
 				gpioWrite(this->root_->stepper_2_standby_pin_, 1);
 				usleep(5000000);
 			}
+
+			// Get folders setup to save photos
 			if (this->root_->date_timestamp_ == "")
 			{
 				auto end = std::chrono::system_clock::now();
@@ -206,6 +216,8 @@ EventName State_RAFCO_Mission::execute()
 			}
 			mkdir(folder_name_str.c_str(), 0777);
 			this->root_->m_log_.write("Full command: " + rafco_stream.str());
+
+			// Process RAFCO Command for image processing and nacelle swivels
 			while (rafco_stream >> command)
 			{ // Extract word from the stream.
 				this->root_->m_log_.write("Command: " + command);
@@ -290,6 +302,7 @@ EventName State_RAFCO_Mission::execute()
 					cv::Mat frame;
 					usleep(1000000);
 					int i = 0;
+					// Take multiple photos to make sure you don't get weird distortions, may need to do more than 7, try like 20
 					while (i < 7)
 					{
 						auto the_thing = cap.read(frame);
@@ -311,10 +324,12 @@ EventName State_RAFCO_Mission::execute()
 						cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('M', 'J', 'P', 'G'));
 					}
 					try {
-					cv::Mat display_frame = frame;
+						cv::Mat display_frame = frame;
 						// Need to rotate frame because of how camera is mounted
 						cv::rotate(display_frame, display_frame, cv::ROTATE_180);
 						// cv::cvtColor(frame, display_frame, cv::COLOR_BGR2RGB);
+
+						// Based on RAFCO flags, filter image
 						if (is_gray)
 						{
 							cv::cvtColor(display_frame, display_frame, cv::COLOR_RGB2GRAY);
@@ -353,6 +368,8 @@ EventName State_RAFCO_Mission::execute()
 						{
 							this->root_->m_log_.write("Current Image is not blurred");
 						}
+
+						// Save image with date and time
 						this->root_->m_log_.write("Saving picture at " + pic_name_str);
 						auto end = std::chrono::system_clock::now();
 						std::time_t end_time = std::chrono::system_clock::to_time_t(end);
@@ -394,6 +411,8 @@ EventName State_RAFCO_Mission::execute()
 				}
 			}
 			usleep(5000000);
+
+			// Turn off steppers
 			gpioWrite(this->root_->stepper_1_standby_pin_, 0);
 			gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 			gpioWrite(this->root_->stepper_3_standby_pin_, 0);
@@ -405,14 +424,18 @@ EventName State_RAFCO_Mission::execute()
 		p2.msg = "";
 	}
 
+	// Turn off steppers
 	gpioWrite(this->root_->stepper_1_standby_pin_, 0);
 	gpioWrite(this->root_->stepper_2_standby_pin_, 0);
 	gpioWrite(this->root_->stepper_3_standby_pin_, 0);
+
 	// Shut down the SDRs
 	this->root_->m_log_.write("Shutting down SDRs");
 	cap.release();
 	this->root_->radio1_.stopSDR();
 	this->root_->radio2_.stopSDR();
+
+	// Tries to redo RAFCO if backup cameras were used
 	if (this->root_->primary_camera_stream_ != "/dev/videoCam2")
 	{
 		this->root_->primary_camera_stream_ = "/dev/videoCam2";

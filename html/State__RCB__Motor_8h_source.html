@@ -70,26 +70,37 @@ $(function() {
 <div class="title">State_RCB_Motor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATE_RCB_MOTOR_H</span></div>
+<a href="State__RCB__Motor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef STATE_RCB_MOTOR_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define STATE_RCB_MOTOR_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;State.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;pigpio.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="classRoot.html">Root</a>;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classState__RCB__Motor.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classState__RCB__Motor.html">State_RCB_Motor</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classState__RCB__Motor.html">State_RCB_Motor</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classState__RCB__Motor.html">State_RCB_Motor</a>(StateName name, std::map&lt;EventName, StateName&gt; &amp;state_transitions, <a class="code" href="classRoot.html">Root</a>* root);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        EventName execute() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        EventName unitExecute() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classState__RCB__Motor.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classState__RCB__Motor.html">State_RCB_Motor</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classState__RCB__Motor.html#a53e95fe74b747d36876eb3a97b07875e">State_RCB_Motor</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classState__RCB__Motor.html#a53e95fe74b747d36876eb3a97b07875e">State_RCB_Motor</a>(<a class="code" href="State__Enums_8h.html#ac99446a312a3e7b8497ac6ec1f3ae080">StateName</a> name, std::map&lt;EventName, StateName&gt; &amp;state_transitions, <a class="code" href="classRoot.html">Root</a>* root);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a> <a class="code" href="classState__RCB__Motor.html#ae4817baeae7b2328c6ddf9a936064e92">execute</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a> <a class="code" href="classState__RCB__Motor.html#a59e9211b5cfdb9b15631b6a2e6671ffe">unitExecute</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aState_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div></div>
+<div class="ttc" id="aState__Enums_8h_html_ab10943c68f32680aedb347755b5488ec"><div class="ttname"><a href="State__Enums_8h.html#ab10943c68f32680aedb347755b5488ec">EventName</a></div><div class="ttdeci">EventName</div><div class="ttdoc">Different possible events that can occur in this state machine.</div><div class="ttdef"><b>Definition:</b> State_Enums.h:146</div></div>
+<div class="ttc" id="aState__Enums_8h_html_ac99446a312a3e7b8497ac6ec1f3ae080"><div class="ttname"><a href="State__Enums_8h.html#ac99446a312a3e7b8497ac6ec1f3ae080">StateName</a></div><div class="ttdeci">StateName</div><div class="ttdoc">Different possible states that can be run in this state machine.</div><div class="ttdef"><b>Definition:</b> State_Enums.h:12</div></div>
 <div class="ttc" id="aclassRoot_html"><div class="ttname"><a href="classRoot.html">Root</a></div><div class="ttdoc">Contains all common variables and functions accessible to every state in the state machine.</div><div class="ttdef"><b>Definition:</b> Root.h:37</div></div>
-<div class="ttc" id="aclassState__RCB__Motor_html"><div class="ttname"><a href="classState__RCB__Motor.html">State_RCB_Motor</a></div><div class="ttdef"><b>Definition:</b> State_RCB_Motor.h:10</div></div>
-<div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> State.h:11</div></div>
+<div class="ttc" id="aclassState__RCB__Motor_html"><div class="ttname"><a href="classState__RCB__Motor.html">State_RCB_Motor</a></div><div class="ttdoc">State responsible for testing RCB motor without IMU.</div><div class="ttdef"><b>Definition:</b> State_RCB_Motor.h:17</div></div>
+<div class="ttc" id="aclassState__RCB__Motor_html_a53e95fe74b747d36876eb3a97b07875e"><div class="ttname"><a href="classState__RCB__Motor.html#a53e95fe74b747d36876eb3a97b07875e">State_RCB_Motor::State_RCB_Motor</a></div><div class="ttdeci">State_RCB_Motor()</div><div class="ttdoc">Construct a new State_RCB_Motor object.</div><div class="ttdef"><b>Definition:</b> State_RCB_Motor.cpp:4</div></div>
+<div class="ttc" id="aclassState__RCB__Motor_html_a59e9211b5cfdb9b15631b6a2e6671ffe"><div class="ttname"><a href="classState__RCB__Motor.html#a59e9211b5cfdb9b15631b6a2e6671ffe">State_RCB_Motor::unitExecute</a></div><div class="ttdeci">EventName unitExecute() override</div><div class="ttdoc">Execution method for state in display mode (DOESN'T WORK)</div><div class="ttdef"><b>Definition:</b> State_RCB_Motor.cpp:17</div></div>
+<div class="ttc" id="aclassState__RCB__Motor_html_ae4817baeae7b2328c6ddf9a936064e92"><div class="ttname"><a href="classState__RCB__Motor.html#ae4817baeae7b2328c6ddf9a936064e92">State_RCB_Motor::execute</a></div><div class="ttdeci">EventName execute() override</div><div class="ttdoc">Main execution method for state.</div><div class="ttdef"><b>Definition:</b> State_RCB_Motor.cpp:12</div></div>
+<div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdoc">Base state.</div><div class="ttdef"><b>Definition:</b> State.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

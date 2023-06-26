@@ -62,9 +62,6 @@ std::string getStateName(StateName stateType)
     case STATE_SDR2:
         name = "State SDR 2";
         break;
-    case STATE_DELAY:
-        name = "Delay";
-        break;
     case STATE_PRELAUNCH:
         name = "Pre launch";
         break;
