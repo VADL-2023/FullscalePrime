@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_fc30d8bc4c52f877dd2b6315e410f6d2" kind="dir">
+    <compoundname>/home/kushtimusprime/FullscalePrime/Log</compoundname>
+    <innerdir refid="dir_8dc65a216bdd7f40e673ad8a62aae632">/home/kushtimusprime/FullscalePrime/Log/include</innerdir>
+    <innerdir refid="dir_465f097fd2d507fcd101c3676cd4c91f">/home/kushtimusprime/FullscalePrime/Log/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/Log/"/>
+  </compounddef>
+</doxygen>

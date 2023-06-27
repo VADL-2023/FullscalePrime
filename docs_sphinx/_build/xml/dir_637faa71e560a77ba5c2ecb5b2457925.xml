@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_637faa71e560a77ba5c2ecb5b2457925" kind="dir">
+    <compoundname>/home/kushtimusprime/FullscalePrime/SerialCute++</compoundname>
+    <innerdir refid="dir_f077c340f80695c1cf3181bbf069ee7e">/home/kushtimusprime/FullscalePrime/SerialCute++/include</innerdir>
+    <innerdir refid="dir_cd32e378d36af39f43a71a370de2c52c">/home/kushtimusprime/FullscalePrime/SerialCute++/src</innerdir>
+    <innerfile refid="SerialWrite_8cpp">SerialWrite.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log &mdash; Fullscale Prime  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MainDriver" href="../MainDriver/summary.html" />
+    <link rel="prev" title="IMU" href="../IMU/summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Fullscale Prime
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../FieldTest/summary.html">FieldTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HFSM/summary.html">HFSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IMU/summary.html">IMU</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MainDriver/summary.html">MainDriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PacketReception/summary.html">PacketReception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SerialCute%2B%2B/summary.html">SerialCute++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Stepper/summary.html">Stepper for Nacelle Swivel</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fullscale Prime</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Log</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Log/summary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="log">
+<h1>Log<a class="headerlink" href="#log" title="Permalink to this heading"></a></h1>
+<p>The Log file library was written in a previous year. It stores flight data in an organized manner such that it can be easily interpreted with our MATLAB scripts. Furthermore, there are no executables in this library.</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MYPROJECT_NEWLOG_H">
+<span class="target" id="Log_8h_1a8d568cd5a0dbcb6ffe728efb7351ca1b"></span><span class="sig-name descname"><span class="n"><span class="pre">MYPROJECT_NEWLOG_H</span></span></span><a class="headerlink" href="#c.MYPROJECT_NEWLOG_H" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv43Log">
+<span id="_CPPv33Log"></span><span id="_CPPv23Log"></span><span id="Log"></span><span class="target" id="classLog"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Log</span></span></span><a class="headerlink" href="#_CPPv43Log" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;Log.h&gt;</em></div>
+<p><a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> class to record flight results. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log3LogENSt6stringENSt6stringEPN2vn7sensors8VnSensorEd">
+<span id="_CPPv3N3Log3LogENSt6stringENSt6stringEPN2vn7sensors8VnSensorEd"></span><span id="_CPPv2N3Log3LogENSt6stringENSt6stringEPN2vn7sensors8VnSensorEd"></span><span id="Log::Log__ss.ss.vn::sensors::VnSensorP.double"></span><span class="target" id="classLog_1a7bdf3a02a000f59e1a43898664ae37ae"></span><span class="sig-name descname"><span class="n"><span class="pre">Log</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">flightFilename</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">programFilename</span></span>, <span class="n"><span class="pre">vn</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">sensors</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VnSensor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">imu</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sTime</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log3LogENSt6stringENSt6stringEPN2vn7sensors8VnSensorEd" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flightFilename</strong> – Name for flight log file </p></li>
+<li><p><strong>programFilename</strong> – Name for program log file </p></li>
+<li><p><strong>imu</strong> – Pointer to VN-100 sensor object </p></li>
+<li><p><strong>sTime</strong> – Timestamp that we don’t use </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3LogD0Ev">
+<span id="_CPPv3N3LogD0Ev"></span><span id="_CPPv2N3LogD0Ev"></span><span id="Log::~Log"></span><span class="target" id="classLog_1a0fbfda88fbee5027c89f6eb121059360"></span><span class="sig-name descname"><span class="n"><span class="pre">~Log</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3LogD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Destroy the <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log5writeERN2vn7sensors23ImuMeasurementsRegisterE">
+<span id="_CPPv3N3Log5writeERN2vn7sensors23ImuMeasurementsRegisterE"></span><span id="_CPPv2N3Log5writeERN2vn7sensors23ImuMeasurementsRegisterE"></span><span id="Log::write__vn::sensors::ImuMeasurementsRegisterR"></span><span class="target" id="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vn</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">sensors</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImuMeasurementsRegister</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log5writeERN2vn7sensors23ImuMeasurementsRegisterE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Writes IMU data to flight log. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – IMU Data </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log5writeENSt6stringE">
+<span id="_CPPv3N3Log5writeENSt6stringE"></span><span id="_CPPv2N3Log5writeENSt6stringE"></span><span id="Log::write__ss"></span><span class="target" id="classLog_1ac2c7f802daf43678fecddb1c8e2dec64"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputString</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log5writeENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Writes print statements to program log. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outputString</strong> – Print statements </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log9writeTimeENSt6stringE">
+<span id="_CPPv3N3Log9writeTimeENSt6stringE"></span><span id="_CPPv2N3Log9writeTimeENSt6stringE"></span><span id="Log::writeTime__ss"></span><span class="target" id="classLog_1ae0bb35da300c57bcfbdb644c733b530e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeTime</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputString</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log9writeTimeENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Write string to program data file with timestamp and to console. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outputString</strong> – The timestamp </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log15tempSaveProgLogEv">
+<span id="_CPPv3N3Log15tempSaveProgLogEv"></span><span id="_CPPv2N3Log15tempSaveProgLogEv"></span><span id="Log::tempSaveProgLog"></span><span class="target" id="classLog_1aedf3a10cb2b62dc6de2f6ed8274e9476"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tempSaveProgLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log15tempSaveProgLogEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Saves the program log file while still keeping it open to writing. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log10writeDelimENSt6stringE">
+<span id="_CPPv3N3Log10writeDelimENSt6stringE"></span><span id="_CPPv2N3Log10writeDelimENSt6stringE"></span><span id="Log::writeDelim__ss"></span><span class="target" id="classLog_1a5242f7dbe3b7037e4c7b3df9179e1ab5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeDelim</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">outputString</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log10writeDelimENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outputString</strong> – The string written in the <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log11elapsedTimeEv">
+<span id="_CPPv3N3Log11elapsedTimeEv"></span><span id="_CPPv2N3Log11elapsedTimeEv"></span><span id="Log::elapsedTime"></span><span class="target" id="classLog_1ab8312bed26b9acf5755bb5b4aae92a62"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">elapsedTime</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log11elapsedTimeEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Calculate time in milliseconds since <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> pointer was created. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double representing the time in ms since <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> was created </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log22saveBaselineParametersEfffff">
+<span id="_CPPv3N3Log22saveBaselineParametersEfffff"></span><span id="_CPPv2N3Log22saveBaselineParametersEfffff"></span><span id="Log::saveBaselineParameters__float.float.float.float.float"></span><span class="target" id="classLog_1a05e8a199e82d1adf6471c532fc4997e3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">saveBaselineParameters</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Rconst</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Bconst</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">pressure</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">temperature</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">accelg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log22saveBaselineParametersEfffff" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Save baseline parameters to calculate altitude. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Rconst</strong> – Gas Constant </p></li>
+<li><p><strong>Bconst</strong> – Variation of temperature within the troposphere </p></li>
+<li><p><strong>pressure</strong> – Baseline pressure </p></li>
+<li><p><strong>temperature</strong> – Baseline temperature </p></li>
+<li><p><strong>accelg</strong> – Baseline gravity reading </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log12getTimestampEv">
+<span id="_CPPv3N3Log12getTimestampEv"></span><span id="_CPPv2N3Log12getTimestampEv"></span><span id="Log::getTimestamp"></span><span class="target" id="classLog_1a8de9fb083271564281cefe2c165c4c4b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getTimestamp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log12getTimestampEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the start timestamp. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string representing the timestamp </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log7calcAltERN2vn7sensors23ImuMeasurementsRegisterE">
+<span id="_CPPv3N3Log7calcAltERN2vn7sensors23ImuMeasurementsRegisterE"></span><span id="_CPPv2N3Log7calcAltERN2vn7sensors23ImuMeasurementsRegisterE"></span><span id="Log::calcAlt__vn::sensors::ImuMeasurementsRegisterR"></span><span class="target" id="classLog_1abec5c3596687c50a8b5498c786d52fd4"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">calcAlt</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">vn</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">sensors</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImuMeasurementsRegister</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3Log7calcAltERN2vn7sensors23ImuMeasurementsRegisterE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Calculates altitude based on IMU pressure data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – The data collected from the IMU Register </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>float represnting the current altitude in meters </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log10mFlightLogE">
+<span id="_CPPv3N3Log10mFlightLogE"></span><span id="_CPPv2N3Log10mFlightLogE"></span><span id="Log::mFlightLog__std::ofstream"></span><span class="target" id="classLog_1a1a645481a634d450195df274bb5d4cf6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ofstream</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mFlightLog</span></span></span><a class="headerlink" href="#_CPPv4N3Log10mFlightLogE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Flight Data <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> File relative to current directory. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log8mProgLogE">
+<span id="_CPPv3N3Log8mProgLogE"></span><span id="_CPPv2N3Log8mProgLogE"></span><span id="Log::mProgLog__std::ofstream"></span><span class="target" id="classLog_1ab2787e173e10b969e01ba8ae658e0463"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ofstream</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mProgLog</span></span></span><a class="headerlink" href="#_CPPv4N3Log8mProgLogE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Program Outpu <a class="reference internal" href="#classLog"><span class="std std-ref">Log</span></a> File relative to current directory. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log4mIMUE">
+<span id="_CPPv3N3Log4mIMUE"></span><span id="_CPPv2N3Log4mIMUE"></span><span id="Log::mIMU__vn::sensors::VnSensorP"></span><span class="target" id="classLog_1a36d58966bac5867afb9187d81e5de6fb"></span><span class="n"><span class="pre">vn</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">sensors</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VnSensor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">mIMU</span></span></span><a class="headerlink" href="#_CPPv4N3Log4mIMUE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>VN-100 IMU sensor (pointer to the one in the main program) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log9startTimeE">
+<span id="_CPPv3N3Log9startTimeE"></span><span id="_CPPv2N3Log9startTimeE"></span><span id="Log::startTime__double"></span><span class="target" id="classLog_1a41e68e539a661098b24f822708e7a362"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startTime</span></span></span><a class="headerlink" href="#_CPPv4N3Log9startTimeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Start time in ms. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log11currentTimeE">
+<span id="_CPPv3N3Log11currentTimeE"></span><span id="_CPPv2N3Log11currentTimeE"></span><span id="Log::currentTime__double"></span><span class="target" id="classLog_1af91c5ecf0cf4ef1f0b6218be28c78f45"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentTime</span></span></span><a class="headerlink" href="#_CPPv4N3Log11currentTimeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Current time in ms. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log12sampleNumberE">
+<span id="_CPPv3N3Log12sampleNumberE"></span><span id="_CPPv2N3Log12sampleNumberE"></span><span id="Log::sampleNumber__double"></span><span class="target" id="classLog_1a6fc8d2d8e95ded4347e36bfa9b5a585a"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sampleNumber</span></span></span><a class="headerlink" href="#_CPPv4N3Log12sampleNumberE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Current sample number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log9pressure0E">
+<span id="_CPPv3N3Log9pressure0E"></span><span id="_CPPv2N3Log9pressure0E"></span><span id="Log::pressure0__float"></span><span class="target" id="classLog_1af5c53f6955fa7cc5a3215d72d6e4953d"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pressure0</span></span></span><a class="headerlink" href="#_CPPv4N3Log9pressure0E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Baseline pressure. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log12temperature0E">
+<span id="_CPPv3N3Log12temperature0E"></span><span id="_CPPv2N3Log12temperature0E"></span><span id="Log::temperature0__float"></span><span class="target" id="classLog_1a76659910c49c9aa0a4ba13f864ec7e85"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">temperature0</span></span></span><a class="headerlink" href="#_CPPv4N3Log12temperature0E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Baseline temperature. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log7accelg0E">
+<span id="_CPPv3N3Log7accelg0E"></span><span id="_CPPv2N3Log7accelg0E"></span><span id="Log::accelg0__float"></span><span class="target" id="classLog_1a87ab4c0f071bb1ee6e1f099431b14339"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">accelg0</span></span></span><a class="headerlink" href="#_CPPv4N3Log7accelg0E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Baseline gravity reading. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log1RE">
+<span id="_CPPv3N3Log1RE"></span><span id="_CPPv2N3Log1RE"></span><span id="Log::R__float"></span><span class="target" id="classLog_1a312ad1743fdb43c6db3c2a920d540e9a"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">R</span></span></span><a class="headerlink" href="#_CPPv4N3Log1RE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Universal Gas Constant. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log1BE">
+<span id="_CPPv3N3Log1BE"></span><span id="_CPPv2N3Log1BE"></span><span id="Log::B__float"></span><span class="target" id="classLog_1acf3d062f2cdd0cae0c87ee0271455075"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">B</span></span></span><a class="headerlink" href="#_CPPv4N3Log1BE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Variation of temperature within the troposphere. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log10currentAltE">
+<span id="_CPPv3N3Log10currentAltE"></span><span id="_CPPv2N3Log10currentAltE"></span><span id="Log::currentAlt__float"></span><span class="target" id="classLog_1ab5232a137bb7356f03d8d637b46b9c87"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currentAlt</span></span></span><a class="headerlink" href="#_CPPv4N3Log10currentAltE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Current altitude in meters. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log15savedParametersE">
+<span id="_CPPv3N3Log15savedParametersE"></span><span id="_CPPv2N3Log15savedParametersE"></span><span id="Log::savedParameters__b"></span><span class="target" id="classLog_1a75187edd596a203593e2349f9692f854"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">savedParameters</span></span></span><a class="headerlink" href="#_CPPv4N3Log15savedParametersE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Boolean indicating if we have saved the parameters yet. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log20numSpecialCharactersE">
+<span id="_CPPv3N3Log20numSpecialCharactersE"></span><span id="_CPPv2N3Log20numSpecialCharactersE"></span><span id="Log::numSpecialCharacters__i"></span><span class="target" id="classLog_1a7a3951c4d4a6d11b5b47ccb8295ddb5e"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numSpecialCharacters</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">10</span></span><a class="headerlink" href="#_CPPv4N3Log20numSpecialCharactersE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>match this to number of specialCharacters (don’t tell matt we hardcoded this lol) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="classLog_1a704ec052f69f28dc9dcdf3161bbf8b39"></span><span class="sig-name descname"><span class="pre">std::string</span> <span class="pre">specialCharacters</span> <span class="pre">[10]</span>&#160; <span class="pre">=</span> <span class="pre">{&quot;/&quot;,</span> <span class="pre">&quot;\\&quot;,</span> <span class="pre">&quot;*&quot;,</span> <span class="pre">&quot;&lt;&quot;,</span> <span class="pre">&quot;&gt;&quot;,</span> <span class="pre">&quot;,&quot;,</span> <span class="pre">&quot;.&quot;,</span> <span class="pre">&quot;`&quot;,</span> <span class="pre">&quot;~&quot;,</span> <span class="pre">&quot;|&quot;}</span></span></dt>
+<dd><p>not all of these are invalid but rather be safe than sorry </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log5delimE">
+<span id="_CPPv3N3Log5delimE"></span><span id="_CPPv2N3Log5delimE"></span><span id="Log::delim__ss"></span><span class="target" id="classLog_1a929b7907c0f9f12378339ca4841620aa"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">delim</span></span></span><a class="headerlink" href="#_CPPv4N3Log5delimE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Character to specify when events happen in Program log ($) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log10timestamp_E">
+<span id="_CPPv3N3Log10timestamp_E"></span><span id="_CPPv2N3Log10timestamp_E"></span><span id="Log::timestamp___ss"></span><span class="target" id="classLog_1ad23a5c76ff9a9c7c06440977dbd7e1cc"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">timestamp_</span></span></span><a class="headerlink" href="#_CPPv4N3Log10timestamp_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Timestamp of when program is initialized. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log12flight_name_E">
+<span id="_CPPv3N3Log12flight_name_E"></span><span id="_CPPv2N3Log12flight_name_E"></span><span id="Log::flight_name___ss"></span><span class="target" id="classLog_1a6e9553f3d90b740bc5f10d2b38b28549"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flight_name_</span></span></span><a class="headerlink" href="#_CPPv4N3Log12flight_name_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>String representing flight name. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Log13program_name_E">
+<span id="_CPPv3N3Log13program_name_E"></span><span id="_CPPv2N3Log13program_name_E"></span><span id="Log::program_name___ss"></span><span class="target" id="classLog_1afe210afa445995d2eaa835d7559f6b95"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">program_name_</span></span></span><a class="headerlink" href="#_CPPv4N3Log13program_name_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>String representing program name. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../IMU/summary.html" class="btn btn-neutral float-left" title="IMU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../MainDriver/summary.html" class="btn btn-neutral float-right" title="MainDriver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, me.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>Fullscale Prime</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md__home_kushtimusprime_FullscalePrime_README"/> Welcome to the VADL 2023 software repository! The goal of this project was to autonomously run the team&apos;s payload. This involves launch-apogee-landing detection, RCB to properly place the key nacelle at the top, lift to elevate the key nacelle, and run the SDRs and cameras to autonomously decode APRS packets and perform the proper image processing actions. The code was written by Kush Hari, Meredith Hunter, Andrew Noonan, Matthew McGowan, and technically Eric Holst with README written by Kush Hari.</para>
+<sect1 id="index_1autotoc_md1">
+<title>Installation</title>
+<para>This code is designed to work with a Raspberry Pi 4 with the Raspbian Bullseye operating system (but it could probably work with Ubuntu or Ubuntu MATE). The only major installation is OpenCV. OpenCV is an open source computer vision library with lots of cool and efficient CV algorithms, so you don&apos;t got to write it yourself.</para>
+<sect2 id="index_1autotoc_md2">
+<title>OpenCV Installation</title>
+<para>The tutorial I installed OpenCV was a bit extra, but it works. You may have issues with the computer crashing, which you can fix with the swap memory (see end of tutorial) <programlisting><codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>purge<sp/>wolfram-engine</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>purge<sp/>libreoffice*</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>clean</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>autoremove</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">echo<sp/>&quot;OpenCV<sp/>installation<sp/>by<sp/>learnOpenCV.com&quot;</highlight></codeline>
+<codeline><highlight class="normal">cvVersion=&quot;master&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Clean<sp/>build<sp/>directories</highlight></codeline>
+<codeline><highlight class="normal">rm<sp/>-rf<sp/>opencv/build</highlight></codeline>
+<codeline><highlight class="normal">rm<sp/>-rf<sp/>opencv_contrib/build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Create<sp/>directory<sp/>for<sp/>installation</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>installation</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>installation/OpenCV-&quot;$cvVersion&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Save<sp/>current<sp/>working<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">cwd=$(pwd)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>-y<sp/>update</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>-y<sp/>upgrade</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>remove<sp/>x264<sp/>libx264-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Install<sp/>dependencies</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>build-essential<sp/>checkinstall<sp/>cmake<sp/>pkg-config<sp/>yasm</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>git<sp/>gfortran</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libjpeg8-dev<sp/>libjasper-dev<sp/>libpng12-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libtiff5-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libtiff-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libavcodec-dev<sp/>libavformat-dev<sp/>libswscale-dev<sp/>libdc1394-22-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libxine2-dev<sp/>libv4l-dev</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>/usr/include/linux</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>ln<sp/>-s<sp/>-f<sp/>../libv4l1-videodev.h<sp/>videodev.h</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>$cwd</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgstreamer0.10-dev<sp/>libgstreamer-plugins-base0.10-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgtk2.0-dev<sp/>libtbb-dev<sp/>qt5-default</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libatlas-base-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libmp3lame-dev<sp/>libtheora-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libvorbis-dev<sp/>libxvidcore-dev<sp/>libx264-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libopencore-amrnb-dev<sp/>libopencore-amrwb-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libavresample-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>x264<sp/>v4l-utils</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Optional<sp/>dependencies</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libprotobuf-dev<sp/>protobuf-compiler</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgoogle-glog-dev<sp/>libgflags-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgphoto2-dev<sp/>libeigen3-dev<sp/>libhdf5-dev<sp/>doxygen</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/opencv/opencv.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>checkout<sp/>$cvVersion</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/opencv/opencv_contrib.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv_contrib</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>checkout<sp/>$cvVersion</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cmake<sp/>-D<sp/>CMAKE_BUILD_TYPE=RELEASE<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-&quot;$cvVersion&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>INSTALL_C_EXAMPLES=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>INSTALL_PYTHON_EXAMPLES=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_TBB=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_V4L=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python3.5/site-packages<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_QT=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_OPENGL=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>BUILD_EXAMPLES=ON<sp/>..</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">make<sp/>-j$(nproc)</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>install</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>sed<sp/>-i<sp/>&apos;s/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g&apos;<sp/>/etc/dphys-swapfile</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>/etc/init.d/dphys-swapfile<sp/>stop</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>/etc/init.d/dphys-swapfile<sp/>start</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">echo<sp/>&quot;sudo<sp/>modprobe<sp/>bcm2835-v4l2&quot;<sp/>&amp;amp;amp;amp;gt;&amp;amp;amp;amp;gt;<sp/>~/.profile</highlight></codeline>
+</programlisting> Based on this link: <ulink url="https://learnopencv.com/install-opencv-4-on-raspberry-pi/">https://learnopencv.com/install-opencv-4-on-raspberry-pi/</ulink></para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md3">
+<title>Other installations</title>
+<para>Since we get pigpio from source, it should automatically compile. You may be missing a few installations here and there, but you should be able to install them with apt.</para>
+</sect1>
+<sect1 id="index_1autotoc_md4">
+<title>Package Explanations/Running the Code</title>
+<para>To compile and build the code, run the following. You will see that all the other packages will build first, then the MainDriver package. This is because the MainDriver relies on the other packages to be compiled libraries before it can compile. The full payload code can be run with the following executable, but it is not recommended to run this cold as it relies on the payload to be perfectly setup. Also, always compile from the FullscalePrime directory, don&apos;t individually compile stuff in their own folders, just makes things messy. <programlisting><codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build/MainDriver</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>./realDisplayTest</highlight></codeline>
+</programlisting></para>
+</sect1>
+<sect1 id="index_1autotoc_md5">
+<title>Package Explanation</title>
+<para>This project has a lot of different components, so that&apos;s why there are so many packages. Each package written this year should have detailed comments. Some packages may not have detailed comments, but they have been previously verified to work. Here is a brief description on each package and if it is useful.</para>
+<para>FieldTest: Includes a series of different starter tests we would run in the field to help debug issues quickly (Useful)</para>
+<para>HFSM: Includes all of the states for the state machine (Useful)</para>
+<para>ImageCapture: Has some random OpenCV image tests. (Meh, may have some useful stuff if you want to learn OpenCV, but poorly documented and may not work, sorry)</para>
+<para>IMU: Includes wrapper code for the VN Library for IMU. This package was written in a previous year, and I don&apos;t know about the mutex stuff, but it works. (Useful)</para>
+<para><ref refid="classLog" kindref="compound">Log</ref>: Includes code for the log to save flight data for easy integration with our MATLAB sim. This package was writtein in a previous year. (Useful)</para>
+<para>MainDriver: The bread and butter, the meat and potatoes, the autobots and decepticons, this is where all the code comes together to make the target executable. (Useful)</para>
+<para>MultithreadTest: Mini test to see how we can do multithreading in C++. (Meh, helpful to see some multithreading code, but it may not work)</para>
+<para>PacketReception: Includes wrapper code for our TCP socket to receive APRS packets. (Useful)</para>
+<para>pigpio-master: Source code to allow for GPIO interaction. Fun fact, it is Pi GPIO and not Pig Pio. (Useful)</para>
+<para>SerialCute++ (Name credits go to Meredith): Wrapper code for Serial communication objects. (Useful)</para>
+<para>ServoTest: Mini test to see how to move servo in C++ (Not Useful)</para>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref>: Includes stepper motor library for Raspberry Pi. Based on Arduino library. (Useful)</para>
+<para>VectorNav: VN-100 library provided by VectorNav. Allows us to read IMU data from each register at 20 Hz. If you want 2 registers, you get 10 Hz. (Useful)</para>
+</sect1>
+<sect1 id="index_1autotoc_md6">
+<title>Bash/Python Script Explanations</title>
+<para>cam_assignment.bash: Looks at which cameras are connected to the Pi, assigns them with static names based on which port they are plugged in (Useful) kill_sdr.bash: Kills all SDR running processes. Important because SDR can&apos;t run if it is already running (Useful) processaltitude.py: Interprets log files to make altitude plots (Meh, MATLAB sims are better. Cool to get this running and see plots on the field, but it might not work anymore) video_concat scripts: We save the flight videos in increments, so this will just merge it all together (Meh, cool to get this running if relevant, but probably doesn&apos;t work anymore)</para>
+</sect1>
+<sect1 id="index_1autotoc_md7">
+<title>Limitations</title>
+<para>The code in its current form did not successfully operate in the NASA USLI competition despite functioning through all of our tests. We were able to successfully record flight video, perform RCB, detect all cameras and SDRS post-landing, and lift. However, during the lift, we lost all USB connections despite no hardware disruptions. With a software reboot, we were able to successfully execute the payload. Further testing revealed that this error happens 5-10% of the time. The leading reason for failure is the fact that we powered the Raspberry Pi with GPIO pins, rather than the USB-C or barrel jack port. This is bad because while it is safe voltage-wise, you can only run limited current through the GPIO pins. Perhaps when running the camera, the current spiked up, leading to undefined behavior of the USBs disconnecting. However, this should be thouroughly tested. <ulink url="https://forums.raspberrypi.com/viewtopic.php?t=196531">https://forums.raspberrypi.com/viewtopic.php?t=196531</ulink> </para>
+</sect1>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/README.md"/>
+  </compounddef>
+</doxygen>

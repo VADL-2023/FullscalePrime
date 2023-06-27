@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stepper for Nacelle Swivel &mdash; Fullscale Prime  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="SerialCute++" href="../SerialCute%2B%2B/summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Fullscale Prime
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../FieldTest/summary.html">FieldTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HFSM/summary.html">HFSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IMU/summary.html">IMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Log/summary.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MainDriver/summary.html">MainDriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PacketReception/summary.html">PacketReception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SerialCute%2B%2B/summary.html">SerialCute++</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stepper for Nacelle Swivel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stepper-object">Stepper Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stepperrunner">StepperRunner</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fullscale Prime</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Stepper for Nacelle Swivel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Stepper/summary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stepper-for-nacelle-swivel">
+<h1>Stepper for Nacelle Swivel<a class="headerlink" href="#stepper-for-nacelle-swivel" title="Permalink to this heading"></a></h1>
+<p>Raspberry Pi Library for stepper motors based on Arduino library.</p>
+<section id="stepper-object">
+<h2>Stepper Object<a class="headerlink" href="#stepper-object" title="Permalink to this heading"></a></h2>
+<p><a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> Library header file. </p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv47Stepper">
+<span id="_CPPv37Stepper"></span><span id="_CPPv27Stepper"></span><span id="Stepper"></span><span class="target" id="classStepper"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Stepper</span></span></span><a class="headerlink" href="#_CPPv47Stepper" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;Stepper.h&gt;</em></div>
+<p><a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> Library Interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper7StepperEv">
+<span id="_CPPv3N7Stepper7StepperEv"></span><span id="_CPPv2N7Stepper7StepperEv"></span><span id="Stepper::Stepper"></span><span class="target" id="classStepper_1af3be15bfd38efba27858cc5ec00d84b9"></span><span class="sig-name descname"><span class="n"><span class="pre">Stepper</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper7StepperEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new <a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper7StepperEiiiiib">
+<span id="_CPPv3N7Stepper7StepperEiiiiib"></span><span id="_CPPv2N7Stepper7StepperEiiiiib"></span><span id="Stepper::Stepper__i.i.i.i.i.b"></span><span class="target" id="classStepper_1a00cc1024bdc9af29c0cf946e345d346c"></span><span class="sig-name descname"><span class="n"><span class="pre">Stepper</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">number_of_steps</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_1</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_2</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_3</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_4</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">gpio_initialized</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper7StepperEiiiiib" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new <a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number_of_steps</strong> – Number of steps per revolution </p></li>
+<li><p><strong>motor_pin_1</strong> – GPIO Pin 1 </p></li>
+<li><p><strong>motor_pin_2</strong> – GPIO Pin 2 </p></li>
+<li><p><strong>motor_pin_3</strong> – GPIO Pin 3 </p></li>
+<li><p><strong>motor_pin_4</strong> – GPIO Pin 4 </p></li>
+<li><p><strong>gpio_initialized</strong> – Boolean indicating if GPIO has been initialized yet </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper10initializeEiiiiib">
+<span id="_CPPv3N7Stepper10initializeEiiiiib"></span><span id="_CPPv2N7Stepper10initializeEiiiiib"></span><span id="Stepper::initialize__i.i.i.i.i.b"></span><span class="target" id="classStepper_1a873ad8f0bc8af4eeebe6ddb8a0fe218e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialize</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">number_of_steps</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_1</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_2</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_3</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motor_pin_4</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">gpio_initialized</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper10initializeEiiiiib" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes <a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> motor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number_of_steps</strong> – Number of steps per revolution </p></li>
+<li><p><strong>motor_pin_1</strong> – GPIO Pin 1 </p></li>
+<li><p><strong>motor_pin_2</strong> – GPIO Pin 2 </p></li>
+<li><p><strong>motor_pin_3</strong> – GPIO Pin 3 </p></li>
+<li><p><strong>motor_pin_4</strong> – GPIO Pin 4 </p></li>
+<li><p><strong>gpio_initialized</strong> – Boolean indicating if GPIO has been initialized yet </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper14getCurrentTimeEv">
+<span id="_CPPv3N7Stepper14getCurrentTimeEv"></span><span id="_CPPv2N7Stepper14getCurrentTimeEv"></span><span id="Stepper::getCurrentTime"></span><span class="target" id="classStepper_1ad81a677b8431bcf856d19113bc233577"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCurrentTime</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper14getCurrentTimeEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the current time in ms. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double representing the time in ms </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper8setSpeedEd">
+<span id="_CPPv3N7Stepper8setSpeedEd"></span><span id="_CPPv2N7Stepper8setSpeedEd"></span><span id="Stepper::setSpeed__double"></span><span class="target" id="classStepper_1a84421be64d1435e57f73f402e938aa3f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setSpeed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">whatSpeed</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper8setSpeedEd" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Set the stepper motor speed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>whatSpeed</strong> – <a class="reference internal" href="#classStepper"><span class="std std-ref">Stepper</span></a> speed </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper4stepEi">
+<span id="_CPPv3N7Stepper4stepEi"></span><span id="_CPPv2N7Stepper4stepEi"></span><span id="Stepper::step__i"></span><span class="target" id="classStepper_1a23f1ada8f077bcb8691009648cf29f27"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">step</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">number_of_steps</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper4stepEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Perform step for stepper. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_of_steps</strong> – The number of steps the motor must rotate </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper7versionEv">
+<span id="_CPPv3N7Stepper7versionEv"></span><span id="_CPPv2N7Stepper7versionEv"></span><span id="Stepper::version__void"></span><span class="target" id="classStepper_1a2b737f8eb9641728af2fb1c24a2560da"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">version</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper7versionEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns stepper library version. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing library version </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper9stepMotorEi">
+<span id="_CPPv3N7Stepper9stepMotorEi"></span><span id="_CPPv2N7Stepper9stepMotorEi"></span><span id="Stepper::stepMotor__i"></span><span class="target" id="classStepper_1a642b2b4d92bd5aa8bee85db88f07855d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stepMotor</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">this_step</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7Stepper9stepMotorEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Individual motor step. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>this_step</strong> – The individual step </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper10direction_E">
+<span id="_CPPv3N7Stepper10direction_E"></span><span id="_CPPv2N7Stepper10direction_E"></span><span id="Stepper::direction___i"></span><span class="target" id="classStepper_1af8230546ad1a6fd0c4399346b07f80e2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">direction_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper10direction_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Direction of rotation. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper11step_delay_E">
+<span id="_CPPv3N7Stepper11step_delay_E"></span><span id="_CPPv2N7Stepper11step_delay_E"></span><span id="Stepper::step_delay___double"></span><span class="target" id="classStepper_1a4fc730892ee6724c187aa91a0b7e04ff"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">step_delay_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper11step_delay_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Delay between steps in us based on speed. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper16number_of_steps_E">
+<span id="_CPPv3N7Stepper16number_of_steps_E"></span><span id="_CPPv2N7Stepper16number_of_steps_E"></span><span id="Stepper::number_of_steps___i"></span><span class="target" id="classStepper_1a97f45b59b0cc3775f7b4e561616f57d7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">number_of_steps_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper16number_of_steps_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Total number of steps the motor can rotate. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper10pin_count_E">
+<span id="_CPPv3N7Stepper10pin_count_E"></span><span id="_CPPv2N7Stepper10pin_count_E"></span><span id="Stepper::pin_count___i"></span><span class="target" id="classStepper_1aadda1ae8645045f9a3032ce7877f2f49"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pin_count_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper10pin_count_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Number of GPIO pins used for stepper motor. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12step_number_E">
+<span id="_CPPv3N7Stepper12step_number_E"></span><span id="_CPPv2N7Stepper12step_number_E"></span><span id="Stepper::step_number___i"></span><span class="target" id="classStepper_1a3f232a5d6ed595999d24d0d880f4df4b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">step_number_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12step_number_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Which step the motor is on. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12motor_pin_1_E">
+<span id="_CPPv3N7Stepper12motor_pin_1_E"></span><span id="_CPPv2N7Stepper12motor_pin_1_E"></span><span id="Stepper::motor_pin_1___i"></span><span class="target" id="classStepper_1a272611aefd1c28c15fe9009dc2f21bf4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motor_pin_1_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12motor_pin_1_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>GPIO Pin 1. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12motor_pin_2_E">
+<span id="_CPPv3N7Stepper12motor_pin_2_E"></span><span id="_CPPv2N7Stepper12motor_pin_2_E"></span><span id="Stepper::motor_pin_2___i"></span><span class="target" id="classStepper_1af2dad5fcc2f30f7887490565b64dbc1e"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motor_pin_2_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12motor_pin_2_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>GPIO Pin 2. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12motor_pin_3_E">
+<span id="_CPPv3N7Stepper12motor_pin_3_E"></span><span id="_CPPv2N7Stepper12motor_pin_3_E"></span><span id="Stepper::motor_pin_3___i"></span><span class="target" id="classStepper_1ab2ed0c91a72029950d4cda2f5761a6f5"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motor_pin_3_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12motor_pin_3_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>GPIO Pin 3. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12motor_pin_4_E">
+<span id="_CPPv3N7Stepper12motor_pin_4_E"></span><span id="_CPPv2N7Stepper12motor_pin_4_E"></span><span id="Stepper::motor_pin_4___i"></span><span class="target" id="classStepper_1a000a337dadf836889bd6022d680c3661"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motor_pin_4_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12motor_pin_4_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>GPIO Pin 4. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper12motor_pin_5_E">
+<span id="_CPPv3N7Stepper12motor_pin_5_E"></span><span id="_CPPv2N7Stepper12motor_pin_5_E"></span><span id="Stepper::motor_pin_5___i"></span><span class="target" id="classStepper_1ae8b0027c4fbf3d29b7e7564d91b761ba"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">motor_pin_5_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper12motor_pin_5_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>GPIO Pin 5 (only for 5 phase motor) </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N7Stepper15last_step_time_E">
+<span id="_CPPv3N7Stepper15last_step_time_E"></span><span id="_CPPv2N7Stepper15last_step_time_E"></span><span id="Stepper::last_step_time___double"></span><span class="target" id="classStepper_1a931e87c424973f39f19d7dc82c5bbe87"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_step_time_</span></span></span><a class="headerlink" href="#_CPPv4N7Stepper15last_step_time_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Timestamp in us of when last step was taken. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="stepperrunner">
+<h2>StepperRunner<a class="headerlink" href="#stepperrunner" title="Permalink to this heading"></a></h2>
+<p>Tests stepper motor. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414getCurrentTimev">
+<span id="_CPPv314getCurrentTimev"></span><span id="_CPPv214getCurrentTimev"></span><span id="getCurrentTime"></span><span class="target" id="Stepper__runner_8cpp_1aee85a3385434e4615f588684cb7c5aca"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCurrentTime</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414getCurrentTimev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the current time in ms. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>double representing the current time </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainv">
+<span id="_CPPv34mainv"></span><span id="_CPPv24mainv"></span><span id="main"></span><span class="target" id="Stepper__runner_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Main Method to test individual stepper motor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing exit status </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../SerialCute%2B%2B/summary.html" class="btn btn-neutral float-left" title="SerialCute++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, me.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

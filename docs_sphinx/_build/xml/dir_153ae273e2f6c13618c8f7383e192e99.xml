@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_153ae273e2f6c13618c8f7383e192e99" kind="dir">
+    <compoundname>/home/kushtimusprime/FullscalePrime/Stepper/include</compoundname>
+    <innerfile refid="Stepper_8h">Stepper.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/"/>
+  </compounddef>
+</doxygen>

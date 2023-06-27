@@ -1,0 +1,2759 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classRoot" kind="class" language="C++" prot="public">
+    <compoundname>Root</compoundname>
+    <includes local="no">Root.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classRoot_1a9a1c5e993879a802f3eebd6a78974d79" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::gpio_initialized_</definition>
+        <argsstring></argsstring>
+        <name>gpio_initialized_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if GPIO pins have been initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="44" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1acd55503015ba119018dc122a4ff590aa" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Root::start_time_</definition>
+        <argsstring></argsstring>
+        <name>start_time_</name>
+        <briefdescription>
+<para>Start time of program in milliseconds (arbitrary number) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="50" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad35c4bab054fb58e16a104548b002da0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::is_unit_fsm_</definition>
+        <argsstring></argsstring>
+        <name>is_unit_fsm_</name>
+        <briefdescription>
+<para>Boolean indicating if it is in display mode (normally false, and should probably delete this) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="56" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aa16b41f9e18e2228471b333149bde688" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::unit_test_delay_ms_</definition>
+        <argsstring></argsstring>
+        <name>unit_test_delay_ms_</name>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+<para>Delay between each motor/servo movement in display state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="62" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae7fcf80d14f88e5adfbc2f0ac35f1854" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::date_timestamp_</definition>
+        <argsstring></argsstring>
+        <name>date_timestamp_</name>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+<para>Time and date of when program starts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="68" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ac8c99be5ee8629bd262ad9cd46e9fdfd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::steps_per_revolution_</definition>
+        <argsstring></argsstring>
+        <name>steps_per_revolution_</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+<para>Number of steps required to fully rotate stepper motor in nacelle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="74" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3ecead511d50885af6706fb105956203" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_speed_</definition>
+        <argsstring></argsstring>
+        <name>stepper_speed_</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>Speed of stepper motor in nacelle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="80" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1af4c69235873088deec800bbb76bf8666" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_steps_</definition>
+        <argsstring></argsstring>
+        <name>num_steps_</name>
+        <initializer>= 40</initializer>
+        <briefdescription>
+<para>Number of steps to rotate stepper motor 60 degrees. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="86" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae023866cfbb1bac7137dd8eb8c61af0f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_threshold_</definition>
+        <argsstring></argsstring>
+        <name>stepper_threshold_</name>
+        <initializer>= 5000</initializer>
+        <briefdescription>
+<para>Time threshold for how long stepper should run in display mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="92" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a0e55667cde7d236a4e1f50e95ce27b89" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::pwm_motor_max_</definition>
+        <argsstring></argsstring>
+        <name>pwm_motor_max_</name>
+        <initializer>= 255</initializer>
+        <briefdescription>
+<para>PWM Signal to move motor at max speed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="98" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1acebcb3832831986e74cf6b4ad2e60f87" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_1_standby_pin_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_standby_pin_</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 1 standby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="104" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aedbdb7da1f2486171cc67b7ec273a3cc" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_1_pin_1_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_pin_1_</name>
+        <initializer>= 11</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 1 pin 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="110" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a79ad6ed57ca2e6b3e675ecdda75cad8a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_1_pin_2_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_pin_2_</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 1 pin 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="116" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a49fe8a1318be6bb79308e9883d40b140" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_1_pin_3_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_pin_3_</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 1 pin 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="122" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1accbec22d48edd1c9a1dc2dc59a4ff85b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_1_pin_4_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_pin_4_</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 1 pin 4. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="128" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3c7a96852dec430720be43072d8df746" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_2_standby_pin_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_standby_pin_</name>
+        <initializer>= 27</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 2 standby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="134" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a74936d11015167d0f5c36e9fa868edea" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_2_pin_1_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_pin_1_</name>
+        <initializer>= 17</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 2 pin 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="140" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a9063f4fb5a5f70ca058533d766aec808" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_2_pin_2_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_pin_2_</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 2 pin 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="146" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aaaf42bf8fad3de9e6482c9531e6df99c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_2_pin_3_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_pin_3_</name>
+        <initializer>= 22</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 2 pin 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="152" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad0ba5eebc1687f3e86b498d9b8d71852" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_2_pin_4_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_pin_4_</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for stepper 2 pin 4. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="158" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a19728bc04667ed9c8397ff12c7cb823f" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Root::aac_camera_streams_</definition>
+        <argsstring></argsstring>
+        <name>aac_camera_streams_</name>
+        <briefdescription>
+<para>List of strings where each string represents functional camera stream. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="164" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a2aff88a7fd095b32de77a6d1f9b90a92" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; cv::VideoCapture &gt;</type>
+        <definition>std::vector&lt;cv::VideoCapture&gt; Root::aac_camera_captures_</definition>
+        <argsstring></argsstring>
+        <name>aac_camera_captures_</name>
+        <briefdescription>
+<para>List of VideoCapture objects representing camera streams used during mission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="170" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a99e6e275fa3ea44182aa437e248d18d7" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Root::aac_camera_captures_strings_</definition>
+        <argsstring></argsstring>
+        <name>aac_camera_captures_strings_</name>
+        <briefdescription>
+<para>List of strings where each string represents a camera stream during mission (we are not using all functional camera streams from aac_camera_streams_, only a subset) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="176" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad65efb2a827b0fa7033e51f15ec06d27" prot="public" static="no" mutable="no">
+        <type>cv::VideoCapture</type>
+        <definition>cv::VideoCapture Root::cap1</definition>
+        <argsstring></argsstring>
+        <name>cap1</name>
+        <briefdescription>
+<para>VideoCapture object for cam 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="183" column="22" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a1a4258e70c961c735df1772a27101470" prot="public" static="no" mutable="no">
+        <type>cv::VideoCapture</type>
+        <definition>cv::VideoCapture Root::cap2</definition>
+        <argsstring></argsstring>
+        <name>cap2</name>
+        <briefdescription>
+<para>VideoCapture object for cam 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="189" column="22" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a57c732bf15d49d025f0af34bd9e162da" prot="public" static="no" mutable="no">
+        <type>cv::VideoCapture</type>
+        <definition>cv::VideoCapture Root::cap3</definition>
+        <argsstring></argsstring>
+        <name>cap3</name>
+        <briefdescription>
+<para>VideoCapture object for cam 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="195" column="22" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a367f755239776d501c48db95380a3b86" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::launch_detected_</definition>
+        <argsstring></argsstring>
+        <name>launch_detected_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if launch has been detected yet. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="201" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a28569cfd12f8c3da33ec45b7a37c744d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::apogee_detected_</definition>
+        <argsstring></argsstring>
+        <name>apogee_detected_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if apogee has been detected yet. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="207" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a45de3e96eb18ce32e0e5aa2755c94748" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::landing_detected_</definition>
+        <argsstring></argsstring>
+        <name>landing_detected_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if landing has been detected yet. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="213" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aa87917e364bb6c432441789036b94940" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::aac_pic_num_cam_1_</definition>
+        <argsstring></argsstring>
+        <name>aac_pic_num_cam_1_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of pictures taken by camera 1 during flight. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="219" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a5a20e6991fdcf49bdc86eb05e8d4d3e2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::aac_pic_num_cam_2_</definition>
+        <argsstring></argsstring>
+        <name>aac_pic_num_cam_2_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of pictures taken by camera 2 during flight. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="225" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a00bc8007506cc866df4910e555ff3d8e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::aac_pic_num_cam_3_</definition>
+        <argsstring></argsstring>
+        <name>aac_pic_num_cam_3_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of pictures taken by camera 3 during flight. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="231" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a567c69f42c80a0dc75004ab09bde38f5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_3_standby_pin_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_standby_pin_</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle stepper 3 standby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="237" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a63d7f40439bfff90f8b668c41fc691c6" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_3_pin_1_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_pin_1_</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle stepper 3 pin 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="243" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad815f36e7a5369891fdc12f43335710c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_3_pin_2_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_pin_2_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle stepper 3 pin 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="249" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a7f9f11f2b8cecc823d9621428cc1a863" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_3_pin_3_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_pin_3_</name>
+        <initializer>= 25</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle stepper 3 pin 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="255" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3968085818827a33b698689602b5341c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::stepper_3_pin_4_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_pin_4_</name>
+        <initializer>= 24</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle stepper 3 pin 4. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="261" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a5662636d6620942e7d96b3c18a6b8acb" prot="public" static="no" mutable="no">
+        <type><ref refid="classStepper" kindref="compound">Stepper</ref></type>
+        <definition>Stepper Root::stepper_1_</definition>
+        <argsstring></argsstring>
+        <name>stepper_1_</name>
+        <briefdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> controller object for nacelle stepper 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="267" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afe9059f8c1a5cd31b5ff026f04cf1231" prot="public" static="no" mutable="no">
+        <type><ref refid="classStepper" kindref="compound">Stepper</ref></type>
+        <definition>Stepper Root::stepper_2_</definition>
+        <argsstring></argsstring>
+        <name>stepper_2_</name>
+        <briefdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> controller object for nacelle stepper 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="273" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3a71da14bde545d7386509fbf322e3ab" prot="public" static="no" mutable="no">
+        <type><ref refid="classStepper" kindref="compound">Stepper</ref></type>
+        <definition>Stepper Root::stepper_3_</definition>
+        <argsstring></argsstring>
+        <name>stepper_3_</name>
+        <briefdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> controller object for nacelle stepper 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="279" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3dc26ac1f561a5419a7dea3e2f2ed3a0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rcb_p_</definition>
+        <argsstring></argsstring>
+        <name>rcb_p_</name>
+        <initializer>= 26</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for positive RCB motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="285" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a201771205801016710f4953b507b50cd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rcb_n_</definition>
+        <argsstring></argsstring>
+        <name>rcb_n_</name>
+        <initializer>= 19</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for negative RCB motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="291" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rcb_enable_</definition>
+        <argsstring></argsstring>
+        <name>rcb_enable_</name>
+        <initializer>= 13</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for enable RCB motor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="297" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a7623f9f64b73979939e88fec40df9b0c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rcb_lift_standby_</definition>
+        <argsstring></argsstring>
+        <name>rcb_lift_standby_</name>
+        <initializer>= 21</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for standby pin for RCB and Lift Motor Controller. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="303" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afe437722a9ebdc6c28477ac99f68e373" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rcb_time_threshold_</definition>
+        <argsstring></argsstring>
+        <name>rcb_time_threshold_</name>
+        <initializer>= 5000</initializer>
+        <briefdescription>
+<para>Time threshold for RCB to rotate in display mode (Note: Display mode will just tick each motor in order and has no perception) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="309" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a411ac589602c228462f282188abf8877" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Root::rcb_angle_threshold_</definition>
+        <argsstring></argsstring>
+        <name>rcb_angle_threshold_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Error threshold for RCB motor error (+/- rcb_angle_threshold_ meaning total error is twice as big) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="315" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1acc0091fae3a5c305df045698189c1166" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::is_aligned_</definition>
+        <argsstring></argsstring>
+        <name>is_aligned_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if RCB is finished (aligned) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="321" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afd001764019dc5bcbeb8986443ba69a1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::full_rcb_time_threshold_</definition>
+        <argsstring></argsstring>
+        <name>full_rcb_time_threshold_</name>
+        <initializer>= 75000</initializer>
+        <briefdescription>
+<para>Maximum time to run RCB during payload before transitioning to next state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="327" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a33d02065241f1b0f6d0276c5bc71b436" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Root::landing_time_</definition>
+        <argsstring></argsstring>
+        <name>landing_time_</name>
+        <briefdescription>
+<para>Time in milliseconds of landing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="333" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae7eda1b1be61959bdfde63fa5e1c67f0" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t Root::n_photo_bit_size_</definition>
+        <argsstring></argsstring>
+        <name>n_photo_bit_size_</name>
+        <initializer>= 5</initializer>
+        <briefdescription>
+<para>Number of leading zeroes in AAC saved photos filename. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="339" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a2eea06c7f2bbb3a8cac9074cb99fd63f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::nacelle_servo_</definition>
+        <argsstring></argsstring>
+        <name>nacelle_servo_</name>
+        <initializer>= 14</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for nacelle locking servo. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="345" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae01e0d95ecc5b9bfb48f0943dee92609" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Root::servo_pulse_min_</definition>
+        <argsstring></argsstring>
+        <name>servo_pulse_min_</name>
+        <initializer>= 500</initializer>
+        <briefdescription>
+<para>Minimum servo pulse width (only for display mode, which doesn&apos;t work at the moment) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="351" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="351" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae37960ff5c4f3ae06f6dff3d74882603" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Root::servo_pulse_max_</definition>
+        <argsstring></argsstring>
+        <name>servo_pulse_max_</name>
+        <initializer>= 2250</initializer>
+        <briefdescription>
+<para>Maximum servo pulse width (only display mode) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="357" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="357" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a72496ee70e99432eab96252fc299ee64" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Root::servo_deg_range_</definition>
+        <argsstring></argsstring>
+        <name>servo_deg_range_</name>
+        <initializer>= 90</initializer>
+        <briefdescription>
+<para>Servo angle range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="363" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a65b637e743a54ca50d4ceb093c3877a2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::nacelle_lock_</definition>
+        <argsstring></argsstring>
+        <name>nacelle_lock_</name>
+        <initializer>= 1375</initializer>
+        <briefdescription>
+<para>Servo pulse width to lock nacelles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="369" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a40ee4980933d5161ab6e27c3db68860f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::nacelle_unlock_</definition>
+        <argsstring></argsstring>
+        <name>nacelle_unlock_</name>
+        <initializer>= 755</initializer>
+        <briefdescription>
+<para>Servo pulse width to unlock nacelles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="375" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3b7f785df36078118be89d4e75fee5eb" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::lift_done_</definition>
+        <argsstring></argsstring>
+        <name>lift_done_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if the lift state is done. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="381" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="381" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a2de20a843c95a7eab95eda8935d3d2b2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_servo_</definition>
+        <argsstring></argsstring>
+        <name>lift_servo_</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for lift servo. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="387" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3873aef37d872d6f665a3ab0097c69d1" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_final_limit_switch_</definition>
+        <argsstring></argsstring>
+        <name>lift_final_limit_switch_</name>
+        <initializer>= 23</initializer>
+        <briefdescription>
+<para>RPi GPIO pin for top limit switch for lift. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="393" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aee38b845123995badb235a8c349e60e4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_unit_time_threshold_</definition>
+        <argsstring></argsstring>
+        <name>lift_unit_time_threshold_</name>
+        <initializer>= 2000</initializer>
+        <briefdescription>
+<para>Time the lift motor will run in display mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="399" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a4ac3790197c4de7c6cbe56ab5c691f1d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_lock_</definition>
+        <argsstring></argsstring>
+        <name>lift_lock_</name>
+        <initializer>= 1500</initializer>
+        <briefdescription>
+<para>Pulse width to lock the lift. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="405" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="405" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a893b43912af8e2aa042346e353182edb" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_unlock_</definition>
+        <argsstring></argsstring>
+        <name>lift_unlock_</name>
+        <initializer>= 1150</initializer>
+        <briefdescription>
+<para>Pulse width to unlock the lift. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="411" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="411" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a42d21c61859390159fc50ccc48b78887" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_p_</definition>
+        <argsstring></argsstring>
+        <name>lift_p_</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for positive lift motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="417" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="417" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae0a1f08496afdd14c36e961ecfe700b0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_n_</definition>
+        <argsstring></argsstring>
+        <name>lift_n_</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for negative lift motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="423" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a65bf4a794c6427a3d8cc4d7ad8bb65dd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_enable_</definition>
+        <argsstring></argsstring>
+        <name>lift_enable_</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for the Lift motor enable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="429" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a33b5d41c6bb0721051881b24a16c716b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_time_threshold_</definition>
+        <argsstring></argsstring>
+        <name>lift_time_threshold_</name>
+        <initializer>= 30000</initializer>
+        <briefdescription>
+<para>Maximum amount of time (ms) to run lift before transitioning to next state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="435" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a5135582fe033860cd1b77c9aeea30f0e" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_backwards_time_threshold_</definition>
+        <argsstring></argsstring>
+        <name>lift_backwards_time_threshold_</name>
+        <initializer>= 1068</initializer>
+        <briefdescription>
+<para>Amount of time to move the lift back down to prevent wire tension. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="441" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="441" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afc94433eebd8b0a1f4c31f006ea55683" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::lift_min_threshold_</definition>
+        <argsstring></argsstring>
+        <name>lift_min_threshold_</name>
+        <initializer>= 15000</initializer>
+        <briefdescription>
+<para>Minimum amount of time (ms) to run lift. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="447" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afe24ba4d1f27f1ed660ede3e997451d4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::level_servo_</definition>
+        <argsstring></argsstring>
+        <name>level_servo_</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for level servo. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="453" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="453" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ab71a63a9f7a23d569ebc598ec51bc2ca" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_level_samples_</definition>
+        <argsstring></argsstring>
+        <name>num_level_samples_</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>Number of IMU measurements taken to determine pitch error for level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="459" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ac4d3c1196a55572750069077f4a1a29a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Root::ideal_level_angle_</definition>
+        <argsstring></argsstring>
+        <name>ideal_level_angle_</name>
+        <initializer>= 180</initializer>
+        <briefdescription>
+<para>Ground truth angle for pitch level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="465" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="465" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a13235d7d0df024df0268f44d3625ac19" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::min_angle_</definition>
+        <argsstring></argsstring>
+        <name>min_angle_</name>
+        <initializer>= -10</initializer>
+        <briefdescription>
+<para>Maximum angle the level can tilt up. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="471" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="471" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a49d5b3706ce3555614d779f86184171f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::min_pulse_width_</definition>
+        <argsstring></argsstring>
+        <name>min_pulse_width_</name>
+        <initializer>= 1200</initializer>
+        <briefdescription>
+<para>Corresponding pulse width to tilt level up at the maximum angle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="477" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="477" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a265140c8de53ce90dbdae0c7f181ca3b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::max_angle_</definition>
+        <argsstring></argsstring>
+        <name>max_angle_</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>Maximum angle the level can tilt down. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="483" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="483" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::max_pulse_width_</definition>
+        <argsstring></argsstring>
+        <name>max_pulse_width_</name>
+        <initializer>= 1950</initializer>
+        <briefdescription>
+<para>Corresponding pulse width to tilt level down at the maximum angle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="489" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="489" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae2138fc2cfbc422933840d6e771776de" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::rafco_pic_num_</definition>
+        <argsstring></argsstring>
+        <name>rafco_pic_num_</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Number of RAFCO pictures taken (used for photo saving) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="495" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="495" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad377977f1bce43916756f1b09559b8a6" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref>, <ref refid="classState" kindref="compound">State</ref> * &gt;</type>
+        <definition>std::map&lt;StateName, State *&gt; Root::states_</definition>
+        <argsstring></argsstring>
+        <name>states_</name>
+        <briefdescription>
+<para>Map every state name to a state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="501" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a70f6d268268dad7bdfd20c4e3be7b762" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::thread &gt;</type>
+        <definition>std::vector&lt;std::thread&gt; Root::threads_</definition>
+        <argsstring></argsstring>
+        <name>threads_</name>
+        <briefdescription>
+<para>Threads for flight photos. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="507" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a96512a4851817c187e0e4c80b3151ffd" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::ft_2_m_</definition>
+        <argsstring></argsstring>
+        <name>ft_2_m_</name>
+        <initializer>= 0.3048</initializer>
+        <briefdescription>
+<para>Feet to meters conversion factor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="513" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="513" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a6ffc6171860743e3f998ed45dcfdbb5f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::m_2_ft_</definition>
+        <argsstring></argsstring>
+        <name>m_2_ft_</name>
+        <initializer>= 1 / <ref refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" kindref="member">ft_2_m_</ref></initializer>
+        <briefdescription>
+<para>Meters to feet conversion factor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="519" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="519" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aae3efc46e1dd71a5efb2374f71fa18a9" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::c_2_k_</definition>
+        <argsstring></argsstring>
+        <name>c_2_k_</name>
+        <initializer>= 273.15</initializer>
+        <briefdescription>
+<para>Celsius to Kelvin conversion factor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="525" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="525" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a71a60fbb613075ddc5ad2dc58cb16041" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::km_2_m_</definition>
+        <argsstring></argsstring>
+        <name>km_2_m_</name>
+        <initializer>= 0.001</initializer>
+        <briefdescription>
+<para>Kilometers to meters conversion factor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="531" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afa0b943d98c635352b70e37572b61be0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::r_</definition>
+        <argsstring></argsstring>
+        <name>r_</name>
+        <initializer>= 287</initializer>
+        <briefdescription>
+<para>Universal gas constant (kg/JK) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="537" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="537" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ac3041ab8d6dbc61fb7b9c58949d161d7" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <initializer>= 6.5 * <ref refid="classRoot_1a71a60fbb613075ddc5ad2dc58cb16041" kindref="member">km_2_m_</ref></initializer>
+        <briefdescription>
+<para>Variation of temperature within the troposphere (K/m) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="543" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a001e83bfa05e9795fa44b1bd5010f54d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::t_burn_</definition>
+        <argsstring></argsstring>
+        <name>t_burn_</name>
+        <initializer>= 1.9</initializer>
+        <briefdescription>
+<para>Motor burn time (s) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="549" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="549" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aaa57d2b66dd61646d609393628e78034" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::sampling_frequency_</definition>
+        <argsstring></argsstring>
+        <name>sampling_frequency_</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>Speed the IMU samples data (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="555" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="555" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3dd8140e66b16042882f5bc496ba73e3" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::restart_</definition>
+        <argsstring></argsstring>
+        <name>restart_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Tells program if we NO-GOed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="561" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="561" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a5c25774f020944a4d2a8ed3b068f07ff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::time_delay_enabled_</definition>
+        <argsstring></argsstring>
+        <name>time_delay_enabled_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Flight relies on time thresholds if true rather than IMU data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="567" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="567" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a380132154152a1a11ac18192af7a53ea" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::fps_</definition>
+        <argsstring></argsstring>
+        <name>fps_</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+<para>Flight video frames per second. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="573" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="573" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a5a0260737a010b3a3ffa6bf10cc16b7d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::frame_width_</definition>
+        <argsstring></argsstring>
+        <name>frame_width_</name>
+        <initializer>= 640</initializer>
+        <briefdescription>
+<para>Flight video frame width. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="579" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="579" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a97ef1225386f7687ff5d7386d9811dc0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::frame_height_</definition>
+        <argsstring></argsstring>
+        <name>frame_height_</name>
+        <initializer>= 480</initializer>
+        <briefdescription>
+<para>Flight video frame height. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="585" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="585" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a7eb1fb3124360476191d9465cc7e8235" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::max_proper_flight_time_</definition>
+        <argsstring></argsstring>
+        <name>max_proper_flight_time_</name>
+        <initializer>= 3 * 60</initializer>
+        <briefdescription>
+<para>Maximum flight recording time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="591" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="591" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a6ecc0964ce3a5f4c53617d055402b4ca" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::vid_clip_time_</definition>
+        <argsstring></argsstring>
+        <name>vid_clip_time_</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Time of individual video clip recording (individual 3 second videos are written out and saved) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="597" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="597" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ab750296011302185dbc71ca2f7959d24" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::frames_per_vid_</definition>
+        <argsstring></argsstring>
+        <name>frames_per_vid_</name>
+        <initializer>= <ref refid="classRoot_1a380132154152a1a11ac18192af7a53ea" kindref="member">fps_</ref> * <ref refid="classRoot_1a6ecc0964ce3a5f4c53617d055402b4ca" kindref="member">vid_clip_time_</ref></initializer>
+        <briefdescription>
+<para>Numnber of frames per individual 3 second video. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="603" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="603" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a8bf8f0c06de1017c1e8f3c83b2b66daf" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; cv::VideoWriter &gt;</type>
+        <definition>std::vector&lt;cv::VideoWriter&gt; Root::videos1_</definition>
+        <argsstring></argsstring>
+        <name>videos1_</name>
+        <briefdescription>
+<para>List of all individual videos from camera 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="609" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="609" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad341ae125a88c12de66b55d1cbe016e8" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; cv::VideoWriter &gt;</type>
+        <definition>std::vector&lt;cv::VideoWriter&gt; Root::videos2_</definition>
+        <argsstring></argsstring>
+        <name>videos2_</name>
+        <briefdescription>
+<para>List of all individual videos from camera 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="615" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="615" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a900eaf5f593b860375084bd5d47e5681" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; cv::VideoWriter &gt;</type>
+        <definition>std::vector&lt;cv::VideoWriter&gt; Root::videos3_</definition>
+        <argsstring></argsstring>
+        <name>videos3_</name>
+        <briefdescription>
+<para>List of all individual videos from camera 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="621" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="621" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a941b9d7f74c3194c11b293a5ede8d8b2" prot="public" static="no" mutable="no">
+        <type>cv::VideoCapture</type>
+        <definition>cv::VideoCapture Root::lift_and_level_cap_</definition>
+        <argsstring></argsstring>
+        <name>lift_and_level_cap_</name>
+        <briefdescription>
+<para>Videocapture object for lift and level video. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="627" column="22" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="627" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a85b86785b4e3d8605d540898acb14d5d" prot="public" static="no" mutable="no">
+        <type>cv::VideoWriter</type>
+        <definition>cv::VideoWriter Root::lift_and_level_video_</definition>
+        <argsstring></argsstring>
+        <name>lift_and_level_video_</name>
+        <briefdescription>
+<para>Videowriter object for lift and level video. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="633" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="633" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a111da0d026977d4f1d788c94dc19dc1b" prot="public" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread Root::lift_thread_</definition>
+        <argsstring></argsstring>
+        <name>lift_thread_</name>
+        <briefdescription>
+<para>Thread to record lift video. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="639" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="639" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1afdd0df1e63ba87ccc52b72312f9f2e58" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::accel_roof_</definition>
+        <argsstring></argsstring>
+        <name>accel_roof_</name>
+        <initializer>= 3.5</initializer>
+        <briefdescription>
+<para>Acceleration to detect launch (g&apos;s) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="647" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="647" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aa225be3ed75e68b564b2351278b0b2b4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_data_points_checked_4_launch_</definition>
+        <argsstring></argsstring>
+        <name>num_data_points_checked_4_launch_</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>how many acceleration points are averaged to see if data set is over accel_roof_ </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="653" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="653" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad557ad221897541b7a07007c3c409403" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_data_points_checked_4_apogee_</definition>
+        <argsstring></argsstring>
+        <name>num_data_points_checked_4_apogee_</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>how many altitude points must a new max not be found for apogee to be declared </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="659" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="659" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a9038f7fe50ca4e3574d809ead3deeebe" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_seconds_no_new_minimum_</definition>
+        <argsstring></argsstring>
+        <name>num_seconds_no_new_minimum_</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>[s] number of seconds to wait for no new minimum to determine landing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="665" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="665" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad423ff02a83293ed66a82470eb6eda2a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::num_data_points_checked_4_landing_</definition>
+        <argsstring></argsstring>
+        <name>num_data_points_checked_4_landing_</name>
+        <initializer>= <ref refid="classRoot_1a9038f7fe50ca4e3574d809ead3deeebe" kindref="member">num_seconds_no_new_minimum_</ref> * <ref refid="classRoot_1aaa57d2b66dd61646d609393628e78034" kindref="member">sampling_frequency_</ref></initializer>
+        <briefdescription>
+<para>how many altitude points must a new min not be found for landing to be declared </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="671" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="671" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad10c8e25665d79f186d127b0f828d43d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::z_threshold_for_landing_</definition>
+        <argsstring></argsstring>
+        <name>z_threshold_for_landing_</name>
+        <initializer>= 175 * <ref refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" kindref="member">ft_2_m_</ref></initializer>
+        <briefdescription>
+<para>[m] threshold that the altitude must be within for landing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="677" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="677" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a66e70c26e83bef350aaf12cadfe32480" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::max_flight_time_</definition>
+        <argsstring></argsstring>
+        <name>max_flight_time_</name>
+        <initializer>= 10 * 60</initializer>
+        <briefdescription>
+<para>[s] max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="683" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="683" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a0c7ed7fbedd829c58a7b12a5a3795059" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::length_collect_rafco_</definition>
+        <argsstring></argsstring>
+        <name>length_collect_rafco_</name>
+        <initializer>= 20 * 60</initializer>
+        <briefdescription>
+<para>[s] amount of time to collect RAFCO signals and perform image processing </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="689" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="689" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::rafco_freq_</definition>
+        <argsstring></argsstring>
+        <name>rafco_freq_</name>
+        <initializer>= &quot;144.900M&quot;</initializer>
+        <briefdescription>
+<para>Frequency for RAFCO transmissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="695" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="695" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ac1ac5e635f968ada8cf00f3f2189e788" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::callsign_</definition>
+        <argsstring></argsstring>
+        <name>callsign_</name>
+        <initializer>= &quot;KQ4CTL&quot;</initializer>
+        <briefdescription>
+<para>Callsign to look for. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="701" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="701" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a76860bbe6806cc5546551c9354857680" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::source_ssid_</definition>
+        <argsstring></argsstring>
+        <name>source_ssid_</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+<para>Service Set Identifier, probably used for TCP Packet Receiver, Ask Meredith Hunter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="707" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="707" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a20edd5ad7ec852ccbfe9c7938d3c2f77" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::pds_delay_</definition>
+        <argsstring></argsstring>
+        <name>pds_delay_</name>
+        <initializer>= 60 * 1000</initializer>
+        <briefdescription>
+<para>[ms] aditional time to wait for PDS </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="713" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="713" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad770a0947892d58dbe8fc581880e154c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::rafco_redo_</definition>
+        <argsstring></argsstring>
+        <name>rafco_redo_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean that is true if we had to use backup cameras, but we want to try to redo RAFCO for the primary camera. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="719" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="719" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a31d14f2ee737027c2c14e826ca590003" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Root::num_sample_readings_</definition>
+        <argsstring></argsstring>
+        <name>num_sample_readings_</name>
+        <initializer>= 60</initializer>
+        <briefdescription>
+<para>amount of samples taken and averaged to find ground P and T </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="725" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="725" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ad9df27e6b9f94e9636d118d1c9f26e00" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Root::imu_wait_</definition>
+        <argsstring></argsstring>
+        <name>imu_wait_</name>
+        <initializer>= 60</initializer>
+        <briefdescription>
+<para>number of samples to get from IMU before actually starting to use + save data </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="731" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="731" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a2aefae5b1703ca25800302c6767423be" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::p0_</definition>
+        <argsstring></argsstring>
+        <name>p0_</name>
+        <briefdescription>
+<para>Baseline pressure reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="737" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="737" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a0d7492aa2d2c7b80ccde29ec58ee8eb6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::t0_</definition>
+        <argsstring></argsstring>
+        <name>t0_</name>
+        <briefdescription>
+<para>Baseline temperature reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="743" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="743" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a0fb18e0da95608de1fe32738b3004431" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::g0_</definition>
+        <argsstring></argsstring>
+        <name>g0_</name>
+        <briefdescription>
+<para>Baseline gravity reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="749" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="749" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a24fa26d7cb49e342447839a5103ae288" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Root::launch_time_</definition>
+        <argsstring></argsstring>
+        <name>launch_time_</name>
+        <briefdescription>
+<para>Time of launch in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="755" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="755" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a6ce282eac3fe0d863e61bde0e07e5913" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Root::z_current_</definition>
+        <argsstring></argsstring>
+        <name>z_current_</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Current altitude. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="761" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="761" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" prot="public" static="no" mutable="no">
+        <type>VnSensor *</type>
+        <definition>VnSensor* Root::m_vn_</definition>
+        <argsstring></argsstring>
+        <name>m_vn_</name>
+        <briefdescription>
+<para>VN Sensor Object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="767" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="767" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3c7703925652442220d1dcf6db7b2b18" prot="public" static="no" mutable="no">
+        <type>ImuMeasurementsRegister</type>
+        <definition>ImuMeasurementsRegister Root::response_</definition>
+        <argsstring></argsstring>
+        <name>response_</name>
+        <briefdescription>
+<para>IMU Register storing the data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="773" column="29" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="773" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a8be5285e171824ff214da225bebcd072" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::input_file_name_</definition>
+        <argsstring></argsstring>
+        <name>input_file_name_</name>
+        <initializer>= &quot;packets_&quot; + std::to_string(<ref refid="classRoot_1acd55503015ba119018dc122a4ff590aa" kindref="member">start_time_</ref>).substr(0, std::to_string(<ref refid="classRoot_1acd55503015ba119018dc122a4ff590aa" kindref="member">start_time_</ref>).find(&quot;.&quot;)) + &quot;.txt&quot;</initializer>
+        <briefdescription>
+<para>String with the name for APRS Packet filename. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="779" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="779" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a73701a5eca3d9df006ebda64cb105d8b" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::flight_log_name_</definition>
+        <argsstring></argsstring>
+        <name>flight_log_name_</name>
+        <initializer>= &quot;flightDataLog&quot;</initializer>
+        <briefdescription>
+<para>String with name for flight data log. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="785" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="785" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a19f12ee9bf2918a057f4944fb7a033aa" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::program_log_name_</definition>
+        <argsstring></argsstring>
+        <name>program_log_name_</name>
+        <initializer>= &quot;programDataLog&quot;</initializer>
+        <briefdescription>
+<para>String with name for program data log. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="791" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="791" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" prot="public" static="no" mutable="no">
+        <type><ref refid="classLog" kindref="compound">Log</ref></type>
+        <definition>Log Root::m_log_</definition>
+        <argsstring></argsstring>
+        <name>m_log_</name>
+        <briefdescription>
+<para><ref refid="classLog" kindref="compound">Log</ref> object for flight data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="797" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="797" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aacc555363da6ccd6fae0a499b9109998" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::is_imu_connected_</definition>
+        <argsstring></argsstring>
+        <name>is_imu_connected_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if the IMU is still connected. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="803" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="803" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a98c04ea54ccbfcf1c60344292cb7309e" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::config1_</definition>
+        <argsstring></argsstring>
+        <name>config1_</name>
+        <initializer>= &quot;/home/vadl/FullscalePrime/sdr1.conf&quot;</initializer>
+        <briefdescription>
+<para>String for first SDR configuration file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="809" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="809" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1acc1c56c79e064fcc6a1e0f8fbf36e1cd" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::config2_</definition>
+        <argsstring></argsstring>
+        <name>config2_</name>
+        <initializer>= &quot;/home/vadl/FullscalePrime/sdr2.conf&quot;</initializer>
+        <briefdescription>
+<para>String for second SDR configuration file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="815" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="815" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a40d268b8923b05c5f28cc64bd52d14af" prot="public" static="no" mutable="no">
+        <type><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref></type>
+        <definition>PacketReceiver Root::radio1_</definition>
+        <argsstring></argsstring>
+        <name>radio1_</name>
+        <initializer>= <ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref>(100, <ref refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" kindref="member">rafco_freq_</ref>, 8001, <ref refid="classRoot_1a98c04ea54ccbfcf1c60344292cb7309e" kindref="member">config1_</ref>)</initializer>
+        <briefdescription>
+<para>Packet Receiver object for first SDR. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="821" column="20" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="821" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1ae860d7f98dadc0842a70566ce88853fd" prot="public" static="no" mutable="no">
+        <type><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref></type>
+        <definition>PacketReceiver Root::radio2_</definition>
+        <argsstring></argsstring>
+        <name>radio2_</name>
+        <initializer>= <ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref>(200, <ref refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" kindref="member">rafco_freq_</ref>, 9001, <ref refid="classRoot_1acc1c56c79e064fcc6a1e0f8fbf36e1cd" kindref="member">config2_</ref>)</initializer>
+        <briefdescription>
+<para>Packet Receiver object for second SDR. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="827" column="20" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="827" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1aa4ea15edd593d171f868ff0a8200a1f6" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Root::camera_streams_</definition>
+        <argsstring></argsstring>
+        <name>camera_streams_</name>
+        <briefdescription>
+<para>List of all possible camera streams. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="833" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="833" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a066213b4e40dd278c5c47cf01ecd578c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Root::primary_camera_stream_</definition>
+        <argsstring></argsstring>
+        <name>primary_camera_stream_</name>
+        <briefdescription>
+<para>String indicating the primary camera stream. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="839" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="839" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRoot_1a3d8e9cbd063482722459bd4f9e857f60" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Root::rcb_done_</definition>
+        <argsstring></argsstring>
+        <name>rcb_done_</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Boolean indicating if the RCB state is done. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="845" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="845" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRoot_1ae30f3c6144d2d9df894b392ee45d051f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Root::Root</definition>
+        <argsstring>()</argsstring>
+        <name>Root</name>
+        <briefdescription>
+<para>Construct a new <ref refid="classRoot" kindref="compound">Root</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="851" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="4" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1ac921dd8c95e5a9002bdfb0a3c6fef21e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Root::Root</definition>
+        <argsstring>(bool is_unit_fsm)</argsstring>
+        <name>Root</name>
+        <param>
+          <type>bool</type>
+          <declname>is_unit_fsm</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classRoot" kindref="compound">Root</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is_unit_fsm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boolean indicating if it is in display mode (normally false) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="858" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="8" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1ae3b9dd56ac40d582a92b904f8480be7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Root::~Root</definition>
+        <argsstring>()</argsstring>
+        <name>~Root</name>
+        <briefdescription>
+<para>Destroy the <ref refid="classRoot" kindref="compound">Root</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="864" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="68" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1a0e98881d2cddd732762b3a417cf57179" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Root::addState</definition>
+        <argsstring>(State *the_state)</argsstring>
+        <name>addState</name>
+        <param>
+          <type><ref refid="classState" kindref="compound">State</ref> *</type>
+          <declname>the_state</declname>
+        </param>
+        <briefdescription>
+<para>Will add a state to the state machine. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>the_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The state being added to the state machine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="871" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="92" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Root::getCurrentTime</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentTime</name>
+        <briefdescription>
+<para>Get the current time in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>double representing the current time </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="878" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="97" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1aff48369e29cdf0800a8be86c36721d3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Root::angleToPulseWidth</definition>
+        <argsstring>(double pulse_max, double pulse_min, double range, float angle)</argsstring>
+        <name>angleToPulseWidth</name>
+        <param>
+          <type>double</type>
+          <declname>pulse_max</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>pulse_min</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>range</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+<para>Converts servo angle to pulse width through linear interpolation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pulse_max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum pulse width </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pulse_min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Minimum pulse width </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Angle range of the servo </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>angle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired angle to move the servo </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float representing the appropriate pulse width </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="889" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1adf14d6d0134f647b4ce3d285db37815e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Root::pressure2Altitude</definition>
+        <argsstring>(float t0, float p0, float g0, float p)</argsstring>
+        <name>pressure2Altitude</name>
+        <param>
+          <type>float</type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>p0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>g0</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Finds altitude based on pressure. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline temperature in Kelvin </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline pressure in kPa </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>g0</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline gravity in m/s^2 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current pressure in kPa </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float representing the current altitude above ground level in m </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="900" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="107" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1aee702e519c44a9bc38edca8c6f6bb235" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Root::calcArrayAverage</definition>
+        <argsstring>(float array[], int size)</argsstring>
+        <name>calcArrayAverage</name>
+        <param>
+          <type>float</type>
+          <declname>array</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Calculates average of all array values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given float array for calculation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of elements in the float array </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float representing the average array </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="910" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="112" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1ab434a46ca42a975927e0e070b3257077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Root::terminateConnections</definition>
+        <argsstring>(VnSensor *imu)</argsstring>
+        <name>terminateConnections</name>
+        <param>
+          <type>VnSensor *</type>
+          <declname>imu</declname>
+        </param>
+        <briefdescription>
+<para>Disconnects IMU. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>imu</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>VN sensor to be disconnected </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true IMU was successfully disconnected </para>
+</simplesect>
+<simplesect kind="return"><para>false IMU was not successfully disconnected </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="921" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="122" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1aaf8bbf612528d0b7f4af793e9e470f43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Root::activeSleep</definition>
+        <argsstring>(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &amp;response, Log &amp;log)</argsstring>
+        <name>activeSleep</name>
+        <param>
+          <type>float</type>
+          <declname>sleep_time</declname>
+        </param>
+        <param>
+          <type>VnSensor *</type>
+          <declname>imu</declname>
+        </param>
+        <param>
+          <type>ImuMeasurementsRegister &amp;</type>
+          <declname>response</declname>
+        </param>
+        <param>
+          <type><ref refid="classLog" kindref="compound">Log</ref> &amp;</type>
+          <declname>log</declname>
+        </param>
+        <briefdescription>
+<para>Similar to sleep() command but still records and logs IMU data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sleep_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amount of time to sleep for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>imu</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>VN-100 sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register containing IMU data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>log</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classLog" kindref="compound">Log</ref> output file </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="933" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="325" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1adfce70fe2c9363f44c62c15c14589a96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Root::isTimeExceeded</definition>
+        <argsstring>(double launch_time, double trigger_time)</argsstring>
+        <name>isTimeExceeded</name>
+        <param>
+          <type>double</type>
+          <declname>launch_time</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>trigger_time</declname>
+        </param>
+        <briefdescription>
+<para>Checks if flight has gone on for too long. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>launch_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time of launch in ms </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trigger_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time threshold until the time has been exceeded </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true Flight has gone on too long </para>
+</simplesect>
+<simplesect kind="return"><para>false Flight is under time threshold </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="945" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="354" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1a2c377c2b26779603750105a9c45f31c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Root::cameraCheck</definition>
+        <argsstring>(std::string camera_check)</argsstring>
+        <name>cameraCheck</name>
+        <param>
+          <type>std::string</type>
+          <declname>camera_check</declname>
+        </param>
+        <briefdescription>
+<para>Checks if given camera stream is operational. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>camera_check</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Camera stream to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true Camera stream is functional </para>
+</simplesect>
+<simplesect kind="return"><para>false Camera stream is not functional </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="955" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="366" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1af42361b09c190429b641a1f6b72cbef7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Root::realCamThreadLanding</definition>
+        <argsstring>(cv::VideoCapture *cap, std::vector&lt; cv::VideoWriter &gt; *videos, int cam_number)</argsstring>
+        <name>realCamThreadLanding</name>
+        <param>
+          <type>cv::VideoCapture *</type>
+          <declname>cap</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; cv::VideoWriter &gt; *</type>
+          <declname>videos</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>cam_number</declname>
+        </param>
+        <briefdescription>
+<para>Image capture thread for flight. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>VideoCapture object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>videos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of videos that will be written out during flight </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cam_number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Camera stream number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="964" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="254" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1adc453b16b94b0c0bd5e5e3235e4fae4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Root::realCamThreadRCB</definition>
+        <argsstring>(cv::VideoCapture *cap, cv::VideoWriter *video)</argsstring>
+        <name>realCamThreadRCB</name>
+        <param>
+          <type>cv::VideoCapture *</type>
+          <declname>cap</declname>
+        </param>
+        <param>
+          <type>cv::VideoWriter *</type>
+          <declname>video</declname>
+        </param>
+        <briefdescription>
+<para>Image capture thread for RCB. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>VideoCapture object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>video</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RCB output video </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="972" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="196" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classRoot_1a57713c513c351dde29c9ee5168647706" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Root::realCamThreadLift</definition>
+        <argsstring>(cv::VideoCapture *cap, cv::VideoWriter *video)</argsstring>
+        <name>realCamThreadLift</name>
+        <param>
+          <type>cv::VideoCapture *</type>
+          <declname>cap</declname>
+        </param>
+        <param>
+          <type>cv::VideoWriter *</type>
+          <declname>video</declname>
+        </param>
+        <briefdescription>
+<para>Image capture thread for Lift. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cap</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>VideoCapture object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>video</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lift output video </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="980" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp" bodystart="138" bodyend="194"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains all common variables and functions accessible to every state in the state machine. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Log</label>
+        <link refid="classLog"/>
+      </node>
+      <node id="3">
+        <label>Stepper</label>
+        <link refid="classStepper"/>
+      </node>
+      <node id="4">
+        <label>PacketReceiver</label>
+        <link refid="classPacketReceiver"/>
+      </node>
+      <node id="1">
+        <label>Root</label>
+        <link refid="classRoot"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>m_log_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>stepper_1_</edgelabel>
+          <edgelabel>stepper_2_</edgelabel>
+          <edgelabel>stepper_3_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>radio1_</edgelabel>
+          <edgelabel>radio2_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" line="36" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h" bodystart="37" bodyend="983"/>
+    <listofallmembers>
+      <member refid="classRoot_1a2aff88a7fd095b32de77a6d1f9b90a92" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_camera_captures_</name></member>
+      <member refid="classRoot_1a99e6e275fa3ea44182aa437e248d18d7" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_camera_captures_strings_</name></member>
+      <member refid="classRoot_1a19728bc04667ed9c8397ff12c7cb823f" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_camera_streams_</name></member>
+      <member refid="classRoot_1aa87917e364bb6c432441789036b94940" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_pic_num_cam_1_</name></member>
+      <member refid="classRoot_1a5a20e6991fdcf49bdc86eb05e8d4d3e2" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_pic_num_cam_2_</name></member>
+      <member refid="classRoot_1a00bc8007506cc866df4910e555ff3d8e" prot="public" virt="non-virtual"><scope>Root</scope><name>aac_pic_num_cam_3_</name></member>
+      <member refid="classRoot_1afdd0df1e63ba87ccc52b72312f9f2e58" prot="public" virt="non-virtual"><scope>Root</scope><name>accel_roof_</name></member>
+      <member refid="classRoot_1aaf8bbf612528d0b7f4af793e9e470f43" prot="public" virt="non-virtual"><scope>Root</scope><name>activeSleep</name></member>
+      <member refid="classRoot_1a0e98881d2cddd732762b3a417cf57179" prot="public" virt="non-virtual"><scope>Root</scope><name>addState</name></member>
+      <member refid="classRoot_1aff48369e29cdf0800a8be86c36721d3d" prot="public" virt="non-virtual"><scope>Root</scope><name>angleToPulseWidth</name></member>
+      <member refid="classRoot_1a28569cfd12f8c3da33ec45b7a37c744d" prot="public" virt="non-virtual"><scope>Root</scope><name>apogee_detected_</name></member>
+      <member refid="classRoot_1ac3041ab8d6dbc61fb7b9c58949d161d7" prot="public" virt="non-virtual"><scope>Root</scope><name>b_</name></member>
+      <member refid="classRoot_1aae3efc46e1dd71a5efb2374f71fa18a9" prot="public" virt="non-virtual"><scope>Root</scope><name>c_2_k_</name></member>
+      <member refid="classRoot_1aee702e519c44a9bc38edca8c6f6bb235" prot="public" virt="non-virtual"><scope>Root</scope><name>calcArrayAverage</name></member>
+      <member refid="classRoot_1ac1ac5e635f968ada8cf00f3f2189e788" prot="public" virt="non-virtual"><scope>Root</scope><name>callsign_</name></member>
+      <member refid="classRoot_1aa4ea15edd593d171f868ff0a8200a1f6" prot="public" virt="non-virtual"><scope>Root</scope><name>camera_streams_</name></member>
+      <member refid="classRoot_1a2c377c2b26779603750105a9c45f31c5" prot="public" virt="non-virtual"><scope>Root</scope><name>cameraCheck</name></member>
+      <member refid="classRoot_1ad65efb2a827b0fa7033e51f15ec06d27" prot="public" virt="non-virtual"><scope>Root</scope><name>cap1</name></member>
+      <member refid="classRoot_1a1a4258e70c961c735df1772a27101470" prot="public" virt="non-virtual"><scope>Root</scope><name>cap2</name></member>
+      <member refid="classRoot_1a57c732bf15d49d025f0af34bd9e162da" prot="public" virt="non-virtual"><scope>Root</scope><name>cap3</name></member>
+      <member refid="classRoot_1a98c04ea54ccbfcf1c60344292cb7309e" prot="public" virt="non-virtual"><scope>Root</scope><name>config1_</name></member>
+      <member refid="classRoot_1acc1c56c79e064fcc6a1e0f8fbf36e1cd" prot="public" virt="non-virtual"><scope>Root</scope><name>config2_</name></member>
+      <member refid="classRoot_1ae7fcf80d14f88e5adfbc2f0ac35f1854" prot="public" virt="non-virtual"><scope>Root</scope><name>date_timestamp_</name></member>
+      <member refid="classRoot_1a73701a5eca3d9df006ebda64cb105d8b" prot="public" virt="non-virtual"><scope>Root</scope><name>flight_log_name_</name></member>
+      <member refid="classRoot_1a380132154152a1a11ac18192af7a53ea" prot="public" virt="non-virtual"><scope>Root</scope><name>fps_</name></member>
+      <member refid="classRoot_1a97ef1225386f7687ff5d7386d9811dc0" prot="public" virt="non-virtual"><scope>Root</scope><name>frame_height_</name></member>
+      <member refid="classRoot_1a5a0260737a010b3a3ffa6bf10cc16b7d" prot="public" virt="non-virtual"><scope>Root</scope><name>frame_width_</name></member>
+      <member refid="classRoot_1ab750296011302185dbc71ca2f7959d24" prot="public" virt="non-virtual"><scope>Root</scope><name>frames_per_vid_</name></member>
+      <member refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" prot="public" virt="non-virtual"><scope>Root</scope><name>ft_2_m_</name></member>
+      <member refid="classRoot_1afd001764019dc5bcbeb8986443ba69a1" prot="public" virt="non-virtual"><scope>Root</scope><name>full_rcb_time_threshold_</name></member>
+      <member refid="classRoot_1a0fb18e0da95608de1fe32738b3004431" prot="public" virt="non-virtual"><scope>Root</scope><name>g0_</name></member>
+      <member refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" prot="public" virt="non-virtual"><scope>Root</scope><name>getCurrentTime</name></member>
+      <member refid="classRoot_1a9a1c5e993879a802f3eebd6a78974d79" prot="public" virt="non-virtual"><scope>Root</scope><name>gpio_initialized_</name></member>
+      <member refid="classRoot_1ac4d3c1196a55572750069077f4a1a29a" prot="public" virt="non-virtual"><scope>Root</scope><name>ideal_level_angle_</name></member>
+      <member refid="classRoot_1ad9df27e6b9f94e9636d118d1c9f26e00" prot="public" virt="non-virtual"><scope>Root</scope><name>imu_wait_</name></member>
+      <member refid="classRoot_1a8be5285e171824ff214da225bebcd072" prot="public" virt="non-virtual"><scope>Root</scope><name>input_file_name_</name></member>
+      <member refid="classRoot_1acc0091fae3a5c305df045698189c1166" prot="public" virt="non-virtual"><scope>Root</scope><name>is_aligned_</name></member>
+      <member refid="classRoot_1aacc555363da6ccd6fae0a499b9109998" prot="public" virt="non-virtual"><scope>Root</scope><name>is_imu_connected_</name></member>
+      <member refid="classRoot_1ad35c4bab054fb58e16a104548b002da0" prot="public" virt="non-virtual"><scope>Root</scope><name>is_unit_fsm_</name></member>
+      <member refid="classRoot_1adfce70fe2c9363f44c62c15c14589a96" prot="public" virt="non-virtual"><scope>Root</scope><name>isTimeExceeded</name></member>
+      <member refid="classRoot_1a71a60fbb613075ddc5ad2dc58cb16041" prot="public" virt="non-virtual"><scope>Root</scope><name>km_2_m_</name></member>
+      <member refid="classRoot_1a45de3e96eb18ce32e0e5aa2755c94748" prot="public" virt="non-virtual"><scope>Root</scope><name>landing_detected_</name></member>
+      <member refid="classRoot_1a33d02065241f1b0f6d0276c5bc71b436" prot="public" virt="non-virtual"><scope>Root</scope><name>landing_time_</name></member>
+      <member refid="classRoot_1a367f755239776d501c48db95380a3b86" prot="public" virt="non-virtual"><scope>Root</scope><name>launch_detected_</name></member>
+      <member refid="classRoot_1a24fa26d7cb49e342447839a5103ae288" prot="public" virt="non-virtual"><scope>Root</scope><name>launch_time_</name></member>
+      <member refid="classRoot_1a0c7ed7fbedd829c58a7b12a5a3795059" prot="public" virt="non-virtual"><scope>Root</scope><name>length_collect_rafco_</name></member>
+      <member refid="classRoot_1afe24ba4d1f27f1ed660ede3e997451d4" prot="public" virt="non-virtual"><scope>Root</scope><name>level_servo_</name></member>
+      <member refid="classRoot_1a941b9d7f74c3194c11b293a5ede8d8b2" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_and_level_cap_</name></member>
+      <member refid="classRoot_1a85b86785b4e3d8605d540898acb14d5d" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_and_level_video_</name></member>
+      <member refid="classRoot_1a5135582fe033860cd1b77c9aeea30f0e" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_backwards_time_threshold_</name></member>
+      <member refid="classRoot_1a3b7f785df36078118be89d4e75fee5eb" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_done_</name></member>
+      <member refid="classRoot_1a65bf4a794c6427a3d8cc4d7ad8bb65dd" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_enable_</name></member>
+      <member refid="classRoot_1a3873aef37d872d6f665a3ab0097c69d1" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_final_limit_switch_</name></member>
+      <member refid="classRoot_1a4ac3790197c4de7c6cbe56ab5c691f1d" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_lock_</name></member>
+      <member refid="classRoot_1afc94433eebd8b0a1f4c31f006ea55683" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_min_threshold_</name></member>
+      <member refid="classRoot_1ae0a1f08496afdd14c36e961ecfe700b0" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_n_</name></member>
+      <member refid="classRoot_1a42d21c61859390159fc50ccc48b78887" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_p_</name></member>
+      <member refid="classRoot_1a2de20a843c95a7eab95eda8935d3d2b2" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_servo_</name></member>
+      <member refid="classRoot_1a111da0d026977d4f1d788c94dc19dc1b" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_thread_</name></member>
+      <member refid="classRoot_1a33b5d41c6bb0721051881b24a16c716b" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_time_threshold_</name></member>
+      <member refid="classRoot_1aee38b845123995badb235a8c349e60e4" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_unit_time_threshold_</name></member>
+      <member refid="classRoot_1a893b43912af8e2aa042346e353182edb" prot="public" virt="non-virtual"><scope>Root</scope><name>lift_unlock_</name></member>
+      <member refid="classRoot_1a6ffc6171860743e3f998ed45dcfdbb5f" prot="public" virt="non-virtual"><scope>Root</scope><name>m_2_ft_</name></member>
+      <member refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" prot="public" virt="non-virtual"><scope>Root</scope><name>m_log_</name></member>
+      <member refid="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" prot="public" virt="non-virtual"><scope>Root</scope><name>m_vn_</name></member>
+      <member refid="classRoot_1a265140c8de53ce90dbdae0c7f181ca3b" prot="public" virt="non-virtual"><scope>Root</scope><name>max_angle_</name></member>
+      <member refid="classRoot_1a66e70c26e83bef350aaf12cadfe32480" prot="public" virt="non-virtual"><scope>Root</scope><name>max_flight_time_</name></member>
+      <member refid="classRoot_1a7eb1fb3124360476191d9465cc7e8235" prot="public" virt="non-virtual"><scope>Root</scope><name>max_proper_flight_time_</name></member>
+      <member refid="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" prot="public" virt="non-virtual"><scope>Root</scope><name>max_pulse_width_</name></member>
+      <member refid="classRoot_1a13235d7d0df024df0268f44d3625ac19" prot="public" virt="non-virtual"><scope>Root</scope><name>min_angle_</name></member>
+      <member refid="classRoot_1a49d5b3706ce3555614d779f86184171f" prot="public" virt="non-virtual"><scope>Root</scope><name>min_pulse_width_</name></member>
+      <member refid="classRoot_1ae7eda1b1be61959bdfde63fa5e1c67f0" prot="public" virt="non-virtual"><scope>Root</scope><name>n_photo_bit_size_</name></member>
+      <member refid="classRoot_1a65b637e743a54ca50d4ceb093c3877a2" prot="public" virt="non-virtual"><scope>Root</scope><name>nacelle_lock_</name></member>
+      <member refid="classRoot_1a2eea06c7f2bbb3a8cac9074cb99fd63f" prot="public" virt="non-virtual"><scope>Root</scope><name>nacelle_servo_</name></member>
+      <member refid="classRoot_1a40ee4980933d5161ab6e27c3db68860f" prot="public" virt="non-virtual"><scope>Root</scope><name>nacelle_unlock_</name></member>
+      <member refid="classRoot_1ad557ad221897541b7a07007c3c409403" prot="public" virt="non-virtual"><scope>Root</scope><name>num_data_points_checked_4_apogee_</name></member>
+      <member refid="classRoot_1ad423ff02a83293ed66a82470eb6eda2a" prot="public" virt="non-virtual"><scope>Root</scope><name>num_data_points_checked_4_landing_</name></member>
+      <member refid="classRoot_1aa225be3ed75e68b564b2351278b0b2b4" prot="public" virt="non-virtual"><scope>Root</scope><name>num_data_points_checked_4_launch_</name></member>
+      <member refid="classRoot_1ab71a63a9f7a23d569ebc598ec51bc2ca" prot="public" virt="non-virtual"><scope>Root</scope><name>num_level_samples_</name></member>
+      <member refid="classRoot_1a31d14f2ee737027c2c14e826ca590003" prot="public" virt="non-virtual"><scope>Root</scope><name>num_sample_readings_</name></member>
+      <member refid="classRoot_1a9038f7fe50ca4e3574d809ead3deeebe" prot="public" virt="non-virtual"><scope>Root</scope><name>num_seconds_no_new_minimum_</name></member>
+      <member refid="classRoot_1af4c69235873088deec800bbb76bf8666" prot="public" virt="non-virtual"><scope>Root</scope><name>num_steps_</name></member>
+      <member refid="classRoot_1a2aefae5b1703ca25800302c6767423be" prot="public" virt="non-virtual"><scope>Root</scope><name>p0_</name></member>
+      <member refid="classRoot_1a20edd5ad7ec852ccbfe9c7938d3c2f77" prot="public" virt="non-virtual"><scope>Root</scope><name>pds_delay_</name></member>
+      <member refid="classRoot_1adf14d6d0134f647b4ce3d285db37815e" prot="public" virt="non-virtual"><scope>Root</scope><name>pressure2Altitude</name></member>
+      <member refid="classRoot_1a066213b4e40dd278c5c47cf01ecd578c" prot="public" virt="non-virtual"><scope>Root</scope><name>primary_camera_stream_</name></member>
+      <member refid="classRoot_1a19f12ee9bf2918a057f4944fb7a033aa" prot="public" virt="non-virtual"><scope>Root</scope><name>program_log_name_</name></member>
+      <member refid="classRoot_1a0e55667cde7d236a4e1f50e95ce27b89" prot="public" virt="non-virtual"><scope>Root</scope><name>pwm_motor_max_</name></member>
+      <member refid="classRoot_1afa0b943d98c635352b70e37572b61be0" prot="public" virt="non-virtual"><scope>Root</scope><name>r_</name></member>
+      <member refid="classRoot_1a40d268b8923b05c5f28cc64bd52d14af" prot="public" virt="non-virtual"><scope>Root</scope><name>radio1_</name></member>
+      <member refid="classRoot_1ae860d7f98dadc0842a70566ce88853fd" prot="public" virt="non-virtual"><scope>Root</scope><name>radio2_</name></member>
+      <member refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" prot="public" virt="non-virtual"><scope>Root</scope><name>rafco_freq_</name></member>
+      <member refid="classRoot_1ae2138fc2cfbc422933840d6e771776de" prot="public" virt="non-virtual"><scope>Root</scope><name>rafco_pic_num_</name></member>
+      <member refid="classRoot_1ad770a0947892d58dbe8fc581880e154c" prot="public" virt="non-virtual"><scope>Root</scope><name>rafco_redo_</name></member>
+      <member refid="classRoot_1a411ac589602c228462f282188abf8877" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_angle_threshold_</name></member>
+      <member refid="classRoot_1a3d8e9cbd063482722459bd4f9e857f60" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_done_</name></member>
+      <member refid="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_enable_</name></member>
+      <member refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_lift_standby_</name></member>
+      <member refid="classRoot_1a201771205801016710f4953b507b50cd" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_n_</name></member>
+      <member refid="classRoot_1a3dc26ac1f561a5419a7dea3e2f2ed3a0" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_p_</name></member>
+      <member refid="classRoot_1afe437722a9ebdc6c28477ac99f68e373" prot="public" virt="non-virtual"><scope>Root</scope><name>rcb_time_threshold_</name></member>
+      <member refid="classRoot_1af42361b09c190429b641a1f6b72cbef7" prot="public" virt="non-virtual"><scope>Root</scope><name>realCamThreadLanding</name></member>
+      <member refid="classRoot_1a57713c513c351dde29c9ee5168647706" prot="public" virt="non-virtual"><scope>Root</scope><name>realCamThreadLift</name></member>
+      <member refid="classRoot_1adc453b16b94b0c0bd5e5e3235e4fae4e" prot="public" virt="non-virtual"><scope>Root</scope><name>realCamThreadRCB</name></member>
+      <member refid="classRoot_1a3c7703925652442220d1dcf6db7b2b18" prot="public" virt="non-virtual"><scope>Root</scope><name>response_</name></member>
+      <member refid="classRoot_1a3dd8140e66b16042882f5bc496ba73e3" prot="public" virt="non-virtual"><scope>Root</scope><name>restart_</name></member>
+      <member refid="classRoot_1ae30f3c6144d2d9df894b392ee45d051f" prot="public" virt="non-virtual"><scope>Root</scope><name>Root</name></member>
+      <member refid="classRoot_1ac921dd8c95e5a9002bdfb0a3c6fef21e" prot="public" virt="non-virtual"><scope>Root</scope><name>Root</name></member>
+      <member refid="classRoot_1aaa57d2b66dd61646d609393628e78034" prot="public" virt="non-virtual"><scope>Root</scope><name>sampling_frequency_</name></member>
+      <member refid="classRoot_1a72496ee70e99432eab96252fc299ee64" prot="public" virt="non-virtual"><scope>Root</scope><name>servo_deg_range_</name></member>
+      <member refid="classRoot_1ae37960ff5c4f3ae06f6dff3d74882603" prot="public" virt="non-virtual"><scope>Root</scope><name>servo_pulse_max_</name></member>
+      <member refid="classRoot_1ae01e0d95ecc5b9bfb48f0943dee92609" prot="public" virt="non-virtual"><scope>Root</scope><name>servo_pulse_min_</name></member>
+      <member refid="classRoot_1a76860bbe6806cc5546551c9354857680" prot="public" virt="non-virtual"><scope>Root</scope><name>source_ssid_</name></member>
+      <member refid="classRoot_1acd55503015ba119018dc122a4ff590aa" prot="public" virt="non-virtual"><scope>Root</scope><name>start_time_</name></member>
+      <member refid="classRoot_1ad377977f1bce43916756f1b09559b8a6" prot="public" virt="non-virtual"><scope>Root</scope><name>states_</name></member>
+      <member refid="classRoot_1a5662636d6620942e7d96b3c18a6b8acb" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_</name></member>
+      <member refid="classRoot_1aedbdb7da1f2486171cc67b7ec273a3cc" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_pin_1_</name></member>
+      <member refid="classRoot_1a79ad6ed57ca2e6b3e675ecdda75cad8a" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_pin_2_</name></member>
+      <member refid="classRoot_1a49fe8a1318be6bb79308e9883d40b140" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_pin_3_</name></member>
+      <member refid="classRoot_1accbec22d48edd1c9a1dc2dc59a4ff85b" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_pin_4_</name></member>
+      <member refid="classRoot_1acebcb3832831986e74cf6b4ad2e60f87" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_1_standby_pin_</name></member>
+      <member refid="classRoot_1afe9059f8c1a5cd31b5ff026f04cf1231" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_</name></member>
+      <member refid="classRoot_1a74936d11015167d0f5c36e9fa868edea" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_pin_1_</name></member>
+      <member refid="classRoot_1a9063f4fb5a5f70ca058533d766aec808" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_pin_2_</name></member>
+      <member refid="classRoot_1aaaf42bf8fad3de9e6482c9531e6df99c" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_pin_3_</name></member>
+      <member refid="classRoot_1ad0ba5eebc1687f3e86b498d9b8d71852" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_pin_4_</name></member>
+      <member refid="classRoot_1a3c7a96852dec430720be43072d8df746" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_2_standby_pin_</name></member>
+      <member refid="classRoot_1a3a71da14bde545d7386509fbf322e3ab" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_</name></member>
+      <member refid="classRoot_1a63d7f40439bfff90f8b668c41fc691c6" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_pin_1_</name></member>
+      <member refid="classRoot_1ad815f36e7a5369891fdc12f43335710c" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_pin_2_</name></member>
+      <member refid="classRoot_1a7f9f11f2b8cecc823d9621428cc1a863" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_pin_3_</name></member>
+      <member refid="classRoot_1a3968085818827a33b698689602b5341c" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_pin_4_</name></member>
+      <member refid="classRoot_1a567c69f42c80a0dc75004ab09bde38f5" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_3_standby_pin_</name></member>
+      <member refid="classRoot_1a3ecead511d50885af6706fb105956203" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_speed_</name></member>
+      <member refid="classRoot_1ae023866cfbb1bac7137dd8eb8c61af0f" prot="public" virt="non-virtual"><scope>Root</scope><name>stepper_threshold_</name></member>
+      <member refid="classRoot_1ac8c99be5ee8629bd262ad9cd46e9fdfd" prot="public" virt="non-virtual"><scope>Root</scope><name>steps_per_revolution_</name></member>
+      <member refid="classRoot_1a0d7492aa2d2c7b80ccde29ec58ee8eb6" prot="public" virt="non-virtual"><scope>Root</scope><name>t0_</name></member>
+      <member refid="classRoot_1a001e83bfa05e9795fa44b1bd5010f54d" prot="public" virt="non-virtual"><scope>Root</scope><name>t_burn_</name></member>
+      <member refid="classRoot_1ab434a46ca42a975927e0e070b3257077" prot="public" virt="non-virtual"><scope>Root</scope><name>terminateConnections</name></member>
+      <member refid="classRoot_1a70f6d268268dad7bdfd20c4e3be7b762" prot="public" virt="non-virtual"><scope>Root</scope><name>threads_</name></member>
+      <member refid="classRoot_1a5c25774f020944a4d2a8ed3b068f07ff" prot="public" virt="non-virtual"><scope>Root</scope><name>time_delay_enabled_</name></member>
+      <member refid="classRoot_1aa16b41f9e18e2228471b333149bde688" prot="public" virt="non-virtual"><scope>Root</scope><name>unit_test_delay_ms_</name></member>
+      <member refid="classRoot_1a6ecc0964ce3a5f4c53617d055402b4ca" prot="public" virt="non-virtual"><scope>Root</scope><name>vid_clip_time_</name></member>
+      <member refid="classRoot_1a8bf8f0c06de1017c1e8f3c83b2b66daf" prot="public" virt="non-virtual"><scope>Root</scope><name>videos1_</name></member>
+      <member refid="classRoot_1ad341ae125a88c12de66b55d1cbe016e8" prot="public" virt="non-virtual"><scope>Root</scope><name>videos2_</name></member>
+      <member refid="classRoot_1a900eaf5f593b860375084bd5d47e5681" prot="public" virt="non-virtual"><scope>Root</scope><name>videos3_</name></member>
+      <member refid="classRoot_1a6ce282eac3fe0d863e61bde0e07e5913" prot="public" virt="non-virtual"><scope>Root</scope><name>z_current_</name></member>
+      <member refid="classRoot_1ad10c8e25665d79f186d127b0f828d43d" prot="public" virt="non-virtual"><scope>Root</scope><name>z_threshold_for_landing_</name></member>
+      <member refid="classRoot_1ae3b9dd56ac40d582a92b904f8480be7b" prot="public" virt="non-virtual"><scope>Root</scope><name>~Root</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

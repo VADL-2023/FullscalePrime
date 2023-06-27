@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_f6d8fd4dd23c273e83ffcb1bf975300e" kind="dir">
+    <compoundname>/home/kushtimusprime/FullscalePrime/HFSM/include</compoundname>
+    <innerfile refid="Root_8h">Root.h</innerfile>
+    <innerfile refid="State_8h">State.h</innerfile>
+    <innerfile refid="State__Apogee__Detection_8h">State_Apogee_Detection.h</innerfile>
+    <innerfile refid="State__Camera__Check_8h">State_Camera_Check.h</innerfile>
+    <innerfile refid="State__Enums_8h">State_Enums.h</innerfile>
+    <innerfile refid="State__Full__Level_8h">State_Full_Level.h</innerfile>
+    <innerfile refid="State__Full__Lift_8h">State_Full_Lift.h</innerfile>
+    <innerfile refid="State__Full__RCB_8h">State_Full_RCB.h</innerfile>
+    <innerfile refid="State__Landing__Detection_8h">State_Landing_Detection.h</innerfile>
+    <innerfile refid="State__Launch__Detection_8h">State_Launch_Detection.h</innerfile>
+    <innerfile refid="State__Level__Servo_8h">State_Level_Servo.h</innerfile>
+    <innerfile refid="State__Lift__Motor_8h">State_Lift_Motor.h</innerfile>
+    <innerfile refid="State__Lift__Servo_8h">State_Lift_Servo.h</innerfile>
+    <innerfile refid="State__Nacelle__Servo_8h">State_Nacelle_Servo.h</innerfile>
+    <innerfile refid="State__PDS__Delay_8h">State_PDS_Delay.h</innerfile>
+    <innerfile refid="State__Prelaunch_8h">State_Prelaunch.h</innerfile>
+    <innerfile refid="State__RAFCO__Mission_8h">State_RAFCO_Mission.h</innerfile>
+    <innerfile refid="State__RCB__Motor_8h">State_RCB_Motor.h</innerfile>
+    <innerfile refid="State__SDR1_8h">State_SDR1.h</innerfile>
+    <innerfile refid="State__SDR2_8h">State_SDR2.h</innerfile>
+    <innerfile refid="State__Stepper1_8h">State_Stepper1.h</innerfile>
+    <innerfile refid="State__Stepper2_8h">State_Stepper2.h</innerfile>
+    <innerfile refid="State__Stepper3_8h">State_Stepper3.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/"/>
+  </compounddef>
+</doxygen>

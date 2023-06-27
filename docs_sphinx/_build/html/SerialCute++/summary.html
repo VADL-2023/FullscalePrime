@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SerialCute++ &mdash; Fullscale Prime  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stepper for Nacelle Swivel" href="../Stepper/summary.html" />
+    <link rel="prev" title="PacketReception" href="../PacketReception/summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Fullscale Prime
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../FieldTest/summary.html">FieldTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HFSM/summary.html">HFSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IMU/summary.html">IMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Log/summary.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MainDriver/summary.html">MainDriver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PacketReception/summary.html">PacketReception</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SerialCute++</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#serial-object">Serial Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serialtest">SerialTest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serialwrite">SerialWrite</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Stepper/summary.html">Stepper for Nacelle Swivel</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fullscale Prime</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SerialCute++</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/SerialCute++/summary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="serialcute">
+<h1>SerialCute++<a class="headerlink" href="#serialcute" title="Permalink to this heading"></a></h1>
+<p>Name credits go to Meredith Hunter. This is a Serial Object library to allow for Serial communication. This was primarily designed for communication between Raspberry Pi and Teensy or Raspberry Pi and ESP32. It was also used for SerialPrime (a deprecated Serial communication protocol to send ESP32 photos to Raspberry Pi)</p>
+<section id="serial-object">
+<h2>Serial Object<a class="headerlink" href="#serial-object" title="Permalink to this heading"></a></h2>
+<p>Serial Object Header File. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SERIALOBJECT_H">
+<span class="target" id="SerialObject_8h_1a571fde2b25f97f549d66128e6b9107a6"></span><span class="sig-name descname"><span class="n"><span class="pre">SERIALOBJECT_H</span></span></span><a class="headerlink" href="#c.SERIALOBJECT_H" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv412SerialObject">
+<span id="_CPPv312SerialObject"></span><span id="_CPPv212SerialObject"></span><span id="SerialObject"></span><span class="target" id="classSerialObject"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SerialObject</span></span></span><a class="headerlink" href="#_CPPv412SerialObject" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;SerialObject.h&gt;</em></div>
+<p>Serial Communication object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject12SerialObjectEv">
+<span id="_CPPv3N12SerialObject12SerialObjectEv"></span><span id="_CPPv2N12SerialObject12SerialObjectEv"></span><span id="SerialObject::SerialObject"></span><span class="target" id="classSerialObject_1a7cf3a1318e75b9f9b8ca24a4ad0eb9f8"></span><span class="sig-name descname"><span class="n"><span class="pre">SerialObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject12SerialObjectEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new Serial Object object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject12SerialObjectENSt6stringE">
+<span id="_CPPv3N12SerialObject12SerialObjectENSt6stringE"></span><span id="_CPPv2N12SerialObject12SerialObjectENSt6stringE"></span><span id="SerialObject::SerialObject__ss"></span><span class="target" id="classSerialObject_1a766ae412dbed64118ff7aa6080c9aa74"></span><span class="sig-name descname"><span class="n"><span class="pre">SerialObject</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">input</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject12SerialObjectENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new Serial Object object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input</strong> – String representing Serial input </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObjectD0Ev">
+<span id="_CPPv3N12SerialObjectD0Ev"></span><span id="_CPPv2N12SerialObjectD0Ev"></span><span id="SerialObject::~SerialObject"></span><span class="target" id="classSerialObject_1aa73aabd2ef3912966f56ce5df1c8a8fe"></span><span class="sig-name descname"><span class="n"><span class="pre">~SerialObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObjectD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Destroy the Serial Object object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject11writeSerialENSt6stringE">
+<span id="_CPPv3N12SerialObject11writeSerialENSt6stringE"></span><span id="_CPPv2N12SerialObject11writeSerialENSt6stringE"></span><span id="SerialObject::writeSerial__ss"></span><span class="target" id="classSerialObject_1a82f8123aad06f9d859ab6898795f0ae2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeSerial</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">str</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject11writeSerialENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Writes message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>str</strong> – The message </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject10readSerialEv">
+<span id="_CPPv3N12SerialObject10readSerialEv"></span><span id="_CPPv2N12SerialObject10readSerialEv"></span><span id="SerialObject::readSerial"></span><span class="target" id="classSerialObject_1a697676cd4cf42b62f6700fcea4309493"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readSerial</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject10readSerialEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reads message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The message </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject22readSerialImageOrganicEv">
+<span id="_CPPv3N12SerialObject22readSerialImageOrganicEv"></span><span id="_CPPv2N12SerialObject22readSerialImageOrganicEv"></span><span id="SerialObject::readSerialImageOrganic"></span><span class="target" id="classSerialObject_1a2a9b0a800ae23746c348c015f8f4b5fd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readSerialImageOrganic</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject22readSerialImageOrganicEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Attempt to read image serially. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject15readSerialImageEPKc">
+<span id="_CPPv3N12SerialObject15readSerialImageEPKc"></span><span id="_CPPv2N12SerialObject15readSerialImageEPKc"></span><span id="SerialObject::readSerialImage__cCP"></span><span class="target" id="classSerialObject_1a5f58f86c1ff3daf975841a636a081e98"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readSerialImage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pic_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject15readSerialImageEPKc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Another attempt to read image serially (see Serial Prime alive commit to find the real one) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pic_name</strong> – Filename of image </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true Successfully read image </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false Error in reading image </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject10readSerialEi">
+<span id="_CPPv3N12SerialObject10readSerialEi"></span><span id="_CPPv2N12SerialObject10readSerialEi"></span><span id="SerialObject::readSerial__i"></span><span class="target" id="classSerialObject_1a7a4262375bbca82b43d5e48f02b4d7f0"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readSerial</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">buff_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12SerialObject10readSerialEi" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Reads serial message up to a certain size. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>buff_size</strong> – Maximum size of the message </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The serial message </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject11serial_portE">
+<span id="_CPPv3N12SerialObject11serial_portE"></span><span id="_CPPv2N12SerialObject11serial_portE"></span><span id="SerialObject::serial_port__i"></span><span class="target" id="classSerialObject_1acce9fc847b600507f5c74173802a21e4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">serial_port</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject11serial_portE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Serial Port. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject6input_E">
+<span id="_CPPv3N12SerialObject6input_E"></span><span id="_CPPv2N12SerialObject6input_E"></span><span id="SerialObject::input___ss"></span><span class="target" id="classSerialObject_1a77c30e034801f0daa62cced1bca66125"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">input_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject6input_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>String input. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject8counter_E">
+<span id="_CPPv3N12SerialObject8counter_E"></span><span id="_CPPv2N12SerialObject8counter_E"></span><span id="SerialObject::counter___i"></span><span class="target" id="classSerialObject_1ae5e6aef1c1713d1ec81b1db36794fbef"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">counter_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject8counter_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Character counter. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject9size_buf_E">
+<span id="_CPPv3N12SerialObject9size_buf_E"></span><span id="_CPPv2N12SerialObject9size_buf_E"></span><span id="SerialObject::size_buf___cA"></span><span class="target" id="classSerialObject_1acd6efcea395b548d0f2884ecc16b7f56"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size_buf_</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">256</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12SerialObject9size_buf_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Message buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject10photo_buf_E">
+<span id="_CPPv3N12SerialObject10photo_buf_E"></span><span id="_CPPv2N12SerialObject10photo_buf_E"></span><span id="SerialObject::photo_buf___uint8_tA"></span><span class="target" id="classSerialObject_1ac93edcf92abf82f55a046e0a27704d44"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">photo_buf_</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3000000</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N12SerialObject10photo_buf_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Message buffer for photos. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject11size_index_E">
+<span id="_CPPv3N12SerialObject11size_index_E"></span><span id="_CPPv2N12SerialObject11size_index_E"></span><span id="SerialObject::size_index___i"></span><span class="target" id="classSerialObject_1a1de552e8cdfbc98206184295fdfafad3"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size_index_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject11size_index_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Current index in size buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject12photo_index_E">
+<span id="_CPPv3N12SerialObject12photo_index_E"></span><span id="_CPPv2N12SerialObject12photo_index_E"></span><span id="SerialObject::photo_index___i"></span><span class="target" id="classSerialObject_1a1efa6d7616993076eb3e4890ff8537c2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">photo_index_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject12photo_index_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Current index in photo buffer. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject10indicator_E">
+<span id="_CPPv3N12SerialObject10indicator_E"></span><span id="_CPPv2N12SerialObject10indicator_E"></span><span id="SerialObject::indicator___ss"></span><span class="target" id="classSerialObject_1a6bc23c7c101c80ccae63b577843a63b2"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">indicator_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject10indicator_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Indicator string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12SerialObject16indicator_index_E">
+<span id="_CPPv3N12SerialObject16indicator_index_E"></span><span id="_CPPv2N12SerialObject16indicator_index_E"></span><span id="SerialObject::indicator_index___i"></span><span class="target" id="classSerialObject_1aeaee2d84bb16c9244f503e2dd8a25fbb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">indicator_index_</span></span></span><a class="headerlink" href="#_CPPv4N12SerialObject16indicator_index_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Index in the indicator string. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="serialtest">
+<h2>SerialTest<a class="headerlink" href="#serialtest" title="Permalink to this heading"></a></h2>
+<p>Simple test of Serial Object. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainv">
+<span id="_CPPv34mainv"></span><span id="_CPPv24mainv"></span><span id="main"></span><span class="target" id="SerialTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Main method to test Serial communication with Arduino/Teensy. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing exit status </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+<section id="serialwrite">
+<h2>SerialWrite<a class="headerlink" href="#serialwrite" title="Permalink to this heading"></a></h2>
+<p>Alternate Serial test (maybe used for images, probably should be deprecated) </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="SerialWrite_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Main method trying to test Serial Object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing exit status </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../PacketReception/summary.html" class="btn btn-neutral float-left" title="PacketReception" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Stepper/summary.html" class="btn btn-neutral float-right" title="Stepper for Nacelle Swivel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, me.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

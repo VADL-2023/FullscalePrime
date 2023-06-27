@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Log_8cpp" kind="file" language="C++">
+    <compoundname>Log.cpp</compoundname>
+    <includes refid="Log_8h" local="yes">../include/Log.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>sensors.h</label>
+      </node>
+      <node id="5">
+        <label>fstream</label>
+      </node>
+      <node id="2">
+        <label>../include/Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ctime</label>
+      </node>
+      <node id="10">
+        <label>unistd.h</label>
+      </node>
+      <node id="4">
+        <label>registers.h</label>
+      </node>
+      <node id="8">
+        <label>sys/time.h</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>chrono</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp</label>
+        <link refid="Log_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;../include/Log.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><ref refid="classLog_1a7bdf3a02a000f59e1a43898664ae37ae" kindref="member">Log::Log</ref>(std::string<sp/>flightFilename,<sp/>std::string<sp/>programFilename,<sp/>vn::sensors::VnSensor*<sp/>imu,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sTime):</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">mIMU(imu)</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//initialize<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;startTime<sp/>=<sp/>double(std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::system_clock::now().time_since_epoch()).count());</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;sampleNumber<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;savedParameters<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;delim<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;$&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>string_time<sp/>=<sp/>std::to_string(this-&gt;startTime);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>catch<sp/>errors<sp/>involving<sp/>special<sp/>characters<sp/>in<sp/>filenames<sp/>rip<sp/>AAC<sp/>madien<sp/>flight<sp/>8/20<sp/>D:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>numSpecialCharacters;<sp/>i++){</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(flightFilename.find(specialCharacters[i])<sp/>!=<sp/>std::string::npos<sp/>||<sp/>programFilename.find(specialCharacters[i])<sp/>!=<sp/>std::string::npos){</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;Remove<sp/>special<sp/>characters<sp/>from<sp/>log<sp/>filenames&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>timestamp_<sp/>=<sp/>string_time.substr(0,string_time.find(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>open<sp/>flight<sp/>and<sp/>program<sp/>data<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>flight_name_<sp/>=<sp/>flightFilename<sp/>+<sp/>timestamp_<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>program_name_<sp/>=<sp/>programFilename<sp/>+<sp/>timestamp_<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Flight<sp/>Data<sp/>File:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>flight_name_<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Program<sp/>Data<sp/>File:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>program_name_<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>mFlightLog.open(flight_name_);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog.open(program_name_);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(mFlightLog.is_open()<sp/>&amp;&amp;<sp/>mProgLog.is_open())){</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Redundant<sp/>error<sp/>in<sp/>file<sp/>message&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>opening<sp/>file<sp/>streams&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mFlightLog</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Time\t<sp/>MagX\t<sp/>MagY\t<sp/>MagZ\t<sp/>AccelX\t<sp/>AccelY\t<sp/>AccelZ\t<sp/>Yaw\t<sp/>Pitch\t<sp/>Roll\t<sp/>Temperature\t<sp/>Pressure\t<sp/>Altitude\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;START<sp/>TIME:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::__cxx11::to_string(startTime)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>deletion<sp/>of<sp/>Log<sp/>pointer,<sp/>close<sp/>flight<sp/>and<sp/>program<sp/>data<sp/>files</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="classLog_1a0fbfda88fbee5027c89f6eb121059360" kindref="member">Log::~Log</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;END<sp/>TIME:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/>std::__cxx11::to_string(startTime<sp/>+<sp/><ref refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" kindref="member">elapsedTime</ref>())<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;END<sp/>LOG&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>mFlightLog.close();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog.close();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>mIMU<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">std::string<sp/><ref refid="classLog_1a8de9fb083271564281cefe2c165c4c4b" kindref="member">Log::getTimestamp</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>timestamp_;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1aedf3a10cb2b62dc6de2f6ed8274e9476" kindref="member">Log::tempSaveProgLog</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;About<sp/>to<sp/>close<sp/>file&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog.close();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>mFlightLog.close();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>usleep(1000000);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;About<sp/>to<sp/>open<sp/>file&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog.open(program_name_,std::ios::app);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>mFlightLog.open(flight_name_,std::ios::app);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>write<sp/>IMU<sp/>data<sp/>to<sp/>flight<sp/>data<sp/>file,<sp/>will<sp/>provide<sp/>calculated<sp/>altitude<sp/>if<sp/>baseline<sp/>parameters<sp/>are<sp/>saved</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">Log::write</ref>(vn::sensors::ImuMeasurementsRegister&amp;<sp/>data){</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(savedParameters){</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentAlt<sp/>=<sp/>calcAlt(data);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>currentAlt<sp/>=<sp/>-99999;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>++sampleNumber;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[256];</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>sprintf(buf,<sp/></highlight><highlight class="stringliteral">&quot;%g\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\t<sp/>%6.3f\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" kindref="member">elapsedTime</ref>(),<sp/>data.mag[0],<sp/>data.mag[1],<sp/>data.mag[2],<sp/>data.accel[0],<sp/>data.accel[1],<sp/>data.accel[2],<sp/>data.gyro[0],<sp/>data.gyro[1],<sp/>data.gyro[2],<sp/>data.temp,<sp/>data.pressure,<sp/>currentAlt);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>mFlightLog<sp/>&lt;&lt;<sp/>buf;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>write<sp/>string<sp/>to<sp/>program<sp/>data<sp/>file<sp/>and<sp/>to<sp/>console</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">Log::write</ref>(std::string<sp/>outputString){</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>outputString<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/>outputString<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>write<sp/>string<sp/>to<sp/>program<sp/>data<sp/>file<sp/>with<sp/>timestamp<sp/>and<sp/>to<sp/>console</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1ae0bb35da300c57bcfbdb644c733b530e" kindref="member">Log::writeTime</ref>(std::string<sp/>outputString){</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>outputString<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;<sp/>outputString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sampleNumber)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" kindref="member">elapsedTime</ref>())<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;)\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//mProgLog<sp/>&lt;&lt;<sp/>elapsedTime()<sp/>&lt;&lt;<sp/>&apos;\n&apos;;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//<sp/>write<sp/>string<sp/>to<sp/>program<sp/>data<sp/>file<sp/>with<sp/>special<sp/>delimiters<sp/>and<sp/>timestamp<sp/>for<sp/>MATLAB<sp/>postprocessing,<sp/>and<sp/>to<sp/>console</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a5242f7dbe3b7037e4c7b3df9179e1ab5" kindref="member">Log::writeDelim</ref>(std::string<sp/>outputString){</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>outputString<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>mProgLog<sp/>&lt;&lt;delim<sp/>+<sp/>outputString<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>(&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(sampleNumber)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>|<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" kindref="member">elapsedTime</ref>())<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal"><sp/>+<sp/>delim<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calculate<sp/>time<sp/>in<sp/>milliseconds<sp/>since<sp/>Log<sp/>pointer<sp/>was<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" kindref="member">Log::elapsedTime</ref>(){</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>currentTime<sp/>=<sp/>double(std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::system_clock::now().time_since_epoch()).count());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currentTime<sp/>-<sp/>startTime;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="comment">//save<sp/>baseline<sp/>parameters<sp/>to<sp/>calculate<sp/>altitude</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a05e8a199e82d1adf6471c532fc4997e3" kindref="member">Log::saveBaselineParameters</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Rconst,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Bconst,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>pressure,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temperature,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>accelg){</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;R<sp/>=<sp/>Rconst;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;B<sp/>=<sp/>Bconst;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;pressure0<sp/>=<sp/>pressure;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;temperature0<sp/>=<sp/>temperature;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;accelg0<sp/>=<sp/>accelg;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>savedParameters<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//calculate<sp/>altitude<sp/>based<sp/>on<sp/>baseline<sp/>parameters<sp/>and<sp/>current<sp/>IMU<sp/>pressure<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Log::calcAlt(vn::sensors::ImuMeasurementsRegister&amp;<sp/>data){</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>temperature0/B*(pow(data.pressure/pressure0,-R*B/accelg0)<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp"/>
+  </compounddef>
+</doxygen>

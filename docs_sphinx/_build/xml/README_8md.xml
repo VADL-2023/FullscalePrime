@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Fullscale<sp/>Prime</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Welcome<sp/>to<sp/>the<sp/>VADL<sp/>2023<sp/>software<sp/>repository!<sp/>The<sp/>goal<sp/>of<sp/>this<sp/>project<sp/>was<sp/>to<sp/>autonomously<sp/>run<sp/>the<sp/>team&apos;s<sp/>payload.<sp/>This<sp/>involves<sp/>launch-apogee-landing<sp/>detection,<sp/>RCB<sp/>to<sp/>properly<sp/>place<sp/>the<sp/>key<sp/>nacelle<sp/>at<sp/>the<sp/>top,<sp/>lift<sp/>to<sp/>elevate<sp/>the<sp/>key<sp/>nacelle,<sp/>and<sp/>run<sp/>the<sp/>SDRs<sp/>and<sp/>cameras<sp/>to<sp/>autonomously<sp/>decode<sp/>APRS<sp/>packets<sp/>and<sp/>perform<sp/>the<sp/>proper<sp/>image<sp/>processing<sp/>actions.<sp/>The<sp/>code<sp/>was<sp/>written<sp/>by<sp/>Kush<sp/>Hari,<sp/>Meredith<sp/>Hunter,<sp/>Andrew<sp/>Noonan,<sp/>Matthew<sp/>McGowan,<sp/>and<sp/>technically<sp/>Eric<sp/>Holst<sp/>with<sp/>README<sp/>written<sp/>by<sp/>Kush<sp/>Hari.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Installation</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>code<sp/>is<sp/>designed<sp/>to<sp/>work<sp/>with<sp/>a<sp/>Raspberry<sp/>Pi<sp/>4<sp/>with<sp/>the<sp/>Raspbian<sp/>Bullseye<sp/>operating<sp/>system<sp/>(but<sp/>it<sp/>could<sp/>probably<sp/>work<sp/>with<sp/>Ubuntu<sp/>or<sp/>Ubuntu<sp/>MATE).<sp/>The<sp/>only<sp/>major<sp/>installation<sp/>is<sp/>OpenCV.<sp/>OpenCV<sp/>is<sp/>an<sp/>open<sp/>source<sp/>computer<sp/>vision<sp/>library<sp/>with<sp/>lots<sp/>of<sp/>cool<sp/>and<sp/>efficient<sp/>CV<sp/>algorithms,<sp/>so<sp/>you<sp/>don&apos;t<sp/>got<sp/>to<sp/>write<sp/>it<sp/>yourself.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>OpenCV<sp/>Installation</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>tutorial<sp/>I<sp/>installed<sp/>OpenCV<sp/>was<sp/>a<sp/>bit<sp/>extra,<sp/>but<sp/>it<sp/>works.<sp/>You<sp/>may<sp/>have<sp/>issues<sp/>with<sp/>the<sp/>computer<sp/>crashing,<sp/>which<sp/>you<sp/>can<sp/>fix<sp/>with<sp/>the<sp/>swap<sp/>memory<sp/>(see<sp/>end<sp/>of<sp/>tutorial)</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>purge<sp/>wolfram-engine</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>purge<sp/>libreoffice*</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>clean</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>autoremove</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">echo<sp/>&quot;OpenCV<sp/>installation<sp/>by<sp/>learnOpenCV.com&quot;</highlight></codeline>
+<codeline><highlight class="normal">cvVersion=&quot;master&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Clean<sp/>build<sp/>directories</highlight></codeline>
+<codeline><highlight class="normal">rm<sp/>-rf<sp/>opencv/build</highlight></codeline>
+<codeline><highlight class="normal">rm<sp/>-rf<sp/>opencv_contrib/build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Create<sp/>directory<sp/>for<sp/>installation</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>installation</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>installation/OpenCV-&quot;$cvVersion&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Save<sp/>current<sp/>working<sp/>directory</highlight></codeline>
+<codeline><highlight class="normal">cwd=$(pwd)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>-y<sp/>update</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt<sp/>-y<sp/>upgrade</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>remove<sp/>x264<sp/>libx264-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Install<sp/>dependencies</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>build-essential<sp/>checkinstall<sp/>cmake<sp/>pkg-config<sp/>yasm</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>git<sp/>gfortran</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libjpeg8-dev<sp/>libjasper-dev<sp/>libpng12-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libtiff5-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libtiff-dev</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libavcodec-dev<sp/>libavformat-dev<sp/>libswscale-dev<sp/>libdc1394-22-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libxine2-dev<sp/>libv4l-dev</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>/usr/include/linux</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>ln<sp/>-s<sp/>-f<sp/>../libv4l1-videodev.h<sp/>videodev.h</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>$cwd</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgstreamer0.10-dev<sp/>libgstreamer-plugins-base0.10-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgtk2.0-dev<sp/>libtbb-dev<sp/>qt5-default</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libatlas-base-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libmp3lame-dev<sp/>libtheora-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libvorbis-dev<sp/>libxvidcore-dev<sp/>libx264-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libopencore-amrnb-dev<sp/>libopencore-amrwb-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libavresample-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>x264<sp/>v4l-utils</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">#<sp/>Optional<sp/>dependencies</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libprotobuf-dev<sp/>protobuf-compiler</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgoogle-glog-dev<sp/>libgflags-dev</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>-y<sp/>install<sp/>libgphoto2-dev<sp/>libeigen3-dev<sp/>libhdf5-dev<sp/>doxygen</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/opencv/opencv.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>checkout<sp/>$cvVersion</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/opencv/opencv_contrib.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv_contrib</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>checkout<sp/>$cvVersion</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>..</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cd<sp/>opencv</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">cmake<sp/>-D<sp/>CMAKE_BUILD_TYPE=RELEASE<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>CMAKE_INSTALL_PREFIX=$cwd/installation/OpenCV-&quot;$cvVersion&quot;<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>INSTALL_C_EXAMPLES=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>INSTALL_PYTHON_EXAMPLES=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_TBB=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_V4L=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>OPENCV_PYTHON3_INSTALL_PATH=$cwd/OpenCV-$cvVersion-py3/lib/python3.5/site-packages<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_QT=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>WITH_OPENGL=ON<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-D<sp/>BUILD_EXAMPLES=ON<sp/>..</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">make<sp/>-j$(nproc)</highlight></codeline>
+<codeline><highlight class="normal">make<sp/>install</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">sudo<sp/>sed<sp/>-i<sp/>&apos;s/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g&apos;<sp/>/etc/dphys-swapfile</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>/etc/init.d/dphys-swapfile<sp/>stop</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>/etc/init.d/dphys-swapfile<sp/>start</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">echo<sp/>&quot;sudo<sp/>modprobe<sp/>bcm2835-v4l2&quot;<sp/>&amp;amp;amp;amp;gt;&amp;amp;amp;amp;gt;<sp/>~/.profile</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Based<sp/>on<sp/>this<sp/>link:<sp/>https://learnopencv.com/install-opencv-4-on-raspberry-pi/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Other<sp/>installations</highlight></codeline>
+<codeline><highlight class="normal">Since<sp/>we<sp/>get<sp/>pigpio<sp/>from<sp/>source,<sp/>it<sp/>should<sp/>automatically<sp/>compile.<sp/>You<sp/>may<sp/>be<sp/>missing<sp/>a<sp/>few<sp/>installations<sp/>here<sp/>and<sp/>there,<sp/>but<sp/>you<sp/>should<sp/>be<sp/>able<sp/>to<sp/>install<sp/>them<sp/>with<sp/>apt.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Package<sp/>Explanations/Running<sp/>the<sp/>Code</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>compile<sp/>and<sp/>build<sp/>the<sp/>code,<sp/>run<sp/>the<sp/>following.<sp/>You<sp/>will<sp/>see<sp/>that<sp/>all<sp/>the<sp/>other<sp/>packages<sp/>will<sp/>build<sp/>first,<sp/>then<sp/>the<sp/>MainDriver<sp/>package.<sp/>This<sp/>is<sp/>because<sp/>the<sp/>MainDriver<sp/>relies<sp/>on<sp/>the<sp/>other<sp/>packages<sp/>to<sp/>be<sp/>compiled<sp/>libraries<sp/>before<sp/>it<sp/>can<sp/>compile.<sp/>The<sp/>full<sp/>payload<sp/>code<sp/>can<sp/>be<sp/>run<sp/>with<sp/>the<sp/>following<sp/>executable,<sp/>but<sp/>it<sp/>is<sp/>not<sp/>recommended<sp/>to<sp/>run<sp/>this<sp/>cold<sp/>as<sp/>it<sp/>relies<sp/>on<sp/>the<sp/>payload<sp/>to<sp/>be<sp/>perfectly<sp/>setup.<sp/>Also,<sp/>always<sp/>compile<sp/>from<sp/>the<sp/>FullscalePrime<sp/>directory,<sp/>don&apos;t<sp/>individually<sp/>compile<sp/>stuff<sp/>in<sp/>their<sp/>own<sp/>folders,<sp/>just<sp/>makes<sp/>things<sp/>messy.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal">make</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>build/MainDriver</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>./realDisplayTest</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Package<sp/>Explanation</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>project<sp/>has<sp/>a<sp/>lot<sp/>of<sp/>different<sp/>components,<sp/>so<sp/>that&apos;s<sp/>why<sp/>there<sp/>are<sp/>so<sp/>many<sp/>packages.<sp/>Each<sp/>package<sp/>written<sp/>this<sp/>year<sp/>should<sp/>have<sp/>detailed<sp/>comments.<sp/>Some<sp/>packages<sp/>may<sp/>not<sp/>have<sp/>detailed<sp/>comments,<sp/>but<sp/>they<sp/>have<sp/>been<sp/>previously<sp/>verified<sp/>to<sp/>work.<sp/>Here<sp/>is<sp/>a<sp/>brief<sp/>description<sp/>on<sp/>each<sp/>package<sp/>and<sp/>if<sp/>it<sp/>is<sp/>useful.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">FieldTest:<sp/>Includes<sp/>a<sp/>series<sp/>of<sp/>different<sp/>starter<sp/>tests<sp/>we<sp/>would<sp/>run<sp/>in<sp/>the<sp/>field<sp/>to<sp/>help<sp/>debug<sp/>issues<sp/>quickly<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">HFSM:<sp/>Includes<sp/>all<sp/>of<sp/>the<sp/>states<sp/>for<sp/>the<sp/>state<sp/>machine<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ImageCapture:<sp/>Has<sp/>some<sp/>random<sp/>OpenCV<sp/>image<sp/>tests.<sp/>(Meh,<sp/>may<sp/>have<sp/>some<sp/>useful<sp/>stuff<sp/>if<sp/>you<sp/>want<sp/>to<sp/>learn<sp/>OpenCV,<sp/>but<sp/>poorly<sp/>documented<sp/>and<sp/>may<sp/>not<sp/>work,<sp/>sorry)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">IMU:<sp/>Includes<sp/>wrapper<sp/>code<sp/>for<sp/>the<sp/>VN<sp/>Library<sp/>for<sp/>IMU.<sp/>This<sp/>package<sp/>was<sp/>written<sp/>in<sp/>a<sp/>previous<sp/>year,<sp/>and<sp/>I<sp/>don&apos;t<sp/>know<sp/>about<sp/>the<sp/>mutex<sp/>stuff,<sp/>but<sp/>it<sp/>works.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Log:<sp/>Includes<sp/>code<sp/>for<sp/>the<sp/>log<sp/>to<sp/>save<sp/>flight<sp/>data<sp/>for<sp/>easy<sp/>integration<sp/>with<sp/>our<sp/>MATLAB<sp/>sim.<sp/>This<sp/>package<sp/>was<sp/>writtein<sp/>in<sp/>a<sp/>previous<sp/>year.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MainDriver:<sp/>The<sp/>bread<sp/>and<sp/>butter,<sp/>the<sp/>meat<sp/>and<sp/>potatoes,<sp/>the<sp/>autobots<sp/>and<sp/>decepticons,<sp/>this<sp/>is<sp/>where<sp/>all<sp/>the<sp/>code<sp/>comes<sp/>together<sp/>to<sp/>make<sp/>the<sp/>target<sp/>executable.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">MultithreadTest:<sp/>Mini<sp/>test<sp/>to<sp/>see<sp/>how<sp/>we<sp/>can<sp/>do<sp/>multithreading<sp/>in<sp/>C++.<sp/>(Meh,<sp/>helpful<sp/>to<sp/>see<sp/>some<sp/>multithreading<sp/>code,<sp/>but<sp/>it<sp/>may<sp/>not<sp/>work)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">PacketReception:<sp/>Includes<sp/>wrapper<sp/>code<sp/>for<sp/>our<sp/>TCP<sp/>socket<sp/>to<sp/>receive<sp/>APRS<sp/>packets.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">pigpio-master:<sp/>Source<sp/>code<sp/>to<sp/>allow<sp/>for<sp/>GPIO<sp/>interaction.<sp/>Fun<sp/>fact,<sp/>it<sp/>is<sp/>Pi<sp/>GPIO<sp/>and<sp/>not<sp/>Pig<sp/>Pio.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">SerialCute++<sp/>(Name<sp/>credits<sp/>go<sp/>to<sp/>Meredith):<sp/>Wrapper<sp/>code<sp/>for<sp/>Serial<sp/>communication<sp/>objects.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">ServoTest:<sp/>Mini<sp/>test<sp/>to<sp/>see<sp/>how<sp/>to<sp/>move<sp/>servo<sp/>in<sp/>C++<sp/>(Not<sp/>Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Stepper:<sp/>Includes<sp/>stepper<sp/>motor<sp/>library<sp/>for<sp/>Raspberry<sp/>Pi.<sp/>Based<sp/>on<sp/>Arduino<sp/>library.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VectorNav:<sp/>VN-100<sp/>library<sp/>provided<sp/>by<sp/>VectorNav.<sp/>Allows<sp/>us<sp/>to<sp/>read<sp/>IMU<sp/>data<sp/>from<sp/>each<sp/>register<sp/>at<sp/>20<sp/>Hz.<sp/>If<sp/>you<sp/>want<sp/>2<sp/>registers,<sp/>you<sp/>get<sp/>10<sp/>Hz.<sp/>(Useful)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Bash/Python<sp/>Script<sp/>Explanations</highlight></codeline>
+<codeline><highlight class="normal">cam_assignment.bash:<sp/>Looks<sp/>at<sp/>which<sp/>cameras<sp/>are<sp/>connected<sp/>to<sp/>the<sp/>Pi,<sp/>assigns<sp/>them<sp/>with<sp/>static<sp/>names<sp/>based<sp/>on<sp/>which<sp/>port<sp/>they<sp/>are<sp/>plugged<sp/>in<sp/>(Useful)</highlight></codeline>
+<codeline><highlight class="normal">kill_sdr.bash:<sp/>Kills<sp/>all<sp/>SDR<sp/>running<sp/>processes.<sp/>Important<sp/>because<sp/>SDR<sp/>can&apos;t<sp/>run<sp/>if<sp/>it<sp/>is<sp/>already<sp/>running<sp/>(Useful)</highlight></codeline>
+<codeline><highlight class="normal">processaltitude.py:<sp/>Interprets<sp/>log<sp/>files<sp/>to<sp/>make<sp/>altitude<sp/>plots<sp/>(Meh,<sp/>MATLAB<sp/>sims<sp/>are<sp/>better.<sp/>Cool<sp/>to<sp/>get<sp/>this<sp/>running<sp/>and<sp/>see<sp/>plots<sp/>on<sp/>the<sp/>field,<sp/>but<sp/>it<sp/>might<sp/>not<sp/>work<sp/>anymore)</highlight></codeline>
+<codeline><highlight class="normal">video_concat<sp/>scripts:<sp/>We<sp/>save<sp/>the<sp/>flight<sp/>videos<sp/>in<sp/>increments,<sp/>so<sp/>this<sp/>will<sp/>just<sp/>merge<sp/>it<sp/>all<sp/>together<sp/>(Meh,<sp/>cool<sp/>to<sp/>get<sp/>this<sp/>running<sp/>if<sp/>relevant,<sp/>but<sp/>probably<sp/>doesn&apos;t<sp/>work<sp/>anymore)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Limitations</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>code<sp/>in<sp/>its<sp/>current<sp/>form<sp/>did<sp/>not<sp/>successfully<sp/>operate<sp/>in<sp/>the<sp/>NASA<sp/>USLI<sp/>competition<sp/>despite<sp/>functioning<sp/>through<sp/>all<sp/>of<sp/>our<sp/>tests.<sp/>We<sp/>were<sp/>able<sp/>to<sp/>successfully<sp/>record<sp/>flight<sp/>video,<sp/>perform<sp/>RCB,<sp/>detect<sp/>all<sp/>cameras<sp/>and<sp/>SDRS<sp/>post-landing,<sp/>and<sp/>lift.<sp/>However,<sp/>during<sp/>the<sp/>lift,<sp/>we<sp/>lost<sp/>all<sp/>USB<sp/>connections<sp/>despite<sp/>no<sp/>hardware<sp/>disruptions.<sp/>With<sp/>a<sp/>software<sp/>reboot,<sp/>we<sp/>were<sp/>able<sp/>to<sp/>successfully<sp/>execute<sp/>the<sp/>payload.<sp/>Further<sp/>testing<sp/>revealed<sp/>that<sp/>this<sp/>error<sp/>happens<sp/>5-10%<sp/>of<sp/>the<sp/>time.<sp/>The<sp/>leading<sp/>reason<sp/>for<sp/>failure<sp/>is<sp/>the<sp/>fact<sp/>that<sp/>we<sp/>powered<sp/>the<sp/>Raspberry<sp/>Pi<sp/>with<sp/>GPIO<sp/>pins,<sp/>rather<sp/>than<sp/>the<sp/>USB-C<sp/>or<sp/>barrel<sp/>jack<sp/>port.<sp/>This<sp/>is<sp/>bad<sp/>because<sp/>while<sp/>it<sp/>is<sp/>safe<sp/>voltage-wise,<sp/>you<sp/>can<sp/>only<sp/>run<sp/>limited<sp/>current<sp/>through<sp/>the<sp/>GPIO<sp/>pins.<sp/>Perhaps<sp/>when<sp/>running<sp/>the<sp/>camera,<sp/>the<sp/>current<sp/>spiked<sp/>up,<sp/>leading<sp/>to<sp/>undefined<sp/>behavior<sp/>of<sp/>the<sp/>USBs<sp/>disconnecting.<sp/>However,<sp/>this<sp/>should<sp/>be<sp/>thouroughly<sp/>tested.</highlight></codeline>
+<codeline><highlight class="normal">https://forums.raspberrypi.com/viewtopic.php?t=196531</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/README.md"/>
+  </compounddef>
+</doxygen>

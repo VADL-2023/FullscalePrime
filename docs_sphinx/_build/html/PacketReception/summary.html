@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PacketReception &mdash; Fullscale Prime  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SerialCute++" href="../SerialCute%2B%2B/summary.html" />
+    <link rel="prev" title="MainDriver" href="../MainDriver/summary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Fullscale Prime
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../FieldTest/summary.html">FieldTest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HFSM/summary.html">HFSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../IMU/summary.html">IMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Log/summary.html">Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MainDriver/summary.html">MainDriver</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PacketReception</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#packet-receiver-library">Packet Receiver Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#packettest">PacketTest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tcptest">TCPTest</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../SerialCute%2B%2B/summary.html">SerialCute++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Stepper/summary.html">Stepper for Nacelle Swivel</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fullscale Prime</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PacketReception</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/PacketReception/summary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packetreception">
+<h1>PacketReception<a class="headerlink" href="#packetreception" title="Permalink to this heading"></a></h1>
+<p>Contains the Packet Reception library. This library (and entire package) was written by Meredith Hunter, so ask her if you have questions.</p>
+<section id="packet-receiver-library">
+<h2>Packet Receiver Library<a class="headerlink" href="#packet-receiver-library" title="Permalink to this heading"></a></h2>
+<p>Library to receive APRS Packet. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.PACKETRECEIVER_H">
+<span class="target" id="PacketReceiver_8h_1ad921f832ed953385aedc74c81cb38383"></span><span class="sig-name descname"><span class="n"><span class="pre">PACKETRECEIVER_H</span></span></span><a class="headerlink" href="#c.PACKETRECEIVER_H" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv410AX25Packet">
+<span id="_CPPv310AX25Packet"></span><span id="_CPPv210AX25Packet"></span><span id="AX25Packet"></span><span class="target" id="structAX25Packet"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AX25Packet</span></span></span><a class="headerlink" href="#_CPPv410AX25Packet" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PacketReceiver.h&gt;</em></div>
+<p>Contains all packet information in the standard AX.25 protocol. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10AX25Packet6sourceE">
+<span id="_CPPv3N10AX25Packet6sourceE"></span><span id="_CPPv2N10AX25Packet6sourceE"></span><span id="AX25Packet::source__ss"></span><span class="target" id="structAX25Packet_1a80cc00d0a9103d5b80f73f0beb112700"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">source</span></span></span><a class="headerlink" href="#_CPPv4N10AX25Packet6sourceE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Source of packet represented as string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10AX25Packet11source_ssidE">
+<span id="_CPPv3N10AX25Packet11source_ssidE"></span><span id="_CPPv2N10AX25Packet11source_ssidE"></span><span id="AX25Packet::source_ssid__i"></span><span class="target" id="structAX25Packet_1ae744bdc5871778afc003d67f7e702f32"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">source_ssid</span></span></span><a class="headerlink" href="#_CPPv4N10AX25Packet11source_ssidE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>SSID for the source. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10AX25Packet4destE">
+<span id="_CPPv3N10AX25Packet4destE"></span><span id="_CPPv2N10AX25Packet4destE"></span><span id="AX25Packet::dest__ss"></span><span class="target" id="structAX25Packet_1aadde089b2ca7c51de77735721a8b0cb5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dest</span></span></span><a class="headerlink" href="#_CPPv4N10AX25Packet4destE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Packet destination represented as a string. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10AX25Packet3msgE">
+<span id="_CPPv3N10AX25Packet3msgE"></span><span id="_CPPv2N10AX25Packet3msgE"></span><span id="AX25Packet::msg__ss"></span><span class="target" id="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">msg</span></span></span><a class="headerlink" href="#_CPPv4N10AX25Packet3msgE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Message encoded by APRS packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv414PacketReceiver">
+<span id="_CPPv314PacketReceiver"></span><span id="_CPPv214PacketReceiver"></span><span id="PacketReceiver"></span><span class="target" id="classPacketReceiver"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketReceiver</span></span></span><a class="headerlink" href="#_CPPv414PacketReceiver" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;PacketReceiver.h&gt;</em></div>
+<p><a class="reference internal" href="#classPacketReceiver"><span class="std std-ref">PacketReceiver</span></a> Object for APRS. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver14PacketReceiverEiNSt6stringEiNSt6stringE">
+<span id="_CPPv3N14PacketReceiver14PacketReceiverEiNSt6stringEiNSt6stringE"></span><span id="_CPPv2N14PacketReceiver14PacketReceiverEiNSt6stringEiNSt6stringE"></span><span id="PacketReceiver::PacketReceiver__i.ss.i.ss"></span><span class="target" id="classPacketReceiver_1a44659663b638f6c15b56e5afffaedc76"></span><span class="sig-name descname"><span class="n"><span class="pre">PacketReceiver</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">serial_num</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frequency</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">port</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">configfile</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver14PacketReceiverEiNSt6stringEiNSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Construct a new Packet Receiver object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>serial_num</strong> – Serial number </p></li>
+<li><p><strong>frequency</strong> – Desired frequency </p></li>
+<li><p><strong>port</strong> – TCP Port </p></li>
+<li><p><strong>configfile</strong> – Direwolf config file </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiverD0Ev">
+<span id="_CPPv3N14PacketReceiverD0Ev"></span><span id="_CPPv2N14PacketReceiverD0Ev"></span><span id="PacketReceiver::~PacketReceiver"></span><span class="target" id="classPacketReceiver_1aaa7c59a15a919bb7842ed062199876cf"></span><span class="sig-name descname"><span class="n"><span class="pre">~PacketReceiver</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiverD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Destroy the Packet Receiver object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver8startSDREv">
+<span id="_CPPv3N14PacketReceiver8startSDREv"></span><span id="_CPPv2N14PacketReceiver8startSDREv"></span><span id="PacketReceiver::startSDR"></span><span class="target" id="classPacketReceiver_1a71342adf823a60bb19eb598ab74bac72"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startSDR</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver8startSDREv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes SDR. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver8startSDRER3Log">
+<span id="_CPPv3N14PacketReceiver8startSDRER3Log"></span><span id="_CPPv2N14PacketReceiver8startSDRER3Log"></span><span id="PacketReceiver::startSDR__LogR"></span><span class="target" id="classPacketReceiver_1ab23a5cadf76e484962899dff8147b7e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startSDR</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../Log/summary.html#_CPPv43Log" title="Log"><span class="n"><span class="pre">Log</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">m_log</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver8startSDRER3Log" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Initializes SDR so <a class="reference internal" href="../Log/summary.html#classLog"><span class="std std-ref">Log</span></a> can track it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m_log</strong> – Pointer to the <a class="reference internal" href="../Log/summary.html#classLog"><span class="std std-ref">Log</span></a> object </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver7stopSDREv">
+<span id="_CPPv3N14PacketReceiver7stopSDREv"></span><span id="_CPPv2N14PacketReceiver7stopSDREv"></span><span id="PacketReceiver::stopSDR"></span><span class="target" id="classPacketReceiver_1a3cdef77ef428177d339f56c31047e4cd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stopSDR</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver7stopSDREv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Terminates SDR. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver15packetAvailableEv">
+<span id="_CPPv3N14PacketReceiver15packetAvailableEv"></span><span id="_CPPv2N14PacketReceiver15packetAvailableEv"></span><span id="PacketReceiver::packetAvailable"></span><span class="target" id="classPacketReceiver_1acb9ab72d118d8e8efd298c54b7c43394"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packetAvailable</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver15packetAvailableEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Checks if APRS Packet is available. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true APRS Packet is available </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false APRS Packet is not available </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver9getPacketEv">
+<span id="_CPPv3N14PacketReceiver9getPacketEv"></span><span id="_CPPv2N14PacketReceiver9getPacketEv"></span><span id="PacketReceiver::getPacket"></span><span class="target" id="classPacketReceiver_1a0967e86e89ca22f1234756f62f37cc24"></span><a class="reference internal" href="#_CPPv410AX25Packet" title="AX25Packet"><span class="n"><span class="pre">AX25Packet</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getPacket</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver9getPacketEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Get the <a class="reference internal" href="#structAX25Packet"><span class="std std-ref">AX25Packet</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The APRS Packet </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-functions">Private Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver4execENSt6stringE">
+<span id="_CPPv3N14PacketReceiver4execENSt6stringE"></span><span id="_CPPv2N14PacketReceiver4execENSt6stringE"></span><span id="PacketReceiver::exec__ss"></span><span class="target" id="classPacketReceiver_1a2c1d954663b66359901b7f9e830a6c3f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exec</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cmd</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver4execENSt6stringE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Executes cmd on the command line. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cmd</strong> – Command line instruction </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string representing output from terminal </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver17decodeMicECommentEPci">
+<span id="_CPPv3N14PacketReceiver17decodeMicECommentEPci"></span><span id="_CPPv2N14PacketReceiver17decodeMicECommentEPci"></span><span id="PacketReceiver::decodeMicEComment__cP.i"></span><span class="target" id="classPacketReceiver_1a0f766af0996632f0627fc7f8a50bc5a5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decodeMicEComment</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">msg</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">length</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14PacketReceiver17decodeMicECommentEPci" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Decodes Mic-E message. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – The message </p></li>
+<li><p><strong>length</strong> – The length of msg </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string representing the decoded message </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver10serial_numE">
+<span id="_CPPv3N14PacketReceiver10serial_numE"></span><span id="_CPPv2N14PacketReceiver10serial_numE"></span><span id="PacketReceiver::serial_num__i"></span><span class="target" id="classPacketReceiver_1a3290ea5cfa4f201137f63cf0a2d32fb2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">serial_num</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver10serial_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>RTL-SDR serial number. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver9frequencyE">
+<span id="_CPPv3N14PacketReceiver9frequencyE"></span><span id="_CPPv2N14PacketReceiver9frequencyE"></span><span id="PacketReceiver::frequency__ss"></span><span class="target" id="classPacketReceiver_1a9a95a44de1f8e6f7f116c8df1f8ed5b3"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">frequency</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver9frequencyE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Frequency to tune the SDR to. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver8port_numE">
+<span id="_CPPv3N14PacketReceiver8port_numE"></span><span id="_CPPv2N14PacketReceiver8port_numE"></span><span id="PacketReceiver::port_num__i"></span><span class="target" id="classPacketReceiver_1a7610e7bcbf5219aa1adf178531e73d6c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port_num</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver8port_numE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>TCP Port for Direwolf. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver10configfileE">
+<span id="_CPPv3N14PacketReceiver10configfileE"></span><span id="_CPPv2N14PacketReceiver10configfileE"></span><span id="PacketReceiver::configfile__ss"></span><span class="target" id="classPacketReceiver_1a9399fba1304879db443a513ca5a5bcc6"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configfile</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver10configfileE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Name of config file for Direwolf. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver10sdr_scriptE">
+<span id="_CPPv3N14PacketReceiver10sdr_scriptE"></span><span id="_CPPv2N14PacketReceiver10sdr_scriptE"></span><span id="PacketReceiver::sdr_script__ss"></span><span class="target" id="classPacketReceiver_1a7d5f9d2ce967f9ecf0b5ec01e0409b1f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdr_script</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;sudo</span> <span class="pre">../../runSDR.sh&quot;</span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver10sdr_scriptE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Command Line instruction to run SDR script. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver10rtl_activeE">
+<span id="_CPPv3N14PacketReceiver10rtl_activeE"></span><span id="_CPPv2N14PacketReceiver10rtl_activeE"></span><span id="PacketReceiver::rtl_active__b"></span><span class="target" id="classPacketReceiver_1a72bebf217ca31770fe816441ed518495"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtl_active</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver10rtl_activeE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Indicates whether the radio is currently running. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver7rtl_pidE">
+<span id="_CPPv3N14PacketReceiver7rtl_pidE"></span><span id="_CPPv2N14PacketReceiver7rtl_pidE"></span><span id="PacketReceiver::rtl_pid__i"></span><span class="target" id="classPacketReceiver_1a5686aba638a5ba90674f4d68062a7ad5"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rtl_pid</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver7rtl_pidE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Process ID for RTL_FM the last time it was started. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver5countE">
+<span id="_CPPv3N14PacketReceiver5countE"></span><span id="_CPPv2N14PacketReceiver5countE"></span><span id="PacketReceiver::count__i"></span><span class="target" id="classPacketReceiver_1a61274e2ecfa7648f3b7fed28119fe355"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver5countE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Count the number of times Direwolf has been run. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver6sockfdE">
+<span id="_CPPv3N14PacketReceiver6sockfdE"></span><span id="_CPPv2N14PacketReceiver6sockfdE"></span><span id="PacketReceiver::sockfd__i"></span><span class="target" id="classPacketReceiver_1a2b6f9907c90e952645dabcc203b24701"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sockfd</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver6sockfdE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>TCP Port info. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver9serv_addrE">
+<span id="_CPPv3N14PacketReceiver9serv_addrE"></span><span id="_CPPv2N14PacketReceiver9serv_addrE"></span><span id="PacketReceiver::serv_addr__sockaddr_in"></span><span class="target" id="classPacketReceiver_1aa47d2893db43190883148570d2e91dff"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">sockaddr_in</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">serv_addr</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver9serv_addrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>TCP Port info server address. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14PacketReceiver6serverE">
+<span id="_CPPv3N14PacketReceiver6serverE"></span><span id="_CPPv2N14PacketReceiver6serverE"></span><span id="PacketReceiver::server__hostentP"></span><span class="target" id="classPacketReceiver_1a73415f0374bf2dffe34f9ce5fcdfe2fc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">hostent</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">server</span></span></span><a class="headerlink" href="#_CPPv4N14PacketReceiver6serverE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>TCP Port info server. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="packettest">
+<h2>PacketTest<a class="headerlink" href="#packettest" title="Permalink to this heading"></a></h2>
+<p>Simply tests if we can receive APRS Packet. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainv">
+<span id="_CPPv34mainv"></span><span id="_CPPv24mainv"></span><span id="main"></span><span class="target" id="PacketTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Main method to test APRS Packet Reception. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing exit status </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+<section id="tcptest">
+<h2>TCPTest<a class="headerlink" href="#tcptest" title="Permalink to this heading"></a></h2>
+<p>Tests if we can receive APRS Packet through TCP. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="TCPTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Main Method to test TCP Port. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int representing exit status </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../MainDriver/summary.html" class="btn btn-neutral float-left" title="MainDriver" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../SerialCute%2B%2B/summary.html" class="btn btn-neutral float-right" title="SerialCute++" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, me.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

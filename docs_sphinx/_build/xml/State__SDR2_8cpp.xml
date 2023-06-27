@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="State__SDR2_8cpp" kind="file" language="C++">
+    <compoundname>State_SDR2.cpp</compoundname>
+    <includes refid="State__SDR2_8h" local="yes">State_SDR2.h</includes>
+    <includes refid="Root_8h" local="yes">Root.h</includes>
+    <incdepgraph>
+      <node id="31">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="23">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="13">
+        <label>sensors.h</label>
+      </node>
+      <node id="7">
+        <label>Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>State_SDR2.h</label>
+        <link refid="State__SDR2_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>pigpio.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/src/State_SDR2.cpp</label>
+        <link refid="State__SDR2_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30">
+        <label>opencv2/imgproc.hpp</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="17">
+        <label>fstream</label>
+      </node>
+      <node id="24">
+        <label>netdb.h</label>
+      </node>
+      <node id="25">
+        <label>Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>config_IMU.hpp</label>
+      </node>
+      <node id="21">
+        <label>sys/types.h</label>
+      </node>
+      <node id="15">
+        <label>Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ctime</label>
+      </node>
+      <node id="27">
+        <label>opencv2/core.hpp</label>
+      </node>
+      <node id="10">
+        <label>unistd.h</label>
+      </node>
+      <node id="28">
+        <label>opencv2/videoio.hpp</label>
+      </node>
+      <node id="16">
+        <label>registers.h</label>
+      </node>
+      <node id="12">
+        <label>math.h</label>
+      </node>
+      <node id="29">
+        <label>opencv2/highgui.hpp</label>
+      </node>
+      <node id="19">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="20">
+        <label>PacketReceiver.h</label>
+        <link refid="PacketReceiver_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>chrono</label>
+      </node>
+      <node id="22">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="11">
+        <label>thread</label>
+      </node>
+      <node id="6">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+      <node id="32">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__SDR2_8h" kindref="compound">State_SDR2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Root_8h" kindref="compound">Root.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><ref refid="classState__SDR2_1a5c33c008d6244b5199950fddc1c1dc56" kindref="member">State_SDR2::State_SDR2</ref>():<sp/><ref refid="classState" kindref="compound">State</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="classState__SDR2_1a5c33c008d6244b5199950fddc1c1dc56" kindref="member">State_SDR2::State_SDR2</ref>(<ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/>name,<sp/>std::map&lt;EventName,<sp/>StateName&gt;<sp/>&amp;state_transitions,<sp/><ref refid="classRoot" kindref="compound">Root</ref>*<sp/>root)<sp/>:<sp/><ref refid="classState" kindref="compound">State</ref>(name,<sp/>state_transitions,<sp/>root)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__SDR2_1acb6e265d67192d965a6c83d1882fce28" kindref="member">State_SDR2::execute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;In<sp/>State_SDR2<sp/>and<sp/>will<sp/>return<sp/>end<sp/>state.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22" kindref="member">TERMINATE</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__SDR2_1a5da0e370cafe8c0c6bbb55d197fda26f" kindref="member">State_SDR2::unitExecute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Setup<sp/>APRS<sp/>Packet<sp/>Reception</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Starting<sp/>SDR&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ae860d7f98dadc0842a70566ce88853fd" kindref="member">radio2_</ref>.<ref refid="classPacketReceiver_1a71342adf823a60bb19eb598ab74bac72" kindref="member">startSDR</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Waiting<sp/>for<sp/>packets&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structAX25Packet" kindref="compound">AX25Packet</ref><sp/>p1;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>packet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p1.<ref refid="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c" kindref="member">msg</ref>.find(</highlight><highlight class="stringliteral">&quot;shutdown&quot;</highlight><highlight class="normal">)<sp/>==<sp/>std::string::npos<sp/>&amp;&amp;<sp/>p1.<ref refid="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c" kindref="member">msg</ref>.find(</highlight><highlight class="stringliteral">&quot;ERROR&quot;</highlight><highlight class="normal">)<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p1<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ae860d7f98dadc0842a70566ce88853fd" kindref="member">radio2_</ref>.<ref refid="classPacketReceiver_1a0967e86e89ca22f1234756f62f37cc24" kindref="member">getPacket</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>p1.<ref refid="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c" kindref="member">msg</ref><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Halting<sp/>SDR&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>sleep(5);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ae860d7f98dadc0842a70566ce88853fd" kindref="member">radio2_</ref>.<ref refid="classPacketReceiver_1a3cdef77ef428177d339f56c31047e4cd" kindref="member">stopSDR</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca956ecc3c7549c73ce4e20425514360ff" kindref="member">RECEIVED_PACKETS</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/src/State_SDR2.cpp"/>
+  </compounddef>
+</doxygen>

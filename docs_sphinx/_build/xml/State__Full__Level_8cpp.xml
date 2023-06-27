@@ -1,0 +1,313 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="State__Full__Level_8cpp" kind="file" language="C++">
+    <compoundname>State_Full_Level.cpp</compoundname>
+    <includes refid="State__Full__Level_8h" local="yes">State_Full_Level.h</includes>
+    <includes refid="Root_8h" local="yes">Root.h</includes>
+    <incdepgraph>
+      <node id="31">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="23">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="13">
+        <label>sensors.h</label>
+      </node>
+      <node id="7">
+        <label>Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>State_Full_Level.h</label>
+        <link refid="State__Full__Level_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>pigpio.h</label>
+      </node>
+      <node id="33">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30">
+        <label>opencv2/imgproc.hpp</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="17">
+        <label>fstream</label>
+      </node>
+      <node id="24">
+        <label>netdb.h</label>
+      </node>
+      <node id="25">
+        <label>Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>config_IMU.hpp</label>
+      </node>
+      <node id="21">
+        <label>sys/types.h</label>
+      </node>
+      <node id="15">
+        <label>Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ctime</label>
+      </node>
+      <node id="27">
+        <label>opencv2/core.hpp</label>
+      </node>
+      <node id="10">
+        <label>unistd.h</label>
+      </node>
+      <node id="28">
+        <label>opencv2/videoio.hpp</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Level.cpp</label>
+        <link refid="State__Full__Level_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>registers.h</label>
+      </node>
+      <node id="12">
+        <label>math.h</label>
+      </node>
+      <node id="29">
+        <label>opencv2/highgui.hpp</label>
+      </node>
+      <node id="19">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="20">
+        <label>PacketReceiver.h</label>
+        <link refid="PacketReceiver_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>chrono</label>
+      </node>
+      <node id="22">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="11">
+        <label>thread</label>
+      </node>
+      <node id="6">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+      <node id="32">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__Full__Level_8h" kindref="compound">State_Full_Level.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Root_8h" kindref="compound">Root.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><ref refid="classState__Full__Level_1abd880008d6eb3fa3d08bcbb76b093f29" kindref="member">State_Full_Level::State_Full_Level</ref>()<sp/>:<sp/><ref refid="classState" kindref="compound">State</ref>()</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="classState__Full__Level_1abd880008d6eb3fa3d08bcbb76b093f29" kindref="member">State_Full_Level::State_Full_Level</ref>(<ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/>name,<sp/>std::map&lt;EventName,<sp/>StateName&gt;<sp/>&amp;state_transitions,<sp/><ref refid="classRoot" kindref="compound">Root</ref><sp/>*root)<sp/>:<sp/><ref refid="classState" kindref="compound">State</ref>(name,<sp/>state_transitions,<sp/>root)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__Full__Level_1aa842ea166bafdde36f901eb205c6d579" kindref="member">State_Full_Level::execute</ref>()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;In<sp/>State_Full_Level<sp/>and<sp/>will<sp/>return<sp/>end<sp/>state.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1aacc555363da6ccd6fae0a499b9109998" kindref="member">is_imu_connected_</ref>)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IMU<sp/>connection<sp/>and<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" kindref="member">m_vn_</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>VnSensor();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" kindref="member">m_vn_</ref>-&gt;connect(IMU_PORT,<sp/>IMU_BAUD_RATE);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;IMU<sp/>Connected&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;Exception:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(e.what());</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;IMU<sp/>failed<sp/>to<sp/>connect...<sp/>restart<sp/>program&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca0aeaf689272c45b9482ea2c3bab82b2a" kindref="member">LEVEL_FAILURE</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1aacc555363da6ccd6fae0a499b9109998" kindref="member">is_imu_connected_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>got_level_reading<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Find<sp/>average<sp/>pitch<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>5<sp/>&amp;&amp;<sp/>!got_level_reading;<sp/>i++)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>response_rpy<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" kindref="member">m_vn_</ref>-&gt;readYawPitchRoll();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>average_error<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ab71a63a9f7a23d569ebc598ec51bc2ca" kindref="member">num_level_samples_</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>yaw_measurement<sp/>=<sp/>response_rpy[2];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(yaw_measurement<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>average_error<sp/>+=<sp/>(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ac4d3c1196a55572750069077f4a1a29a" kindref="member">ideal_level_angle_</ref><sp/>+<sp/>yaw_measurement);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>average_error<sp/>+=<sp/>(yaw_measurement<sp/>-<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ac4d3c1196a55572750069077f4a1a29a" kindref="member">ideal_level_angle_</ref>);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>average_error<sp/>/=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ab71a63a9f7a23d569ebc598ec51bc2ca" kindref="member">num_level_samples_</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Interpolate<sp/>to<sp/>find<sp/>proper<sp/>servo<sp/>position<sp/>to<sp/>level<sp/>nacelle<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>desired_servo_pos<sp/>=<sp/>(((this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" kindref="member">max_pulse_width_</ref><sp/>-<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a49d5b3706ce3555614d779f86184171f" kindref="member">min_pulse_width_</ref>)<sp/>/<sp/>(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a265140c8de53ce90dbdae0c7f181ca3b" kindref="member">max_angle_</ref><sp/>-<sp/>this-&gt;root_-&gt;min_angle_))<sp/>*<sp/>(average_error<sp/>-<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a13235d7d0df024df0268f44d3625ac19" kindref="member">min_angle_</ref>))<sp/>+<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a49d5b3706ce3555614d779f86184171f" kindref="member">min_pulse_width_</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;root_-&gt;m_log_.write(</highlight><highlight class="stringliteral">&quot;Average<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(average_error));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;Desired<sp/>servo<sp/>pulsewidth:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(desired_servo_pos));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>the<sp/>servo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(desired_servo_pos<sp/>&gt;<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" kindref="member">max_pulse_width_</ref>)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;At<sp/>max<sp/>pulse<sp/>width&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desired_servo_pos<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" kindref="member">max_pulse_width_</ref>;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(desired_servo_pos<sp/>&lt;<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a49d5b3706ce3555614d779f86184171f" kindref="member">min_pulse_width_</ref>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;At<sp/>min<sp/>pulse<sp/>width&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>desired_servo_pos<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a49d5b3706ce3555614d779f86184171f" kindref="member">min_pulse_width_</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioServo(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1afe24ba4d1f27f1ed660ede3e997451d4" kindref="member">level_servo_</ref>,<sp/>desired_servo_pos);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioSleep(0,<sp/>2,<sp/>0);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>got_level_reading<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" kindref="member">write</ref>(</highlight><highlight class="stringliteral">&quot;Couldn&apos;t<sp/>read<sp/>from<sp/>IMU.<sp/>About<sp/>to<sp/>try<sp/>again&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>we<sp/>are<sp/>recording<sp/>lift<sp/>video,<sp/>write<sp/>it<sp/>out<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a3b7f785df36078118be89d4e75fee5eb" kindref="member">lift_done_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a111da0d026977d4f1d788c94dc19dc1b" kindref="member">lift_thread_</ref>.join();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Wrote<sp/>lift<sp/>and<sp/>level<sp/>video&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal">(...)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>video<sp/>thread&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a941b9d7f74c3194c11b293a5ede8d8b2" kindref="member">lift_and_level_cap_</ref>.release();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//usleep(10000000);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>.<ref refid="classLog_1aedf3a10cb2b62dc6de2f6ed8274e9476" kindref="member">tempSaveProgLog</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ecaf654be96ac74a2ba172cc6f10064c77d" kindref="member">LEVEL_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__Full__Level_1ad8fa398946c09366bbd832997ef1d2b3" kindref="member">State_Full_Level::unitExecute</ref>()</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="classState__Full__Level_1aa842ea166bafdde36f901eb205c6d579" kindref="member">execute</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Level.cpp"/>
+  </compounddef>
+</doxygen>

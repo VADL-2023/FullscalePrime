@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="SerialWrite_8cpp" kind="file" language="C++">
+    <compoundname>SerialWrite.cpp</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">cstring</includes>
+    <includes local="no">string</includes>
+    <includes local="no">fcntl.h</includes>
+    <includes local="no">errno.h</includes>
+    <includes local="no">termios.h</includes>
+    <includes local="no">unistd.h</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>errno.h</label>
+      </node>
+      <node id="5">
+        <label>fcntl.h</label>
+      </node>
+      <node id="7">
+        <label>termios.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/SerialCute++/SerialWrite.cpp</label>
+        <link refid="SerialWrite_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>unistd.h</label>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+      <node id="3">
+        <label>cstring</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="SerialWrite_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+<para>Main method trying to test Serial Object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int representing exit status </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/SerialWrite.cpp" line="22" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/SerialWrite.cpp" bodystart="22" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Alternate Serial test (maybe used for images, probably should be deprecated) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C<sp/>Library<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Linux<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;errno.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;termios.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>write(),<sp/>read(),<sp/>close()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="SerialWrite_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Open<sp/>serial<sp/>port</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>serial_port<sp/>=<sp/>open(</highlight><highlight class="stringliteral">&quot;/dev/ttyS0&quot;</highlight><highlight class="normal">,<sp/>O_RDWR);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(serial_port<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Error<sp/>%i<sp/>from<sp/>open:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>errno,<sp/>strerror(errno));</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">termios<sp/>tty;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>in<sp/>existing<sp/>settings<sp/>and<sp/>handle<sp/>any<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tcgetattr(serial_port,<sp/>&amp;tty)<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Error<sp/>%i<sp/>from<sp/>tcgetattr:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>errno,<sp/>strerror(errno));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>&amp;=<sp/>~PARENB;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>parity<sp/>bit,<sp/>disabling<sp/>parity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>&amp;=<sp/>~CSTOPB;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>stop<sp/>field,<sp/>only<sp/>one<sp/>stop<sp/>bit<sp/>used<sp/>in<sp/>communication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>&amp;=<sp/>~CSIZE;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//clear<sp/>all<sp/>the<sp/>size<sp/>bits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>|=<sp/>CS8;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>8<sp/>bits<sp/>per<sp/>byte</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>&amp;=<sp/>~CRTSCTS;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>RTS/CTS<sp/>hardware<sp/>flow<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cflag<sp/>|=<sp/>CREAD<sp/>|<sp/>CLOCAL;<sp/><sp/></highlight><highlight class="comment">//<sp/>Turn<sp/>on<sp/>READ<sp/>&amp;<sp/>ignore<sp/>ctrl<sp/>lines<sp/>(CLOCAL<sp/>=<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_lflag<sp/>&amp;=<sp/>~ICANON;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_lflag<sp/>&amp;=<sp/>~ECHO;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>echo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_lflag<sp/>&amp;=<sp/>~ECHOE;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disale<sp/>erasure</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_lflag<sp/>&amp;=<sp/>~ECHONL;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>new<sp/>line<sp/>echo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_lflag<sp/>&amp;=<sp/>~ISIG;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>interpretation<sp/>of<sp/>INTR,<sp/>QUIT,<sp/>and<sp/>SUSP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_iflag<sp/>&amp;=<sp/>~(IXON<sp/>|<sp/>IXOFF<sp/>|<sp/>IXANY);<sp/></highlight><highlight class="comment">//<sp/>Turn<sp/>off<sp/>s/w<sp/>flow<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_iflag<sp/>&amp;=<sp/>~(IGNBRK<sp/>|<sp/>BRKINT<sp/>|<sp/>PARMRK<sp/>|<sp/>ISTRIP<sp/>|<sp/>INLCR<sp/>|<sp/>IGNCR<sp/>|<sp/>ICRNL);<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Disable<sp/>any<sp/>special<sp/>handling<sp/>of<sp/>received<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_oflag<sp/>&amp;=<sp/>~OPOST;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prevent<sp/>special<sp/>interpreation<sp/>of<sp/>output<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_oflag<sp/>&amp;=<sp/>~ONLCR;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prevent<sp/>conversion<sp/>of<sp/>newLine<sp/>to<sp/>carraige<sp/>return/line<sp/>feed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cc[VTIME]<sp/>=<sp/>10;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>up<sp/>to<sp/>1s<sp/>(10<sp/>deciseconds),<sp/>returning<sp/>as<sp/>soon<sp/>as<sp/>any<sp/>data<sp/>is<sp/>received</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>tty.c_cc[VMIN]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>in/out<sp/>baud<sp/>rate<sp/>to<sp/>be<sp/>9600</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>cfsetispeed(&amp;tty,<sp/>B9600);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>cfsetospeed(&amp;tty,<sp/>B9600);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Save<sp/>tty<sp/>settings,<sp/>also<sp/>checking<sp/>for<sp/>error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tcsetattr(serial_port,<sp/>TCSANOW,<sp/>&amp;tty)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Error<sp/>%i<sp/>from<sp/>tcsetattr:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>errno,<sp/>strerror(errno));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Writing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>msg[]<sp/>=<sp/>{</highlight><highlight class="charliteral">&apos;H&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;e&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;o&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;\r&apos;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>write(serial_port,<sp/>msg,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(msg));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>read_buf[256];</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;read_buf,<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(read_buf));</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_bytes<sp/>=<sp/>read(serial_port,<sp/>&amp;read_buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(read_buf));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_bytes<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Error<sp/>reading:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>strerror(errno));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Read<sp/>%i<sp/>bytes.<sp/>Received<sp/>message<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>num_bytes,<sp/>read_buf);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>close(serial_port);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/SerialWrite.cpp"/>
+  </compounddef>
+</doxygen>
