@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="SerialCute_09_09_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>SerialCute++</highlight></codeline>
+<codeline><highlight class="normal">Name<sp/>credits<sp/>go<sp/>to<sp/>Meredith<sp/>Hunter.<sp/>This<sp/>is<sp/>a<sp/>Serial<sp/>Object<sp/>library<sp/>to<sp/>allow<sp/>for<sp/>Serial<sp/>communication.<sp/>This<sp/>was<sp/>primarily<sp/>designed<sp/>for<sp/>communication<sp/>between<sp/>Raspberry<sp/>Pi<sp/>and<sp/>Teensy<sp/>or<sp/>Raspberry<sp/>Pi<sp/>and<sp/>ESP32.<sp/>It<sp/>was<sp/>also<sp/>used<sp/>for<sp/>SerialPrime<sp/>(a<sp/>deprecated<sp/>Serial<sp/>communication<sp/>protocol<sp/>to<sp/>send<sp/>ESP32<sp/>photos<sp/>to<sp/>Raspberry<sp/>Pi)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>File<sp/>Explanation</highlight></codeline>
+<codeline><highlight class="normal">SerialTest:<sp/>Simple<sp/>test<sp/>of<sp/>Serial<sp/>Object</highlight></codeline>
+<codeline><highlight class="normal">SerialWrite:<sp/>Alternate<sp/>Serial<sp/>test<sp/>(maybe<sp/>used<sp/>for<sp/>images,<sp/>probably<sp/>should<sp/>be<sp/>deprecated)</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/README.md"/>
+  </compounddef>
+</doxygen>

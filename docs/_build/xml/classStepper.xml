@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classStepper" kind="class" language="C++" prot="public">
+    <compoundname>Stepper</compoundname>
+    <includes local="no">Stepper.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStepper_1af8230546ad1a6fd0c4399346b07f80e2" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::direction_</definition>
+        <argsstring></argsstring>
+        <name>direction_</name>
+        <briefdescription>
+<para>Direction of rotation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="97" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a4fc730892ee6724c187aa91a0b7e04ff" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Stepper::step_delay_</definition>
+        <argsstring></argsstring>
+        <name>step_delay_</name>
+        <briefdescription>
+<para>Delay between steps in us based on speed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="103" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a97f45b59b0cc3775f7b4e561616f57d7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::number_of_steps_</definition>
+        <argsstring></argsstring>
+        <name>number_of_steps_</name>
+        <briefdescription>
+<para>Total number of steps the motor can rotate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="109" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1aadda1ae8645045f9a3032ce7877f2f49" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::pin_count_</definition>
+        <argsstring></argsstring>
+        <name>pin_count_</name>
+        <briefdescription>
+<para>Number of GPIO pins used for stepper motor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="115" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a3f232a5d6ed595999d24d0d880f4df4b" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::step_number_</definition>
+        <argsstring></argsstring>
+        <name>step_number_</name>
+        <briefdescription>
+<para>Which step the motor is on. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="121" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a272611aefd1c28c15fe9009dc2f21bf4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::motor_pin_1_</definition>
+        <argsstring></argsstring>
+        <name>motor_pin_1_</name>
+        <briefdescription>
+<para>GPIO Pin 1. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="127" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1af2dad5fcc2f30f7887490565b64dbc1e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::motor_pin_2_</definition>
+        <argsstring></argsstring>
+        <name>motor_pin_2_</name>
+        <briefdescription>
+<para>GPIO Pin 2. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="133" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1ab2ed0c91a72029950d4cda2f5761a6f5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::motor_pin_3_</definition>
+        <argsstring></argsstring>
+        <name>motor_pin_3_</name>
+        <briefdescription>
+<para>GPIO Pin 3. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="139" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a000a337dadf836889bd6022d680c3661" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::motor_pin_4_</definition>
+        <argsstring></argsstring>
+        <name>motor_pin_4_</name>
+        <briefdescription>
+<para>GPIO Pin 4. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="145" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1ae8b0027c4fbf3d29b7e7564d91b761ba" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Stepper::motor_pin_5_</definition>
+        <argsstring></argsstring>
+        <name>motor_pin_5_</name>
+        <briefdescription>
+<para>GPIO Pin 5 (only for 5 phase motor) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="151" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStepper_1a931e87c424973f39f19d7dc82c5bbe87" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Stepper::last_step_time_</definition>
+        <argsstring></argsstring>
+        <name>last_step_time_</name>
+        <briefdescription>
+<para>Timestamp in us of when last step was taken. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="157" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStepper_1af3be15bfd38efba27858cc5ec00d84b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Stepper::Stepper</definition>
+        <argsstring>()</argsstring>
+        <name>Stepper</name>
+        <briefdescription>
+<para>Construct a new <ref refid="classStepper" kindref="compound">Stepper</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="27" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="5" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1a00cc1024bdc9af29c0cf946e345d346c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Stepper::Stepper</definition>
+        <argsstring>(int number_of_steps, int motor_pin_1, int motor_pin_2, int motor_pin_3, int motor_pin_4, bool gpio_initialized)</argsstring>
+        <name>Stepper</name>
+        <param>
+          <type>int</type>
+          <declname>number_of_steps</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_3</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_4</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>gpio_initialized</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classStepper" kindref="compound">Stepper</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>number_of_steps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of steps per revolution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 2 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 3 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_4</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 4 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gpio_initialized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boolean indicating if GPIO has been initialized yet </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="39" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="12" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1a873ad8f0bc8af4eeebe6ddb8a0fe218e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Stepper::initialize</definition>
+        <argsstring>(int number_of_steps, int motor_pin_1, int motor_pin_2, int motor_pin_3, int motor_pin_4, bool gpio_initialized)</argsstring>
+        <name>initialize</name>
+        <param>
+          <type>int</type>
+          <declname>number_of_steps</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_3</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>motor_pin_4</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>gpio_initialized</declname>
+        </param>
+        <briefdescription>
+<para>Initializes <ref refid="classStepper" kindref="compound">Stepper</ref> motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>number_of_steps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of steps per revolution </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 2 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_3</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 3 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>motor_pin_4</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO Pin 4 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gpio_initialized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boolean indicating if GPIO has been initialized yet </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="53" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="18" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1ad81a677b8431bcf856d19113bc233577" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Stepper::getCurrentTime</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentTime</name>
+        <briefdescription>
+<para>Get the current time in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>double representing the time in ms </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="61" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1a84421be64d1435e57f73f402e938aa3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Stepper::setSpeed</definition>
+        <argsstring>(double whatSpeed)</argsstring>
+        <name>setSpeed</name>
+        <param>
+          <type>double</type>
+          <declname>whatSpeed</declname>
+        </param>
+        <briefdescription>
+<para>Set the stepper motor speed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>whatSpeed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> speed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="68" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1a23f1ada8f077bcb8691009648cf29f27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Stepper::step</definition>
+        <argsstring>(int number_of_steps)</argsstring>
+        <name>step</name>
+        <param>
+          <type>int</type>
+          <declname>number_of_steps</declname>
+        </param>
+        <briefdescription>
+<para>Perform step for stepper. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>number_of_steps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of steps the motor must rotate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="75" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="61" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classStepper_1a2b737f8eb9641728af2fb1c24a2560da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Stepper::version</definition>
+        <argsstring>(void)</argsstring>
+        <name>version</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Returns stepper library version. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>int representing library version </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="82" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="256" bodyend="259"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classStepper_1a642b2b4d92bd5aa8bee85db88f07855d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Stepper::stepMotor</definition>
+        <argsstring>(int this_step)</argsstring>
+        <name>stepMotor</name>
+        <param>
+          <type>int</type>
+          <declname>this_step</declname>
+        </param>
+        <briefdescription>
+<para>Individual motor step. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>this_step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The individual step </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="91" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp" bodystart="120" bodyend="251"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> Library Interface. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" line="20" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h" bodystart="20" bodyend="158"/>
+    <listofallmembers>
+      <member refid="classStepper_1af8230546ad1a6fd0c4399346b07f80e2" prot="private" virt="non-virtual"><scope>Stepper</scope><name>direction_</name></member>
+      <member refid="classStepper_1ad81a677b8431bcf856d19113bc233577" prot="public" virt="non-virtual"><scope>Stepper</scope><name>getCurrentTime</name></member>
+      <member refid="classStepper_1a873ad8f0bc8af4eeebe6ddb8a0fe218e" prot="public" virt="non-virtual"><scope>Stepper</scope><name>initialize</name></member>
+      <member refid="classStepper_1a931e87c424973f39f19d7dc82c5bbe87" prot="private" virt="non-virtual"><scope>Stepper</scope><name>last_step_time_</name></member>
+      <member refid="classStepper_1a272611aefd1c28c15fe9009dc2f21bf4" prot="private" virt="non-virtual"><scope>Stepper</scope><name>motor_pin_1_</name></member>
+      <member refid="classStepper_1af2dad5fcc2f30f7887490565b64dbc1e" prot="private" virt="non-virtual"><scope>Stepper</scope><name>motor_pin_2_</name></member>
+      <member refid="classStepper_1ab2ed0c91a72029950d4cda2f5761a6f5" prot="private" virt="non-virtual"><scope>Stepper</scope><name>motor_pin_3_</name></member>
+      <member refid="classStepper_1a000a337dadf836889bd6022d680c3661" prot="private" virt="non-virtual"><scope>Stepper</scope><name>motor_pin_4_</name></member>
+      <member refid="classStepper_1ae8b0027c4fbf3d29b7e7564d91b761ba" prot="private" virt="non-virtual"><scope>Stepper</scope><name>motor_pin_5_</name></member>
+      <member refid="classStepper_1a97f45b59b0cc3775f7b4e561616f57d7" prot="private" virt="non-virtual"><scope>Stepper</scope><name>number_of_steps_</name></member>
+      <member refid="classStepper_1aadda1ae8645045f9a3032ce7877f2f49" prot="private" virt="non-virtual"><scope>Stepper</scope><name>pin_count_</name></member>
+      <member refid="classStepper_1a84421be64d1435e57f73f402e938aa3f" prot="public" virt="non-virtual"><scope>Stepper</scope><name>setSpeed</name></member>
+      <member refid="classStepper_1a23f1ada8f077bcb8691009648cf29f27" prot="public" virt="non-virtual"><scope>Stepper</scope><name>step</name></member>
+      <member refid="classStepper_1a4fc730892ee6724c187aa91a0b7e04ff" prot="private" virt="non-virtual"><scope>Stepper</scope><name>step_delay_</name></member>
+      <member refid="classStepper_1a3f232a5d6ed595999d24d0d880f4df4b" prot="private" virt="non-virtual"><scope>Stepper</scope><name>step_number_</name></member>
+      <member refid="classStepper_1a642b2b4d92bd5aa8bee85db88f07855d" prot="private" virt="non-virtual"><scope>Stepper</scope><name>stepMotor</name></member>
+      <member refid="classStepper_1af3be15bfd38efba27858cc5ec00d84b9" prot="public" virt="non-virtual"><scope>Stepper</scope><name>Stepper</name></member>
+      <member refid="classStepper_1a00cc1024bdc9af29c0cf946e345d346c" prot="public" virt="non-virtual"><scope>Stepper</scope><name>Stepper</name></member>
+      <member refid="classStepper_1a2b737f8eb9641728af2fb1c24a2560da" prot="public" virt="non-virtual"><scope>Stepper</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

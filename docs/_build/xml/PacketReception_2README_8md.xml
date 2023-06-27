@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="PacketReception_2README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>PacketReception</highlight></codeline>
+<codeline><highlight class="normal">Contains<sp/>the<sp/>Packet<sp/>Reception<sp/>library.<sp/>This<sp/>library<sp/>(and<sp/>entire<sp/>package)<sp/>was<sp/>written<sp/>by<sp/>Meredith<sp/>Hunter,<sp/>so<sp/>ask<sp/>her<sp/>if<sp/>you<sp/>have<sp/>questions.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>File<sp/>Explanations</highlight></codeline>
+<codeline><highlight class="normal">PacketTest:<sp/>Simply<sp/>tests<sp/>if<sp/>we<sp/>can<sp/>receive<sp/>APRS<sp/>Packet</highlight></codeline>
+<codeline><highlight class="normal">TCPTest:<sp/>Tests<sp/>if<sp/>we<sp/>can<sp/>receive<sp/>APRS<sp/>Packet<sp/>through<sp/>TCP</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/PacketReception/README.md"/>
+  </compounddef>
+</doxygen>

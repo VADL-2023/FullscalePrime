@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_85ef1f64988af00c0842676614893140" kind="dir">
+    <compoundname>/home/kushtimusprime/FullscalePrime/HFSM</compoundname>
+    <innerdir refid="dir_f6d8fd4dd23c273e83ffcb1bf975300e">/home/kushtimusprime/FullscalePrime/HFSM/include</innerdir>
+    <innerdir refid="dir_d91a15ef89276c30df96356c9883f5bf">/home/kushtimusprime/FullscalePrime/HFSM/src</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/"/>
+  </compounddef>
+</doxygen>

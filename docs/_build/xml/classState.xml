@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classState" kind="class" language="C++" prot="public">
+    <compoundname>State</compoundname>
+    <derivedcompoundref refid="classState__Apogee__Detection" prot="public" virt="non-virtual">State_Apogee_Detection</derivedcompoundref>
+    <derivedcompoundref refid="classState__Camera__Check" prot="public" virt="non-virtual">State_Camera_Check</derivedcompoundref>
+    <derivedcompoundref refid="classState__Full__Level" prot="public" virt="non-virtual">State_Full_Level</derivedcompoundref>
+    <derivedcompoundref refid="classState__Full__Lift" prot="public" virt="non-virtual">State_Full_Lift</derivedcompoundref>
+    <derivedcompoundref refid="classState__Full__RCB" prot="public" virt="non-virtual">State_Full_RCB</derivedcompoundref>
+    <derivedcompoundref refid="classState__Landing__Detection" prot="public" virt="non-virtual">State_Landing_Detection</derivedcompoundref>
+    <derivedcompoundref refid="classState__Launch__Detection" prot="public" virt="non-virtual">State_Launch_Detection</derivedcompoundref>
+    <derivedcompoundref refid="classState__Level__Servo" prot="public" virt="non-virtual">State_Level_Servo</derivedcompoundref>
+    <derivedcompoundref refid="classState__Lift__Motor" prot="public" virt="non-virtual">State_Lift_Motor</derivedcompoundref>
+    <derivedcompoundref refid="classState__Lift__Servo" prot="public" virt="non-virtual">State_Lift_Servo</derivedcompoundref>
+    <derivedcompoundref refid="classState__Nacelle__Servo" prot="public" virt="non-virtual">State_Nacelle_Servo</derivedcompoundref>
+    <derivedcompoundref refid="classState__PDS__Delay" prot="public" virt="non-virtual">State_PDS_Delay</derivedcompoundref>
+    <derivedcompoundref refid="classState__Prelaunch" prot="public" virt="non-virtual">State_Prelaunch</derivedcompoundref>
+    <derivedcompoundref refid="classState__RAFCO__Mission" prot="public" virt="non-virtual">State_RAFCO_Mission</derivedcompoundref>
+    <derivedcompoundref refid="classState__RCB__Motor" prot="public" virt="non-virtual">State_RCB_Motor</derivedcompoundref>
+    <derivedcompoundref refid="classState__SDR1" prot="public" virt="non-virtual">State_SDR1</derivedcompoundref>
+    <derivedcompoundref refid="classState__SDR2" prot="public" virt="non-virtual">State_SDR2</derivedcompoundref>
+    <derivedcompoundref refid="classState__Stepper1" prot="public" virt="non-virtual">State_Stepper1</derivedcompoundref>
+    <derivedcompoundref refid="classState__Stepper2" prot="public" virt="non-virtual">State_Stepper2</derivedcompoundref>
+    <derivedcompoundref refid="classState__Stepper3" prot="public" virt="non-virtual">State_Stepper3</derivedcompoundref>
+    <includes local="no">State.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" prot="protected" static="no" mutable="no">
+        <type><ref refid="classRoot" kindref="compound">Root</ref> *</type>
+        <definition>Root* State::root_</definition>
+        <argsstring></argsstring>
+        <name>root_</name>
+        <briefdescription>
+<para><ref refid="classRoot" kindref="compound">Root</ref> object containing variables and methods accessible to all states. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="71" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classState_1a6a2b92bfd448de1302879399206a460b" prot="protected" static="no" mutable="no">
+        <type><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref></type>
+        <definition>StateName State::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+<para>Name of the state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="77" column="19" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classState_1a8f28c427ef85b562d1854e60e0a8c217" prot="protected" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref>, <ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref> &gt;</type>
+        <definition>std::map&lt;EventName,StateName&gt; State::state_transitions_</definition>
+        <argsstring></argsstring>
+        <name>state_transitions_</name>
+        <briefdescription>
+<para>Map of transitions to map events occuring in the state machine to the next state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="83" column="18" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classState_1ab91bb1dd5aa6260ab2a456581daf9ec2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>State::State</definition>
+        <argsstring>()</argsstring>
+        <name>State</name>
+        <briefdescription>
+<para>Construct a new <ref refid="classState" kindref="compound">State</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="24" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="4" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classState_1a62c19e91a7b724ab4cd9a394ddb2539e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>State::State</definition>
+        <argsstring>(StateName &amp;name, std::map&lt; EventName, StateName &gt; &amp;state_transitions, Root *root)</argsstring>
+        <name>State</name>
+        <param>
+          <type><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::map&lt; <ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref>, <ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref> &gt; &amp;</type>
+          <declname>state_transitions</declname>
+        </param>
+        <param>
+          <type><ref refid="classRoot" kindref="compound">Root</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classState" kindref="compound">State</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String representing state name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state_transitions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Map of transitions to determine what the next state will be </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>root</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classRoot" kindref="compound">Root</ref> variable used for state machine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="33" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="8" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classState_1aad21360bf6da12cc8442bf0da8bf37a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref></type>
+        <definition>EventName State::execute</definition>
+        <argsstring>()</argsstring>
+        <name>execute</name>
+        <reimplementedby refid="classState__Apogee__Detection_1a37dcfe391cac6c9bd62708be35e5f894">execute</reimplementedby>
+        <reimplementedby refid="classState__Camera__Check_1acdaae7239954e30b59ebc05499249fa3">execute</reimplementedby>
+        <reimplementedby refid="classState__Full__Level_1aa842ea166bafdde36f901eb205c6d579">execute</reimplementedby>
+        <reimplementedby refid="classState__Full__Lift_1a70d4a9cdd0278a5fe77063f76a251b43">execute</reimplementedby>
+        <reimplementedby refid="classState__Full__RCB_1af43dc75d5fa486319d4aca0a2845eec3">execute</reimplementedby>
+        <reimplementedby refid="classState__Landing__Detection_1a0d0004fd14d3939ce5424dfbba3c52d2">execute</reimplementedby>
+        <reimplementedby refid="classState__Launch__Detection_1a835c7fe14281e9f522e9d256bedef70a">execute</reimplementedby>
+        <reimplementedby refid="classState__Level__Servo_1a4b8671456b3764ff8697a7abd2972c92">execute</reimplementedby>
+        <reimplementedby refid="classState__Lift__Motor_1a5bb8438ed166aca2cfc0ca92da6d245e">execute</reimplementedby>
+        <reimplementedby refid="classState__Lift__Servo_1a2df03571468b3a54ecae7f78e1ce5759">execute</reimplementedby>
+        <reimplementedby refid="classState__Nacelle__Servo_1a5e6137d79b0e1272a31b4058805f2e06">execute</reimplementedby>
+        <reimplementedby refid="classState__PDS__Delay_1abcbc54cd0a8002d0248fdec17b5bd5ed">execute</reimplementedby>
+        <reimplementedby refid="classState__Prelaunch_1aaa50669cd48932dee16809a7056254ec">execute</reimplementedby>
+        <reimplementedby refid="classState__RAFCO__Mission_1aafb6e2c1815661d8d445e610eb705f66">execute</reimplementedby>
+        <reimplementedby refid="classState__RCB__Motor_1ae4817baeae7b2328c6ddf9a936064e92">execute</reimplementedby>
+        <reimplementedby refid="classState__SDR1_1aed8312e1e5d63a770306f2780866d4d7">execute</reimplementedby>
+        <reimplementedby refid="classState__SDR2_1acb6e265d67192d965a6c83d1882fce28">execute</reimplementedby>
+        <reimplementedby refid="classState__Stepper1_1a3fcaaae977630b8b2f9a3eb611d835e7">execute</reimplementedby>
+        <reimplementedby refid="classState__Stepper2_1a3520c8d57809b5e4f44b4f9806d3fe03">execute</reimplementedby>
+        <reimplementedby refid="classState__Stepper3_1a2c0e1cdb4e9a65aa31fb96c901c3c6d7">execute</reimplementedby>
+        <briefdescription>
+<para>Main execution method for state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Result of state execution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="40" column="27" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="24" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classState_1a571cb364027c5ee65658c623bc03d3b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref></type>
+        <definition>EventName State::unitExecute</definition>
+        <argsstring>()</argsstring>
+        <name>unitExecute</name>
+        <reimplementedby refid="classState__Apogee__Detection_1aa3e5cbbeb04733cc863ed024bfd82d40">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Camera__Check_1a55e6e52e22484e2a67ca32be3d7c7d14">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Full__Level_1ad8fa398946c09366bbd832997ef1d2b3">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Full__Lift_1ac41bfc6a060d4c6e4b98de532dcd9563">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Full__RCB_1a217deb0f715780973bb98b8fa4bc8395">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Landing__Detection_1af2b79175bf56d04c58291c545931cc3d">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Launch__Detection_1acf9ce4bd738cb1163d284e5b29f53bca">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Level__Servo_1ad5d2f872c82e5e422c619f0a17db28bc">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Lift__Motor_1a59cb3c800215b02457152c70852d1f5c">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Lift__Servo_1a6751da9e2313842367a354c146f547b4">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Nacelle__Servo_1a92617f857093988781dd88dd2dc1107d">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__PDS__Delay_1a0b028154f783343c5eecb40e928e0ea1">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Prelaunch_1a6069a3e0a6d802cf5f3f2be2d2d99060">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__RAFCO__Mission_1ac564f64d12337ccaec77547c5d744558">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__RCB__Motor_1a59e9211b5cfdb9b15631b6a2e6671ffe">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__SDR1_1a95dc596db72ea2ca80b49f942b3acfb3">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__SDR2_1a5da0e370cafe8c0c6bbb55d197fda26f">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Stepper1_1af5be4d630c0c5414de0dbc7b0ae1ee3d">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Stepper2_1a97fab8f2c1a5a7b634db6e3b97f86168">unitExecute</reimplementedby>
+        <reimplementedby refid="classState__Stepper3_1a2054c7020a398cae6aa019254486c522">unitExecute</reimplementedby>
+        <briefdescription>
+<para>Execution method for state in display mode (DOESN&apos;T WORK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Result of state execution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="47" column="27" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classState_1a73a816d1fe3d0873085685a407d9d4b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref></type>
+        <definition>StateName State::getName</definition>
+        <argsstring>()</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Get the name of the state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>StateName (Name of the state) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="54" column="19" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classState_1a7b93492451b30498b550556bdf333203" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref></type>
+        <definition>StateName State::getNextState</definition>
+        <argsstring>(EventName curr_event)</argsstring>
+        <name>getNextState</name>
+        <param>
+          <type><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref></type>
+          <declname>curr_event</declname>
+        </param>
+        <briefdescription>
+<para>Get the next state based on the event that occured during state machine execution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>curr_event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The event that just occured in execution </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>StateName The next state to be transitioned to in the state machine </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="62" column="19" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14">
+        <label>State_Prelaunch</label>
+        <link refid="classState__Prelaunch"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>State_RCB_Motor</label>
+        <link refid="classState__RCB__Motor"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>State_Nacelle_Servo</label>
+        <link refid="classState__Nacelle__Servo"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>State_Lift_Servo</label>
+        <link refid="classState__Lift__Servo"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>State_RAFCO_Mission</label>
+        <link refid="classState__RAFCO__Mission"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>State_PDS_Delay</label>
+        <link refid="classState__PDS__Delay"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>State_Stepper1</label>
+        <link refid="classState__Stepper1"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>State_Stepper2</label>
+        <link refid="classState__Stepper2"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>State_Stepper3</label>
+        <link refid="classState__Stepper3"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>State</label>
+        <link refid="classState"/>
+      </node>
+      <node id="2">
+        <label>State_Apogee_Detection</label>
+        <link refid="classState__Apogee__Detection"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>State_Launch_Detection</label>
+        <link refid="classState__Launch__Detection"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>State_Landing_Detection</label>
+        <link refid="classState__Landing__Detection"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>State_SDR1</label>
+        <link refid="classState__SDR1"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>State_SDR2</label>
+        <link refid="classState__SDR2"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>State_Full_Level</label>
+        <link refid="classState__Full__Level"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>State_Full_RCB</label>
+        <link refid="classState__Full__RCB"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>State_Lift_Motor</label>
+        <link refid="classState__Lift__Motor"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>State_Camera_Check</label>
+        <link refid="classState__Camera__Check"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>State_Full_Lift</label>
+        <link refid="classState__Full__Lift"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>State_Level_Servo</label>
+        <link refid="classState__Level__Servo"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Log</label>
+        <link refid="classLog"/>
+      </node>
+      <node id="4">
+        <label>Stepper</label>
+        <link refid="classStepper"/>
+      </node>
+      <node id="1">
+        <label>State</label>
+        <link refid="classState"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>root_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PacketReceiver</label>
+        <link refid="classPacketReceiver"/>
+      </node>
+      <node id="2">
+        <label>Root</label>
+        <link refid="classRoot"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>m_log_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>stepper_1_</edgelabel>
+          <edgelabel>stepper_2_</edgelabel>
+          <edgelabel>stepper_3_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>radio1_</edgelabel>
+          <edgelabel>radio2_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" line="17" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h" bodystart="17" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classState_1aad21360bf6da12cc8442bf0da8bf37a9" prot="public" virt="virtual"><scope>State</scope><name>execute</name></member>
+      <member refid="classState_1a73a816d1fe3d0873085685a407d9d4b3" prot="public" virt="non-virtual"><scope>State</scope><name>getName</name></member>
+      <member refid="classState_1a7b93492451b30498b550556bdf333203" prot="public" virt="non-virtual"><scope>State</scope><name>getNextState</name></member>
+      <member refid="classState_1a6a2b92bfd448de1302879399206a460b" prot="protected" virt="non-virtual"><scope>State</scope><name>name_</name></member>
+      <member refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" prot="protected" virt="non-virtual"><scope>State</scope><name>root_</name></member>
+      <member refid="classState_1ab91bb1dd5aa6260ab2a456581daf9ec2" prot="public" virt="non-virtual"><scope>State</scope><name>State</name></member>
+      <member refid="classState_1a62c19e91a7b724ab4cd9a394ddb2539e" prot="public" virt="non-virtual"><scope>State</scope><name>State</name></member>
+      <member refid="classState_1a8f28c427ef85b562d1854e60e0a8c217" prot="protected" virt="non-virtual"><scope>State</scope><name>state_transitions_</name></member>
+      <member refid="classState_1a571cb364027c5ee65658c623bc03d3b5" prot="public" virt="virtual"><scope>State</scope><name>unitExecute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

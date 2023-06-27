@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Stepper_8h" kind="file" language="C++">
+    <compoundname>Stepper.h</compoundname>
+    <includes local="yes">pigpio.h</includes>
+    <includes local="no">ctime</includes>
+    <includes local="no">chrono</includes>
+    <includedby refid="Swivel1Test_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel1Test.cpp</includedby>
+    <includedby refid="Swivel2Test_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel2Test.cpp</includedby>
+    <includedby refid="Swivel3Test_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel3Test.cpp</includedby>
+    <includedby refid="Root_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h</includedby>
+    <includedby refid="Stepper_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper.cpp</includedby>
+    <includedby refid="Stepper__runner_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper_runner.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>pigpio.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ctime</label>
+      </node>
+      <node id="4">
+        <label>chrono</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel2Test.cpp</label>
+        <link refid="Swivel2Test_8cpp"/>
+      </node>
+      <node id="8">
+        <label>/home/kushtimusprime/FullscalePrime/Stepper/src/Stepper_runner.cpp</label>
+        <link refid="Stepper__runner_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel3Test.cpp</label>
+        <link refid="Swivel3Test_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/real_display.cpp</label>
+        <link refid="real__display_8cpp"/>
+      </node>
+      <node id="6">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/kushtimusprime/FullscalePrime/FieldTest/src/Swivel1Test.cpp</label>
+        <link refid="Swivel1Test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStepper" prot="public">Stepper</innerclass>
+    <briefdescription>
+<para><ref refid="classStepper" kindref="compound">Stepper</ref> Library header file. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pigpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ensure<sp/>this<sp/>library<sp/>description<sp/>is<sp/>only<sp/>included<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>Stepper_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>Stepper_h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>library<sp/>interface<sp/>description</highlight></codeline>
+<codeline lineno="20" refid="classStepper" refkind="compound"><highlight class="comment"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStepper" kindref="compound">Stepper</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStepper_1af3be15bfd38efba27858cc5ec00d84b9" kindref="member">Stepper</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStepper_1af3be15bfd38efba27858cc5ec00d84b9" kindref="member">Stepper</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number_of_steps,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_2,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_3,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_4,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_initialized);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStepper_1a873ad8f0bc8af4eeebe6ddb8a0fe218e" kindref="member">initialize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number_of_steps,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_2,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_3,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_4,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>gpio_initialized);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classStepper_1ad81a677b8431bcf856d19113bc233577" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStepper_1a84421be64d1435e57f73f402e938aa3f" kindref="member">setSpeed</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>whatSpeed);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classStepper_1a23f1ada8f077bcb8691009648cf29f27" kindref="member">step</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number_of_steps);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classStepper_1a2b737f8eb9641728af2fb1c24a2560da" kindref="member">version</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>stepMotor(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>this_step);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>direction_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>step_delay_;<sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>number_of_steps_;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pin_count_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>step_number_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_1_;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_2_;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_3_;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_4_;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>motor_pin_5_;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>last_step_time_;<sp/></highlight></codeline>
+<codeline lineno="158"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/Stepper/include/Stepper.h"/>
+  </compounddef>
+</doxygen>

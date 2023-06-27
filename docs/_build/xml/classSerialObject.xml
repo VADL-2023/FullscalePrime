@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classSerialObject" kind="class" language="C++" prot="public">
+    <compoundname>SerialObject</compoundname>
+    <includes local="no">SerialObject.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classSerialObject_1acce9fc847b600507f5c74173802a21e4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SerialObject::serial_port</definition>
+        <argsstring></argsstring>
+        <name>serial_port</name>
+        <briefdescription>
+<para>Serial Port. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="35" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1a77c30e034801f0daa62cced1bca66125" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SerialObject::input_</definition>
+        <argsstring></argsstring>
+        <name>input_</name>
+        <briefdescription>
+<para>String input. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="41" column="21" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1ae5e6aef1c1713d1ec81b1db36794fbef" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SerialObject::counter_</definition>
+        <argsstring></argsstring>
+        <name>counter_</name>
+        <briefdescription>
+<para>Character counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="47" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1acd6efcea395b548d0f2884ecc16b7f56" prot="private" static="no" mutable="no">
+        <type>char</type>
+        <definition>char SerialObject::size_buf_[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>size_buf_</name>
+        <briefdescription>
+<para>Message buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="53" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1ac93edcf92abf82f55a046e0a27704d44" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SerialObject::photo_buf_[3000000]</definition>
+        <argsstring>[3000000]</argsstring>
+        <name>photo_buf_</name>
+        <briefdescription>
+<para>Message buffer for photos. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="59" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1a1de552e8cdfbc98206184295fdfafad3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SerialObject::size_index_</definition>
+        <argsstring></argsstring>
+        <name>size_index_</name>
+        <briefdescription>
+<para>Current index in size buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="65" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1a1efa6d7616993076eb3e4890ff8537c2" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SerialObject::photo_index_</definition>
+        <argsstring></argsstring>
+        <name>photo_index_</name>
+        <briefdescription>
+<para>Current index in photo buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="71" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1a6bc23c7c101c80ccae63b577843a63b2" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string SerialObject::indicator_</definition>
+        <argsstring></argsstring>
+        <name>indicator_</name>
+        <briefdescription>
+<para>Indicator string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="77" column="21" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classSerialObject_1aeaee2d84bb16c9244f503e2dd8a25fbb" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SerialObject::indicator_index_</definition>
+        <argsstring></argsstring>
+        <name>indicator_index_</name>
+        <briefdescription>
+<para>Index in the indicator string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="83" column="13" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classSerialObject_1a7cf3a1318e75b9f9b8ca24a4ad0eb9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SerialObject::SerialObject</definition>
+        <argsstring>()</argsstring>
+        <name>SerialObject</name>
+        <briefdescription>
+<para>Construct a new Serial Object object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="91" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="58" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a766ae412dbed64118ff7aa6080c9aa74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SerialObject::SerialObject</definition>
+        <argsstring>(std::string input)</argsstring>
+        <name>SerialObject</name>
+        <param>
+          <type>std::string</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new Serial Object object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String representing Serial input </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="98" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="3" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1aa73aabd2ef3912966f56ce5df1c8a8fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SerialObject::~SerialObject</definition>
+        <argsstring>()</argsstring>
+        <name>~SerialObject</name>
+        <briefdescription>
+<para>Destroy the Serial Object object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="104" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a82f8123aad06f9d859ab6898795f0ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SerialObject::writeSerial</definition>
+        <argsstring>(std::string str)</argsstring>
+        <name>writeSerial</name>
+        <param>
+          <type>std::string</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Writes message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="111" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="122" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a697676cd4cf42b62f6700fcea4309493" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SerialObject::readSerial</definition>
+        <argsstring>()</argsstring>
+        <name>readSerial</name>
+        <briefdescription>
+<para>Reads message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The message </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="118" column="21" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="301" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a2a9b0a800ae23746c348c015f8f4b5fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SerialObject::readSerialImageOrganic</definition>
+        <argsstring>()</argsstring>
+        <name>readSerialImageOrganic</name>
+        <briefdescription>
+<para>Attempt to read image serially. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="124" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="128" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a5f58f86c1ff3daf975841a636a081e98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SerialObject::readSerialImage</definition>
+        <argsstring>(const char *pic_name)</argsstring>
+        <name>readSerialImage</name>
+        <param>
+          <type>const char *</type>
+          <declname>pic_name</declname>
+        </param>
+        <briefdescription>
+<para>Another attempt to read image serially (see Serial Prime alive commit to find the real one) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pic_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filename of image </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true Successfully read image </para>
+</simplesect>
+<simplesect kind="return"><para>false Error in reading image </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="133" column="14" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="149" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classSerialObject_1a7a4262375bbca82b43d5e48f02b4d7f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string SerialObject::readSerial</definition>
+        <argsstring>(int buff_size)</argsstring>
+        <name>readSerial</name>
+        <param>
+          <type>int</type>
+          <declname>buff_size</declname>
+        </param>
+        <briefdescription>
+<para>Reads serial message up to a certain size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buff_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum size of the message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The serial message </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="141" column="21" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/src/SerialObject.cpp" bodystart="329" bodyend="347"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Serial Communication object. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" line="27" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/SerialCute++/include/SerialObject.h" bodystart="27" bodyend="143"/>
+    <listofallmembers>
+      <member refid="classSerialObject_1ae5e6aef1c1713d1ec81b1db36794fbef" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>counter_</name></member>
+      <member refid="classSerialObject_1a6bc23c7c101c80ccae63b577843a63b2" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>indicator_</name></member>
+      <member refid="classSerialObject_1aeaee2d84bb16c9244f503e2dd8a25fbb" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>indicator_index_</name></member>
+      <member refid="classSerialObject_1a77c30e034801f0daa62cced1bca66125" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>input_</name></member>
+      <member refid="classSerialObject_1ac93edcf92abf82f55a046e0a27704d44" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>photo_buf_</name></member>
+      <member refid="classSerialObject_1a1efa6d7616993076eb3e4890ff8537c2" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>photo_index_</name></member>
+      <member refid="classSerialObject_1a697676cd4cf42b62f6700fcea4309493" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>readSerial</name></member>
+      <member refid="classSerialObject_1a7a4262375bbca82b43d5e48f02b4d7f0" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>readSerial</name></member>
+      <member refid="classSerialObject_1a5f58f86c1ff3daf975841a636a081e98" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>readSerialImage</name></member>
+      <member refid="classSerialObject_1a2a9b0a800ae23746c348c015f8f4b5fd" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>readSerialImageOrganic</name></member>
+      <member refid="classSerialObject_1acce9fc847b600507f5c74173802a21e4" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>serial_port</name></member>
+      <member refid="classSerialObject_1a7cf3a1318e75b9f9b8ca24a4ad0eb9f8" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>SerialObject</name></member>
+      <member refid="classSerialObject_1a766ae412dbed64118ff7aa6080c9aa74" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>SerialObject</name></member>
+      <member refid="classSerialObject_1acd6efcea395b548d0f2884ecc16b7f56" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>size_buf_</name></member>
+      <member refid="classSerialObject_1a1de552e8cdfbc98206184295fdfafad3" prot="private" virt="non-virtual"><scope>SerialObject</scope><name>size_index_</name></member>
+      <member refid="classSerialObject_1a82f8123aad06f9d859ab6898795f0ae2" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>writeSerial</name></member>
+      <member refid="classSerialObject_1aa73aabd2ef3912966f56ce5df1c8a8fe" prot="public" virt="non-virtual"><scope>SerialObject</scope><name>~SerialObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

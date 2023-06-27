@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structAX25Packet" kind="struct" language="C++" prot="public">
+    <compoundname>AX25Packet</compoundname>
+    <includes local="no">PacketReceiver.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structAX25Packet_1a80cc00d0a9103d5b80f73f0beb112700" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string AX25Packet::source</definition>
+        <argsstring></argsstring>
+        <name>source</name>
+        <briefdescription>
+<para>Source of packet represented as string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" line="26" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structAX25Packet_1ae744bdc5871778afc003d67f7e702f32" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int AX25Packet::source_ssid</definition>
+        <argsstring></argsstring>
+        <name>source_ssid</name>
+        <briefdescription>
+<para>SSID for the source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" line="32" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structAX25Packet_1aadde089b2ca7c51de77735721a8b0cb5" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string AX25Packet::dest</definition>
+        <argsstring></argsstring>
+        <name>dest</name>
+        <briefdescription>
+<para>Packet destination represented as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" line="38" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string AX25Packet::msg</definition>
+        <argsstring></argsstring>
+        <name>msg</name>
+        <briefdescription>
+<para>Message encoded by APRS packet. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" line="44" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains all packet information in the standard AX.25 protocol. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" line="21" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/PacketReception/include/PacketReceiver.h" bodystart="21" bodyend="45"/>
+    <listofallmembers>
+      <member refid="structAX25Packet_1aadde089b2ca7c51de77735721a8b0cb5" prot="public" virt="non-virtual"><scope>AX25Packet</scope><name>dest</name></member>
+      <member refid="structAX25Packet_1a2dea61d8e883e9d5c9e4d53e8063f19c" prot="public" virt="non-virtual"><scope>AX25Packet</scope><name>msg</name></member>
+      <member refid="structAX25Packet_1a80cc00d0a9103d5b80f73f0beb112700" prot="public" virt="non-virtual"><scope>AX25Packet</scope><name>source</name></member>
+      <member refid="structAX25Packet_1ae744bdc5871778afc003d67f7e702f32" prot="public" virt="non-virtual"><scope>AX25Packet</scope><name>source_ssid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
