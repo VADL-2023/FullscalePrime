@@ -1,0 +1,111 @@
+\hypertarget{classState__Apogee__Detection}{}\doxysection{State\+\_\+\+Apogee\+\_\+\+Detection Class Reference}
+\label{classState__Apogee__Detection}\index{State\_Apogee\_Detection@{State\_Apogee\_Detection}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for detecting apogee with IMU.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Apogee\+\_\+\+Detection.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Apogee\+\_\+\+Detection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classState__Apogee__Detection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Apogee\+\_\+\+Detection\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Apogee__Detection__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Apogee__Detection_adae7924e125d685de6f9054a12f879b6}\label{classState__Apogee__Detection_adae7924e125d685de6f9054a12f879b6}} 
+\mbox{\hyperlink{classState__Apogee__Detection_adae7924e125d685de6f9054a12f879b6}{State\+\_\+\+Apogee\+\_\+\+Detection}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Apogee__Detection}{State\+\_\+\+Apogee\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Apogee__Detection_ac3ba41195fdfb5931a35a968d80949b2}{State\+\_\+\+Apogee\+\_\+\+Detection}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Apogee__Detection}{State\+\_\+\+Apogee\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Apogee__Detection_a37dcfe391cac6c9bd62708be35e5f894}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Apogee__Detection_aa3e5cbbeb04733cc863ed024bfd82d40}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for detecting apogee with IMU. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Apogee__Detection_ac3ba41195fdfb5931a35a968d80949b2}\label{classState__Apogee__Detection_ac3ba41195fdfb5931a35a968d80949b2}} 
+\index{State\_Apogee\_Detection@{State\_Apogee\_Detection}!State\_Apogee\_Detection@{State\_Apogee\_Detection}}
+\index{State\_Apogee\_Detection@{State\_Apogee\_Detection}!State\_Apogee\_Detection@{State\_Apogee\_Detection}}
+\doxysubsubsection{\texorpdfstring{State\_Apogee\_Detection()}{State\_Apogee\_Detection()}}
+{\footnotesize\ttfamily State\+\_\+\+Apogee\+\_\+\+Detection\+::\+State\+\_\+\+Apogee\+\_\+\+Detection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Apogee__Detection}{State\+\_\+\+Apogee\+\_\+\+Detection}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Apogee__Detection_a37dcfe391cac6c9bd62708be35e5f894}\label{classState__Apogee__Detection_a37dcfe391cac6c9bd62708be35e5f894}} 
+\index{State\_Apogee\_Detection@{State\_Apogee\_Detection}!execute@{execute}}
+\index{execute@{execute}!State\_Apogee\_Detection@{State\_Apogee\_Detection}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Apogee\+\_\+\+Detection\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Apogee__Detection_aa3e5cbbeb04733cc863ed024bfd82d40}\label{classState__Apogee__Detection_aa3e5cbbeb04733cc863ed024bfd82d40}} 
+\index{State\_Apogee\_Detection@{State\_Apogee\_Detection}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Apogee\_Detection@{State\_Apogee\_Detection}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Apogee\+\_\+\+Detection\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Apogee__Detection_8h}{State\+\_\+\+Apogee\+\_\+\+Detection.\+h}}\item 
+HFSM/src/State\+\_\+\+Apogee\+\_\+\+Detection.\+cpp\end{DoxyCompactItemize}

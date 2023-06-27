@@ -1,0 +1,2 @@
+# Log
+The Log file library was written in a previous year. It stores flight data in an organized manner such that it can be easily interpreted with our MATLAB scripts. Furthermore, there are no executables in this library.

@@ -15,6 +15,7 @@ EventName State_Lift_Motor::execute() {
 }
 
 EventName State_Lift_Motor::unitExecute() {
+	// Move lift motor one way and then the other way
 	std::cout << "Starting Lift Unit Test" << std::endl;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;

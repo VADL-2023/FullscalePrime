@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="State__Lift__Servo_8cpp" kind="file" language="C++">
+    <compoundname>State_Lift_Servo.cpp</compoundname>
+    <includes refid="State__Lift__Servo_8h" local="yes">State_Lift_Servo.h</includes>
+    <includes refid="Root_8h" local="yes">Root.h</includes>
+    <incdepgraph>
+      <node id="31">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/src/State_Lift_Servo.cpp</label>
+        <link refid="State__Lift__Servo_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="14">
+        <label>sensors.h</label>
+      </node>
+      <node id="8">
+        <label>Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>State_Lift_Servo.h</label>
+        <link refid="State__Lift__Servo_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>pigpio.h</label>
+      </node>
+      <node id="33">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30">
+        <label>opencv2/imgproc.hpp</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="18">
+        <label>fstream</label>
+      </node>
+      <node id="25">
+        <label>netdb.h</label>
+      </node>
+      <node id="26">
+        <label>Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>config_IMU.hpp</label>
+      </node>
+      <node id="22">
+        <label>sys/types.h</label>
+      </node>
+      <node id="16">
+        <label>Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ctime</label>
+      </node>
+      <node id="27">
+        <label>opencv2/core.hpp</label>
+      </node>
+      <node id="11">
+        <label>unistd.h</label>
+      </node>
+      <node id="28">
+        <label>opencv2/videoio.hpp</label>
+      </node>
+      <node id="17">
+        <label>registers.h</label>
+      </node>
+      <node id="13">
+        <label>math.h</label>
+      </node>
+      <node id="29">
+        <label>opencv2/highgui.hpp</label>
+      </node>
+      <node id="20">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="21">
+        <label>PacketReceiver.h</label>
+        <link refid="PacketReceiver_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>chrono</label>
+      </node>
+      <node id="23">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="12">
+        <label>thread</label>
+      </node>
+      <node id="6">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+      <node id="32">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__Lift__Servo_8h" kindref="compound">State_Lift_Servo.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Root_8h" kindref="compound">Root.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><ref refid="classState__Lift__Servo_1a3a605ceb04bbf8fe4197e1e2c1180d06" kindref="member">State_Lift_Servo::State_Lift_Servo</ref>():<sp/><ref refid="classState" kindref="compound">State</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="classState__Lift__Servo_1a3a605ceb04bbf8fe4197e1e2c1180d06" kindref="member">State_Lift_Servo::State_Lift_Servo</ref>(<ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/>name,<sp/>std::map&lt;EventName,<sp/>StateName&gt;<sp/>&amp;state_transitions,<sp/><ref refid="classRoot" kindref="compound">Root</ref>*<sp/>root)<sp/>:<sp/><ref refid="classState" kindref="compound">State</ref>(name,<sp/>state_transitions,<sp/>root)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__Lift__Servo_1a2df03571468b3a54ecae7f78e1ce5759" kindref="member">State_Lift_Servo::execute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;In<sp/>State_Lift_Servo<sp/>and<sp/>will<sp/>return<sp/>end<sp/>state.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22" kindref="member">TERMINATE</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__Lift__Servo_1a6751da9e2313842367a354c146f547b4" kindref="member">State_Lift_Servo::unitExecute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>lift<sp/>servo<sp/>one<sp/>way<sp/>and<sp/>then<sp/>the<sp/>other<sp/>way</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Started<sp/>Lift<sp/>Servo<sp/>Test&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start_time<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>current_time<sp/>=<sp/>start_time;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>angle<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>pulse_width<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1aff48369e29cdf0800a8be86c36721d3d" kindref="member">angleToPulseWidth</ref>(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ae37960ff5c4f3ae06f6dff3d74882603" kindref="member">servo_pulse_max_</ref>,this-&gt;root_-&gt;servo_pulse_min_,this-&gt;root_-&gt;servo_deg_range_,angle);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioServo(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a2de20a843c95a7eab95eda8935d3d2b2" kindref="member">lift_servo_</ref>,pulse_width);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSleep(0,2,0);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>angle<sp/>=<sp/>45;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>pulse_width<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1aff48369e29cdf0800a8be86c36721d3d" kindref="member">angleToPulseWidth</ref>(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1ae37960ff5c4f3ae06f6dff3d74882603" kindref="member">servo_pulse_max_</ref>,this-&gt;root_-&gt;servo_pulse_min_,this-&gt;root_-&gt;servo_deg_range_,angle);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioServo(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a2de20a843c95a7eab95eda8935d3d2b2" kindref="member">lift_servo_</ref>,pulse_width);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSleep(0,2,0);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ended<sp/>Lift<sp/>Servo<sp/>Test&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca0d72060465f03068eeab2e08f1cfda1c" kindref="member">BASIC_SERVO</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Lift_Servo.cpp"/>
+  </compounddef>
+</doxygen>

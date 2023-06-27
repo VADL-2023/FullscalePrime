@@ -1,0 +1,111 @@
+\hypertarget{classState__Full__Lift}{}\doxysection{State\+\_\+\+Full\+\_\+\+Lift Class Reference}
+\label{classState__Full__Lift}\index{State\_Full\_Lift@{State\_Full\_Lift}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for elevating the key nacelle with the lift.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Full\+\_\+\+Lift.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Full\+\_\+\+Lift\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{classState__Full__Lift__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Full\+\_\+\+Lift\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Full__Lift__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Full__Lift_a3b22bea9f8c64ab5c5a4be5ae79fd246}\label{classState__Full__Lift_a3b22bea9f8c64ab5c5a4be5ae79fd246}} 
+\mbox{\hyperlink{classState__Full__Lift_a3b22bea9f8c64ab5c5a4be5ae79fd246}{State\+\_\+\+Full\+\_\+\+Lift}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Full__Lift}{State\+\_\+\+Full\+\_\+\+Lift}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Full__Lift_a32e246ac7799a199fbca5b0d57524bfa}{State\+\_\+\+Full\+\_\+\+Lift}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Full__Lift}{State\+\_\+\+Full\+\_\+\+Lift}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Full__Lift_a70d4a9cdd0278a5fe77063f76a251b43}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Full__Lift_ac41bfc6a060d4c6e4b98de532dcd9563}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for elevating the key nacelle with the lift. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Full__Lift_a32e246ac7799a199fbca5b0d57524bfa}\label{classState__Full__Lift_a32e246ac7799a199fbca5b0d57524bfa}} 
+\index{State\_Full\_Lift@{State\_Full\_Lift}!State\_Full\_Lift@{State\_Full\_Lift}}
+\index{State\_Full\_Lift@{State\_Full\_Lift}!State\_Full\_Lift@{State\_Full\_Lift}}
+\doxysubsubsection{\texorpdfstring{State\_Full\_Lift()}{State\_Full\_Lift()}}
+{\footnotesize\ttfamily State\+\_\+\+Full\+\_\+\+Lift\+::\+State\+\_\+\+Full\+\_\+\+Lift (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Full__Lift}{State\+\_\+\+Full\+\_\+\+Lift}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Full__Lift_a70d4a9cdd0278a5fe77063f76a251b43}\label{classState__Full__Lift_a70d4a9cdd0278a5fe77063f76a251b43}} 
+\index{State\_Full\_Lift@{State\_Full\_Lift}!execute@{execute}}
+\index{execute@{execute}!State\_Full\_Lift@{State\_Full\_Lift}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Full\+\_\+\+Lift\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Full__Lift_ac41bfc6a060d4c6e4b98de532dcd9563}\label{classState__Full__Lift_ac41bfc6a060d4c6e4b98de532dcd9563}} 
+\index{State\_Full\_Lift@{State\_Full\_Lift}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Full\_Lift@{State\_Full\_Lift}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Full\+\_\+\+Lift\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Full__Lift_8h}{State\+\_\+\+Full\+\_\+\+Lift.\+h}}\item 
+HFSM/src/State\+\_\+\+Full\+\_\+\+Lift.\+cpp\end{DoxyCompactItemize}

@@ -15,6 +15,8 @@ EventName State_RCB_Motor::execute() {
 }
 
 EventName State_RCB_Motor::unitExecute() {
+
+	// Spin RCB motor one way for a bit, then the other way
 	std::cout << "Starting RCB Unit Test" << std::endl;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;

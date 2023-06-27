@@ -1,0 +1,111 @@
+\hypertarget{classState__Nacelle__Servo}{}\doxysection{State\+\_\+\+Nacelle\+\_\+\+Servo Class Reference}
+\label{classState__Nacelle__Servo}\index{State\_Nacelle\_Servo@{State\_Nacelle\_Servo}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for testing nacelle locking servo movement.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Nacelle\+\_\+\+Servo.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Nacelle\+\_\+\+Servo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classState__Nacelle__Servo__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Nacelle\+\_\+\+Servo\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Nacelle__Servo__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Nacelle__Servo_a05ad6f6120df74c0b8620990d14aced3}\label{classState__Nacelle__Servo_a05ad6f6120df74c0b8620990d14aced3}} 
+\mbox{\hyperlink{classState__Nacelle__Servo_a05ad6f6120df74c0b8620990d14aced3}{State\+\_\+\+Nacelle\+\_\+\+Servo}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Nacelle__Servo}{State\+\_\+\+Nacelle\+\_\+\+Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Nacelle__Servo_abe22cec37f08d8e8186c6fb07fe1cf05}{State\+\_\+\+Nacelle\+\_\+\+Servo}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Nacelle__Servo}{State\+\_\+\+Nacelle\+\_\+\+Servo}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Nacelle__Servo_a5e6137d79b0e1272a31b4058805f2e06}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Nacelle__Servo_a92617f857093988781dd88dd2dc1107d}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for testing nacelle locking servo movement. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Nacelle__Servo_abe22cec37f08d8e8186c6fb07fe1cf05}\label{classState__Nacelle__Servo_abe22cec37f08d8e8186c6fb07fe1cf05}} 
+\index{State\_Nacelle\_Servo@{State\_Nacelle\_Servo}!State\_Nacelle\_Servo@{State\_Nacelle\_Servo}}
+\index{State\_Nacelle\_Servo@{State\_Nacelle\_Servo}!State\_Nacelle\_Servo@{State\_Nacelle\_Servo}}
+\doxysubsubsection{\texorpdfstring{State\_Nacelle\_Servo()}{State\_Nacelle\_Servo()}}
+{\footnotesize\ttfamily State\+\_\+\+Nacelle\+\_\+\+Servo\+::\+State\+\_\+\+Nacelle\+\_\+\+Servo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Nacelle__Servo}{State\+\_\+\+Nacelle\+\_\+\+Servo}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Nacelle__Servo_a5e6137d79b0e1272a31b4058805f2e06}\label{classState__Nacelle__Servo_a5e6137d79b0e1272a31b4058805f2e06}} 
+\index{State\_Nacelle\_Servo@{State\_Nacelle\_Servo}!execute@{execute}}
+\index{execute@{execute}!State\_Nacelle\_Servo@{State\_Nacelle\_Servo}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Nacelle\+\_\+\+Servo\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Nacelle__Servo_a92617f857093988781dd88dd2dc1107d}\label{classState__Nacelle__Servo_a92617f857093988781dd88dd2dc1107d}} 
+\index{State\_Nacelle\_Servo@{State\_Nacelle\_Servo}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Nacelle\_Servo@{State\_Nacelle\_Servo}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Nacelle\+\_\+\+Servo\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Nacelle__Servo_8h}{State\+\_\+\+Nacelle\+\_\+\+Servo.\+h}}\item 
+HFSM/src/State\+\_\+\+Nacelle\+\_\+\+Servo.\+cpp\end{DoxyCompactItemize}

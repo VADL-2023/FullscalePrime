@@ -1,0 +1,95 @@
+\hypertarget{display_8cpp}{}\doxysection{Main\+Driver/src/integration\+\_\+tests/display.cpp File Reference}
+\label{display_8cpp}\index{MainDriver/src/integration\_tests/display.cpp@{MainDriver/src/integration\_tests/display.cpp}}
+
+
+Runs a mini payload with no perception and verifies all the motors work.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Root.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Stepper3.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+RCB\+\_\+\+Motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Nacelle\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Lift\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Lift\+\_\+\+Motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+Level\+\_\+\+Servo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+SDR1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}State\+\_\+\+SDR2.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+Include dependency graph for display.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{display_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{display_8cpp_a27eef83b5a1a670463b28120b3191285}{get\+State\+Name}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} state\+Type)
+\begin{DoxyCompactList}\small\item\em Get the state name as a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8cpp_ac22f3e4cc6185df5f9f37e297a1a8f5d}{run\+Full\+State\+Machine}} (\mbox{\hyperlink{classRoot}{Root}} \&root, \mbox{\hyperlink{classState}{State}} \&initial\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Runs the entire state machine. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main method to run mini payload demo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs a mini payload with no perception and verifies all the motors work. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{display_8cpp_a27eef83b5a1a670463b28120b3191285}\label{display_8cpp_a27eef83b5a1a670463b28120b3191285}} 
+\index{display.cpp@{display.cpp}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!display.cpp@{display.cpp}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily std\+::string get\+State\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{state\+Type }\end{DoxyParamCaption})}
+
+
+
+Get the state name as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+Type} & The state name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string representing the state name 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{display_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{display.cpp@{display.cpp}!main@{main}}
+\index{main@{main}!display.cpp@{display.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main method to run mini payload demo. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}
+\mbox{\Hypertarget{display_8cpp_ac22f3e4cc6185df5f9f37e297a1a8f5d}\label{display_8cpp_ac22f3e4cc6185df5f9f37e297a1a8f5d}} 
+\index{display.cpp@{display.cpp}!runFullStateMachine@{runFullStateMachine}}
+\index{runFullStateMachine@{runFullStateMachine}!display.cpp@{display.cpp}}
+\doxysubsubsection{\texorpdfstring{runFullStateMachine()}{runFullStateMachine()}}
+{\footnotesize\ttfamily void run\+Full\+State\+Machine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRoot}{Root}} \&}]{root,  }\item[{\mbox{\hyperlink{classState}{State}} \&}]{initial\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Runs the entire state machine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} containing variables and methods shared between all states \\
+\hline
+{\em initial\+\_\+state} & Starting state for state machine \\
+\hline
+\end{DoxyParams}

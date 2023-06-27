@@ -15,6 +15,7 @@ State_Camera_Check::State_Camera_Check(StateName name, std::map<EventName, State
 
 EventName State_Camera_Check::execute()
 {
+	// Assign camera streams based on where they are plugged in on the pi
 	system("sudo bash ../../cam_assignment.bash");
 	bool cam1_online = this->root_->cameraCheck("/dev/videoCam1");
 	bool cam2_online = this->root_->cameraCheck("/dev/videoCam2");
@@ -31,6 +32,7 @@ EventName State_Camera_Check::execute()
 			cam3_online = this->root_->cameraCheck(camera_stream);
 		}
 	}*/
+	// Prioritize cameras in order of 2, 1, 3
 	if(cam2_online) {
 		this->root_->primary_camera_stream_ = this->root_->camera_streams_[2];
 	} else if(cam1_online) {

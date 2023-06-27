@@ -1,0 +1,663 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classLog" kind="class" language="C++" prot="public">
+    <compoundname>Log</compoundname>
+    <includes local="no">Log.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classLog_1a1a645481a634d450195df274bb5d4cf6" prot="private" static="no" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream Log::mFlightLog</definition>
+        <argsstring></argsstring>
+        <name>mFlightLog</name>
+        <briefdescription>
+<para>Flight Data <ref refid="classLog" kindref="compound">Log</ref> File relative to current directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="30" column="19" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1ab2787e173e10b969e01ba8ae658e0463" prot="private" static="no" mutable="no">
+        <type>std::ofstream</type>
+        <definition>std::ofstream Log::mProgLog</definition>
+        <argsstring></argsstring>
+        <name>mProgLog</name>
+        <briefdescription>
+<para>Program Outpu <ref refid="classLog" kindref="compound">Log</ref> File relative to current directory. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="36" column="19" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a36d58966bac5867afb9187d81e5de6fb" prot="private" static="no" mutable="no">
+        <type>vn::sensors::VnSensor *</type>
+        <definition>vn::sensors::VnSensor* Log::mIMU</definition>
+        <argsstring></argsstring>
+        <name>mIMU</name>
+        <briefdescription>
+<para>VN-100 IMU sensor (pointer to the one in the main program) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="42" column="27" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a41e68e539a661098b24f822708e7a362" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Log::startTime</definition>
+        <argsstring></argsstring>
+        <name>startTime</name>
+        <briefdescription>
+<para>Start time in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="48" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1af91c5ecf0cf4ef1f0b6218be28c78f45" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Log::currentTime</definition>
+        <argsstring></argsstring>
+        <name>currentTime</name>
+        <briefdescription>
+<para>Current time in ms. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="54" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a6fc8d2d8e95ded4347e36bfa9b5a585a" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Log::sampleNumber</definition>
+        <argsstring></argsstring>
+        <name>sampleNumber</name>
+        <briefdescription>
+<para>Current sample number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="60" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1af5c53f6955fa7cc5a3215d72d6e4953d" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::pressure0</definition>
+        <argsstring></argsstring>
+        <name>pressure0</name>
+        <briefdescription>
+<para>Baseline pressure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="66" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a76659910c49c9aa0a4ba13f864ec7e85" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::temperature0</definition>
+        <argsstring></argsstring>
+        <name>temperature0</name>
+        <briefdescription>
+<para>Baseline temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="72" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a87ab4c0f071bb1ee6e1f099431b14339" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::accelg0</definition>
+        <argsstring></argsstring>
+        <name>accelg0</name>
+        <briefdescription>
+<para>Baseline gravity reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="78" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a312ad1743fdb43c6db3c2a920d540e9a" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <briefdescription>
+<para>Universal Gas Constant. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="84" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1acf3d062f2cdd0cae0c87ee0271455075" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::B</definition>
+        <argsstring></argsstring>
+        <name>B</name>
+        <briefdescription>
+<para>Variation of temperature within the troposphere. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="90" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1ab5232a137bb7356f03d8d637b46b9c87" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Log::currentAlt</definition>
+        <argsstring></argsstring>
+        <name>currentAlt</name>
+        <briefdescription>
+<para>Current altitude in meters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="96" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a75187edd596a203593e2349f9692f854" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Log::savedParameters</definition>
+        <argsstring></argsstring>
+        <name>savedParameters</name>
+        <briefdescription>
+<para>Boolean indicating if we have saved the parameters yet. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="110" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a7a3951c4d4a6d11b5b47ccb8295ddb5e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Log::numSpecialCharacters</definition>
+        <argsstring></argsstring>
+        <name>numSpecialCharacters</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+<para>match this to number of specialCharacters (don&apos;t tell matt we hardcoded this lol) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="116" column="9" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a704ec052f69f28dc9dcdf3161bbf8b39" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Log::specialCharacters[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>specialCharacters</name>
+        <initializer>= {&quot;/&quot;, &quot;\\&quot;, &quot;*&quot;, &quot;&lt;&quot;, &quot;&gt;&quot;, &quot;,&quot;, &quot;.&quot;, &quot;`&quot;, &quot;~&quot;, &quot;|&quot;}</initializer>
+        <briefdescription>
+<para>not all of these are invalid but rather be safe than sorry </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="122" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a929b7907c0f9f12378339ca4841620aa" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Log::delim</definition>
+        <argsstring></argsstring>
+        <name>delim</name>
+        <briefdescription>
+<para>Character to specify when events happen in Program log ($) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="128" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1ad23a5c76ff9a9c7c06440977dbd7e1cc" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Log::timestamp_</definition>
+        <argsstring></argsstring>
+        <name>timestamp_</name>
+        <briefdescription>
+<para>Timestamp of when program is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="134" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a6e9553f3d90b740bc5f10d2b38b28549" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Log::flight_name_</definition>
+        <argsstring></argsstring>
+        <name>flight_name_</name>
+        <briefdescription>
+<para>String representing flight name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="140" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1afe210afa445995d2eaa835d7559f6b95" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Log::program_name_</definition>
+        <argsstring></argsstring>
+        <name>program_name_</name>
+        <briefdescription>
+<para>String representing program name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="146" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classLog_1abec5c3596687c50a8b5498c786d52fd4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Log::calcAlt</definition>
+        <argsstring>(vn::sensors::ImuMeasurementsRegister &amp;data)</argsstring>
+        <name>calcAlt</name>
+        <param>
+          <type>vn::sensors::ImuMeasurementsRegister &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Calculates altitude based on IMU pressure data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data collected from the IMU Register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>float represnting the current altitude in meters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="104" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="116" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLog_1a7bdf3a02a000f59e1a43898664ae37ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Log::Log</definition>
+        <argsstring>(std::string flightFilename, std::string programFilename, vn::sensors::VnSensor *imu, double sTime)</argsstring>
+        <name>Log</name>
+        <param>
+          <type>std::string</type>
+          <declname>flightFilename</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>programFilename</declname>
+        </param>
+        <param>
+          <type>vn::sensors::VnSensor *</type>
+          <declname>imu</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>sTime</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classLog" kindref="compound">Log</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>flightFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name for flight log file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>programFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name for program log file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>imu</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to VN-100 sensor object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timestamp that we don&apos;t use </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="158" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="3" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a0fbfda88fbee5027c89f6eb121059360" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Log::~Log</definition>
+        <argsstring>()</argsstring>
+        <name>~Log</name>
+        <briefdescription>
+<para>Destroy the <ref refid="classLog" kindref="compound">Log</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="164" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="41" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::write</definition>
+        <argsstring>(vn::sensors::ImuMeasurementsRegister &amp;data)</argsstring>
+        <name>write</name>
+        <param>
+          <type>vn::sensors::ImuMeasurementsRegister &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Writes IMU data to flight log. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>IMU Data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="171" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="65" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1ac2c7f802daf43678fecddb1c8e2dec64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::write</definition>
+        <argsstring>(std::string outputString)</argsstring>
+        <name>write</name>
+        <param>
+          <type>std::string</type>
+          <declname>outputString</declname>
+        </param>
+        <briefdescription>
+<para>Writes print statements to program log. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>outputString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Print statements </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="178" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1ae0bb35da300c57bcfbdb644c733b530e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::writeTime</definition>
+        <argsstring>(std::string outputString)</argsstring>
+        <name>writeTime</name>
+        <param>
+          <type>std::string</type>
+          <declname>outputString</declname>
+        </param>
+        <briefdescription>
+<para>Write string to program data file with timestamp and to console. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>outputString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The timestamp </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="185" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="87" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1aedf3a10cb2b62dc6de2f6ed8274e9476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::tempSaveProgLog</definition>
+        <argsstring>()</argsstring>
+        <name>tempSaveProgLog</name>
+        <briefdescription>
+<para>Saves the program log file while still keeping it open to writing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="191" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="54" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a5242f7dbe3b7037e4c7b3df9179e1ab5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::writeDelim</definition>
+        <argsstring>(std::string outputString)</argsstring>
+        <name>writeDelim</name>
+        <param>
+          <type>std::string</type>
+          <declname>outputString</declname>
+        </param>
+        <briefdescription>
+<para>Write string to program data file with special delimiters and timestamp for MATLAB postprocessing, and to console. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>outputString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string written in the <ref refid="classLog" kindref="compound">Log</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="198" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="94" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double Log::elapsedTime</definition>
+        <argsstring>()</argsstring>
+        <name>elapsedTime</name>
+        <briefdescription>
+<para>Calculate time in milliseconds since <ref refid="classLog" kindref="compound">Log</ref> pointer was created. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>double representing the time in ms since <ref refid="classLog" kindref="compound">Log</ref> was created </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="205" column="12" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="100" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a05e8a199e82d1adf6471c532fc4997e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::saveBaselineParameters</definition>
+        <argsstring>(float Rconst, float Bconst, float pressure, float temperature, float accelg)</argsstring>
+        <name>saveBaselineParameters</name>
+        <param>
+          <type>float</type>
+          <declname>Rconst</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>Bconst</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pressure</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>temperature</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>accelg</declname>
+        </param>
+        <briefdescription>
+<para>Save baseline parameters to calculate altitude. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Rconst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gas Constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Bconst</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variation of temperature within the troposphere </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pressure</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline pressure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>temperature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline temperature </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>accelg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Baseline gravity reading </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="216" column="10" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="106" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a8de9fb083271564281cefe2c165c4c4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Log::getTimestamp</definition>
+        <argsstring>()</argsstring>
+        <name>getTimestamp</name>
+        <briefdescription>
+<para>Get the start timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>string representing the timestamp </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="223" column="17" bodyfile="/home/kushtimusprime/FullscalePrime/Log/src/Log.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classLog" kindref="compound">Log</ref> class to record flight results. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" line="21" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/Log/include/Log.h" bodystart="21" bodyend="225"/>
+    <listofallmembers>
+      <member refid="classLog_1a87ab4c0f071bb1ee6e1f099431b14339" prot="private" virt="non-virtual"><scope>Log</scope><name>accelg0</name></member>
+      <member refid="classLog_1acf3d062f2cdd0cae0c87ee0271455075" prot="private" virt="non-virtual"><scope>Log</scope><name>B</name></member>
+      <member refid="classLog_1abec5c3596687c50a8b5498c786d52fd4" prot="private" virt="non-virtual"><scope>Log</scope><name>calcAlt</name></member>
+      <member refid="classLog_1ab5232a137bb7356f03d8d637b46b9c87" prot="private" virt="non-virtual"><scope>Log</scope><name>currentAlt</name></member>
+      <member refid="classLog_1af91c5ecf0cf4ef1f0b6218be28c78f45" prot="private" virt="non-virtual"><scope>Log</scope><name>currentTime</name></member>
+      <member refid="classLog_1a929b7907c0f9f12378339ca4841620aa" prot="private" virt="non-virtual"><scope>Log</scope><name>delim</name></member>
+      <member refid="classLog_1ab8312bed26b9acf5755bb5b4aae92a62" prot="public" virt="non-virtual"><scope>Log</scope><name>elapsedTime</name></member>
+      <member refid="classLog_1a6e9553f3d90b740bc5f10d2b38b28549" prot="private" virt="non-virtual"><scope>Log</scope><name>flight_name_</name></member>
+      <member refid="classLog_1a8de9fb083271564281cefe2c165c4c4b" prot="public" virt="non-virtual"><scope>Log</scope><name>getTimestamp</name></member>
+      <member refid="classLog_1a7bdf3a02a000f59e1a43898664ae37ae" prot="public" virt="non-virtual"><scope>Log</scope><name>Log</name></member>
+      <member refid="classLog_1a1a645481a634d450195df274bb5d4cf6" prot="private" virt="non-virtual"><scope>Log</scope><name>mFlightLog</name></member>
+      <member refid="classLog_1a36d58966bac5867afb9187d81e5de6fb" prot="private" virt="non-virtual"><scope>Log</scope><name>mIMU</name></member>
+      <member refid="classLog_1ab2787e173e10b969e01ba8ae658e0463" prot="private" virt="non-virtual"><scope>Log</scope><name>mProgLog</name></member>
+      <member refid="classLog_1a7a3951c4d4a6d11b5b47ccb8295ddb5e" prot="private" virt="non-virtual"><scope>Log</scope><name>numSpecialCharacters</name></member>
+      <member refid="classLog_1af5c53f6955fa7cc5a3215d72d6e4953d" prot="private" virt="non-virtual"><scope>Log</scope><name>pressure0</name></member>
+      <member refid="classLog_1afe210afa445995d2eaa835d7559f6b95" prot="private" virt="non-virtual"><scope>Log</scope><name>program_name_</name></member>
+      <member refid="classLog_1a312ad1743fdb43c6db3c2a920d540e9a" prot="private" virt="non-virtual"><scope>Log</scope><name>R</name></member>
+      <member refid="classLog_1a6fc8d2d8e95ded4347e36bfa9b5a585a" prot="private" virt="non-virtual"><scope>Log</scope><name>sampleNumber</name></member>
+      <member refid="classLog_1a05e8a199e82d1adf6471c532fc4997e3" prot="public" virt="non-virtual"><scope>Log</scope><name>saveBaselineParameters</name></member>
+      <member refid="classLog_1a75187edd596a203593e2349f9692f854" prot="private" virt="non-virtual"><scope>Log</scope><name>savedParameters</name></member>
+      <member refid="classLog_1a704ec052f69f28dc9dcdf3161bbf8b39" prot="private" virt="non-virtual"><scope>Log</scope><name>specialCharacters</name></member>
+      <member refid="classLog_1a41e68e539a661098b24f822708e7a362" prot="private" virt="non-virtual"><scope>Log</scope><name>startTime</name></member>
+      <member refid="classLog_1a76659910c49c9aa0a4ba13f864ec7e85" prot="private" virt="non-virtual"><scope>Log</scope><name>temperature0</name></member>
+      <member refid="classLog_1aedf3a10cb2b62dc6de2f6ed8274e9476" prot="public" virt="non-virtual"><scope>Log</scope><name>tempSaveProgLog</name></member>
+      <member refid="classLog_1ad23a5c76ff9a9c7c06440977dbd7e1cc" prot="private" virt="non-virtual"><scope>Log</scope><name>timestamp_</name></member>
+      <member refid="classLog_1a3a03dcce69eb61ad1414a7f4750aa30c" prot="public" virt="non-virtual"><scope>Log</scope><name>write</name></member>
+      <member refid="classLog_1ac2c7f802daf43678fecddb1c8e2dec64" prot="public" virt="non-virtual"><scope>Log</scope><name>write</name></member>
+      <member refid="classLog_1a5242f7dbe3b7037e4c7b3df9179e1ab5" prot="public" virt="non-virtual"><scope>Log</scope><name>writeDelim</name></member>
+      <member refid="classLog_1ae0bb35da300c57bcfbdb644c733b530e" prot="public" virt="non-virtual"><scope>Log</scope><name>writeTime</name></member>
+      <member refid="classLog_1a0fbfda88fbee5027c89f6eb121059360" prot="public" virt="non-virtual"><scope>Log</scope><name>~Log</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

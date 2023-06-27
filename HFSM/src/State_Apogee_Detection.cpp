@@ -29,10 +29,12 @@ EventName State_Apogee_Detection::execute()
 	{
 		try
 		{
+			//Read IMU
 			this->root_->response_ = this->root_->m_vn_->readImuMeasurements();
 			this->root_->m_log_.write(this->root_->response_);
 			this->root_->z_current_ = this->root_->pressure2Altitude(this->root_->t0_, this->root_->p0_, this->root_->g0_, this->root_->response_.pressure);
 
+			//Check if altitude is max
 			if (this->root_->z_current_ >= max_altitude)
 			{
 				max_altitude = this->root_->z_current_;

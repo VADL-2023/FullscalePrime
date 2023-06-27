@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classState__Full__Lift" kind="class" language="C++" prot="public">
+    <compoundname>State_Full_Lift</compoundname>
+    <basecompoundref refid="classState" prot="public" virt="non-virtual">State</basecompoundref>
+    <includes local="no">State_Full_Lift.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classState__Full__Lift_1a3b22bea9f8c64ab5c5a4be5ae79fd246" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>State_Full_Lift::State_Full_Lift</definition>
+        <argsstring>()</argsstring>
+        <name>State_Full_Lift</name>
+        <briefdescription>
+<para>Construct a new <ref refid="classState__Full__Lift" kindref="compound">State_Full_Lift</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" line="23" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Lift.cpp" bodystart="5" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classState__Full__Lift_1a32e246ac7799a199fbca5b0d57524bfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>State_Full_Lift::State_Full_Lift</definition>
+        <argsstring>(StateName name, std::map&lt; EventName, StateName &gt; &amp;state_transitions, Root *root)</argsstring>
+        <name>State_Full_Lift</name>
+        <param>
+          <type><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref></type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::map&lt; <ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref>, <ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref> &gt; &amp;</type>
+          <declname>state_transitions</declname>
+        </param>
+        <param>
+          <type><ref refid="classRoot" kindref="compound">Root</ref> *</type>
+          <declname>root</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classState__Full__Lift" kindref="compound">State_Full_Lift</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String representing state name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state_transitions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Map of transitions to determine what the next state will be </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>root</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classRoot" kindref="compound">Root</ref> variable used for state machine </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" line="32" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Lift.cpp" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classState__Full__Lift_1a70d4a9cdd0278a5fe77063f76a251b43" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref></type>
+        <definition>EventName State_Full_Lift::execute</definition>
+        <argsstring>() override</argsstring>
+        <name>execute</name>
+        <reimplements refid="classState_1aad21360bf6da12cc8442bf0da8bf37a9">execute</reimplements>
+        <briefdescription>
+<para>Main execution method for state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Result of state execution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" line="39" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Lift.cpp" bodystart="13" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classState__Full__Lift_1ac41bfc6a060d4c6e4b98de532dcd9563" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref></type>
+        <definition>EventName State_Full_Lift::unitExecute</definition>
+        <argsstring>() override</argsstring>
+        <name>unitExecute</name>
+        <reimplements refid="classState_1a571cb364027c5ee65658c623bc03d3b5">unitExecute</reimplements>
+        <briefdescription>
+<para>Execution method for state in display mode (DOESN&apos;T WORK) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Result of state execution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" line="46" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Lift.cpp" bodystart="140" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classState" kindref="compound">State</ref> responsible for elevating the key nacelle with the lift. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>State</label>
+        <link refid="classState"/>
+      </node>
+      <node id="1">
+        <label>State_Full_Lift</label>
+        <link refid="classState__Full__Lift"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>Log</label>
+        <link refid="classLog"/>
+      </node>
+      <node id="5">
+        <label>Stepper</label>
+        <link refid="classStepper"/>
+      </node>
+      <node id="2">
+        <label>State</label>
+        <link refid="classState"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>root_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PacketReceiver</label>
+        <link refid="classPacketReceiver"/>
+      </node>
+      <node id="3">
+        <label>Root</label>
+        <link refid="classRoot"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>m_log_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>stepper_1_</edgelabel>
+          <edgelabel>stepper_2_</edgelabel>
+          <edgelabel>stepper_3_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>radio1_</edgelabel>
+          <edgelabel>radio2_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>State_Full_Lift</label>
+        <link refid="classState__Full__Lift"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" line="16" column="1" bodyfile="/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h" bodystart="16" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classState__Full__Lift_1a70d4a9cdd0278a5fe77063f76a251b43" prot="public" virt="virtual"><scope>State_Full_Lift</scope><name>execute</name></member>
+      <member refid="classState_1a73a816d1fe3d0873085685a407d9d4b3" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>getName</name></member>
+      <member refid="classState_1a7b93492451b30498b550556bdf333203" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>getNextState</name></member>
+      <member refid="classState_1a6a2b92bfd448de1302879399206a460b" prot="protected" virt="non-virtual"><scope>State_Full_Lift</scope><name>name_</name></member>
+      <member refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" prot="protected" virt="non-virtual"><scope>State_Full_Lift</scope><name>root_</name></member>
+      <member refid="classState_1ab91bb1dd5aa6260ab2a456581daf9ec2" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>State</name></member>
+      <member refid="classState_1a62c19e91a7b724ab4cd9a394ddb2539e" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>State</name></member>
+      <member refid="classState__Full__Lift_1a3b22bea9f8c64ab5c5a4be5ae79fd246" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>State_Full_Lift</name></member>
+      <member refid="classState__Full__Lift_1a32e246ac7799a199fbca5b0d57524bfa" prot="public" virt="non-virtual"><scope>State_Full_Lift</scope><name>State_Full_Lift</name></member>
+      <member refid="classState_1a8f28c427ef85b562d1854e60e0a8c217" prot="protected" virt="non-virtual"><scope>State_Full_Lift</scope><name>state_transitions_</name></member>
+      <member refid="classState__Full__Lift_1ac41bfc6a060d4c6e4b98de532dcd9563" prot="public" virt="virtual"><scope>State_Full_Lift</scope><name>unitExecute</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

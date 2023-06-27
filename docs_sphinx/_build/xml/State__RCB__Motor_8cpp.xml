@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="State__RCB__Motor_8cpp" kind="file" language="C++">
+    <compoundname>State_RCB_Motor.cpp</compoundname>
+    <includes refid="State__RCB__Motor_8h" local="yes">State_RCB_Motor.h</includes>
+    <includes refid="Root_8h" local="yes">Root.h</includes>
+    <incdepgraph>
+      <node id="31">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="24">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="14">
+        <label>sensors.h</label>
+      </node>
+      <node id="8">
+        <label>Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>pigpio.h</label>
+      </node>
+      <node id="33">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30">
+        <label>opencv2/imgproc.hpp</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="18">
+        <label>fstream</label>
+      </node>
+      <node id="25">
+        <label>netdb.h</label>
+      </node>
+      <node id="26">
+        <label>Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>config_IMU.hpp</label>
+      </node>
+      <node id="22">
+        <label>sys/types.h</label>
+      </node>
+      <node id="16">
+        <label>Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ctime</label>
+      </node>
+      <node id="27">
+        <label>opencv2/core.hpp</label>
+      </node>
+      <node id="11">
+        <label>unistd.h</label>
+      </node>
+      <node id="28">
+        <label>opencv2/videoio.hpp</label>
+      </node>
+      <node id="17">
+        <label>registers.h</label>
+      </node>
+      <node id="13">
+        <label>math.h</label>
+      </node>
+      <node id="29">
+        <label>opencv2/highgui.hpp</label>
+      </node>
+      <node id="20">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="21">
+        <label>PacketReceiver.h</label>
+        <link refid="PacketReceiver_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>State_RCB_Motor.h</label>
+        <link refid="State__RCB__Motor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>chrono</label>
+      </node>
+      <node id="23">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="12">
+        <label>thread</label>
+      </node>
+      <node id="6">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+      <node id="32">
+        <label>stdio.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/src/State_RCB_Motor.cpp</label>
+        <link refid="State__RCB__Motor_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__RCB__Motor_8h" kindref="compound">State_RCB_Motor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Root_8h" kindref="compound">Root.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><ref refid="classState__RCB__Motor_1a53e95fe74b747d36876eb3a97b07875e" kindref="member">State_RCB_Motor::State_RCB_Motor</ref>():<sp/><ref refid="classState" kindref="compound">State</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="classState__RCB__Motor_1a53e95fe74b747d36876eb3a97b07875e" kindref="member">State_RCB_Motor::State_RCB_Motor</ref>(<ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/>name,<sp/>std::map&lt;EventName,<sp/>StateName&gt;<sp/>&amp;state_transitions,<sp/><ref refid="classRoot" kindref="compound">Root</ref>*<sp/>root)<sp/>:<sp/><ref refid="classState" kindref="compound">State</ref>(name,<sp/>state_transitions,<sp/>root)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__RCB__Motor_1ae4817baeae7b2328c6ddf9a936064e92" kindref="member">State_RCB_Motor::execute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;In<sp/>State_RCB_Motor<sp/>and<sp/>will<sp/>return<sp/>end<sp/>state.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca9aab2d9eae3e9a84d9fed3f0cadd7e22" kindref="member">TERMINATE</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState__RCB__Motor_1a59e9211b5cfdb9b15631b6a2e6671ffe" kindref="member">State_RCB_Motor::unitExecute</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Spin<sp/>RCB<sp/>motor<sp/>one<sp/>way<sp/>for<sp/>a<sp/>bit,<sp/>then<sp/>the<sp/>other<sp/>way</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Starting<sp/>RCB<sp/>Unit<sp/>Test&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>start_time<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>current_time<sp/>=<sp/>start_time;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" kindref="member">rcb_lift_standby_</ref>,1);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Spin<sp/>one<sp/>way&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(current_time<sp/>-<sp/>start_time<sp/>&lt;<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1afe437722a9ebdc6c28477ac99f68e373" kindref="member">rcb_time_threshold_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a3dc26ac1f561a5419a7dea3e2f2ed3a0" kindref="member">rcb_p_</ref>,1);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a201771205801016710f4953b507b50cd" kindref="member">rcb_n_</ref>,0);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioPWM(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" kindref="member">rcb_enable_</ref>,this-&gt;root_-&gt;pwm_motor_max_);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_time<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" kindref="member">rcb_lift_standby_</ref>,0);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>usleep(2000000);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>start_time<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>current_time<sp/>=<sp/>start_time;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" kindref="member">rcb_lift_standby_</ref>,1);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Spin<sp/>other<sp/>way&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(current_time<sp/>-<sp/>start_time<sp/>&lt;<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1afe437722a9ebdc6c28477ac99f68e373" kindref="member">rcb_time_threshold_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a3dc26ac1f561a5419a7dea3e2f2ed3a0" kindref="member">rcb_p_</ref>,0);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a201771205801016710f4953b507b50cd" kindref="member">rcb_n_</ref>,1);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioPWM(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" kindref="member">rcb_enable_</ref>,this-&gt;root_-&gt;pwm_motor_max_);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_time<sp/>=<sp/>this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" kindref="member">rcb_lift_standby_</ref>,0);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a201771205801016710f4953b507b50cd" kindref="member">rcb_n_</ref>,0);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioPWM(this-&gt;<ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>-&gt;<ref refid="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" kindref="member">rcb_enable_</ref>,0);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Ending<sp/>RCB<sp/>Unit<sp/>Test&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488eca6566aa06357d2a8b970955751bb7e0cc" kindref="member">BASIC_ROTATE</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/src/State_RCB_Motor.cpp"/>
+  </compounddef>
+</doxygen>

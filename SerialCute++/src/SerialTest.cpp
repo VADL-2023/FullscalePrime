@@ -1,8 +1,18 @@
+/**
+ * @file SerialTest.cpp
+ * @brief Simple test of Serial Object
+ * 
+ */
 #include <string>
 #include <iostream>
 #include <unistd.h>
 #include "SerialObject.h"
 
+/**
+ * @brief Main method to test Serial communication with Arduino/Teensy
+ * 
+ * @return int representing exit status
+ */
 int main() {
     SerialObject serial;
 

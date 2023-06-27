@@ -11,7 +11,10 @@ State_Full_RCB::State_Full_RCB(StateName name, std::map<EventName, StateName> &s
 
 EventName State_Full_RCB::execute()
 {
+	
 	this->root_->m_log_.write("In State Full RCB");
+
+	//If we are redoing RAFCO, we want to reassign camera streams to see if nacelle 2 is back online
 	if(this->root_->rafco_redo_) {
 		system("sudo bash ../../cam_assignment.bash");
 	}
@@ -98,6 +101,8 @@ EventName State_Full_RCB::execute()
 		std::thread t1(&Root::realCamThreadRCB, this->root_, &cap, &video);
 		t1_test = std::move(t1);
 	}
+
+	//Determine which nacelle will be on top
 	if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 	{
 		this->root_->m_log_.write("Rotating to camera 1");
@@ -120,6 +125,7 @@ EventName State_Full_RCB::execute()
 			auto pitch_error = response_rpy[1];
 			last_angle = pitch_error;
 			last_yaw = response_rpy[2];
+			// We had a 7 degree threshold for camera 1 and 3 because they would never hit a flat 90 or -90
 			if (this->root_->primary_camera_stream_ == "/dev/videoCam1")
 			{
 				pitch_error -= 90 - 7;
@@ -130,6 +136,8 @@ EventName State_Full_RCB::execute()
 			}
 			std::string rcb_error_str = "RCB Angle Error: " + std::to_string(pitch_error);
 			this->root_->m_log_.write(rcb_error_str);
+
+			//Stop rotating if pitch error is below threshold, otherwise rotate to minimize error
 			if (pitch_error <= this->root_->rcb_angle_threshold_ && pitch_error >= -this->root_->rcb_angle_threshold_)
 			{
 				rcb_stable = true;
@@ -163,6 +171,7 @@ EventName State_Full_RCB::execute()
 		}
 		catch (const std::exception &e)
 		{
+			// Stop image capture thread and unlock nacelle servo
 			this->root_->m_log_.write("RCB IMU Disconnected");
 			gpioWrite(this->root_->rcb_lift_standby_, 0);
 			gpioWrite(this->root_->rcb_p_, 0);
@@ -176,6 +185,7 @@ EventName State_Full_RCB::execute()
 			gpioSleep(0, 2, 0);
 			this->root_->m_log_.write("Initiating Nacelle servo lock");
 			cap.release();
+			// Identify key camera as the one that is closest to the top
 			if (last_angle <= 45 && last_angle >= -45 && std::abs(last_yaw) > 90)
 			{
 				this->root_->primary_camera_stream_ = "/dev/videoCam2";
@@ -203,6 +213,8 @@ EventName State_Full_RCB::execute()
 	gpioWrite(this->root_->rcb_p_, 0);
 	gpioWrite(this->root_->rcb_n_, 0);
 	gpioPWM(this->root_->rcb_enable_, 0);
+
+	// Stop image capture thread and unlock nacelle servo
 	t1_test.join();
 	this->root_->m_log_.write("Initiating Nacelle servo unlock");
 	gpioServo(this->root_->nacelle_servo_, this->root_->nacelle_unlock_);

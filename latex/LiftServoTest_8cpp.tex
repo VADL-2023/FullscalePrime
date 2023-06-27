@@ -1,0 +1,56 @@
+\hypertarget{LiftServoTest_8cpp}{}\doxysection{Field\+Test/src/\+Lift\+Servo\+Test.cpp File Reference}
+\label{LiftServoTest_8cpp}\index{FieldTest/src/LiftServoTest.cpp@{FieldTest/src/LiftServoTest.cpp}}
+
+
+Runs lift servo to either lock or unlock the lift.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+Include dependency graph for Lift\+Servo\+Test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{LiftServoTest_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{LiftServoTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main Method\+: Runs lift servo to either lock or unlock the lift. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{LiftServoTest_8cpp_a0011468629907242165add0100249d4f}\label{LiftServoTest_8cpp_a0011468629907242165add0100249d4f}} 
+const int \mbox{\hyperlink{LiftServoTest_8cpp_a0011468629907242165add0100249d4f}{LIFT\+\_\+\+SERVO}} = 2
+\begin{DoxyCompactList}\small\item\em RPI GPIO pin for servo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftServoTest_8cpp_a9dd4525ae5e984cdebc7155ca58285e0}\label{LiftServoTest_8cpp_a9dd4525ae5e984cdebc7155ca58285e0}} 
+const int \mbox{\hyperlink{LiftServoTest_8cpp_a9dd4525ae5e984cdebc7155ca58285e0}{LIFT\+\_\+\+LOCK}} = 1750
+\begin{DoxyCompactList}\small\item\em Servo pulse width for lock configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{LiftServoTest_8cpp_aefe97a3441f2aa992e6b4715b58afed3}\label{LiftServoTest_8cpp_aefe97a3441f2aa992e6b4715b58afed3}} 
+const int \mbox{\hyperlink{LiftServoTest_8cpp_aefe97a3441f2aa992e6b4715b58afed3}{LIFT\+\_\+\+UNLOCK}} = 1300
+\begin{DoxyCompactList}\small\item\em Servo pulse width for unlock configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs lift servo to either lock or unlock the lift. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{LiftServoTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{LiftServoTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{LiftServoTest.cpp@{LiftServoTest.cpp}!main@{main}}
+\index{main@{main}!LiftServoTest.cpp@{LiftServoTest.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Method\+: Runs lift servo to either lock or unlock the lift. 
+
+\begin{DoxyReturn}{Returns}
+Method status 
+\end{DoxyReturn}

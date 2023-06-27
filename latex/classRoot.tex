@@ -1,0 +1,723 @@
+\hypertarget{classRoot}{}\doxysection{Root Class Reference}
+\label{classRoot}\index{Root@{Root}}
+
+
+Contains all common variables and functions accessible to every state in the state machine.  
+
+
+
+
+{\ttfamily \#include $<$Root.\+h$>$}
+
+
+
+Collaboration diagram for Root\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classRoot__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRoot_ae30f3c6144d2d9df894b392ee45d051f}\label{classRoot_ae30f3c6144d2d9df894b392ee45d051f}} 
+\mbox{\hyperlink{classRoot_ae30f3c6144d2d9df894b392ee45d051f}{Root}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRoot}{Root}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRoot_ac921dd8c95e5a9002bdfb0a3c6fef21e}{Root}} (bool is\+\_\+unit\+\_\+fsm)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classRoot}{Root}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae3b9dd56ac40d582a92b904f8480be7b}\label{classRoot_ae3b9dd56ac40d582a92b904f8480be7b}} 
+\mbox{\hyperlink{classRoot_ae3b9dd56ac40d582a92b904f8480be7b}{$\sim$\+Root}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classRoot}{Root}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRoot_a0e98881d2cddd732762b3a417cf57179}{add\+State}} (\mbox{\hyperlink{classState}{State}} $\ast$the\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Will add a state to the state machine. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classRoot_a1806fd2e246ba5807fa04d4f2c4f5bad}{get\+Current\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get the current time in ms. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRoot_aff48369e29cdf0800a8be86c36721d3d}{angle\+To\+Pulse\+Width}} (double pulse\+\_\+max, double pulse\+\_\+min, double range, float angle)
+\begin{DoxyCompactList}\small\item\em Converts servo angle to pulse width through linear interpolation. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRoot_adf14d6d0134f647b4ce3d285db37815e}{pressure2\+Altitude}} (float t0, float p0, float g0, float p)
+\begin{DoxyCompactList}\small\item\em Finds altitude based on pressure. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRoot_aee702e519c44a9bc38edca8c6f6bb235}{calc\+Array\+Average}} (float array\mbox{[}$\,$\mbox{]}, int size)
+\begin{DoxyCompactList}\small\item\em Calculates average of all array values. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRoot_ab434a46ca42a975927e0e070b3257077}{terminate\+Connections}} (Vn\+Sensor $\ast$imu)
+\begin{DoxyCompactList}\small\item\em Disconnects IMU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRoot_aaf8bbf612528d0b7f4af793e9e470f43}{active\+Sleep}} (float sleep\+\_\+time, Vn\+Sensor $\ast$imu, Imu\+Measurements\+Register \&response, \mbox{\hyperlink{classLog}{Log}} \&log)
+\begin{DoxyCompactList}\small\item\em Similar to sleep() command but still records and logs IMU data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRoot_adfce70fe2c9363f44c62c15c14589a96}{is\+Time\+Exceeded}} (double launch\+\_\+time, double trigger\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Checks if flight has gone on for too long. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRoot_a2c377c2b26779603750105a9c45f31c5}{camera\+Check}} (std\+::string camera\+\_\+check)
+\begin{DoxyCompactList}\small\item\em Checks if given camera stream is operational. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRoot_af42361b09c190429b641a1f6b72cbef7}{real\+Cam\+Thread\+Landing}} (cv\+::\+Video\+Capture $\ast$cap, std\+::vector$<$ cv\+::\+Video\+Writer $>$ $\ast$videos, int cam\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Image capture thread for flight. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRoot_adc453b16b94b0c0bd5e5e3235e4fae4e}{real\+Cam\+Thread\+RCB}} (cv\+::\+Video\+Capture $\ast$cap, cv\+::\+Video\+Writer $\ast$video)
+\begin{DoxyCompactList}\small\item\em Image capture thread for RCB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRoot_a57713c513c351dde29c9ee5168647706}{real\+Cam\+Thread\+Lift}} (cv\+::\+Video\+Capture $\ast$cap, cv\+::\+Video\+Writer $\ast$video)
+\begin{DoxyCompactList}\small\item\em Image capture thread for Lift. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRoot_a9a1c5e993879a802f3eebd6a78974d79}\label{classRoot_a9a1c5e993879a802f3eebd6a78974d79}} 
+bool \mbox{\hyperlink{classRoot_a9a1c5e993879a802f3eebd6a78974d79}{gpio\+\_\+initialized\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if GPIO pins have been initialized. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_acd55503015ba119018dc122a4ff590aa}\label{classRoot_acd55503015ba119018dc122a4ff590aa}} 
+double \mbox{\hyperlink{classRoot_acd55503015ba119018dc122a4ff590aa}{start\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Start time of program in milliseconds (arbitrary number) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad35c4bab054fb58e16a104548b002da0}\label{classRoot_ad35c4bab054fb58e16a104548b002da0}} 
+bool \mbox{\hyperlink{classRoot_ad35c4bab054fb58e16a104548b002da0}{is\+\_\+unit\+\_\+fsm\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Boolean indicating if it is in display mode (normally false, and should probably delete this) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aa16b41f9e18e2228471b333149bde688}\label{classRoot_aa16b41f9e18e2228471b333149bde688}} 
+int \mbox{\hyperlink{classRoot_aa16b41f9e18e2228471b333149bde688}{unit\+\_\+test\+\_\+delay\+\_\+ms\+\_\+}} = 1000000
+\begin{DoxyCompactList}\small\item\em Delay between each motor/servo movement in display state machine. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae7fcf80d14f88e5adfbc2f0ac35f1854}\label{classRoot_ae7fcf80d14f88e5adfbc2f0ac35f1854}} 
+std\+::string \mbox{\hyperlink{classRoot_ae7fcf80d14f88e5adfbc2f0ac35f1854}{date\+\_\+timestamp\+\_\+}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Time and date of when program starts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ac8c99be5ee8629bd262ad9cd46e9fdfd}\label{classRoot_ac8c99be5ee8629bd262ad9cd46e9fdfd}} 
+int \mbox{\hyperlink{classRoot_ac8c99be5ee8629bd262ad9cd46e9fdfd}{steps\+\_\+per\+\_\+revolution\+\_\+}} = 200
+\begin{DoxyCompactList}\small\item\em Number of steps required to fully rotate stepper motor in nacelle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3ecead511d50885af6706fb105956203}\label{classRoot_a3ecead511d50885af6706fb105956203}} 
+int \mbox{\hyperlink{classRoot_a3ecead511d50885af6706fb105956203}{stepper\+\_\+speed\+\_\+}} = 10
+\begin{DoxyCompactList}\small\item\em Speed of stepper motor in nacelle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_af4c69235873088deec800bbb76bf8666}\label{classRoot_af4c69235873088deec800bbb76bf8666}} 
+int \mbox{\hyperlink{classRoot_af4c69235873088deec800bbb76bf8666}{num\+\_\+steps\+\_\+}} = 40
+\begin{DoxyCompactList}\small\item\em Number of steps to rotate stepper motor 60 degrees. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae023866cfbb1bac7137dd8eb8c61af0f}\label{classRoot_ae023866cfbb1bac7137dd8eb8c61af0f}} 
+int \mbox{\hyperlink{classRoot_ae023866cfbb1bac7137dd8eb8c61af0f}{stepper\+\_\+threshold\+\_\+}} = 5000
+\begin{DoxyCompactList}\small\item\em Time threshold for how long stepper should run in display mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a0e55667cde7d236a4e1f50e95ce27b89}\label{classRoot_a0e55667cde7d236a4e1f50e95ce27b89}} 
+int \mbox{\hyperlink{classRoot_a0e55667cde7d236a4e1f50e95ce27b89}{pwm\+\_\+motor\+\_\+max\+\_\+}} = 255
+\begin{DoxyCompactList}\small\item\em PWM Signal to move motor at max speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_acebcb3832831986e74cf6b4ad2e60f87}\label{classRoot_acebcb3832831986e74cf6b4ad2e60f87}} 
+int \mbox{\hyperlink{classRoot_acebcb3832831986e74cf6b4ad2e60f87}{stepper\+\_\+1\+\_\+standby\+\_\+pin\+\_\+}} = 0
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 1 standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aedbdb7da1f2486171cc67b7ec273a3cc}\label{classRoot_aedbdb7da1f2486171cc67b7ec273a3cc}} 
+int \mbox{\hyperlink{classRoot_aedbdb7da1f2486171cc67b7ec273a3cc}{stepper\+\_\+1\+\_\+pin\+\_\+1\+\_\+}} = 11
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 1 pin 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a79ad6ed57ca2e6b3e675ecdda75cad8a}\label{classRoot_a79ad6ed57ca2e6b3e675ecdda75cad8a}} 
+int \mbox{\hyperlink{classRoot_a79ad6ed57ca2e6b3e675ecdda75cad8a}{stepper\+\_\+1\+\_\+pin\+\_\+2\+\_\+}} = 9
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 1 pin 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a49fe8a1318be6bb79308e9883d40b140}\label{classRoot_a49fe8a1318be6bb79308e9883d40b140}} 
+int \mbox{\hyperlink{classRoot_a49fe8a1318be6bb79308e9883d40b140}{stepper\+\_\+1\+\_\+pin\+\_\+3\+\_\+}} = 5
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 1 pin 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_accbec22d48edd1c9a1dc2dc59a4ff85b}\label{classRoot_accbec22d48edd1c9a1dc2dc59a4ff85b}} 
+int \mbox{\hyperlink{classRoot_accbec22d48edd1c9a1dc2dc59a4ff85b}{stepper\+\_\+1\+\_\+pin\+\_\+4\+\_\+}} = 6
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 1 pin 4. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3c7a96852dec430720be43072d8df746}\label{classRoot_a3c7a96852dec430720be43072d8df746}} 
+int \mbox{\hyperlink{classRoot_a3c7a96852dec430720be43072d8df746}{stepper\+\_\+2\+\_\+standby\+\_\+pin\+\_\+}} = 27
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 2 standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a74936d11015167d0f5c36e9fa868edea}\label{classRoot_a74936d11015167d0f5c36e9fa868edea}} 
+int \mbox{\hyperlink{classRoot_a74936d11015167d0f5c36e9fa868edea}{stepper\+\_\+2\+\_\+pin\+\_\+1\+\_\+}} = 17
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 2 pin 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a9063f4fb5a5f70ca058533d766aec808}\label{classRoot_a9063f4fb5a5f70ca058533d766aec808}} 
+int \mbox{\hyperlink{classRoot_a9063f4fb5a5f70ca058533d766aec808}{stepper\+\_\+2\+\_\+pin\+\_\+2\+\_\+}} = 4
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 2 pin 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aaaf42bf8fad3de9e6482c9531e6df99c}\label{classRoot_aaaf42bf8fad3de9e6482c9531e6df99c}} 
+int \mbox{\hyperlink{classRoot_aaaf42bf8fad3de9e6482c9531e6df99c}{stepper\+\_\+2\+\_\+pin\+\_\+3\+\_\+}} = 22
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 2 pin 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad0ba5eebc1687f3e86b498d9b8d71852}\label{classRoot_ad0ba5eebc1687f3e86b498d9b8d71852}} 
+int \mbox{\hyperlink{classRoot_ad0ba5eebc1687f3e86b498d9b8d71852}{stepper\+\_\+2\+\_\+pin\+\_\+4\+\_\+}} = 10
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for stepper 2 pin 4. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a19728bc04667ed9c8397ff12c7cb823f}\label{classRoot_a19728bc04667ed9c8397ff12c7cb823f}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classRoot_a19728bc04667ed9c8397ff12c7cb823f}{aac\+\_\+camera\+\_\+streams\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of strings where each string represents functional camera stream. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a2aff88a7fd095b32de77a6d1f9b90a92}\label{classRoot_a2aff88a7fd095b32de77a6d1f9b90a92}} 
+std\+::vector$<$ cv\+::\+Video\+Capture $>$ \mbox{\hyperlink{classRoot_a2aff88a7fd095b32de77a6d1f9b90a92}{aac\+\_\+camera\+\_\+captures\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of Video\+Capture objects representing camera streams used during mission. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a99e6e275fa3ea44182aa437e248d18d7}\label{classRoot_a99e6e275fa3ea44182aa437e248d18d7}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classRoot_a99e6e275fa3ea44182aa437e248d18d7}{aac\+\_\+camera\+\_\+captures\+\_\+strings\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of strings where each string represents a camera stream during mission (we are not using all functional camera streams from aac\+\_\+camera\+\_\+streams\+\_\+, only a subset) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad65efb2a827b0fa7033e51f15ec06d27}\label{classRoot_ad65efb2a827b0fa7033e51f15ec06d27}} 
+cv\+::\+Video\+Capture \mbox{\hyperlink{classRoot_ad65efb2a827b0fa7033e51f15ec06d27}{cap1}}
+\begin{DoxyCompactList}\small\item\em Video\+Capture object for cam 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a1a4258e70c961c735df1772a27101470}\label{classRoot_a1a4258e70c961c735df1772a27101470}} 
+cv\+::\+Video\+Capture \mbox{\hyperlink{classRoot_a1a4258e70c961c735df1772a27101470}{cap2}}
+\begin{DoxyCompactList}\small\item\em Video\+Capture object for cam 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a57c732bf15d49d025f0af34bd9e162da}\label{classRoot_a57c732bf15d49d025f0af34bd9e162da}} 
+cv\+::\+Video\+Capture \mbox{\hyperlink{classRoot_a57c732bf15d49d025f0af34bd9e162da}{cap3}}
+\begin{DoxyCompactList}\small\item\em Video\+Capture object for cam 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a367f755239776d501c48db95380a3b86}\label{classRoot_a367f755239776d501c48db95380a3b86}} 
+bool \mbox{\hyperlink{classRoot_a367f755239776d501c48db95380a3b86}{launch\+\_\+detected\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if launch has been detected yet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a28569cfd12f8c3da33ec45b7a37c744d}\label{classRoot_a28569cfd12f8c3da33ec45b7a37c744d}} 
+bool \mbox{\hyperlink{classRoot_a28569cfd12f8c3da33ec45b7a37c744d}{apogee\+\_\+detected\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if apogee has been detected yet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a45de3e96eb18ce32e0e5aa2755c94748}\label{classRoot_a45de3e96eb18ce32e0e5aa2755c94748}} 
+bool \mbox{\hyperlink{classRoot_a45de3e96eb18ce32e0e5aa2755c94748}{landing\+\_\+detected\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if landing has been detected yet. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aa87917e364bb6c432441789036b94940}\label{classRoot_aa87917e364bb6c432441789036b94940}} 
+int \mbox{\hyperlink{classRoot_aa87917e364bb6c432441789036b94940}{aac\+\_\+pic\+\_\+num\+\_\+cam\+\_\+1\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em Number of pictures taken by camera 1 during flight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a5a20e6991fdcf49bdc86eb05e8d4d3e2}\label{classRoot_a5a20e6991fdcf49bdc86eb05e8d4d3e2}} 
+int \mbox{\hyperlink{classRoot_a5a20e6991fdcf49bdc86eb05e8d4d3e2}{aac\+\_\+pic\+\_\+num\+\_\+cam\+\_\+2\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em Number of pictures taken by camera 2 during flight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a00bc8007506cc866df4910e555ff3d8e}\label{classRoot_a00bc8007506cc866df4910e555ff3d8e}} 
+int \mbox{\hyperlink{classRoot_a00bc8007506cc866df4910e555ff3d8e}{aac\+\_\+pic\+\_\+num\+\_\+cam\+\_\+3\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em Number of pictures taken by camera 3 during flight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a567c69f42c80a0dc75004ab09bde38f5}\label{classRoot_a567c69f42c80a0dc75004ab09bde38f5}} 
+int \mbox{\hyperlink{classRoot_a567c69f42c80a0dc75004ab09bde38f5}{stepper\+\_\+3\+\_\+standby\+\_\+pin\+\_\+}} = 8
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle stepper 3 standby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a63d7f40439bfff90f8b668c41fc691c6}\label{classRoot_a63d7f40439bfff90f8b668c41fc691c6}} 
+int \mbox{\hyperlink{classRoot_a63d7f40439bfff90f8b668c41fc691c6}{stepper\+\_\+3\+\_\+pin\+\_\+1\+\_\+}} = 7
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle stepper 3 pin 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad815f36e7a5369891fdc12f43335710c}\label{classRoot_ad815f36e7a5369891fdc12f43335710c}} 
+int \mbox{\hyperlink{classRoot_ad815f36e7a5369891fdc12f43335710c}{stepper\+\_\+3\+\_\+pin\+\_\+2\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle stepper 3 pin 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a7f9f11f2b8cecc823d9621428cc1a863}\label{classRoot_a7f9f11f2b8cecc823d9621428cc1a863}} 
+int \mbox{\hyperlink{classRoot_a7f9f11f2b8cecc823d9621428cc1a863}{stepper\+\_\+3\+\_\+pin\+\_\+3\+\_\+}} = 25
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle stepper 3 pin 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3968085818827a33b698689602b5341c}\label{classRoot_a3968085818827a33b698689602b5341c}} 
+int \mbox{\hyperlink{classRoot_a3968085818827a33b698689602b5341c}{stepper\+\_\+3\+\_\+pin\+\_\+4\+\_\+}} = 24
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle stepper 3 pin 4. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a5662636d6620942e7d96b3c18a6b8acb}\label{classRoot_a5662636d6620942e7d96b3c18a6b8acb}} 
+\mbox{\hyperlink{classStepper}{Stepper}} \mbox{\hyperlink{classRoot_a5662636d6620942e7d96b3c18a6b8acb}{stepper\+\_\+1\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classStepper}{Stepper}} controller object for nacelle stepper 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afe9059f8c1a5cd31b5ff026f04cf1231}\label{classRoot_afe9059f8c1a5cd31b5ff026f04cf1231}} 
+\mbox{\hyperlink{classStepper}{Stepper}} \mbox{\hyperlink{classRoot_afe9059f8c1a5cd31b5ff026f04cf1231}{stepper\+\_\+2\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classStepper}{Stepper}} controller object for nacelle stepper 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3a71da14bde545d7386509fbf322e3ab}\label{classRoot_a3a71da14bde545d7386509fbf322e3ab}} 
+\mbox{\hyperlink{classStepper}{Stepper}} \mbox{\hyperlink{classRoot_a3a71da14bde545d7386509fbf322e3ab}{stepper\+\_\+3\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classStepper}{Stepper}} controller object for nacelle stepper 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3dc26ac1f561a5419a7dea3e2f2ed3a0}\label{classRoot_a3dc26ac1f561a5419a7dea3e2f2ed3a0}} 
+int \mbox{\hyperlink{classRoot_a3dc26ac1f561a5419a7dea3e2f2ed3a0}{rcb\+\_\+p\+\_\+}} = 26
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for positive RCB motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a201771205801016710f4953b507b50cd}\label{classRoot_a201771205801016710f4953b507b50cd}} 
+int \mbox{\hyperlink{classRoot_a201771205801016710f4953b507b50cd}{rcb\+\_\+n\+\_\+}} = 19
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for negative RCB motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a0ebc63246c11e13560e8ce9c53ad6f65}\label{classRoot_a0ebc63246c11e13560e8ce9c53ad6f65}} 
+int \mbox{\hyperlink{classRoot_a0ebc63246c11e13560e8ce9c53ad6f65}{rcb\+\_\+enable\+\_\+}} = 13
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for enable RCB motor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a7623f9f64b73979939e88fec40df9b0c}\label{classRoot_a7623f9f64b73979939e88fec40df9b0c}} 
+int \mbox{\hyperlink{classRoot_a7623f9f64b73979939e88fec40df9b0c}{rcb\+\_\+lift\+\_\+standby\+\_\+}} = 21
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for standby pin for RCB and Lift Motor Controller. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afe437722a9ebdc6c28477ac99f68e373}\label{classRoot_afe437722a9ebdc6c28477ac99f68e373}} 
+int \mbox{\hyperlink{classRoot_afe437722a9ebdc6c28477ac99f68e373}{rcb\+\_\+time\+\_\+threshold\+\_\+}} = 5000
+\begin{DoxyCompactList}\small\item\em Time threshold for RCB to rotate in display mode (Note\+: Display mode will just tick each motor in order and has no perception) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a411ac589602c228462f282188abf8877}\label{classRoot_a411ac589602c228462f282188abf8877}} 
+double \mbox{\hyperlink{classRoot_a411ac589602c228462f282188abf8877}{rcb\+\_\+angle\+\_\+threshold\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em Error threshold for RCB motor error (+/-\/ rcb\+\_\+angle\+\_\+threshold\+\_\+ meaning total error is twice as big) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_acc0091fae3a5c305df045698189c1166}\label{classRoot_acc0091fae3a5c305df045698189c1166}} 
+bool \mbox{\hyperlink{classRoot_acc0091fae3a5c305df045698189c1166}{is\+\_\+aligned\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if RCB is finished (aligned) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afd001764019dc5bcbeb8986443ba69a1}\label{classRoot_afd001764019dc5bcbeb8986443ba69a1}} 
+int \mbox{\hyperlink{classRoot_afd001764019dc5bcbeb8986443ba69a1}{full\+\_\+rcb\+\_\+time\+\_\+threshold\+\_\+}} = 75000
+\begin{DoxyCompactList}\small\item\em Maximum time to run RCB during payload before transitioning to next state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a33d02065241f1b0f6d0276c5bc71b436}\label{classRoot_a33d02065241f1b0f6d0276c5bc71b436}} 
+double \mbox{\hyperlink{classRoot_a33d02065241f1b0f6d0276c5bc71b436}{landing\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Time in milliseconds of landing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae7eda1b1be61959bdfde63fa5e1c67f0}\label{classRoot_ae7eda1b1be61959bdfde63fa5e1c67f0}} 
+size\+\_\+t \mbox{\hyperlink{classRoot_ae7eda1b1be61959bdfde63fa5e1c67f0}{n\+\_\+photo\+\_\+bit\+\_\+size\+\_\+}} = 5
+\begin{DoxyCompactList}\small\item\em Number of leading zeroes in AAC saved photos filename. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a2eea06c7f2bbb3a8cac9074cb99fd63f}\label{classRoot_a2eea06c7f2bbb3a8cac9074cb99fd63f}} 
+int \mbox{\hyperlink{classRoot_a2eea06c7f2bbb3a8cac9074cb99fd63f}{nacelle\+\_\+servo\+\_\+}} = 14
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for nacelle locking servo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae01e0d95ecc5b9bfb48f0943dee92609}\label{classRoot_ae01e0d95ecc5b9bfb48f0943dee92609}} 
+uint16\+\_\+t \mbox{\hyperlink{classRoot_ae01e0d95ecc5b9bfb48f0943dee92609}{servo\+\_\+pulse\+\_\+min\+\_\+}} = 500
+\begin{DoxyCompactList}\small\item\em Minimum servo pulse width (only for display mode, which doesn\textquotesingle{}t work at the moment) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae37960ff5c4f3ae06f6dff3d74882603}\label{classRoot_ae37960ff5c4f3ae06f6dff3d74882603}} 
+uint16\+\_\+t \mbox{\hyperlink{classRoot_ae37960ff5c4f3ae06f6dff3d74882603}{servo\+\_\+pulse\+\_\+max\+\_\+}} = 2250
+\begin{DoxyCompactList}\small\item\em Maximum servo pulse width (only display mode) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a72496ee70e99432eab96252fc299ee64}\label{classRoot_a72496ee70e99432eab96252fc299ee64}} 
+uint8\+\_\+t \mbox{\hyperlink{classRoot_a72496ee70e99432eab96252fc299ee64}{servo\+\_\+deg\+\_\+range\+\_\+}} = 90
+\begin{DoxyCompactList}\small\item\em Servo angle range. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a65b637e743a54ca50d4ceb093c3877a2}\label{classRoot_a65b637e743a54ca50d4ceb093c3877a2}} 
+int \mbox{\hyperlink{classRoot_a65b637e743a54ca50d4ceb093c3877a2}{nacelle\+\_\+lock\+\_\+}} = 1375
+\begin{DoxyCompactList}\small\item\em Servo pulse width to lock nacelles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a40ee4980933d5161ab6e27c3db68860f}\label{classRoot_a40ee4980933d5161ab6e27c3db68860f}} 
+int \mbox{\hyperlink{classRoot_a40ee4980933d5161ab6e27c3db68860f}{nacelle\+\_\+unlock\+\_\+}} = 755
+\begin{DoxyCompactList}\small\item\em Servo pulse width to unlock nacelles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3b7f785df36078118be89d4e75fee5eb}\label{classRoot_a3b7f785df36078118be89d4e75fee5eb}} 
+bool \mbox{\hyperlink{classRoot_a3b7f785df36078118be89d4e75fee5eb}{lift\+\_\+done\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if the lift state is done. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a2de20a843c95a7eab95eda8935d3d2b2}\label{classRoot_a2de20a843c95a7eab95eda8935d3d2b2}} 
+int \mbox{\hyperlink{classRoot_a2de20a843c95a7eab95eda8935d3d2b2}{lift\+\_\+servo\+\_\+}} = 2
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for lift servo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3873aef37d872d6f665a3ab0097c69d1}\label{classRoot_a3873aef37d872d6f665a3ab0097c69d1}} 
+int \mbox{\hyperlink{classRoot_a3873aef37d872d6f665a3ab0097c69d1}{lift\+\_\+final\+\_\+limit\+\_\+switch\+\_\+}} = 23
+\begin{DoxyCompactList}\small\item\em RPi GPIO pin for top limit switch for lift. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aee38b845123995badb235a8c349e60e4}\label{classRoot_aee38b845123995badb235a8c349e60e4}} 
+int \mbox{\hyperlink{classRoot_aee38b845123995badb235a8c349e60e4}{lift\+\_\+unit\+\_\+time\+\_\+threshold\+\_\+}} = 2000
+\begin{DoxyCompactList}\small\item\em Time the lift motor will run in display mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a4ac3790197c4de7c6cbe56ab5c691f1d}\label{classRoot_a4ac3790197c4de7c6cbe56ab5c691f1d}} 
+int \mbox{\hyperlink{classRoot_a4ac3790197c4de7c6cbe56ab5c691f1d}{lift\+\_\+lock\+\_\+}} = 1500
+\begin{DoxyCompactList}\small\item\em Pulse width to lock the lift. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a893b43912af8e2aa042346e353182edb}\label{classRoot_a893b43912af8e2aa042346e353182edb}} 
+int \mbox{\hyperlink{classRoot_a893b43912af8e2aa042346e353182edb}{lift\+\_\+unlock\+\_\+}} = 1150
+\begin{DoxyCompactList}\small\item\em Pulse width to unlock the lift. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a42d21c61859390159fc50ccc48b78887}\label{classRoot_a42d21c61859390159fc50ccc48b78887}} 
+int \mbox{\hyperlink{classRoot_a42d21c61859390159fc50ccc48b78887}{lift\+\_\+p\+\_\+}} = 20
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for positive lift motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae0a1f08496afdd14c36e961ecfe700b0}\label{classRoot_ae0a1f08496afdd14c36e961ecfe700b0}} 
+int \mbox{\hyperlink{classRoot_ae0a1f08496afdd14c36e961ecfe700b0}{lift\+\_\+n\+\_\+}} = 16
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for negative lift motor terminal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a65bf4a794c6427a3d8cc4d7ad8bb65dd}\label{classRoot_a65bf4a794c6427a3d8cc4d7ad8bb65dd}} 
+int \mbox{\hyperlink{classRoot_a65bf4a794c6427a3d8cc4d7ad8bb65dd}{lift\+\_\+enable\+\_\+}} = 12
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for the Lift motor enable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a33b5d41c6bb0721051881b24a16c716b}\label{classRoot_a33b5d41c6bb0721051881b24a16c716b}} 
+int \mbox{\hyperlink{classRoot_a33b5d41c6bb0721051881b24a16c716b}{lift\+\_\+time\+\_\+threshold\+\_\+}} = 30000
+\begin{DoxyCompactList}\small\item\em Maximum amount of time (ms) to run lift before transitioning to next state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a5135582fe033860cd1b77c9aeea30f0e}\label{classRoot_a5135582fe033860cd1b77c9aeea30f0e}} 
+int \mbox{\hyperlink{classRoot_a5135582fe033860cd1b77c9aeea30f0e}{lift\+\_\+backwards\+\_\+time\+\_\+threshold\+\_\+}} = 1068
+\begin{DoxyCompactList}\small\item\em Amount of time to move the lift back down to prevent wire tension. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afc94433eebd8b0a1f4c31f006ea55683}\label{classRoot_afc94433eebd8b0a1f4c31f006ea55683}} 
+int \mbox{\hyperlink{classRoot_afc94433eebd8b0a1f4c31f006ea55683}{lift\+\_\+min\+\_\+threshold\+\_\+}} = 15000
+\begin{DoxyCompactList}\small\item\em Minimum amount of time (ms) to run lift. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afe24ba4d1f27f1ed660ede3e997451d4}\label{classRoot_afe24ba4d1f27f1ed660ede3e997451d4}} 
+int \mbox{\hyperlink{classRoot_afe24ba4d1f27f1ed660ede3e997451d4}{level\+\_\+servo\+\_\+}} = 3
+\begin{DoxyCompactList}\small\item\em RPi GPIO Pin for level servo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ab71a63a9f7a23d569ebc598ec51bc2ca}\label{classRoot_ab71a63a9f7a23d569ebc598ec51bc2ca}} 
+int \mbox{\hyperlink{classRoot_ab71a63a9f7a23d569ebc598ec51bc2ca}{num\+\_\+level\+\_\+samples\+\_\+}} = 20
+\begin{DoxyCompactList}\small\item\em Number of IMU measurements taken to determine pitch error for level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ac4d3c1196a55572750069077f4a1a29a}\label{classRoot_ac4d3c1196a55572750069077f4a1a29a}} 
+double \mbox{\hyperlink{classRoot_ac4d3c1196a55572750069077f4a1a29a}{ideal\+\_\+level\+\_\+angle\+\_\+}} = 180
+\begin{DoxyCompactList}\small\item\em Ground truth angle for pitch level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a13235d7d0df024df0268f44d3625ac19}\label{classRoot_a13235d7d0df024df0268f44d3625ac19}} 
+int \mbox{\hyperlink{classRoot_a13235d7d0df024df0268f44d3625ac19}{min\+\_\+angle\+\_\+}} = -\/10
+\begin{DoxyCompactList}\small\item\em Maximum angle the level can tilt up. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a49d5b3706ce3555614d779f86184171f}\label{classRoot_a49d5b3706ce3555614d779f86184171f}} 
+int \mbox{\hyperlink{classRoot_a49d5b3706ce3555614d779f86184171f}{min\+\_\+pulse\+\_\+width\+\_\+}} = 1200
+\begin{DoxyCompactList}\small\item\em Corresponding pulse width to tilt level up at the maximum angle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a265140c8de53ce90dbdae0c7f181ca3b}\label{classRoot_a265140c8de53ce90dbdae0c7f181ca3b}} 
+int \mbox{\hyperlink{classRoot_a265140c8de53ce90dbdae0c7f181ca3b}{max\+\_\+angle\+\_\+}} = 20
+\begin{DoxyCompactList}\small\item\em Maximum angle the level can tilt down. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a8f9d5a1e4f677cc7d954c4613567058c}\label{classRoot_a8f9d5a1e4f677cc7d954c4613567058c}} 
+int \mbox{\hyperlink{classRoot_a8f9d5a1e4f677cc7d954c4613567058c}{max\+\_\+pulse\+\_\+width\+\_\+}} = 1950
+\begin{DoxyCompactList}\small\item\em Corresponding pulse width to tilt level down at the maximum angle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae2138fc2cfbc422933840d6e771776de}\label{classRoot_ae2138fc2cfbc422933840d6e771776de}} 
+int \mbox{\hyperlink{classRoot_ae2138fc2cfbc422933840d6e771776de}{rafco\+\_\+pic\+\_\+num\+\_\+}} = 1
+\begin{DoxyCompactList}\small\item\em Number of RAFCO pictures taken (used for photo saving) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad377977f1bce43916756f1b09559b8a6}\label{classRoot_ad377977f1bce43916756f1b09559b8a6}} 
+std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}, \mbox{\hyperlink{classState}{State}} $\ast$ $>$ \mbox{\hyperlink{classRoot_ad377977f1bce43916756f1b09559b8a6}{states\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Map every state name to a state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a70f6d268268dad7bdfd20c4e3be7b762}\label{classRoot_a70f6d268268dad7bdfd20c4e3be7b762}} 
+std\+::vector$<$ std\+::thread $>$ \mbox{\hyperlink{classRoot_a70f6d268268dad7bdfd20c4e3be7b762}{threads\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Threads for flight photos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a96512a4851817c187e0e4c80b3151ffd}\label{classRoot_a96512a4851817c187e0e4c80b3151ffd}} 
+float \mbox{\hyperlink{classRoot_a96512a4851817c187e0e4c80b3151ffd}{ft\+\_\+2\+\_\+m\+\_\+}} = 0.\+3048
+\begin{DoxyCompactList}\small\item\em Feet to meters conversion factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a6ffc6171860743e3f998ed45dcfdbb5f}\label{classRoot_a6ffc6171860743e3f998ed45dcfdbb5f}} 
+float \mbox{\hyperlink{classRoot_a6ffc6171860743e3f998ed45dcfdbb5f}{m\+\_\+2\+\_\+ft\+\_\+}} = 1 / \mbox{\hyperlink{classRoot_a96512a4851817c187e0e4c80b3151ffd}{ft\+\_\+2\+\_\+m\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Meters to feet conversion factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aae3efc46e1dd71a5efb2374f71fa18a9}\label{classRoot_aae3efc46e1dd71a5efb2374f71fa18a9}} 
+float \mbox{\hyperlink{classRoot_aae3efc46e1dd71a5efb2374f71fa18a9}{c\+\_\+2\+\_\+k\+\_\+}} = 273.\+15
+\begin{DoxyCompactList}\small\item\em Celsius to Kelvin conversion factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a71a60fbb613075ddc5ad2dc58cb16041}\label{classRoot_a71a60fbb613075ddc5ad2dc58cb16041}} 
+float \mbox{\hyperlink{classRoot_a71a60fbb613075ddc5ad2dc58cb16041}{km\+\_\+2\+\_\+m\+\_\+}} = 0.\+001
+\begin{DoxyCompactList}\small\item\em Kilometers to meters conversion factor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afa0b943d98c635352b70e37572b61be0}\label{classRoot_afa0b943d98c635352b70e37572b61be0}} 
+float \mbox{\hyperlink{classRoot_afa0b943d98c635352b70e37572b61be0}{r\+\_\+}} = 287
+\begin{DoxyCompactList}\small\item\em Universal gas constant (kg/\+JK) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ac3041ab8d6dbc61fb7b9c58949d161d7}\label{classRoot_ac3041ab8d6dbc61fb7b9c58949d161d7}} 
+float \mbox{\hyperlink{classRoot_ac3041ab8d6dbc61fb7b9c58949d161d7}{b\+\_\+}} = 6.\+5 $\ast$ \mbox{\hyperlink{classRoot_a71a60fbb613075ddc5ad2dc58cb16041}{km\+\_\+2\+\_\+m\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Variation of temperature within the troposphere (K/m) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a001e83bfa05e9795fa44b1bd5010f54d}\label{classRoot_a001e83bfa05e9795fa44b1bd5010f54d}} 
+float \mbox{\hyperlink{classRoot_a001e83bfa05e9795fa44b1bd5010f54d}{t\+\_\+burn\+\_\+}} = 1.\+9
+\begin{DoxyCompactList}\small\item\em Motor burn time (s) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aaa57d2b66dd61646d609393628e78034}\label{classRoot_aaa57d2b66dd61646d609393628e78034}} 
+float \mbox{\hyperlink{classRoot_aaa57d2b66dd61646d609393628e78034}{sampling\+\_\+frequency\+\_\+}} = 20
+\begin{DoxyCompactList}\small\item\em Speed the IMU samples data (Hz) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3dd8140e66b16042882f5bc496ba73e3}\label{classRoot_a3dd8140e66b16042882f5bc496ba73e3}} 
+bool \mbox{\hyperlink{classRoot_a3dd8140e66b16042882f5bc496ba73e3}{restart\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Tells program if we NO-\/\+GOed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a5c25774f020944a4d2a8ed3b068f07ff}\label{classRoot_a5c25774f020944a4d2a8ed3b068f07ff}} 
+bool \mbox{\hyperlink{classRoot_a5c25774f020944a4d2a8ed3b068f07ff}{time\+\_\+delay\+\_\+enabled\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Flight relies on time thresholds if true rather than IMU data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a380132154152a1a11ac18192af7a53ea}\label{classRoot_a380132154152a1a11ac18192af7a53ea}} 
+int \mbox{\hyperlink{classRoot_a380132154152a1a11ac18192af7a53ea}{fps\+\_\+}} = 30
+\begin{DoxyCompactList}\small\item\em Flight video frames per second. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a5a0260737a010b3a3ffa6bf10cc16b7d}\label{classRoot_a5a0260737a010b3a3ffa6bf10cc16b7d}} 
+int \mbox{\hyperlink{classRoot_a5a0260737a010b3a3ffa6bf10cc16b7d}{frame\+\_\+width\+\_\+}} = 640
+\begin{DoxyCompactList}\small\item\em Flight video frame width. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a97ef1225386f7687ff5d7386d9811dc0}\label{classRoot_a97ef1225386f7687ff5d7386d9811dc0}} 
+int \mbox{\hyperlink{classRoot_a97ef1225386f7687ff5d7386d9811dc0}{frame\+\_\+height\+\_\+}} = 480
+\begin{DoxyCompactList}\small\item\em Flight video frame height. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a7eb1fb3124360476191d9465cc7e8235}\label{classRoot_a7eb1fb3124360476191d9465cc7e8235}} 
+int \mbox{\hyperlink{classRoot_a7eb1fb3124360476191d9465cc7e8235}{max\+\_\+proper\+\_\+flight\+\_\+time\+\_\+}} = 3 $\ast$ 60
+\begin{DoxyCompactList}\small\item\em Maximum flight recording time. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a6ecc0964ce3a5f4c53617d055402b4ca}\label{classRoot_a6ecc0964ce3a5f4c53617d055402b4ca}} 
+int \mbox{\hyperlink{classRoot_a6ecc0964ce3a5f4c53617d055402b4ca}{vid\+\_\+clip\+\_\+time\+\_\+}} = 3
+\begin{DoxyCompactList}\small\item\em Time of individual video clip recording (individual 3 second videos are written out and saved) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ab750296011302185dbc71ca2f7959d24}\label{classRoot_ab750296011302185dbc71ca2f7959d24}} 
+int \mbox{\hyperlink{classRoot_ab750296011302185dbc71ca2f7959d24}{frames\+\_\+per\+\_\+vid\+\_\+}} = \mbox{\hyperlink{classRoot_a380132154152a1a11ac18192af7a53ea}{fps\+\_\+}} $\ast$ \mbox{\hyperlink{classRoot_a6ecc0964ce3a5f4c53617d055402b4ca}{vid\+\_\+clip\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Numnber of frames per individual 3 second video. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a8bf8f0c06de1017c1e8f3c83b2b66daf}\label{classRoot_a8bf8f0c06de1017c1e8f3c83b2b66daf}} 
+std\+::vector$<$ cv\+::\+Video\+Writer $>$ \mbox{\hyperlink{classRoot_a8bf8f0c06de1017c1e8f3c83b2b66daf}{videos1\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of all individual videos from camera 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad341ae125a88c12de66b55d1cbe016e8}\label{classRoot_ad341ae125a88c12de66b55d1cbe016e8}} 
+std\+::vector$<$ cv\+::\+Video\+Writer $>$ \mbox{\hyperlink{classRoot_ad341ae125a88c12de66b55d1cbe016e8}{videos2\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of all individual videos from camera 2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a900eaf5f593b860375084bd5d47e5681}\label{classRoot_a900eaf5f593b860375084bd5d47e5681}} 
+std\+::vector$<$ cv\+::\+Video\+Writer $>$ \mbox{\hyperlink{classRoot_a900eaf5f593b860375084bd5d47e5681}{videos3\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of all individual videos from camera 3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a941b9d7f74c3194c11b293a5ede8d8b2}\label{classRoot_a941b9d7f74c3194c11b293a5ede8d8b2}} 
+cv\+::\+Video\+Capture \mbox{\hyperlink{classRoot_a941b9d7f74c3194c11b293a5ede8d8b2}{lift\+\_\+and\+\_\+level\+\_\+cap\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Videocapture object for lift and level video. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a85b86785b4e3d8605d540898acb14d5d}\label{classRoot_a85b86785b4e3d8605d540898acb14d5d}} 
+cv\+::\+Video\+Writer \mbox{\hyperlink{classRoot_a85b86785b4e3d8605d540898acb14d5d}{lift\+\_\+and\+\_\+level\+\_\+video\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Videowriter object for lift and level video. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a111da0d026977d4f1d788c94dc19dc1b}\label{classRoot_a111da0d026977d4f1d788c94dc19dc1b}} 
+std\+::thread \mbox{\hyperlink{classRoot_a111da0d026977d4f1d788c94dc19dc1b}{lift\+\_\+thread\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Thread to record lift video. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_afdd0df1e63ba87ccc52b72312f9f2e58}\label{classRoot_afdd0df1e63ba87ccc52b72312f9f2e58}} 
+float \mbox{\hyperlink{classRoot_afdd0df1e63ba87ccc52b72312f9f2e58}{accel\+\_\+roof\+\_\+}} = 3.\+5
+\begin{DoxyCompactList}\small\item\em Acceleration to detect launch (g\textquotesingle{}s) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aa225be3ed75e68b564b2351278b0b2b4}\label{classRoot_aa225be3ed75e68b564b2351278b0b2b4}} 
+int \mbox{\hyperlink{classRoot_aa225be3ed75e68b564b2351278b0b2b4}{num\+\_\+data\+\_\+points\+\_\+checked\+\_\+4\+\_\+launch\+\_\+}} = 8
+\begin{DoxyCompactList}\small\item\em how many acceleration points are averaged to see if data set is over accel\+\_\+roof\+\_\+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad557ad221897541b7a07007c3c409403}\label{classRoot_ad557ad221897541b7a07007c3c409403}} 
+int \mbox{\hyperlink{classRoot_ad557ad221897541b7a07007c3c409403}{num\+\_\+data\+\_\+points\+\_\+checked\+\_\+4\+\_\+apogee\+\_\+}} = 10
+\begin{DoxyCompactList}\small\item\em how many altitude points must a new max not be found for apogee to be declared \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a9038f7fe50ca4e3574d809ead3deeebe}\label{classRoot_a9038f7fe50ca4e3574d809ead3deeebe}} 
+int \mbox{\hyperlink{classRoot_a9038f7fe50ca4e3574d809ead3deeebe}{num\+\_\+seconds\+\_\+no\+\_\+new\+\_\+minimum\+\_\+}} = 10
+\begin{DoxyCompactList}\small\item\em \mbox{[}s\mbox{]} number of seconds to wait for no new minimum to determine landing \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad423ff02a83293ed66a82470eb6eda2a}\label{classRoot_ad423ff02a83293ed66a82470eb6eda2a}} 
+int \mbox{\hyperlink{classRoot_ad423ff02a83293ed66a82470eb6eda2a}{num\+\_\+data\+\_\+points\+\_\+checked\+\_\+4\+\_\+landing\+\_\+}} = \mbox{\hyperlink{classRoot_a9038f7fe50ca4e3574d809ead3deeebe}{num\+\_\+seconds\+\_\+no\+\_\+new\+\_\+minimum\+\_\+}} $\ast$ \mbox{\hyperlink{classRoot_aaa57d2b66dd61646d609393628e78034}{sampling\+\_\+frequency\+\_\+}}
+\begin{DoxyCompactList}\small\item\em how many altitude points must a new min not be found for landing to be declared \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad10c8e25665d79f186d127b0f828d43d}\label{classRoot_ad10c8e25665d79f186d127b0f828d43d}} 
+int \mbox{\hyperlink{classRoot_ad10c8e25665d79f186d127b0f828d43d}{z\+\_\+threshold\+\_\+for\+\_\+landing\+\_\+}} = 175 $\ast$ \mbox{\hyperlink{classRoot_a96512a4851817c187e0e4c80b3151ffd}{ft\+\_\+2\+\_\+m\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{[}m\mbox{]} threshold that the altitude must be within for landing \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a66e70c26e83bef350aaf12cadfe32480}\label{classRoot_a66e70c26e83bef350aaf12cadfe32480}} 
+int \mbox{\hyperlink{classRoot_a66e70c26e83bef350aaf12cadfe32480}{max\+\_\+flight\+\_\+time\+\_\+}} = 10 $\ast$ 60
+\begin{DoxyCompactList}\small\item\em \mbox{[}s\mbox{]} max allowable flight time, if exceeded program ends (accounts for if we switched drogue amd main) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a0c7ed7fbedd829c58a7b12a5a3795059}\label{classRoot_a0c7ed7fbedd829c58a7b12a5a3795059}} 
+int \mbox{\hyperlink{classRoot_a0c7ed7fbedd829c58a7b12a5a3795059}{length\+\_\+collect\+\_\+rafco\+\_\+}} = 20 $\ast$ 60
+\begin{DoxyCompactList}\small\item\em \mbox{[}s\mbox{]} amount of time to collect RAFCO signals and perform image processing \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a66ed43df7d9aeea934c9b8e1cebfe7d4}\label{classRoot_a66ed43df7d9aeea934c9b8e1cebfe7d4}} 
+std\+::string \mbox{\hyperlink{classRoot_a66ed43df7d9aeea934c9b8e1cebfe7d4}{rafco\+\_\+freq\+\_\+}} = \char`\"{}144.\+900M\char`\"{}
+\begin{DoxyCompactList}\small\item\em Frequency for RAFCO transmissions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ac1ac5e635f968ada8cf00f3f2189e788}\label{classRoot_ac1ac5e635f968ada8cf00f3f2189e788}} 
+std\+::string \mbox{\hyperlink{classRoot_ac1ac5e635f968ada8cf00f3f2189e788}{callsign\+\_\+}} = \char`\"{}KQ4\+CTL\char`\"{}
+\begin{DoxyCompactList}\small\item\em Callsign to look for. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a76860bbe6806cc5546551c9354857680}\label{classRoot_a76860bbe6806cc5546551c9354857680}} 
+int \mbox{\hyperlink{classRoot_a76860bbe6806cc5546551c9354857680}{source\+\_\+ssid\+\_\+}} = 6
+\begin{DoxyCompactList}\small\item\em Service Set Identifier, probably used for TCP Packet Receiver, Ask Meredith Hunter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a20edd5ad7ec852ccbfe9c7938d3c2f77}\label{classRoot_a20edd5ad7ec852ccbfe9c7938d3c2f77}} 
+int \mbox{\hyperlink{classRoot_a20edd5ad7ec852ccbfe9c7938d3c2f77}{pds\+\_\+delay\+\_\+}} = 60 $\ast$ 1000
+\begin{DoxyCompactList}\small\item\em \mbox{[}ms\mbox{]} aditional time to wait for PDS \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad770a0947892d58dbe8fc581880e154c}\label{classRoot_ad770a0947892d58dbe8fc581880e154c}} 
+bool \mbox{\hyperlink{classRoot_ad770a0947892d58dbe8fc581880e154c}{rafco\+\_\+redo\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean that is true if we had to use backup cameras, but we want to try to redo RAFCO for the primary camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a31d14f2ee737027c2c14e826ca590003}\label{classRoot_a31d14f2ee737027c2c14e826ca590003}} 
+uint16\+\_\+t \mbox{\hyperlink{classRoot_a31d14f2ee737027c2c14e826ca590003}{num\+\_\+sample\+\_\+readings\+\_\+}} = 60
+\begin{DoxyCompactList}\small\item\em amount of samples taken and averaged to find ground P and T \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ad9df27e6b9f94e9636d118d1c9f26e00}\label{classRoot_ad9df27e6b9f94e9636d118d1c9f26e00}} 
+int \mbox{\hyperlink{classRoot_ad9df27e6b9f94e9636d118d1c9f26e00}{imu\+\_\+wait\+\_\+}} = 60
+\begin{DoxyCompactList}\small\item\em number of samples to get from IMU before actually starting to use + save data \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a2aefae5b1703ca25800302c6767423be}\label{classRoot_a2aefae5b1703ca25800302c6767423be}} 
+float \mbox{\hyperlink{classRoot_a2aefae5b1703ca25800302c6767423be}{p0\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Baseline pressure reading. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a0d7492aa2d2c7b80ccde29ec58ee8eb6}\label{classRoot_a0d7492aa2d2c7b80ccde29ec58ee8eb6}} 
+float \mbox{\hyperlink{classRoot_a0d7492aa2d2c7b80ccde29ec58ee8eb6}{t0\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Baseline temperature reading. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a0fb18e0da95608de1fe32738b3004431}\label{classRoot_a0fb18e0da95608de1fe32738b3004431}} 
+float \mbox{\hyperlink{classRoot_a0fb18e0da95608de1fe32738b3004431}{g0\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Baseline gravity reading. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a24fa26d7cb49e342447839a5103ae288}\label{classRoot_a24fa26d7cb49e342447839a5103ae288}} 
+double \mbox{\hyperlink{classRoot_a24fa26d7cb49e342447839a5103ae288}{launch\+\_\+time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Time of launch in ms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a6ce282eac3fe0d863e61bde0e07e5913}\label{classRoot_a6ce282eac3fe0d863e61bde0e07e5913}} 
+float \mbox{\hyperlink{classRoot_a6ce282eac3fe0d863e61bde0e07e5913}{z\+\_\+current\+\_\+}} = 0
+\begin{DoxyCompactList}\small\item\em Current altitude. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a1b57f61d9a3ae56eb1860d7bf5c9f563}\label{classRoot_a1b57f61d9a3ae56eb1860d7bf5c9f563}} 
+Vn\+Sensor $\ast$ \mbox{\hyperlink{classRoot_a1b57f61d9a3ae56eb1860d7bf5c9f563}{m\+\_\+vn\+\_\+}}
+\begin{DoxyCompactList}\small\item\em VN Sensor Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3c7703925652442220d1dcf6db7b2b18}\label{classRoot_a3c7703925652442220d1dcf6db7b2b18}} 
+Imu\+Measurements\+Register \mbox{\hyperlink{classRoot_a3c7703925652442220d1dcf6db7b2b18}{response\+\_\+}}
+\begin{DoxyCompactList}\small\item\em IMU Register storing the data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a8be5285e171824ff214da225bebcd072}\label{classRoot_a8be5285e171824ff214da225bebcd072}} 
+std\+::string \mbox{\hyperlink{classRoot_a8be5285e171824ff214da225bebcd072}{input\+\_\+file\+\_\+name\+\_\+}} = \char`\"{}packets\+\_\+\char`\"{} + std\+::to\+\_\+string(\mbox{\hyperlink{classRoot_acd55503015ba119018dc122a4ff590aa}{start\+\_\+time\+\_\+}}).substr(0, std\+::to\+\_\+string(\mbox{\hyperlink{classRoot_acd55503015ba119018dc122a4ff590aa}{start\+\_\+time\+\_\+}}).find(\char`\"{}.\char`\"{})) + \char`\"{}.txt\char`\"{}
+\begin{DoxyCompactList}\small\item\em String with the name for APRS Packet filename. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a73701a5eca3d9df006ebda64cb105d8b}\label{classRoot_a73701a5eca3d9df006ebda64cb105d8b}} 
+std\+::string \mbox{\hyperlink{classRoot_a73701a5eca3d9df006ebda64cb105d8b}{flight\+\_\+log\+\_\+name\+\_\+}} = \char`\"{}flight\+Data\+Log\char`\"{}
+\begin{DoxyCompactList}\small\item\em String with name for flight data log. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a19f12ee9bf2918a057f4944fb7a033aa}\label{classRoot_a19f12ee9bf2918a057f4944fb7a033aa}} 
+std\+::string \mbox{\hyperlink{classRoot_a19f12ee9bf2918a057f4944fb7a033aa}{program\+\_\+log\+\_\+name\+\_\+}} = \char`\"{}program\+Data\+Log\char`\"{}
+\begin{DoxyCompactList}\small\item\em String with name for program data log. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}\label{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}} 
+\mbox{\hyperlink{classLog}{Log}} \mbox{\hyperlink{classRoot_a881827e74cebdcfc4a74d444b9bb76d4}{m\+\_\+log\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classLog}{Log}} object for flight data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aacc555363da6ccd6fae0a499b9109998}\label{classRoot_aacc555363da6ccd6fae0a499b9109998}} 
+bool \mbox{\hyperlink{classRoot_aacc555363da6ccd6fae0a499b9109998}{is\+\_\+imu\+\_\+connected\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if the IMU is still connected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a98c04ea54ccbfcf1c60344292cb7309e}\label{classRoot_a98c04ea54ccbfcf1c60344292cb7309e}} 
+std\+::string \mbox{\hyperlink{classRoot_a98c04ea54ccbfcf1c60344292cb7309e}{config1\+\_\+}} = \char`\"{}/home/vadl/Fullscale\+Prime/sdr1.\+conf\char`\"{}
+\begin{DoxyCompactList}\small\item\em String for first SDR configuration file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_acc1c56c79e064fcc6a1e0f8fbf36e1cd}\label{classRoot_acc1c56c79e064fcc6a1e0f8fbf36e1cd}} 
+std\+::string \mbox{\hyperlink{classRoot_acc1c56c79e064fcc6a1e0f8fbf36e1cd}{config2\+\_\+}} = \char`\"{}/home/vadl/Fullscale\+Prime/sdr2.\+conf\char`\"{}
+\begin{DoxyCompactList}\small\item\em String for second SDR configuration file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a40d268b8923b05c5f28cc64bd52d14af}\label{classRoot_a40d268b8923b05c5f28cc64bd52d14af}} 
+\mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}} \mbox{\hyperlink{classRoot_a40d268b8923b05c5f28cc64bd52d14af}{radio1\+\_\+}} = \mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}}(100, \mbox{\hyperlink{classRoot_a66ed43df7d9aeea934c9b8e1cebfe7d4}{rafco\+\_\+freq\+\_\+}}, 8001, \mbox{\hyperlink{classRoot_a98c04ea54ccbfcf1c60344292cb7309e}{config1\+\_\+}})
+\begin{DoxyCompactList}\small\item\em Packet Receiver object for first SDR. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_ae860d7f98dadc0842a70566ce88853fd}\label{classRoot_ae860d7f98dadc0842a70566ce88853fd}} 
+\mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}} \mbox{\hyperlink{classRoot_ae860d7f98dadc0842a70566ce88853fd}{radio2\+\_\+}} = \mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}}(200, \mbox{\hyperlink{classRoot_a66ed43df7d9aeea934c9b8e1cebfe7d4}{rafco\+\_\+freq\+\_\+}}, 9001, \mbox{\hyperlink{classRoot_acc1c56c79e064fcc6a1e0f8fbf36e1cd}{config2\+\_\+}})
+\begin{DoxyCompactList}\small\item\em Packet Receiver object for second SDR. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_aa4ea15edd593d171f868ff0a8200a1f6}\label{classRoot_aa4ea15edd593d171f868ff0a8200a1f6}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classRoot_aa4ea15edd593d171f868ff0a8200a1f6}{camera\+\_\+streams\+\_\+}}
+\begin{DoxyCompactList}\small\item\em List of all possible camera streams. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a066213b4e40dd278c5c47cf01ecd578c}\label{classRoot_a066213b4e40dd278c5c47cf01ecd578c}} 
+std\+::string \mbox{\hyperlink{classRoot_a066213b4e40dd278c5c47cf01ecd578c}{primary\+\_\+camera\+\_\+stream\+\_\+}}
+\begin{DoxyCompactList}\small\item\em String indicating the primary camera stream. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRoot_a3d8e9cbd063482722459bd4f9e857f60}\label{classRoot_a3d8e9cbd063482722459bd4f9e857f60}} 
+bool \mbox{\hyperlink{classRoot_a3d8e9cbd063482722459bd4f9e857f60}{rcb\+\_\+done\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Boolean indicating if the RCB state is done. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains all common variables and functions accessible to every state in the state machine. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRoot_ac921dd8c95e5a9002bdfb0a3c6fef21e}\label{classRoot_ac921dd8c95e5a9002bdfb0a3c6fef21e}} 
+\index{Root@{Root}!Root@{Root}}
+\index{Root@{Root}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{Root()}{Root()}}
+{\footnotesize\ttfamily Root\+::\+Root (\begin{DoxyParamCaption}\item[{bool}]{is\+\_\+unit\+\_\+fsm }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classRoot}{Root}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+\_\+unit\+\_\+fsm} & Boolean indicating if it is in display mode (normally false) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRoot_aaf8bbf612528d0b7f4af793e9e470f43}\label{classRoot_aaf8bbf612528d0b7f4af793e9e470f43}} 
+\index{Root@{Root}!activeSleep@{activeSleep}}
+\index{activeSleep@{activeSleep}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{activeSleep()}{activeSleep()}}
+{\footnotesize\ttfamily void Root\+::active\+Sleep (\begin{DoxyParamCaption}\item[{float}]{sleep\+\_\+time,  }\item[{Vn\+Sensor $\ast$}]{imu,  }\item[{Imu\+Measurements\+Register \&}]{response,  }\item[{\mbox{\hyperlink{classLog}{Log}} \&}]{log }\end{DoxyParamCaption})}
+
+
+
+Similar to sleep() command but still records and logs IMU data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sleep\+\_\+time} & Amount of time to sleep for \\
+\hline
+{\em imu} & VN-\/100 sensor \\
+\hline
+{\em response} & Register containing IMU data \\
+\hline
+{\em log} & \mbox{\hyperlink{classLog}{Log}} output file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRoot_a0e98881d2cddd732762b3a417cf57179}\label{classRoot_a0e98881d2cddd732762b3a417cf57179}} 
+\index{Root@{Root}!addState@{addState}}
+\index{addState@{addState}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{addState()}{addState()}}
+{\footnotesize\ttfamily void Root\+::add\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classState}{State}} $\ast$}]{the\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Will add a state to the state machine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the\+\_\+state} & The state being added to the state machine \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRoot_aff48369e29cdf0800a8be86c36721d3d}\label{classRoot_aff48369e29cdf0800a8be86c36721d3d}} 
+\index{Root@{Root}!angleToPulseWidth@{angleToPulseWidth}}
+\index{angleToPulseWidth@{angleToPulseWidth}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{angleToPulseWidth()}{angleToPulseWidth()}}
+{\footnotesize\ttfamily float Root\+::angle\+To\+Pulse\+Width (\begin{DoxyParamCaption}\item[{double}]{pulse\+\_\+max,  }\item[{double}]{pulse\+\_\+min,  }\item[{double}]{range,  }\item[{float}]{angle }\end{DoxyParamCaption})}
+
+
+
+Converts servo angle to pulse width through linear interpolation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pulse\+\_\+max} & Maximum pulse width \\
+\hline
+{\em pulse\+\_\+min} & Minimum pulse width \\
+\hline
+{\em range} & Angle range of the servo \\
+\hline
+{\em angle} & Desired angle to move the servo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float representing the appropriate pulse width 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_aee702e519c44a9bc38edca8c6f6bb235}\label{classRoot_aee702e519c44a9bc38edca8c6f6bb235}} 
+\index{Root@{Root}!calcArrayAverage@{calcArrayAverage}}
+\index{calcArrayAverage@{calcArrayAverage}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{calcArrayAverage()}{calcArrayAverage()}}
+{\footnotesize\ttfamily float Root\+::calc\+Array\+Average (\begin{DoxyParamCaption}\item[{float}]{array\mbox{[}$\,$\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Calculates average of all array values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array} & Given float array for calculation \\
+\hline
+{\em size} & Number of elements in the float array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float representing the average array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_a2c377c2b26779603750105a9c45f31c5}\label{classRoot_a2c377c2b26779603750105a9c45f31c5}} 
+\index{Root@{Root}!cameraCheck@{cameraCheck}}
+\index{cameraCheck@{cameraCheck}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{cameraCheck()}{cameraCheck()}}
+{\footnotesize\ttfamily bool Root\+::camera\+Check (\begin{DoxyParamCaption}\item[{std\+::string}]{camera\+\_\+check }\end{DoxyParamCaption})}
+
+
+
+Checks if given camera stream is operational. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera\+\_\+check} & Camera stream to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Camera stream is functional 
+
+false Camera stream is not functional 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_a1806fd2e246ba5807fa04d4f2c4f5bad}\label{classRoot_a1806fd2e246ba5807fa04d4f2c4f5bad}} 
+\index{Root@{Root}!getCurrentTime@{getCurrentTime}}
+\index{getCurrentTime@{getCurrentTime}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{getCurrentTime()}{getCurrentTime()}}
+{\footnotesize\ttfamily double Root\+::get\+Current\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current time in ms. 
+
+\begin{DoxyReturn}{Returns}
+double representing the current time 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_adfce70fe2c9363f44c62c15c14589a96}\label{classRoot_adfce70fe2c9363f44c62c15c14589a96}} 
+\index{Root@{Root}!isTimeExceeded@{isTimeExceeded}}
+\index{isTimeExceeded@{isTimeExceeded}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{isTimeExceeded()}{isTimeExceeded()}}
+{\footnotesize\ttfamily bool Root\+::is\+Time\+Exceeded (\begin{DoxyParamCaption}\item[{double}]{launch\+\_\+time,  }\item[{double}]{trigger\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Checks if flight has gone on for too long. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em launch\+\_\+time} & Time of launch in ms \\
+\hline
+{\em trigger\+\_\+time} & Time threshold until the time has been exceeded \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true Flight has gone on too long 
+
+false Flight is under time threshold 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_adf14d6d0134f647b4ce3d285db37815e}\label{classRoot_adf14d6d0134f647b4ce3d285db37815e}} 
+\index{Root@{Root}!pressure2Altitude@{pressure2Altitude}}
+\index{pressure2Altitude@{pressure2Altitude}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{pressure2Altitude()}{pressure2Altitude()}}
+{\footnotesize\ttfamily float Root\+::pressure2\+Altitude (\begin{DoxyParamCaption}\item[{float}]{t0,  }\item[{float}]{p0,  }\item[{float}]{g0,  }\item[{float}]{p }\end{DoxyParamCaption})}
+
+
+
+Finds altitude based on pressure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t0} & Baseline temperature in Kelvin \\
+\hline
+{\em p0} & Baseline pressure in k\+Pa \\
+\hline
+{\em g0} & Baseline gravity in m/s$^\wedge$2 \\
+\hline
+{\em p} & Current pressure in k\+Pa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float representing the current altitude above ground level in m 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRoot_af42361b09c190429b641a1f6b72cbef7}\label{classRoot_af42361b09c190429b641a1f6b72cbef7}} 
+\index{Root@{Root}!realCamThreadLanding@{realCamThreadLanding}}
+\index{realCamThreadLanding@{realCamThreadLanding}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{realCamThreadLanding()}{realCamThreadLanding()}}
+{\footnotesize\ttfamily void Root\+::real\+Cam\+Thread\+Landing (\begin{DoxyParamCaption}\item[{cv\+::\+Video\+Capture $\ast$}]{cap,  }\item[{std\+::vector$<$ cv\+::\+Video\+Writer $>$ $\ast$}]{videos,  }\item[{int}]{cam\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Image capture thread for flight. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cap} & Video\+Capture object \\
+\hline
+{\em videos} & List of videos that will be written out during flight \\
+\hline
+{\em cam\+\_\+number} & Camera stream number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRoot_a57713c513c351dde29c9ee5168647706}\label{classRoot_a57713c513c351dde29c9ee5168647706}} 
+\index{Root@{Root}!realCamThreadLift@{realCamThreadLift}}
+\index{realCamThreadLift@{realCamThreadLift}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{realCamThreadLift()}{realCamThreadLift()}}
+{\footnotesize\ttfamily void Root\+::real\+Cam\+Thread\+Lift (\begin{DoxyParamCaption}\item[{cv\+::\+Video\+Capture $\ast$}]{cap,  }\item[{cv\+::\+Video\+Writer $\ast$}]{video }\end{DoxyParamCaption})}
+
+
+
+Image capture thread for Lift. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cap} & Video\+Capture object \\
+\hline
+{\em video} & Lift output video \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRoot_adc453b16b94b0c0bd5e5e3235e4fae4e}\label{classRoot_adc453b16b94b0c0bd5e5e3235e4fae4e}} 
+\index{Root@{Root}!realCamThreadRCB@{realCamThreadRCB}}
+\index{realCamThreadRCB@{realCamThreadRCB}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{realCamThreadRCB()}{realCamThreadRCB()}}
+{\footnotesize\ttfamily void Root\+::real\+Cam\+Thread\+RCB (\begin{DoxyParamCaption}\item[{cv\+::\+Video\+Capture $\ast$}]{cap,  }\item[{cv\+::\+Video\+Writer $\ast$}]{video }\end{DoxyParamCaption})}
+
+
+
+Image capture thread for RCB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cap} & Video\+Capture object \\
+\hline
+{\em video} & RCB output video \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRoot_ab434a46ca42a975927e0e070b3257077}\label{classRoot_ab434a46ca42a975927e0e070b3257077}} 
+\index{Root@{Root}!terminateConnections@{terminateConnections}}
+\index{terminateConnections@{terminateConnections}!Root@{Root}}
+\doxysubsubsection{\texorpdfstring{terminateConnections()}{terminateConnections()}}
+{\footnotesize\ttfamily bool Root\+::terminate\+Connections (\begin{DoxyParamCaption}\item[{Vn\+Sensor $\ast$}]{imu }\end{DoxyParamCaption})}
+
+
+
+Disconnects IMU. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em imu} & VN sensor to be disconnected \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true IMU was successfully disconnected 
+
+false IMU was not successfully disconnected 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{Root_8h}{Root.\+h}}\item 
+HFSM/src/Root.\+cpp\end{DoxyCompactItemize}

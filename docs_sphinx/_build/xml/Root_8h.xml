@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Root_8h" kind="file" language="C++">
+    <compoundname>Root.h</compoundname>
+    <includes refid="State__Enums_8h" local="yes">State_Enums.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">map</includes>
+    <includes local="no">ctime</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unistd.h</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">math.h</includes>
+    <includes local="yes">sensors.h</includes>
+    <includes local="yes">config_IMU.hpp</includes>
+    <includes refid="Log_8h" local="yes">Log.h</includes>
+    <includes refid="PacketReceiver_8h" local="yes">PacketReceiver.h</includes>
+    <includes refid="Stepper_8h" local="yes">Stepper.h</includes>
+    <includes local="no">opencv2/core.hpp</includes>
+    <includes local="no">opencv2/videoio.hpp</includes>
+    <includes local="no">opencv2/highgui.hpp</includes>
+    <includes local="no">opencv2/imgproc.hpp</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">sys/stat.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includedby refid="Root_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp</includedby>
+    <includedby refid="State_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp</includedby>
+    <includedby refid="State__Apogee__Detection_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Apogee_Detection.cpp</includedby>
+    <includedby refid="State__Camera__Check_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Camera_Check.cpp</includedby>
+    <includedby refid="State__Full__Level_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Level.cpp</includedby>
+    <includedby refid="State__Full__Lift_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_Lift.cpp</includedby>
+    <includedby refid="State__Full__RCB_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Full_RCB.cpp</includedby>
+    <includedby refid="State__Landing__Detection_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Landing_Detection.cpp</includedby>
+    <includedby refid="State__Launch__Detection_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Launch_Detection.cpp</includedby>
+    <includedby refid="State__Level__Servo_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Level_Servo.cpp</includedby>
+    <includedby refid="State__Lift__Motor_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Lift_Motor.cpp</includedby>
+    <includedby refid="State__Lift__Servo_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Lift_Servo.cpp</includedby>
+    <includedby refid="State__Nacelle__Servo_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Nacelle_Servo.cpp</includedby>
+    <includedby refid="State__PDS__Delay_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_PDS_Delay.cpp</includedby>
+    <includedby refid="State__Prelaunch_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Prelaunch.cpp</includedby>
+    <includedby refid="State__RAFCO__Mission_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_RAFCO_Mission.cpp</includedby>
+    <includedby refid="State__RCB__Motor_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_RCB_Motor.cpp</includedby>
+    <includedby refid="State__SDR1_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_SDR1.cpp</includedby>
+    <includedby refid="State__SDR2_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_SDR2.cpp</includedby>
+    <includedby refid="State__Stepper1_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Stepper1.cpp</includedby>
+    <includedby refid="State__Stepper2_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Stepper2.cpp</includedby>
+    <includedby refid="State__Stepper3_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State_Stepper3.cpp</includedby>
+    <includedby refid="display_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/display.cpp</includedby>
+    <includedby refid="real__display_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/real_display.cpp</includedby>
+    <incdepgraph>
+      <node id="28">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="20">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="10">
+        <label>sensors.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>pigpio.h</label>
+      </node>
+      <node id="30">
+        <label>stdlib.h</label>
+      </node>
+      <node id="27">
+        <label>opencv2/imgproc.hpp</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="14">
+        <label>fstream</label>
+      </node>
+      <node id="21">
+        <label>netdb.h</label>
+      </node>
+      <node id="22">
+        <label>Stepper.h</label>
+        <link refid="Stepper_8h"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>config_IMU.hpp</label>
+      </node>
+      <node id="18">
+        <label>sys/types.h</label>
+      </node>
+      <node id="12">
+        <label>Log.h</label>
+        <link refid="Log_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ctime</label>
+      </node>
+      <node id="24">
+        <label>opencv2/core.hpp</label>
+      </node>
+      <node id="7">
+        <label>unistd.h</label>
+      </node>
+      <node id="25">
+        <label>opencv2/videoio.hpp</label>
+      </node>
+      <node id="13">
+        <label>registers.h</label>
+      </node>
+      <node id="9">
+        <label>math.h</label>
+      </node>
+      <node id="26">
+        <label>opencv2/highgui.hpp</label>
+      </node>
+      <node id="16">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="17">
+        <label>PacketReceiver.h</label>
+        <link refid="PacketReceiver_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>chrono</label>
+      </node>
+      <node id="19">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="8">
+        <label>thread</label>
+      </node>
+      <node id="2">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+      <node id="29">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h</label>
+        <link refid="Root_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/real_display.cpp</label>
+        <link refid="real__display_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classRoot" prot="public">Root</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>ROOT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROOT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__Enums_8h" kindref="compound">State_Enums.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;sensors.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;config_IMU.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Log_8h" kindref="compound">Log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PacketReceiver_8h" kindref="compound">PacketReceiver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Stepper_8h" kindref="compound">Stepper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;opencv2/core.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;opencv2/videoio.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;opencv2/highgui.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;opencv2/imgproc.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/stat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classState" kindref="compound">State</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classRoot" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRoot" kindref="compound">Root</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a9a1c5e993879a802f3eebd6a78974d79" kindref="member">gpio_initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1acd55503015ba119018dc122a4ff590aa" kindref="member">start_time_</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad35c4bab054fb58e16a104548b002da0" kindref="member">is_unit_fsm_</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aa16b41f9e18e2228471b333149bde688" kindref="member">unit_test_delay_ms_</ref><sp/>=<sp/>1000000;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1ae7fcf80d14f88e5adfbc2f0ac35f1854" kindref="member">date_timestamp_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ac8c99be5ee8629bd262ad9cd46e9fdfd" kindref="member">steps_per_revolution_</ref><sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3ecead511d50885af6706fb105956203" kindref="member">stepper_speed_</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1af4c69235873088deec800bbb76bf8666" kindref="member">num_steps_</ref><sp/>=<sp/>40;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ae023866cfbb1bac7137dd8eb8c61af0f" kindref="member">stepper_threshold_</ref><sp/>=<sp/>5000;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0e55667cde7d236a4e1f50e95ce27b89" kindref="member">pwm_motor_max_</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1acebcb3832831986e74cf6b4ad2e60f87" kindref="member">stepper_1_standby_pin_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aedbdb7da1f2486171cc67b7ec273a3cc" kindref="member">stepper_1_pin_1_</ref><sp/>=<sp/>11;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a79ad6ed57ca2e6b3e675ecdda75cad8a" kindref="member">stepper_1_pin_2_</ref><sp/>=<sp/>9;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a49fe8a1318be6bb79308e9883d40b140" kindref="member">stepper_1_pin_3_</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1accbec22d48edd1c9a1dc2dc59a4ff85b" kindref="member">stepper_1_pin_4_</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3c7a96852dec430720be43072d8df746" kindref="member">stepper_2_standby_pin_</ref><sp/>=<sp/>27;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a74936d11015167d0f5c36e9fa868edea" kindref="member">stepper_2_pin_1_</ref><sp/>=<sp/>17;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a9063f4fb5a5f70ca058533d766aec808" kindref="member">stepper_2_pin_2_</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aaaf42bf8fad3de9e6482c9531e6df99c" kindref="member">stepper_2_pin_3_</ref><sp/>=<sp/>22;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad0ba5eebc1687f3e86b498d9b8d71852" kindref="member">stepper_2_pin_4_</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classRoot_1a19728bc04667ed9c8397ff12c7cb823f" kindref="member">aac_camera_streams_</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;cv::VideoCapture&gt;<sp/><ref refid="classRoot_1a2aff88a7fd095b32de77a6d1f9b90a92" kindref="member">aac_camera_captures_</ref>;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classRoot_1a99e6e275fa3ea44182aa437e248d18d7" kindref="member">aac_camera_captures_strings_</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//---<sp/>INITIALIZE<sp/>VIDEOCAPTURE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::VideoCapture<sp/><ref refid="classRoot_1ad65efb2a827b0fa7033e51f15ec06d27" kindref="member">cap1</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::VideoCapture<sp/><ref refid="classRoot_1a1a4258e70c961c735df1772a27101470" kindref="member">cap2</ref>;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::VideoCapture<sp/><ref refid="classRoot_1a57c732bf15d49d025f0af34bd9e162da" kindref="member">cap3</ref>;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a367f755239776d501c48db95380a3b86" kindref="member">launch_detected_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a28569cfd12f8c3da33ec45b7a37c744d" kindref="member">apogee_detected_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a45de3e96eb18ce32e0e5aa2755c94748" kindref="member">landing_detected_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aa87917e364bb6c432441789036b94940" kindref="member">aac_pic_num_cam_1_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a5a20e6991fdcf49bdc86eb05e8d4d3e2" kindref="member">aac_pic_num_cam_2_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a00bc8007506cc866df4910e555ff3d8e" kindref="member">aac_pic_num_cam_3_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a567c69f42c80a0dc75004ab09bde38f5" kindref="member">stepper_3_standby_pin_</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a63d7f40439bfff90f8b668c41fc691c6" kindref="member">stepper_3_pin_1_</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad815f36e7a5369891fdc12f43335710c" kindref="member">stepper_3_pin_2_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a7f9f11f2b8cecc823d9621428cc1a863" kindref="member">stepper_3_pin_3_</ref><sp/>=<sp/>25;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3968085818827a33b698689602b5341c" kindref="member">stepper_3_pin_4_</ref><sp/>=<sp/>24;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStepper" kindref="compound">Stepper</ref><sp/><ref refid="classRoot_1a5662636d6620942e7d96b3c18a6b8acb" kindref="member">stepper_1_</ref>;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStepper" kindref="compound">Stepper</ref><sp/><ref refid="classRoot_1afe9059f8c1a5cd31b5ff026f04cf1231" kindref="member">stepper_2_</ref>;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStepper" kindref="compound">Stepper</ref><sp/><ref refid="classRoot_1a3a71da14bde545d7386509fbf322e3ab" kindref="member">stepper_3_</ref>;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3dc26ac1f561a5419a7dea3e2f2ed3a0" kindref="member">rcb_p_</ref><sp/>=<sp/>26;</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a201771205801016710f4953b507b50cd" kindref="member">rcb_n_</ref><sp/>=<sp/>19;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0ebc63246c11e13560e8ce9c53ad6f65" kindref="member">rcb_enable_</ref><sp/>=<sp/>13;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a7623f9f64b73979939e88fec40df9b0c" kindref="member">rcb_lift_standby_</ref><sp/>=<sp/>21;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afe437722a9ebdc6c28477ac99f68e373" kindref="member">rcb_time_threshold_</ref><sp/>=<sp/>5000;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a411ac589602c228462f282188abf8877" kindref="member">rcb_angle_threshold_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1acc0091fae3a5c305df045698189c1166" kindref="member">is_aligned_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afd001764019dc5bcbeb8986443ba69a1" kindref="member">full_rcb_time_threshold_</ref><sp/>=<sp/>75000;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a33d02065241f1b0f6d0276c5bc71b436" kindref="member">landing_time_</ref>;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ae7eda1b1be61959bdfde63fa5e1c67f0" kindref="member">n_photo_bit_size_</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a2eea06c7f2bbb3a8cac9074cb99fd63f" kindref="member">nacelle_servo_</ref><sp/>=<sp/>14;</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classRoot_1ae01e0d95ecc5b9bfb48f0943dee92609" kindref="member">servo_pulse_min_</ref><sp/>=<sp/>500;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classRoot_1ae37960ff5c4f3ae06f6dff3d74882603" kindref="member">servo_pulse_max_</ref><sp/>=<sp/>2250;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classRoot_1a72496ee70e99432eab96252fc299ee64" kindref="member">servo_deg_range_</ref><sp/>=<sp/>90;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a65b637e743a54ca50d4ceb093c3877a2" kindref="member">nacelle_lock_</ref><sp/>=<sp/>1375;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a40ee4980933d5161ab6e27c3db68860f" kindref="member">nacelle_unlock_</ref><sp/>=<sp/>755;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3b7f785df36078118be89d4e75fee5eb" kindref="member">lift_done_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a2de20a843c95a7eab95eda8935d3d2b2" kindref="member">lift_servo_</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3873aef37d872d6f665a3ab0097c69d1" kindref="member">lift_final_limit_switch_</ref><sp/>=<sp/>23;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aee38b845123995badb235a8c349e60e4" kindref="member">lift_unit_time_threshold_</ref><sp/>=<sp/>2000;</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a4ac3790197c4de7c6cbe56ab5c691f1d" kindref="member">lift_lock_</ref><sp/>=<sp/>1500;</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a893b43912af8e2aa042346e353182edb" kindref="member">lift_unlock_</ref><sp/>=<sp/>1150;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a42d21c61859390159fc50ccc48b78887" kindref="member">lift_p_</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ae0a1f08496afdd14c36e961ecfe700b0" kindref="member">lift_n_</ref><sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a65bf4a794c6427a3d8cc4d7ad8bb65dd" kindref="member">lift_enable_</ref><sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a33b5d41c6bb0721051881b24a16c716b" kindref="member">lift_time_threshold_</ref><sp/>=<sp/>30000;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a5135582fe033860cd1b77c9aeea30f0e" kindref="member">lift_backwards_time_threshold_</ref><sp/>=<sp/>1068;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afc94433eebd8b0a1f4c31f006ea55683" kindref="member">lift_min_threshold_</ref><sp/>=<sp/>15000;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afe24ba4d1f27f1ed660ede3e997451d4" kindref="member">level_servo_</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ab71a63a9f7a23d569ebc598ec51bc2ca" kindref="member">num_level_samples_</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ac4d3c1196a55572750069077f4a1a29a" kindref="member">ideal_level_angle_</ref><sp/>=<sp/>180;</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a13235d7d0df024df0268f44d3625ac19" kindref="member">min_angle_</ref><sp/>=<sp/>-10;</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a49d5b3706ce3555614d779f86184171f" kindref="member">min_pulse_width_</ref><sp/>=<sp/>1200;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a265140c8de53ce90dbdae0c7f181ca3b" kindref="member">max_angle_</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a8f9d5a1e4f677cc7d954c4613567058c" kindref="member">max_pulse_width_</ref><sp/>=<sp/>1950;</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ae2138fc2cfbc422933840d6e771776de" kindref="member">rafco_pic_num_</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;StateName,<sp/>State<sp/>*&gt;<sp/><ref refid="classRoot_1ad377977f1bce43916756f1b09559b8a6" kindref="member">states_</ref>;</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::thread&gt;<sp/><ref refid="classRoot_1a70f6d268268dad7bdfd20c4e3be7b762" kindref="member">threads_</ref>;</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" kindref="member">ft_2_m_</ref><sp/>=<sp/>0.3048;<sp/></highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a6ffc6171860743e3f998ed45dcfdbb5f" kindref="member">m_2_ft_</ref><sp/>=<sp/>1<sp/>/<sp/><ref refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" kindref="member">ft_2_m_</ref>;</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"></highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aae3efc46e1dd71a5efb2374f71fa18a9" kindref="member">c_2_k_</ref><sp/>=<sp/>273.15;</highlight></codeline>
+<codeline lineno="526"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a71a60fbb613075ddc5ad2dc58cb16041" kindref="member">km_2_m_</ref><sp/>=<sp/>0.001;</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afa0b943d98c635352b70e37572b61be0" kindref="member">r_</ref><sp/>=<sp/>287;</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ac3041ab8d6dbc61fb7b9c58949d161d7" kindref="member">b_</ref><sp/>=<sp/>6.5<sp/>*<sp/><ref refid="classRoot_1a71a60fbb613075ddc5ad2dc58cb16041" kindref="member">km_2_m_</ref>;</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"></highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a001e83bfa05e9795fa44b1bd5010f54d" kindref="member">t_burn_</ref><sp/>=<sp/>1.9;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="550"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aaa57d2b66dd61646d609393628e78034" kindref="member">sampling_frequency_</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"></highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3dd8140e66b16042882f5bc496ba73e3" kindref="member">restart_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a5c25774f020944a4d2a8ed3b068f07ff" kindref="member">time_delay_enabled_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a380132154152a1a11ac18192af7a53ea" kindref="member">fps_</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight></codeline>
+<codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a5a0260737a010b3a3ffa6bf10cc16b7d" kindref="member">frame_width_</ref><sp/>=<sp/>640;</highlight></codeline>
+<codeline lineno="580"><highlight class="normal"></highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a97ef1225386f7687ff5d7386d9811dc0" kindref="member">frame_height_</ref><sp/>=<sp/>480;</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"></highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a7eb1fb3124360476191d9465cc7e8235" kindref="member">max_proper_flight_time_</ref><sp/>=<sp/>3<sp/>*<sp/>60;</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a6ecc0964ce3a5f4c53617d055402b4ca" kindref="member">vid_clip_time_</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="598"><highlight class="normal"></highlight></codeline>
+<codeline lineno="603"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ab750296011302185dbc71ca2f7959d24" kindref="member">frames_per_vid_</ref><sp/>=<sp/><ref refid="classRoot_1a380132154152a1a11ac18192af7a53ea" kindref="member">fps_</ref><sp/>*<sp/><ref refid="classRoot_1a6ecc0964ce3a5f4c53617d055402b4ca" kindref="member">vid_clip_time_</ref>;</highlight></codeline>
+<codeline lineno="604"><highlight class="normal"></highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;cv::VideoWriter&gt;<sp/><ref refid="classRoot_1a8bf8f0c06de1017c1e8f3c83b2b66daf" kindref="member">videos1_</ref>;</highlight></codeline>
+<codeline lineno="610"><highlight class="normal"></highlight></codeline>
+<codeline lineno="615"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;cv::VideoWriter&gt;<sp/><ref refid="classRoot_1ad341ae125a88c12de66b55d1cbe016e8" kindref="member">videos2_</ref>;</highlight></codeline>
+<codeline lineno="616"><highlight class="normal"></highlight></codeline>
+<codeline lineno="621"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;cv::VideoWriter&gt;<sp/><ref refid="classRoot_1a900eaf5f593b860375084bd5d47e5681" kindref="member">videos3_</ref>;</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight></codeline>
+<codeline lineno="627"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::VideoCapture<sp/><ref refid="classRoot_1a941b9d7f74c3194c11b293a5ede8d8b2" kindref="member">lift_and_level_cap_</ref>;</highlight></codeline>
+<codeline lineno="628"><highlight class="normal"></highlight></codeline>
+<codeline lineno="633"><highlight class="normal"><sp/><sp/><sp/><sp/>cv::VideoWriter<sp/><ref refid="classRoot_1a85b86785b4e3d8605d540898acb14d5d" kindref="member">lift_and_level_video_</ref>;</highlight></codeline>
+<codeline lineno="634"><highlight class="normal"></highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/><sp/><sp/>std::thread<sp/><ref refid="classRoot_1a111da0d026977d4f1d788c94dc19dc1b" kindref="member">lift_thread_</ref>;</highlight></codeline>
+<codeline lineno="640"><highlight class="normal"></highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>double<sp/>check<sp/>these<sp/>flight<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>possibly<sp/>variable<sp/>flight<sp/>parameters<sp/>(stuff<sp/>we<sp/>might<sp/>change)</highlight></codeline>
+<codeline lineno="647"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1afdd0df1e63ba87ccc52b72312f9f2e58" kindref="member">accel_roof_</ref><sp/>=<sp/>3.5;</highlight></codeline>
+<codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aa225be3ed75e68b564b2351278b0b2b4" kindref="member">num_data_points_checked_4_launch_</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="654"><highlight class="normal"></highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad557ad221897541b7a07007c3c409403" kindref="member">num_data_points_checked_4_apogee_</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="660"><highlight class="normal"></highlight></codeline>
+<codeline lineno="665"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a9038f7fe50ca4e3574d809ead3deeebe" kindref="member">num_seconds_no_new_minimum_</ref><sp/>=<sp/>10;</highlight></codeline>
+<codeline lineno="666"><highlight class="normal"></highlight></codeline>
+<codeline lineno="671"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad423ff02a83293ed66a82470eb6eda2a" kindref="member">num_data_points_checked_4_landing_</ref><sp/>=<sp/><ref refid="classRoot_1a9038f7fe50ca4e3574d809ead3deeebe" kindref="member">num_seconds_no_new_minimum_</ref><sp/>*<sp/><ref refid="classRoot_1aaa57d2b66dd61646d609393628e78034" kindref="member">sampling_frequency_</ref>;</highlight></codeline>
+<codeline lineno="672"><highlight class="normal"></highlight></codeline>
+<codeline lineno="677"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad10c8e25665d79f186d127b0f828d43d" kindref="member">z_threshold_for_landing_</ref><sp/>=<sp/>175<sp/>*<sp/><ref refid="classRoot_1a96512a4851817c187e0e4c80b3151ffd" kindref="member">ft_2_m_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="678"><highlight class="normal"></highlight></codeline>
+<codeline lineno="683"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a66e70c26e83bef350aaf12cadfe32480" kindref="member">max_flight_time_</ref><sp/>=<sp/>10<sp/>*<sp/>60;</highlight></codeline>
+<codeline lineno="684"><highlight class="normal"></highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0c7ed7fbedd829c58a7b12a5a3795059" kindref="member">length_collect_rafco_</ref><sp/>=<sp/>20<sp/>*<sp/>60;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="690"><highlight class="normal"></highlight></codeline>
+<codeline lineno="695"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" kindref="member">rafco_freq_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;144.900M&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="696"><highlight class="normal"></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1ac1ac5e635f968ada8cf00f3f2189e788" kindref="member">callsign_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;KQ4CTL&quot;</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="702"><highlight class="normal"></highlight></codeline>
+<codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a76860bbe6806cc5546551c9354857680" kindref="member">source_ssid_</ref><sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"></highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a20edd5ad7ec852ccbfe9c7938d3c2f77" kindref="member">pds_delay_</ref><sp/>=<sp/>60<sp/>*<sp/>1000;</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"></highlight></codeline>
+<codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad770a0947892d58dbe8fc581880e154c" kindref="member">rafco_redo_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="720"><highlight class="normal"></highlight></codeline>
+<codeline lineno="725"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classRoot_1a31d14f2ee737027c2c14e826ca590003" kindref="member">num_sample_readings_</ref><sp/>=<sp/>60;<sp/></highlight></codeline>
+<codeline lineno="726"><highlight class="normal"></highlight></codeline>
+<codeline lineno="731"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ad9df27e6b9f94e9636d118d1c9f26e00" kindref="member">imu_wait_</ref><sp/>=<sp/>60;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="732"><highlight class="normal"></highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a2aefae5b1703ca25800302c6767423be" kindref="member">p0_</ref>;</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"></highlight></codeline>
+<codeline lineno="743"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0d7492aa2d2c7b80ccde29ec58ee8eb6" kindref="member">t0_</ref>;</highlight></codeline>
+<codeline lineno="744"><highlight class="normal"></highlight></codeline>
+<codeline lineno="749"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0fb18e0da95608de1fe32738b3004431" kindref="member">g0_</ref>;</highlight></codeline>
+<codeline lineno="750"><highlight class="normal"></highlight></codeline>
+<codeline lineno="755"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a24fa26d7cb49e342447839a5103ae288" kindref="member">launch_time_</ref>;</highlight></codeline>
+<codeline lineno="756"><highlight class="normal"></highlight></codeline>
+<codeline lineno="761"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a6ce282eac3fe0d863e61bde0e07e5913" kindref="member">z_current_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="762"><highlight class="normal"></highlight></codeline>
+<codeline lineno="767"><highlight class="normal"><sp/><sp/><sp/><sp/>VnSensor<sp/>*<ref refid="classRoot_1a1b57f61d9a3ae56eb1860d7bf5c9f563" kindref="member">m_vn_</ref>;</highlight></codeline>
+<codeline lineno="768"><highlight class="normal"></highlight></codeline>
+<codeline lineno="773"><highlight class="normal"><sp/><sp/><sp/><sp/>ImuMeasurementsRegister<sp/><ref refid="classRoot_1a3c7703925652442220d1dcf6db7b2b18" kindref="member">response_</ref>;</highlight></codeline>
+<codeline lineno="774"><highlight class="normal"></highlight></codeline>
+<codeline lineno="779"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a8be5285e171824ff214da225bebcd072" kindref="member">input_file_name_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;packets_&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classRoot_1acd55503015ba119018dc122a4ff590aa" kindref="member">start_time_</ref>).substr(0,<sp/>std::to_string(<ref refid="classRoot_1acd55503015ba119018dc122a4ff590aa" kindref="member">start_time_</ref>).find(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">))<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="780"><highlight class="normal"></highlight></codeline>
+<codeline lineno="785"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a73701a5eca3d9df006ebda64cb105d8b" kindref="member">flight_log_name_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;flightDataLog&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="786"><highlight class="normal"></highlight></codeline>
+<codeline lineno="791"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a19f12ee9bf2918a057f4944fb7a033aa" kindref="member">program_log_name_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;programDataLog&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="792"><highlight class="normal"></highlight></codeline>
+<codeline lineno="797"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLog" kindref="compound">Log</ref><sp/><ref refid="classRoot_1a881827e74cebdcfc4a74d444b9bb76d4" kindref="member">m_log_</ref>;</highlight></codeline>
+<codeline lineno="798"><highlight class="normal"></highlight></codeline>
+<codeline lineno="803"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aacc555363da6ccd6fae0a499b9109998" kindref="member">is_imu_connected_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="804"><highlight class="normal"></highlight></codeline>
+<codeline lineno="809"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a98c04ea54ccbfcf1c60344292cb7309e" kindref="member">config1_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/home/vadl/FullscalePrime/sdr1.conf&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"></highlight></codeline>
+<codeline lineno="815"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1acc1c56c79e064fcc6a1e0f8fbf36e1cd" kindref="member">config2_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/home/vadl/FullscalePrime/sdr2.conf&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="816"><highlight class="normal"></highlight></codeline>
+<codeline lineno="821"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref><sp/><ref refid="classRoot_1a40d268b8923b05c5f28cc64bd52d14af" kindref="member">radio1_</ref><sp/>=<sp/><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref>(100,<sp/><ref refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" kindref="member">rafco_freq_</ref>,<sp/>8001,<sp/><ref refid="classRoot_1a98c04ea54ccbfcf1c60344292cb7309e" kindref="member">config1_</ref>);</highlight></codeline>
+<codeline lineno="822"><highlight class="normal"></highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref><sp/><ref refid="classRoot_1ae860d7f98dadc0842a70566ce88853fd" kindref="member">radio2_</ref><sp/>=<sp/><ref refid="classPacketReceiver" kindref="compound">PacketReceiver</ref>(200,<sp/><ref refid="classRoot_1a66ed43df7d9aeea934c9b8e1cebfe7d4" kindref="member">rafco_freq_</ref>,<sp/>9001,<sp/><ref refid="classRoot_1acc1c56c79e064fcc6a1e0f8fbf36e1cd" kindref="member">config2_</ref>);</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"></highlight></codeline>
+<codeline lineno="833"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classRoot_1aa4ea15edd593d171f868ff0a8200a1f6" kindref="member">camera_streams_</ref>;</highlight></codeline>
+<codeline lineno="834"><highlight class="normal"></highlight></codeline>
+<codeline lineno="839"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classRoot_1a066213b4e40dd278c5c47cf01ecd578c" kindref="member">primary_camera_stream_</ref>;</highlight></codeline>
+<codeline lineno="840"><highlight class="normal"></highlight></codeline>
+<codeline lineno="845"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a3d8e9cbd063482722459bd4f9e857f60" kindref="member">rcb_done_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="846"><highlight class="normal"></highlight></codeline>
+<codeline lineno="851"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRoot_1ae30f3c6144d2d9df894b392ee45d051f" kindref="member">Root</ref>();</highlight></codeline>
+<codeline lineno="852"><highlight class="normal"></highlight></codeline>
+<codeline lineno="858"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRoot_1ae30f3c6144d2d9df894b392ee45d051f" kindref="member">Root</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_unit_fsm);</highlight></codeline>
+<codeline lineno="859"><highlight class="normal"></highlight></codeline>
+<codeline lineno="864"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRoot_1ae3b9dd56ac40d582a92b904f8480be7b" kindref="member">~Root</ref>();</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"></highlight></codeline>
+<codeline lineno="871"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a0e98881d2cddd732762b3a417cf57179" kindref="member">addState</ref>(<ref refid="classState" kindref="compound">State</ref><sp/>*the_state);</highlight></codeline>
+<codeline lineno="872"><highlight class="normal"></highlight></codeline>
+<codeline lineno="878"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a1806fd2e246ba5807fa04d4f2c4f5bad" kindref="member">getCurrentTime</ref>();</highlight></codeline>
+<codeline lineno="879"><highlight class="normal"></highlight></codeline>
+<codeline lineno="889"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aff48369e29cdf0800a8be86c36721d3d" kindref="member">angleToPulseWidth</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pulse_max,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pulse_min,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>range,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>angle);</highlight></codeline>
+<codeline lineno="890"><highlight class="normal"></highlight></codeline>
+<codeline lineno="900"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1adf14d6d0134f647b4ce3d285db37815e" kindref="member">pressure2Altitude</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>t0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>p0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>g0,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>p);</highlight></codeline>
+<codeline lineno="901"><highlight class="normal"></highlight></codeline>
+<codeline lineno="902"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>given<sp/>a<sp/>float<sp/>array,<sp/>calculates<sp/>the<sp/>average<sp/>of<sp/>all<sp/>the<sp/>arrays<sp/>values</highlight></codeline>
+<codeline lineno="910"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aee702e519c44a9bc38edca8c6f6bb235" kindref="member">calcArrayAverage</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>array[],<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="911"><highlight class="normal"></highlight></codeline>
+<codeline lineno="912"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>disconnects<sp/>IMUf</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="913"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>returns<sp/>true<sp/>if<sp/>IMU<sp/>was<sp/>active<sp/>but<sp/>was<sp/>successfuly<sp/>disconnected;<sp/>returns<sp/>false<sp/>if<sp/>IMU<sp/>was<sp/>not<sp/>active</highlight></codeline>
+<codeline lineno="921"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1ab434a46ca42a975927e0e070b3257077" kindref="member">terminateConnections</ref>(VnSensor<sp/>*imu);</highlight></codeline>
+<codeline lineno="922"><highlight class="normal"></highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>functional<sp/>the<sp/>same<sp/>as<sp/>sleep()<sp/>command<sp/>but<sp/>still<sp/>records<sp/>and<sp/>logs<sp/>IMU<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="924"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sleep_time<sp/>given<sp/>in<sp/>seconds</highlight></codeline>
+<codeline lineno="933"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRoot_1aaf8bbf612528d0b7f4af793e9e470f43" kindref="member">activeSleep</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sleep_time,<sp/>VnSensor<sp/>*imu,<sp/>ImuMeasurementsRegister<sp/>&amp;response,<sp/><ref refid="classLog" kindref="compound">Log</ref><sp/>&amp;log);</highlight></codeline>
+<codeline lineno="934"><highlight class="normal"></highlight></codeline>
+<codeline lineno="935"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>checks<sp/>if<sp/>flight<sp/>has<sp/>gone<sp/>on<sp/>for<sp/>too<sp/>long,<sp/>if<sp/>so<sp/>returns<sp/>true<sp/>to<sp/>end<sp/>program</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="936"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>launchTime<sp/>given<sp/>in<sp/>milliseconds;<sp/>triggerTime<sp/>given<sp/>in<sp/>seconds</highlight></codeline>
+<codeline lineno="945"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1adfce70fe2c9363f44c62c15c14589a96" kindref="member">isTimeExceeded</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>launch_time,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>trigger_time);</highlight></codeline>
+<codeline lineno="946"><highlight class="normal"></highlight></codeline>
+<codeline lineno="947"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//check<sp/>if<sp/>a<sp/>given<sp/>camera<sp/>stream<sp/>is<sp/>operational</highlight></codeline>
+<codeline lineno="955"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a2c377c2b26779603750105a9c45f31c5" kindref="member">cameraCheck</ref>(std::string<sp/>camera_check);</highlight></codeline>
+<codeline lineno="956"><highlight class="normal"></highlight></codeline>
+<codeline lineno="964"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRoot_1af42361b09c190429b641a1f6b72cbef7" kindref="member">realCamThreadLanding</ref>(cv::VideoCapture<sp/>*cap,<sp/>std::vector&lt;cv::VideoWriter&gt;<sp/>*videos,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cam_number);</highlight></codeline>
+<codeline lineno="965"><highlight class="normal"></highlight></codeline>
+<codeline lineno="972"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRoot_1adc453b16b94b0c0bd5e5e3235e4fae4e" kindref="member">realCamThreadRCB</ref>(cv::VideoCapture<sp/>*cap,<sp/>cv::VideoWriter<sp/>*video);</highlight></codeline>
+<codeline lineno="973"><highlight class="normal"></highlight></codeline>
+<codeline lineno="980"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classRoot_1a57713c513c351dde29c9ee5168647706" kindref="member">realCamThreadLift</ref>(cv::VideoCapture<sp/>*cap,<sp/>cv::VideoWriter<sp/>*video);</highlight></codeline>
+<codeline lineno="981"><highlight class="normal"></highlight></codeline>
+<codeline lineno="982"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="983"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="984"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/Root.h"/>
+  </compounddef>
+</doxygen>

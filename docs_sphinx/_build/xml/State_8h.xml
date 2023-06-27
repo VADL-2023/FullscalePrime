@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="State_8h" kind="file" language="C++">
+    <compoundname>State.h</compoundname>
+    <includes refid="State__Enums_8h" local="yes">State_Enums.h</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">map</includes>
+    <includedby refid="State__Apogee__Detection_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Apogee_Detection.h</includedby>
+    <includedby refid="State__Camera__Check_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Camera_Check.h</includedby>
+    <includedby refid="State__Full__Level_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Level.h</includedby>
+    <includedby refid="State__Full__Lift_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h</includedby>
+    <includedby refid="State__Full__RCB_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_RCB.h</includedby>
+    <includedby refid="State__Landing__Detection_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Landing_Detection.h</includedby>
+    <includedby refid="State__Launch__Detection_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Launch_Detection.h</includedby>
+    <includedby refid="State__Level__Servo_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Level_Servo.h</includedby>
+    <includedby refid="State__Lift__Motor_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Lift_Motor.h</includedby>
+    <includedby refid="State__Lift__Servo_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Lift_Servo.h</includedby>
+    <includedby refid="State__Nacelle__Servo_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Nacelle_Servo.h</includedby>
+    <includedby refid="State__PDS__Delay_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_PDS_Delay.h</includedby>
+    <includedby refid="State__Prelaunch_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Prelaunch.h</includedby>
+    <includedby refid="State__RAFCO__Mission_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_RAFCO_Mission.h</includedby>
+    <includedby refid="State__RCB__Motor_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_RCB_Motor.h</includedby>
+    <includedby refid="State__SDR1_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_SDR1.h</includedby>
+    <includedby refid="State__SDR2_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_SDR2.h</includedby>
+    <includedby refid="State__Stepper1_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper1.h</includedby>
+    <includedby refid="State__Stepper2_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper2.h</includedby>
+    <includedby refid="State__Stepper3_8h" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper3.h</includedby>
+    <includedby refid="Root_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/Root.cpp</includedby>
+    <includedby refid="State_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/HFSM/src/State.cpp</includedby>
+    <includedby refid="display_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/display.cpp</includedby>
+    <includedby refid="real__display_8cpp" local="yes">/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/real_display.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>map</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>iostream</label>
+      </node>
+      <node id="2">
+        <label>State_Enums.h</label>
+        <link refid="State__Enums_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Lift_Servo.h</label>
+        <link refid="State__Lift__Servo_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Level.h</label>
+        <link refid="State__Full__Level_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_SDR2.h</label>
+        <link refid="State__SDR2_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper1.h</label>
+        <link refid="State__Stepper1_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_RAFCO_Mission.h</label>
+        <link refid="State__RAFCO__Mission_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Landing_Detection.h</label>
+        <link refid="State__Landing__Detection_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_RCB.h</label>
+        <link refid="State__Full__RCB_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_SDR1.h</label>
+        <link refid="State__SDR1_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/real_display.cpp</label>
+        <link refid="real__display_8cpp"/>
+      </node>
+      <node id="15">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_PDS_Delay.h</label>
+        <link refid="State__PDS__Delay_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State.h</label>
+        <link refid="State_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Level_Servo.h</label>
+        <link refid="State__Level__Servo_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper3.h</label>
+        <link refid="State__Stepper3_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Lift_Motor.h</label>
+        <link refid="State__Lift__Motor_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/kushtimusprime/FullscalePrime/MainDriver/src/integration_tests/display.cpp</label>
+        <link refid="display_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Apogee_Detection.h</label>
+        <link refid="State__Apogee__Detection_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_RCB_Motor.h</label>
+        <link refid="State__RCB__Motor_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Prelaunch.h</label>
+        <link refid="State__Prelaunch_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Stepper2.h</label>
+        <link refid="State__Stepper2_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Camera_Check.h</label>
+        <link refid="State__Camera__Check_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Launch_Detection.h</label>
+        <link refid="State__Launch__Detection_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Nacelle_Servo.h</label>
+        <link refid="State__Nacelle__Servo_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>/home/kushtimusprime/FullscalePrime/HFSM/include/State_Full_Lift.h</label>
+        <link refid="State__Full__Lift_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classState" prot="public">State</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STATE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="State__Enums_8h" kindref="compound">State_Enums.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRoot" kindref="compound">Root</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classState" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classState" kindref="compound">State</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classState_1ab91bb1dd5aa6260ab2a456581daf9ec2" kindref="member">State</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classState_1ab91bb1dd5aa6260ab2a456581daf9ec2" kindref="member">State</ref>(<ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/>&amp;name,<sp/>std::map&lt;EventName,<sp/>StateName&gt;<sp/>&amp;state_transitions,<sp/><ref refid="classRoot" kindref="compound">Root</ref>*<sp/>root);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState_1aad21360bf6da12cc8442bf0da8bf37a9" kindref="member">execute</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/><ref refid="classState_1a571cb364027c5ee65658c623bc03d3b5" kindref="member">unitExecute</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/><ref refid="classState_1a73a816d1fe3d0873085685a407d9d4b3" kindref="member">getName</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/><ref refid="classState_1a7b93492451b30498b550556bdf333203" kindref="member">getNextState</ref>(<ref refid="State__Enums_8h_1ab10943c68f32680aedb347755b5488ec" kindref="member">EventName</ref><sp/>curr_event);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Subclasses<sp/>cannot<sp/>access<sp/>these<sp/>variables<sp/>unless<sp/>they<sp/>protected,<sp/>not<sp/>private<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classRoot" kindref="compound">Root</ref>*<sp/><ref refid="classState_1ae892ec6905b6de7ae4750e4d7d9d0c1c" kindref="member">root_</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="State__Enums_8h_1ac99446a312a3e7b8497ac6ec1f3ae080" kindref="member">StateName</ref><sp/><ref refid="classState_1a6a2b92bfd448de1302879399206a460b" kindref="member">name_</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::map&lt;EventName,StateName&gt;<sp/><ref refid="classState_1a8f28c427ef85b562d1854e60e0a8c217" kindref="member">state_transitions_</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/HFSM/include/State.h"/>
+  </compounddef>
+</doxygen>

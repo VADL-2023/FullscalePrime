@@ -1,0 +1,4 @@
+<map id="State_Full_RCB" name="State_Full_RCB">
+<area shape="rect" id="node1" title="State responsible for RCB to rotate key nacelle on top." alt="" coords="5,80,125,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="37,5,93,32"/>
+</map>

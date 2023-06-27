@@ -17,6 +17,7 @@ EventName State_Nacelle_Servo::execute()
 
 EventName State_Nacelle_Servo::unitExecute()
 {
+	// Move nacelle servo one way and then the other way
 	std::cout << "Started Nacelle Servo Test" << std::endl;
 	double start_time = this->root_->getCurrentTime();
 	double current_time = start_time;

@@ -1,25 +1,24 @@
+/**
+ * @file LevelServoTest.cpp
+ * @brief Runs level servo to tilt the level up or down
+ * 
+ */
 #include <iostream>
 #include <ctime>
 #include "pigpio.h"
 #include <chrono>
 
+/**
+ * @brief RPI GPIO Pin for Level Servo
+ * 
+ */
 const int LEVEL_SERVO = 3;
-const uint16_t SERVO_PULSE_MIN = 500;
-const uint16_t SERVO_PULSE_MAX = 2250;
-const uint8_t SERVO_DEG_RANGE = 90;
-const int LIFT_LOCK = 1600;
-const int LIFT_UNLOCK = 1150;
 
-double getCurrentTime()
-{
-    return double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
-}
-
-float angleToPulseWidth(double pulse_max, double pulse_min, double range, float angle)
-{
-    return (pulse_max - pulse_min) * angle / range + (pulse_max + pulse_min) / 2.0;
-}
-
+/**
+ * @brief Main method: Runs level servo to tilt the level up or down
+ * 
+ * @return exit status 
+ */
 int main()
 {
     // Temporary initialization thing
@@ -30,22 +29,26 @@ int main()
 
     std::cout << "GPIOs initialized" << std::endl;
 
-    // Lift Locking Servo Initialization
+    // Level Servo Initialization
     gpioSetMode(LEVEL_SERVO, PI_OUTPUT);
 
     // Wait for the user to signal the lift servo
-    double angle = 0;
-    float pulse_width;
     bool run_again = true;
+
+    //Initial level pulse width
     int pulseWidth = 1500;
     do
     {
 
-        // Wait for the user to signal that the parachute should be detached
+        /**
+         * @brief WARNING: It copies lock and unlock from the other servo test, but it just means tilt up or down
+         * 
+         */
         std::string userInput = "";
         std::cout << "What do you want to do to the lift (L | U | Q): ";
         std::cin >> userInput;
         
+        // Tilt one way (sorry, I forgot which way)
         if (userInput == "L")
         {
             pulseWidth += 50;
@@ -53,6 +56,7 @@ int main()
             gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);
         }
+        //Tilt the other way
         else if (userInput == "U")
         {
             pulseWidth -= 50;
@@ -60,6 +64,7 @@ int main()
             gpioServo(LEVEL_SERVO, pulseWidth);
             gpioSleep(0, 2, 0);
         }
+        // Quit
         else if (userInput == "Q")
         {
             run_again = false;

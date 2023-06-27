@@ -1,0 +1,111 @@
+\hypertarget{classState__Lift__Motor}{}\doxysection{State\+\_\+\+Lift\+\_\+\+Motor Class Reference}
+\label{classState__Lift__Motor}\index{State\_Lift\_Motor@{State\_Lift\_Motor}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for testing lift motor without limit switch sensors.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Lift\+\_\+\+Motor.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Lift\+\_\+\+Motor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{classState__Lift__Motor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Lift\+\_\+\+Motor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Lift__Motor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Lift__Motor_a068d9a44b3dd8c7c7819832cd5935727}\label{classState__Lift__Motor_a068d9a44b3dd8c7c7819832cd5935727}} 
+\mbox{\hyperlink{classState__Lift__Motor_a068d9a44b3dd8c7c7819832cd5935727}{State\+\_\+\+Lift\+\_\+\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Lift__Motor}{State\+\_\+\+Lift\+\_\+\+Motor}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Lift__Motor_a8e2bd011cfcb91c20a31678a2e055272}{State\+\_\+\+Lift\+\_\+\+Motor}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Lift__Motor}{State\+\_\+\+Lift\+\_\+\+Motor}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Lift__Motor_a5bb8438ed166aca2cfc0ca92da6d245e}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Lift__Motor_a59cb3c800215b02457152c70852d1f5c}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for testing lift motor without limit switch sensors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Lift__Motor_a8e2bd011cfcb91c20a31678a2e055272}\label{classState__Lift__Motor_a8e2bd011cfcb91c20a31678a2e055272}} 
+\index{State\_Lift\_Motor@{State\_Lift\_Motor}!State\_Lift\_Motor@{State\_Lift\_Motor}}
+\index{State\_Lift\_Motor@{State\_Lift\_Motor}!State\_Lift\_Motor@{State\_Lift\_Motor}}
+\doxysubsubsection{\texorpdfstring{State\_Lift\_Motor()}{State\_Lift\_Motor()}}
+{\footnotesize\ttfamily State\+\_\+\+Lift\+\_\+\+Motor\+::\+State\+\_\+\+Lift\+\_\+\+Motor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Lift__Motor}{State\+\_\+\+Lift\+\_\+\+Motor}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Lift__Motor_a5bb8438ed166aca2cfc0ca92da6d245e}\label{classState__Lift__Motor_a5bb8438ed166aca2cfc0ca92da6d245e}} 
+\index{State\_Lift\_Motor@{State\_Lift\_Motor}!execute@{execute}}
+\index{execute@{execute}!State\_Lift\_Motor@{State\_Lift\_Motor}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Lift\+\_\+\+Motor\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Lift__Motor_a59cb3c800215b02457152c70852d1f5c}\label{classState__Lift__Motor_a59cb3c800215b02457152c70852d1f5c}} 
+\index{State\_Lift\_Motor@{State\_Lift\_Motor}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Lift\_Motor@{State\_Lift\_Motor}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Lift\+\_\+\+Motor\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Lift__Motor_8h}{State\+\_\+\+Lift\+\_\+\+Motor.\+h}}\item 
+HFSM/src/State\+\_\+\+Lift\+\_\+\+Motor.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,56 @@
+\hypertarget{NacelleLockTest_8cpp}{}\doxysection{Field\+Test/src/\+Nacelle\+Lock\+Test.cpp File Reference}
+\label{NacelleLockTest_8cpp}\index{FieldTest/src/NacelleLockTest.cpp@{FieldTest/src/NacelleLockTest.cpp}}
+
+
+Runs nacelle locking servo to either lock or unlock the nacelles.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include \char`\"{}pigpio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+Include dependency graph for Nacelle\+Lock\+Test.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{NacelleLockTest_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{NacelleLockTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main Method\+: Runs nacelle locking servo to either lock or unlock the nacelles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{NacelleLockTest_8cpp_a151dc709610877be48800971a77821d8}\label{NacelleLockTest_8cpp_a151dc709610877be48800971a77821d8}} 
+const int \mbox{\hyperlink{NacelleLockTest_8cpp_a151dc709610877be48800971a77821d8}{NACELLE\+\_\+\+SERVO}} = 14
+\begin{DoxyCompactList}\small\item\em RPI GPIO pin for nacelle locking servo. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{NacelleLockTest_8cpp_a0b54c6720c2ba75bf85a123ad7308812}\label{NacelleLockTest_8cpp_a0b54c6720c2ba75bf85a123ad7308812}} 
+const int \mbox{\hyperlink{NacelleLockTest_8cpp_a0b54c6720c2ba75bf85a123ad7308812}{NACELLE\+\_\+\+LOCK}} = 1600
+\begin{DoxyCompactList}\small\item\em Pulse width to lock nacelles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{NacelleLockTest_8cpp_a43253fbdf84766da2be3f87cb831e7ea}\label{NacelleLockTest_8cpp_a43253fbdf84766da2be3f87cb831e7ea}} 
+const int \mbox{\hyperlink{NacelleLockTest_8cpp_a43253fbdf84766da2be3f87cb831e7ea}{NACELLE\+\_\+\+UNLOCK}} = 755
+\begin{DoxyCompactList}\small\item\em Pulse width to unlock nacelles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Runs nacelle locking servo to either lock or unlock the nacelles. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{NacelleLockTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{NacelleLockTest_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{NacelleLockTest.cpp@{NacelleLockTest.cpp}!main@{main}}
+\index{main@{main}!NacelleLockTest.cpp@{NacelleLockTest.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Method\+: Runs nacelle locking servo to either lock or unlock the nacelles. 
+
+\begin{DoxyReturn}{Returns}
+exit status 
+\end{DoxyReturn}

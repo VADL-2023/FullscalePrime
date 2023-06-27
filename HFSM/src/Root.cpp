@@ -48,7 +48,6 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
     gpioSetMode(this->lift_servo_, PI_OUTPUT);
 
     // Lift Limit Switch Initialization
-    gpioSetMode(this->lift_base_limit_switch_, PI_INPUT);
     gpioSetMode(this->lift_final_limit_switch_, PI_INPUT);
 
     // Lift Motor Initialization
@@ -68,11 +67,16 @@ Root::Root(bool is_unit_fsm) : start_time_(0), is_unit_fsm_(is_unit_fsm), m_log_
 
 Root::~Root()
 {
+    // Release video capture objects
     this->cap1.release();
     this->cap2.release();
     this->cap3.release();
+
+    // Terminate GPIO
     gpioTerminate();
     this->m_log_.write("GPIOs terminated");
+
+    //Terminate IMU
     if (this->is_imu_connected_)
     {
         if (this->terminateConnections(this->m_vn_))
@@ -131,385 +135,6 @@ bool Root::terminateConnections(VnSensor *imu)
     return out;
 }
 
-void Root::camThreadLaunch(cv::VideoCapture *cap, int cam_number)
-{
-    while (!this->launch_detected_)
-    {
-        cv::Mat frame;
-        cv::rotate(frame, frame, cv::ROTATE_180);
-        (*cap).read(frame);
-        if (frame.empty())
-        {
-            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
-            break;
-        }
-        if (this->date_timestamp_ == "")
-        {
-            auto end = std::chrono::system_clock::now();
-
-            std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-            std::cout << "Date time " << std::ctime(&end_time)
-                      << std::endl;
-            this->date_timestamp_ = std::ctime(&end_time);
-        }
-        std::string base_folder = this->date_timestamp_;
-        std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
-        if (!base_folder.empty())
-        {
-            base_folder.pop_back();
-        }
-        else
-        {
-            std::cout << "Got a weird date time error" << std::endl;
-        }
-        std::cout << "Base folder name: " << base_folder << std::endl;
-        std::cout << "Length: " << base_folder.length() << std::endl;
-        std::cout << "2023 Spot" << base_folder.find("2023") << std::endl;
-        mkdir(base_folder.c_str(), 0777);
-        std::string folder_name_str = base_folder + "/SecondaryPayloadImages" + this->m_log_.getTimestamp();
-        std::cout << "Folder name string: " << folder_name_str << std::endl;
-        mkdir(folder_name_str.c_str(), 0777);
-        std::string cam_str;
-        if (cam_number == 1)
-        {
-            cam_str = folder_name_str + "/cam1";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_1_++;
-        }
-        else if (cam_number == 2)
-        {
-            cam_str = folder_name_str + "/cam2";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_2_++;
-        }
-        else if (cam_number == 3)
-        {
-            cam_str = folder_name_str + "/cam3";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_3_++;
-        }
-    }
-}
-
-void Root::camThreadApogee(cv::VideoCapture *cap, int cam_number)
-{
-    while (!this->apogee_detected_)
-    {
-        cv::Mat frame;
-        cv::rotate(frame, frame, cv::ROTATE_180);
-        (*cap).read(frame);
-        if (frame.empty())
-        {
-            std::cerr << "ERROR! blank frame" << cam_number << " grabbed\n";
-            break;
-        }
-        if (this->date_timestamp_ == "")
-        {
-            auto end = std::chrono::system_clock::now();
-
-            std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-            std::cout << "Date time " << std::ctime(&end_time)
-                      << std::endl;
-            this->date_timestamp_ = std::ctime(&end_time);
-        }
-        std::string base_folder = this->date_timestamp_;
-        std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
-        if (!base_folder.empty())
-        {
-            base_folder.pop_back();
-        }
-        else
-        {
-            std::cout << "Got a weird date time error" << std::endl;
-        }
-        std::cout << "Base folder name: " << base_folder << std::endl;
-        std::cout << "Length: " << base_folder.length() << std::endl;
-        std::cout << "2023 Spot" << base_folder.find("2023") << std::endl;
-        mkdir(base_folder.c_str(), 0777);
-        std::string folder_name_str = base_folder + "/SecondaryPayloadImages" + this->m_log_.getTimestamp();
-        std::cout << "Folder name string: " << folder_name_str << std::endl;
-        mkdir(folder_name_str.c_str(), 0777);
-        std::string cam_str;
-        /*if (cam_number == 1)
-        {
-            cam_str = folder_name_str + "/cam1";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_1_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_1_++;
-        } else if (cam_number == 2)
-        {
-            cam_str = folder_name_str + "/cam2";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_2_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_2_++;
-        } else if (cam_number == 3)
-        {
-            cam_str = folder_name_str + "/cam3";
-            mkdir(cam_str.c_str(), 0777);
-            std::string aac_num_string = std::to_string(this->aac_pic_num_cam_3_);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            cv::imwrite(pic_name_str, frame);
-            this->aac_pic_num_cam_3_++;
-        }*/
-    }
-}
-
-void Root::camThreadLift(cv::VideoCapture *cap)
-{
-    std::vector<cv::Mat> frames;
-    std::vector<std::string> date_times;
-    if (this->date_timestamp_ == "")
-    {
-        auto end = std::chrono::system_clock::now();
-
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-        this->date_timestamp_ = std::ctime(&end_time);
-    }
-    std::string base_folder = this->date_timestamp_;
-    std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
-    if (!base_folder.empty())
-    {
-        base_folder.pop_back();
-    }
-    else
-    {
-        this->m_log_.write("Invalid Date time format");
-    }
-
-    mkdir(base_folder.c_str(), 0777);
-    std::string folder_name_str = base_folder + "/Lift" + this->m_log_.getTimestamp();
-    std::cout << "Folder name string: " << folder_name_str << std::endl;
-    mkdir(folder_name_str.c_str(), 0777);
-
-    while (!this->lift_done_)
-    {
-        cv::Mat frame;
-
-        (*cap).read(frame);
-        cv::rotate(frame, frame, cv::ROTATE_180);
-        if (frame.empty())
-        {
-            this->m_log_.write("ERROR! Blank frame from camera");
-            break;
-        }
-        auto end = std::chrono::system_clock::now();
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-        std::string date_time = std::ctime(&end_time);
-        date_time.pop_back();
-        date_times.push_back(date_time);
-        frames.push_back(frame);
-    }
-    this->m_log_.write("Lift Frame Size: " + frames.size());
-    for (int i = 0; i < frames.size(); i++)
-    {
-        std::string rcb_num_string = std::to_string(i);
-        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, rcb_num_string.size());
-        rcb_num_string.insert(0, precision, '0');
-        std::string pic_name_str = folder_name_str + "/i" + rcb_num_string + ".png";
-        cv::Size text_size = cv::getTextSize(date_times[i], cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
-        cv::Point the_org(0, text_size.height);
-        cv::Scalar color1(0, 0, 0);
-        cv::Scalar color2(255, 255, 255);
-        auto the_frame = frames[i];
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
-        cv::imwrite(pic_name_str, the_frame);
-    }
-}
-
-void Root::camThreadRCB(cv::VideoCapture *cap)
-{
-    std::vector<cv::Mat> frames;
-    std::vector<std::string> date_times;
-    if (this->date_timestamp_ == "")
-    {
-        auto end = std::chrono::system_clock::now();
-
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-        this->date_timestamp_ = std::ctime(&end_time);
-    }
-    std::string base_folder = this->date_timestamp_;
-    std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
-    if (!base_folder.empty())
-    {
-        base_folder.pop_back();
-    }
-    else
-    {
-        this->m_log_.write("Invalid Date time format");
-    }
-
-    mkdir(base_folder.c_str(), 0777);
-    std::string folder_name_str = base_folder + "/RCB" + this->m_log_.getTimestamp();
-    std::cout << "Folder name string: " << folder_name_str << std::endl;
-    mkdir(folder_name_str.c_str(), 0777);
-    while (!this->rcb_done_)
-    {
-        cv::Mat frame;
-
-        (*cap).read(frame);
-        cv::rotate(frame, frame, cv::ROTATE_180);
-        if (frame.empty())
-        {
-            this->m_log_.write("ERROR! Blank frame from camera");
-            break;
-        }
-        auto end = std::chrono::system_clock::now();
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-        std::string date_time = std::ctime(&end_time);
-        date_time.pop_back();
-        date_times.push_back(date_time);
-        frames.push_back(frame);
-    }
-    this->m_log_.write("RCB Frames " + frames.size());
-    for (int i = 0; i < frames.size(); i++)
-    {
-        std::string rcb_num_string = std::to_string(i);
-        int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, rcb_num_string.size());
-        rcb_num_string.insert(0, precision, '0');
-        std::string pic_name_str = folder_name_str + "/i" + rcb_num_string + ".png";
-        cv::Size text_size = cv::getTextSize(date_times[i], cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
-        cv::Point the_org(0, text_size.height);
-        cv::Scalar color1(0, 0, 0);
-        cv::Scalar color2(255, 255, 255);
-        auto the_frame = frames[i];
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
-        cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
-        cv::imwrite(pic_name_str, the_frame);
-    }
-}
-
-void Root::camThreadLanding(cv::VideoCapture *cap, int cam_number, int max_photos)
-{
-    double prev_time = getCurrentTime();
-    std::vector<cv::Mat> frames;
-    std::vector<std::string> date_times;
-    if (this->date_timestamp_ == "")
-    {
-        auto end = std::chrono::system_clock::now();
-
-        std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-
-        this->date_timestamp_ = std::ctime(&end_time);
-    }
-    std::string base_folder = this->date_timestamp_;
-    std::replace(base_folder.begin(), base_folder.end(), ' ', '_');
-    if (!base_folder.empty())
-    {
-        base_folder.pop_back();
-    }
-    else
-    {
-        this->m_log_.write("Invalid Date time format");
-    }
-
-    mkdir(base_folder.c_str(), 0777);
-    std::string folder_name_str = base_folder + "/SecondaryPayloadImages" + this->m_log_.getTimestamp();
-    this->m_log_.write("AAC Video Folder: " + folder_name_str);
-    mkdir(folder_name_str.c_str(), 0777);
-    std::string cam_str;
-
-    try
-    {
-        while (!this->landing_detected_ && frames.size() < max_photos)
-        {
-            double curr_time = getCurrentTime();
-            prev_time = curr_time;
-            cv::Mat frame;
-
-            (*cap).read(frame);
-            cv::rotate(frame, frame, cv::ROTATE_180);
-            if (frame.empty())
-            {
-                this->m_log_.write("ERROR! Blank frame from camera " + cam_number);
-                break;
-            }
-            auto end = std::chrono::system_clock::now();
-            std::time_t end_time = std::chrono::system_clock::to_time_t(end);
-            std::string date_time = std::ctime(&end_time);
-            date_time.pop_back();
-            frames.push_back(frame);
-            date_times.push_back(date_time);
-            // std::cout << "Thread " << cam_number << ": " << frames.size() << std::endl;
-        }
-    }
-    catch (...)
-    {
-        std::string error_message = "Exception thrown capturing frames for camera " + std::to_string(cam_number);
-        this->m_log_.write(error_message);
-    }
-    if (cam_number == 1)
-    {
-        cam_str = folder_name_str + "/cam1";
-        mkdir(cam_str.c_str(), 0777);
-        this->m_log_.write("Camera 1 Folder: " + cam_str);
-    }
-    else if (cam_number == 2)
-    {
-        cam_str = folder_name_str + "/cam2";
-        mkdir(cam_str.c_str(), 0777);
-        this->m_log_.write("Camera 2 Folder: " + cam_str);
-    }
-    else if (cam_number == 3)
-    {
-        cam_str = folder_name_str + "/cam3";
-        mkdir(cam_str.c_str(), 0777);
-        this->m_log_.write("Camera 3 Folder: " + cam_str);
-    }
-    try
-    {
-        for (int i = 0; i < frames.size(); i++)
-        {
-            std::string aac_num_string = std::to_string(i);
-            int precision = this->n_photo_bit_size_ - std::min(this->n_photo_bit_size_, aac_num_string.size());
-            aac_num_string.insert(0, precision, '0');
-            std::string pic_name_str = cam_str + "/i" + aac_num_string + ".png";
-            auto the_frame = frames[i];
-            cv::Size text_size = cv::getTextSize(date_times[i], cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
-            cv::Point the_org(0, text_size.height);
-            cv::Scalar color1(0, 0, 0);
-            cv::Scalar color2(255, 255, 255);
-            cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
-            cv::putText(the_frame, date_times[i], the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
-            cv::imwrite(pic_name_str, the_frame);
-        }
-    }
-    catch (...)
-    {
-        std::string error_message = "Exception thrown writing frames for camera " + std::to_string(cam_number);
-        this->m_log_.write(error_message);
-    }
-}
-
 void Root::realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video)
 {
     bool is_first = true;
@@ -517,8 +142,10 @@ void Root::realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video)
     int index = 0;
     double max_time = 0;
     double min_time = 10000000;
+    // Run loop until lift state is over
     while (!this->lift_done_)
     {
+        // Capture frame
         cv::Mat frame;
         auto start_time = getCurrentTime();
         (*cap) >> frame;
@@ -526,12 +153,17 @@ void Root::realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video)
         {
             break;
         }
+
+        //Camera is default rotated, so we got to rotate the image again
         cv::rotate(frame, frame, cv::ROTATE_180);
+
+        // Get date and time
         auto end = std::chrono::system_clock::now();
         std::time_t end_time = std::chrono::system_clock::to_time_t(end);
         std::string date_time = std::ctime(&end_time);
         date_time.pop_back();
 
+        //Write date time on the image
         cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
         cv::Point the_org(0, text_size.height);
         cv::Scalar color1(0, 0, 0);
@@ -543,6 +175,7 @@ void Root::realCamThreadLift(cv::VideoCapture *cap, cv::VideoWriter *video)
         /*if(cam_number == 2) {
           std::cout << "Time: " << write_time - start_time << std::endl;
         }*/
+        // Used max_time and min_time to calibrate lift time thresholds
         if (!is_first && write_time - start_time > max_time)
         {
             max_time = write_time - start_time;
@@ -567,8 +200,11 @@ void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video)
     int index = 0;
     double max_time = 0;
     double min_time = 10000000;
+
+    // Run loop until RCB state is over
     while (!this->rcb_done_)
     {
+        // Capture frame
         cv::Mat frame;
         auto start_time = getCurrentTime();
         (*cap) >> frame;
@@ -576,11 +212,16 @@ void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video)
         {
             break;
         }
+        // Camera is rotated
         cv::rotate(frame, frame, cv::ROTATE_180);
+
+        // Get date and time
         auto end = std::chrono::system_clock::now();
         std::time_t end_time = std::chrono::system_clock::to_time_t(end);
         std::string date_time = std::ctime(&end_time);
         date_time.pop_back();
+
+        // Write date and time to photo
         cv::Size text_size = cv::getTextSize(date_time, cv::FONT_HERSHEY_COMPLEX, 1, 4, 0);
         cv::Point the_org(0, text_size.height);
         cv::Scalar color1(0, 0, 0);
@@ -592,6 +233,8 @@ void Root::realCamThreadRCB(cv::VideoCapture *cap, cv::VideoWriter *video)
         /*if(cam_number == 2) {
           std::cout << "Time: " << write_time - start_time << std::endl;
         }*/
+
+        // Max and min time were used to tune time thresholds
         if (!is_first && write_time - start_time > max_time)
         {
             max_time = write_time - start_time;
@@ -617,10 +260,11 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     double min_time = 10000000;
     double flight_start_video = getCurrentTime();
     double flight_current_video = flight_start_video;
-    // MAYBE TODO: Mutex addition
-    // MAYBE TODO: Release video when you change index, check with power disconnection testing
+    
+    // Run loop until landing is detected or we have been flying for 3 minutes
     while (!this->landing_detected_ && flight_current_video - flight_start_video < 180000 )
     {
+        // Get frame
         flight_current_video = getCurrentTime();
         cv::Mat frame;
         auto start_time = getCurrentTime();
@@ -630,6 +274,8 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
             break;
         }
         cv::rotate(frame, frame, cv::ROTATE_180);
+
+        // Get date time and write to photo
         auto end = std::chrono::system_clock::now();
         std::time_t end_time = std::chrono::system_clock::to_time_t(end);
         std::string date_time = std::ctime(&end_time);
@@ -640,6 +286,8 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
         cv::Scalar color2(255, 255, 255);
         cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color1, 4, cv::LINE_AA);
         cv::putText(frame, date_time, the_org, cv::FONT_HERSHEY_COMPLEX, 1, color2, 2, cv::LINE_AA);
+
+        // Determine which video writer the frame should be written to
         index = i / this->frames_per_vid_;
         if (index >= this->max_proper_flight_time_ / this->vid_clip_time_)
         {
@@ -650,6 +298,7 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
         /*if(cam_number == 2) {
           std::cout << "Time: " << write_time - start_time << std::endl;
         }*/
+        // Max and min time used for debugging
         if (!is_first && write_time - start_time > max_time)
         {
             max_time = write_time - start_time;
@@ -663,6 +312,8 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     }
     std::cout << "Thread " << cam_number << ": Max time: " << max_time << std::endl;
     std::cout << "Thread " << cam_number << ": Min time: " << min_time << std::endl;
+
+    // Release videocapture and writer objects
     for (int i = 0; i < this->max_proper_flight_time_ / this->vid_clip_time_; i++)
     {
         (*videos)[i].release();
@@ -671,32 +322,16 @@ void Root::realCamThreadLanding(cv::VideoCapture *cap, std::vector<cv::VideoWrit
     std::cout << "Thread " << cam_number << ": Done" << std::endl;
 }
 
-void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log, double &start_time)
+void Root::activeSleep(float sleep_time, VnSensor *imu, ImuMeasurementsRegister &response, Log &log)
 {
     double current_time = this->getCurrentTime();
     double end_time = sleep_time * 1000 + current_time;
     // for(int i = 0; i < this->aac_camera_captures_.size(); i++) {
-    /*for (int i = 0; i < this->aac_camera_captures_.size(); i++)
-    {
-        if (this->aac_camera_streams_[i] == "/dev/videoCam1")
-        {
-            std::thread t1(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 1);
-            this->threads_.push_back(move(t1));
-        }
-        else if (this->aac_camera_streams_[i] == "/dev/videoCam2")
-        {
-            std::thread t2(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 2);
-            this->threads_.push_back(move(t2));
-        }
-        else if (this->aac_camera_streams_[i] == "/dev/videoCam3")
-        {
-            std::thread t3(&Root::camThreadLanding, this, &this->aac_camera_captures_[i], 3);
-            this->threads_.push_back(move(t3));
-        }
-    }
-    std::cout << "Thread size: " << this->threads_.size() << std::endl;*/
+
+    // Run loop while "sleeping"
     while (current_time < end_time)
     {
+        // Read IMU Measurements
         try
         {
             response = imu->readImuMeasurements();

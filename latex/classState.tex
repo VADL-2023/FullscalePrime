@@ -1,0 +1,157 @@
+\hypertarget{classState}{}\doxysection{State Class Reference}
+\label{classState}\index{State@{State}}
+
+
+Base state.  
+
+
+
+
+{\ttfamily \#include $<$State.\+h$>$}
+
+
+
+Inheritance diagram for State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_ab91bb1dd5aa6260ab2a456581daf9ec2}\label{classState_ab91bb1dd5aa6260ab2a456581daf9ec2}} 
+\mbox{\hyperlink{classState_ab91bb1dd5aa6260ab2a456581daf9ec2}{State}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState}{State}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState_a62c19e91a7b724ab4cd9a394ddb2539e}{State}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \&name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState}{State}} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{unit\+Execute}} ()
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \mbox{\hyperlink{classState_a73a816d1fe3d0873085685a407d9d4b3}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the name of the state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \mbox{\hyperlink{classState_a7b93492451b30498b550556bdf333203}{get\+Next\+State}} (\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} curr\+\_\+event)
+\begin{DoxyCompactList}\small\item\em Get the next state based on the event that occured during state machine execution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_ae892ec6905b6de7ae4750e4d7d9d0c1c}\label{classState_ae892ec6905b6de7ae4750e4d7d9d0c1c}} 
+\mbox{\hyperlink{classRoot}{Root}} $\ast$ \mbox{\hyperlink{classState_ae892ec6905b6de7ae4750e4d7d9d0c1c}{root\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRoot}{Root}} object containing variables and methods accessible to all states. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classState_a6a2b92bfd448de1302879399206a460b}\label{classState_a6a2b92bfd448de1302879399206a460b}} 
+\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \mbox{\hyperlink{classState_a6a2b92bfd448de1302879399206a460b}{name\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Name of the state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classState_a8f28c427ef85b562d1854e60e0a8c217}\label{classState_a8f28c427ef85b562d1854e60e0a8c217}} 
+std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \mbox{\hyperlink{classState_a8f28c427ef85b562d1854e60e0a8c217}{state\+\_\+transitions\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Map of transitions to map events occuring in the state machine to the next state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base state. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState_a62c19e91a7b724ab4cd9a394ddb2539e}\label{classState_a62c19e91a7b724ab4cd9a394ddb2539e}} 
+\index{State@{State}!State@{State}}
+\index{State@{State}!State@{State}}
+\doxysubsubsection{\texorpdfstring{State()}{State()}}
+{\footnotesize\ttfamily State\+::\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} \&}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState}{State}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState_aad21360bf6da12cc8442bf0da8bf37a9}\label{classState_aad21360bf6da12cc8442bf0da8bf37a9}} 
+\index{State@{State}!execute@{execute}}
+\index{execute@{execute}!State@{State}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classState__Stepper3_a2c0e1cdb4e9a65aa31fb96c901c3c6d7}{State\+\_\+\+Stepper3}}, \mbox{\hyperlink{classState__Stepper2_a3520c8d57809b5e4f44b4f9806d3fe03}{State\+\_\+\+Stepper2}}, \mbox{\hyperlink{classState__Stepper1_a3fcaaae977630b8b2f9a3eb611d835e7}{State\+\_\+\+Stepper1}}, \mbox{\hyperlink{classState__SDR2_acb6e265d67192d965a6c83d1882fce28}{State\+\_\+\+SDR2}}, \mbox{\hyperlink{classState__SDR1_aed8312e1e5d63a770306f2780866d4d7}{State\+\_\+\+SDR1}}, \mbox{\hyperlink{classState__RCB__Motor_ae4817baeae7b2328c6ddf9a936064e92}{State\+\_\+\+RCB\+\_\+\+Motor}}, \mbox{\hyperlink{classState__RAFCO__Mission_aafb6e2c1815661d8d445e610eb705f66}{State\+\_\+\+RAFCO\+\_\+\+Mission}}, \mbox{\hyperlink{classState__Prelaunch_aaa50669cd48932dee16809a7056254ec}{State\+\_\+\+Prelaunch}}, \mbox{\hyperlink{classState__PDS__Delay_abcbc54cd0a8002d0248fdec17b5bd5ed}{State\+\_\+\+PDS\+\_\+\+Delay}}, \mbox{\hyperlink{classState__Nacelle__Servo_a5e6137d79b0e1272a31b4058805f2e06}{State\+\_\+\+Nacelle\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Lift__Servo_a2df03571468b3a54ecae7f78e1ce5759}{State\+\_\+\+Lift\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Lift__Motor_a5bb8438ed166aca2cfc0ca92da6d245e}{State\+\_\+\+Lift\+\_\+\+Motor}}, \mbox{\hyperlink{classState__Level__Servo_a4b8671456b3764ff8697a7abd2972c92}{State\+\_\+\+Level\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Launch__Detection_a835c7fe14281e9f522e9d256bedef70a}{State\+\_\+\+Launch\+\_\+\+Detection}}, \mbox{\hyperlink{classState__Landing__Detection_a0d0004fd14d3939ce5424dfbba3c52d2}{State\+\_\+\+Landing\+\_\+\+Detection}}, \mbox{\hyperlink{classState__Full__RCB_af43dc75d5fa486319d4aca0a2845eec3}{State\+\_\+\+Full\+\_\+\+RCB}}, \mbox{\hyperlink{classState__Full__Lift_a70d4a9cdd0278a5fe77063f76a251b43}{State\+\_\+\+Full\+\_\+\+Lift}}, \mbox{\hyperlink{classState__Full__Level_aa842ea166bafdde36f901eb205c6d579}{State\+\_\+\+Full\+\_\+\+Level}}, \mbox{\hyperlink{classState__Camera__Check_acdaae7239954e30b59ebc05499249fa3}{State\+\_\+\+Camera\+\_\+\+Check}}, and \mbox{\hyperlink{classState__Apogee__Detection_a37dcfe391cac6c9bd62708be35e5f894}{State\+\_\+\+Apogee\+\_\+\+Detection}}.
+
+\mbox{\Hypertarget{classState_a73a816d1fe3d0873085685a407d9d4b3}\label{classState_a73a816d1fe3d0873085685a407d9d4b3}} 
+\index{State@{State}!getName@{getName}}
+\index{getName@{getName}!State@{State}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} State\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the name of the state. 
+
+\begin{DoxyReturn}{Returns}
+State\+Name (Name of the state) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classState_a7b93492451b30498b550556bdf333203}\label{classState_a7b93492451b30498b550556bdf333203}} 
+\index{State@{State}!getNextState@{getNextState}}
+\index{getNextState@{getNextState}!State@{State}}
+\doxysubsubsection{\texorpdfstring{getNextState()}{getNextState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} State\+::get\+Next\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}}]{curr\+\_\+event }\end{DoxyParamCaption})}
+
+
+
+Get the next state based on the event that occured during state machine execution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em curr\+\_\+event} & The event that just occured in execution \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+State\+Name The next state to be transitioned to in the state machine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classState_a571cb364027c5ee65658c623bc03d3b5}\label{classState_a571cb364027c5ee65658c623bc03d3b5}} 
+\index{State@{State}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State@{State}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classState__Stepper3_a2054c7020a398cae6aa019254486c522}{State\+\_\+\+Stepper3}}, \mbox{\hyperlink{classState__Stepper2_a97fab8f2c1a5a7b634db6e3b97f86168}{State\+\_\+\+Stepper2}}, \mbox{\hyperlink{classState__Stepper1_af5be4d630c0c5414de0dbc7b0ae1ee3d}{State\+\_\+\+Stepper1}}, \mbox{\hyperlink{classState__SDR2_a5da0e370cafe8c0c6bbb55d197fda26f}{State\+\_\+\+SDR2}}, \mbox{\hyperlink{classState__SDR1_a95dc596db72ea2ca80b49f942b3acfb3}{State\+\_\+\+SDR1}}, \mbox{\hyperlink{classState__RCB__Motor_a59e9211b5cfdb9b15631b6a2e6671ffe}{State\+\_\+\+RCB\+\_\+\+Motor}}, \mbox{\hyperlink{classState__RAFCO__Mission_ac564f64d12337ccaec77547c5d744558}{State\+\_\+\+RAFCO\+\_\+\+Mission}}, \mbox{\hyperlink{classState__Prelaunch_a6069a3e0a6d802cf5f3f2be2d2d99060}{State\+\_\+\+Prelaunch}}, \mbox{\hyperlink{classState__PDS__Delay_a0b028154f783343c5eecb40e928e0ea1}{State\+\_\+\+PDS\+\_\+\+Delay}}, \mbox{\hyperlink{classState__Nacelle__Servo_a92617f857093988781dd88dd2dc1107d}{State\+\_\+\+Nacelle\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Lift__Servo_a6751da9e2313842367a354c146f547b4}{State\+\_\+\+Lift\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Lift__Motor_a59cb3c800215b02457152c70852d1f5c}{State\+\_\+\+Lift\+\_\+\+Motor}}, \mbox{\hyperlink{classState__Level__Servo_ad5d2f872c82e5e422c619f0a17db28bc}{State\+\_\+\+Level\+\_\+\+Servo}}, \mbox{\hyperlink{classState__Launch__Detection_acf9ce4bd738cb1163d284e5b29f53bca}{State\+\_\+\+Launch\+\_\+\+Detection}}, \mbox{\hyperlink{classState__Landing__Detection_af2b79175bf56d04c58291c545931cc3d}{State\+\_\+\+Landing\+\_\+\+Detection}}, \mbox{\hyperlink{classState__Full__RCB_a217deb0f715780973bb98b8fa4bc8395}{State\+\_\+\+Full\+\_\+\+RCB}}, \mbox{\hyperlink{classState__Full__Lift_ac41bfc6a060d4c6e4b98de532dcd9563}{State\+\_\+\+Full\+\_\+\+Lift}}, \mbox{\hyperlink{classState__Full__Level_ad8fa398946c09366bbd832997ef1d2b3}{State\+\_\+\+Full\+\_\+\+Level}}, \mbox{\hyperlink{classState__Camera__Check_a55e6e52e22484e2a67ca32be3d7c7d14}{State\+\_\+\+Camera\+\_\+\+Check}}, and \mbox{\hyperlink{classState__Apogee__Detection_aa3e5cbbeb04733cc863ed024bfd82d40}{State\+\_\+\+Apogee\+\_\+\+Detection}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State_8h}{State.\+h}}\item 
+HFSM/src/State.\+cpp\end{DoxyCompactItemize}

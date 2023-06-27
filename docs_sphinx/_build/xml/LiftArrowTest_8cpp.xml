@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="LiftArrowTest_8cpp" kind="file" language="C++">
+    <compoundname>LiftArrowTest.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">ctime</includes>
+    <includes local="yes">pigpio.h</includes>
+    <includes local="no">chrono</includes>
+    <incdepgraph>
+      <node id="4">
+        <label>pigpio.h</label>
+      </node>
+      <node id="1">
+        <label>/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp</label>
+        <link refid="LiftArrowTest_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ctime</label>
+      </node>
+      <node id="2">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>chrono</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int LIFT_P</definition>
+        <argsstring></argsstring>
+        <name>LIFT_P</name>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for positive lift motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="15" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int LIFT_N</definition>
+        <argsstring></argsstring>
+        <name>LIFT_N</name>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for negative lift motor terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="21" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int LIFT_ENABLE</definition>
+        <argsstring></argsstring>
+        <name>LIFT_ENABLE</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for lift motor enable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="27" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int LIFT_STANDBY</definition>
+        <argsstring></argsstring>
+        <name>LIFT_STANDBY</name>
+        <initializer>= 21</initializer>
+        <briefdescription>
+<para>RPi GPIO Pin for lift motor controller standby. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="33" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="LiftArrowTest_8cpp_1a905b42e4cf35058ea62ef1cc495d6e40" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int PWM_MOTOR_MAX</definition>
+        <argsstring></argsstring>
+        <name>PWM_MOTOR_MAX</name>
+        <initializer>= 255</initializer>
+        <briefdescription>
+<para>Max PWM Signal for motor to run full speed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="39" column="11" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="LiftArrowTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>()</argsstring>
+        <name>main</name>
+        <briefdescription>
+<para>Main method: Runs lift up or down. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>exit status </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" line="46" column="5" bodyfile="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp" bodystart="46" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Runs lift up or down. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ctime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;pigpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" kindref="member">LIFT_P</ref><sp/>=<sp/>20;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" kindref="member">LIFT_N</ref><sp/>=<sp/>16;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref><sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref><sp/>=<sp/>21;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1a905b42e4cf35058ea62ef1cc495d6e40" kindref="member">PWM_MOTOR_MAX</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="LiftArrowTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>()</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Temporary<sp/>initialization<sp/>thing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(gpioInitialise()<sp/>&lt;=<sp/>0)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;GPIOs<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;GPIOs<sp/>initialized&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lift<sp/>Motor<sp/>Initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSetMode(<ref refid="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" kindref="member">LIFT_P</ref>,<sp/>PI_OUTPUT);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSetMode(<ref refid="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" kindref="member">LIFT_N</ref>,<sp/>PI_OUTPUT);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSetMode(<ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref>,<sp/>PI_OUTPUT);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioSetMode(<ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref>,<sp/>PI_OUTPUT);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioPWM(<ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exit<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>userInput<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;What<sp/>do<sp/>you<sp/>want<sp/>to<sp/>do<sp/>to<sp/>the<sp/>lift<sp/>((U)p<sp/>|<sp/>(D)own<sp/>|<sp/>(S)top):<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cin<sp/>&gt;&gt;<sp/>userInput;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Lift<sp/>up</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(userInput<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;U&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" kindref="member">LIFT_P</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" kindref="member">LIFT_N</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioPWM(<ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref>,<sp/><ref refid="LiftArrowTest_8cpp_1a905b42e4cf35058ea62ef1cc495d6e40" kindref="member">PWM_MOTOR_MAX</ref>);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Lift<sp/>down</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(userInput<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;D&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" kindref="member">LIFT_P</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" kindref="member">LIFT_N</ref>,<sp/>1);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpioPWM(<ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref>,<sp/><ref refid="LiftArrowTest_8cpp_1a905b42e4cf35058ea62ef1cc495d6e40" kindref="member">PWM_MOTOR_MAX</ref>);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(userInput<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;S&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!exit);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a73d66d904bb57198d3e255542615223d" kindref="member">LIFT_STANDBY</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1aa4782fef8f007fff79a00626dcd5c2e8" kindref="member">LIFT_N</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioWrite(<ref refid="LiftArrowTest_8cpp_1a537cf0d55b6a6480dbad45e7902b9cc2" kindref="member">LIFT_P</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioPWM(<ref refid="LiftArrowTest_8cpp_1a5452efebe5bae197f7bcf2c36750f804" kindref="member">LIFT_ENABLE</ref>,<sp/>0);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Winch<sp/>down&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>gpioTerminate();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/kushtimusprime/FullscalePrime/FieldTest/src/LiftArrowTest.cpp"/>
+  </compounddef>
+</doxygen>

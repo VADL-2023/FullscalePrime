@@ -1,0 +1,4 @@
+<map id="State_Full_Lift" name="State_Full_Lift">
+<area shape="rect" id="node1" title="State responsible for elevating the key nacelle with the lift." alt="" coords="5,80,119,107"/>
+<area shape="rect" id="node2" href="$classState.html" title="Base state." alt="" coords="34,5,90,32"/>
+</map>

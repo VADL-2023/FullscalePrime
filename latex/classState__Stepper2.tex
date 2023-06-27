@@ -1,0 +1,111 @@
+\hypertarget{classState__Stepper2}{}\doxysection{State\+\_\+\+Stepper2 Class Reference}
+\label{classState__Stepper2}\index{State\_Stepper2@{State\_Stepper2}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for testing movement for nacelle 2.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Stepper2.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Stepper2\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classState__Stepper2__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Stepper2\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Stepper2__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Stepper2_ab4380c6398620cf82cbe2c906f5d53cb}\label{classState__Stepper2_ab4380c6398620cf82cbe2c906f5d53cb}} 
+\mbox{\hyperlink{classState__Stepper2_ab4380c6398620cf82cbe2c906f5d53cb}{State\+\_\+\+Stepper2}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Stepper2}{State\+\_\+\+Stepper2}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Stepper2_a726a0a2d65c33f74cd68dc7175b20156}{State\+\_\+\+Stepper2}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Stepper2}{State\+\_\+\+Stepper2}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Stepper2_a3520c8d57809b5e4f44b4f9806d3fe03}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Stepper2_a97fab8f2c1a5a7b634db6e3b97f86168}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for testing movement for nacelle 2. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Stepper2_a726a0a2d65c33f74cd68dc7175b20156}\label{classState__Stepper2_a726a0a2d65c33f74cd68dc7175b20156}} 
+\index{State\_Stepper2@{State\_Stepper2}!State\_Stepper2@{State\_Stepper2}}
+\index{State\_Stepper2@{State\_Stepper2}!State\_Stepper2@{State\_Stepper2}}
+\doxysubsubsection{\texorpdfstring{State\_Stepper2()}{State\_Stepper2()}}
+{\footnotesize\ttfamily State\+\_\+\+Stepper2\+::\+State\+\_\+\+Stepper2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Stepper2}{State\+\_\+\+Stepper2}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Stepper2_a3520c8d57809b5e4f44b4f9806d3fe03}\label{classState__Stepper2_a3520c8d57809b5e4f44b4f9806d3fe03}} 
+\index{State\_Stepper2@{State\_Stepper2}!execute@{execute}}
+\index{execute@{execute}!State\_Stepper2@{State\_Stepper2}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Stepper2\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Stepper2_a97fab8f2c1a5a7b634db6e3b97f86168}\label{classState__Stepper2_a97fab8f2c1a5a7b634db6e3b97f86168}} 
+\index{State\_Stepper2@{State\_Stepper2}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Stepper2@{State\_Stepper2}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Stepper2\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Stepper2_8h}{State\+\_\+\+Stepper2.\+h}}\item 
+HFSM/src/State\+\_\+\+Stepper2.\+cpp\end{DoxyCompactItemize}

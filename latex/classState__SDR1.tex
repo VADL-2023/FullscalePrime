@@ -1,0 +1,111 @@
+\hypertarget{classState__SDR1}{}\doxysection{State\+\_\+\+SDR1 Class Reference}
+\label{classState__SDR1}\index{State\_SDR1@{State\_SDR1}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for debugging SDR 1.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+SDR1.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+SDR1\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{classState__SDR1__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+SDR1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__SDR1__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__SDR1_abd5c67780da63e9ddf0113ce792b8003}\label{classState__SDR1_abd5c67780da63e9ddf0113ce792b8003}} 
+\mbox{\hyperlink{classState__SDR1_abd5c67780da63e9ddf0113ce792b8003}{State\+\_\+\+SDR1}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__SDR1}{State\+\_\+\+SDR1}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__SDR1_ae1eb82708779c744347a463a2be9c608}{State\+\_\+\+SDR1}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__SDR1}{State\+\_\+\+SDR1}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__SDR1_aed8312e1e5d63a770306f2780866d4d7}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__SDR1_a95dc596db72ea2ca80b49f942b3acfb3}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for debugging SDR 1. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__SDR1_ae1eb82708779c744347a463a2be9c608}\label{classState__SDR1_ae1eb82708779c744347a463a2be9c608}} 
+\index{State\_SDR1@{State\_SDR1}!State\_SDR1@{State\_SDR1}}
+\index{State\_SDR1@{State\_SDR1}!State\_SDR1@{State\_SDR1}}
+\doxysubsubsection{\texorpdfstring{State\_SDR1()}{State\_SDR1()}}
+{\footnotesize\ttfamily State\+\_\+\+SDR1\+::\+State\+\_\+\+SDR1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__SDR1}{State\+\_\+\+SDR1}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__SDR1_aed8312e1e5d63a770306f2780866d4d7}\label{classState__SDR1_aed8312e1e5d63a770306f2780866d4d7}} 
+\index{State\_SDR1@{State\_SDR1}!execute@{execute}}
+\index{execute@{execute}!State\_SDR1@{State\_SDR1}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+SDR1\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__SDR1_a95dc596db72ea2ca80b49f942b3acfb3}\label{classState__SDR1_a95dc596db72ea2ca80b49f942b3acfb3}} 
+\index{State\_SDR1@{State\_SDR1}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_SDR1@{State\_SDR1}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+SDR1\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__SDR1_8h}{State\+\_\+\+SDR1.\+h}}\item 
+HFSM/src/State\+\_\+\+SDR1.\+cpp\end{DoxyCompactItemize}

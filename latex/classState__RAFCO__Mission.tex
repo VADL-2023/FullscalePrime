@@ -1,0 +1,111 @@
+\hypertarget{classState__RAFCO__Mission}{}\doxysection{State\+\_\+\+RAFCO\+\_\+\+Mission Class Reference}
+\label{classState__RAFCO__Mission}\index{State\_RAFCO\_Mission@{State\_RAFCO\_Mission}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for receiving APRS packets and perform image processing with camera nacelles.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+RAFCO\+\_\+\+Mission.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+RAFCO\+\_\+\+Mission\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classState__RAFCO__Mission__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+RAFCO\+\_\+\+Mission\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__RAFCO__Mission__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__RAFCO__Mission_a03e7f5a4878d0f8b0dea552cd9ef2d37}\label{classState__RAFCO__Mission_a03e7f5a4878d0f8b0dea552cd9ef2d37}} 
+\mbox{\hyperlink{classState__RAFCO__Mission_a03e7f5a4878d0f8b0dea552cd9ef2d37}{State\+\_\+\+RAFCO\+\_\+\+Mission}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__RAFCO__Mission}{State\+\_\+\+RAFCO\+\_\+\+Mission}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__RAFCO__Mission_ad3790746ce105b3d41f31bdb447e05f4}{State\+\_\+\+RAFCO\+\_\+\+Mission}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__RAFCO__Mission}{State\+\_\+\+RAFCO\+\_\+\+Mission}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__RAFCO__Mission_aafb6e2c1815661d8d445e610eb705f66}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__RAFCO__Mission_ac564f64d12337ccaec77547c5d744558}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for receiving APRS packets and perform image processing with camera nacelles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__RAFCO__Mission_ad3790746ce105b3d41f31bdb447e05f4}\label{classState__RAFCO__Mission_ad3790746ce105b3d41f31bdb447e05f4}} 
+\index{State\_RAFCO\_Mission@{State\_RAFCO\_Mission}!State\_RAFCO\_Mission@{State\_RAFCO\_Mission}}
+\index{State\_RAFCO\_Mission@{State\_RAFCO\_Mission}!State\_RAFCO\_Mission@{State\_RAFCO\_Mission}}
+\doxysubsubsection{\texorpdfstring{State\_RAFCO\_Mission()}{State\_RAFCO\_Mission()}}
+{\footnotesize\ttfamily State\+\_\+\+RAFCO\+\_\+\+Mission\+::\+State\+\_\+\+RAFCO\+\_\+\+Mission (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__RAFCO__Mission}{State\+\_\+\+RAFCO\+\_\+\+Mission}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__RAFCO__Mission_aafb6e2c1815661d8d445e610eb705f66}\label{classState__RAFCO__Mission_aafb6e2c1815661d8d445e610eb705f66}} 
+\index{State\_RAFCO\_Mission@{State\_RAFCO\_Mission}!execute@{execute}}
+\index{execute@{execute}!State\_RAFCO\_Mission@{State\_RAFCO\_Mission}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+RAFCO\+\_\+\+Mission\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__RAFCO__Mission_ac564f64d12337ccaec77547c5d744558}\label{classState__RAFCO__Mission_ac564f64d12337ccaec77547c5d744558}} 
+\index{State\_RAFCO\_Mission@{State\_RAFCO\_Mission}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_RAFCO\_Mission@{State\_RAFCO\_Mission}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+RAFCO\+\_\+\+Mission\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__RAFCO__Mission_8h}{State\+\_\+\+RAFCO\+\_\+\+Mission.\+h}}\item 
+HFSM/src/State\+\_\+\+RAFCO\+\_\+\+Mission.\+cpp\end{DoxyCompactItemize}

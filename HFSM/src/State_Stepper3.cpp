@@ -15,6 +15,7 @@ EventName State_Stepper3::execute() {
 }
 
 EventName State_Stepper3::unitExecute() {
+    // Swivel stepper 3 in both directions
 	double start_time = this->root_->getCurrentTime();
 	while(this->root_->getCurrentTime() - start_time < this->root_->stepper_threshold_) {
         gpioWrite(this->root_->stepper_3_standby_pin_,1);

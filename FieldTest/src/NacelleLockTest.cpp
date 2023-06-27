@@ -1,25 +1,36 @@
+/**
+ * @file NacelleLockTest.cpp
+ * @brief Runs nacelle locking servo to either lock or unlock the nacelles
+ * 
+ */
 #include <iostream>
 #include <ctime>
 #include "pigpio.h"
 #include <chrono>
 
+/**
+ * @brief RPI GPIO pin for nacelle locking servo
+ * 
+ */
 const int NACELLE_SERVO = 14;
-const uint16_t SERVO_PULSE_MIN = 100;
-const uint16_t SERVO_PULSE_MAX = 2500;
-const uint8_t SERVO_DEG_RANGE = 180;
+
+/**
+ * @brief Pulse width to lock nacelles
+ * 
+ */
 const int NACELLE_LOCK = 1600;
+
+/**
+ * @brief Pulse width to unlock nacelles
+ * 
+ */
 const int NACELLE_UNLOCK = 755;
 
-double getCurrentTime()
-{
-    return double(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
-}
-
-float angleToPulseWidth(double pulse_max, double pulse_min, double range, float angle)
-{
-    return (pulse_max - pulse_min) * angle / range + (pulse_max + pulse_min) / 2.0;
-}
-
+/**
+ * @brief Main Method: Runs nacelle locking servo to either lock or unlock the nacelles
+ * 
+ * @return exit status 
+ */
 int main()
 {
     // Temporary initialization thing
@@ -30,12 +41,10 @@ int main()
 
     std::cout << "GPIOs initialized" << std::endl;
 
-    // Lift Locking Servo Initialization
+    // Nacelle Locking Servo Initialization
     gpioSetMode(NACELLE_SERVO, PI_OUTPUT);
 
-    // Wait for the user to signal the lift servo
-    double angle = 0;
-    float pulse_width;
+    // Wait for the user to signal the nacelle servo
     bool run_again = true;
     do
     {
@@ -45,24 +54,23 @@ int main()
         std::cout << "What do you want to do to the nacelle lock (L | U | Q): ";
         std::cin >> userInput;
 
+        // Lock nacelle servo
         if (userInput == "L")
         {
             std::cout << "Start lock" << std::endl;
-            angle = 0;
-            pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
             gpioServo(NACELLE_SERVO, NACELLE_LOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End lock" << std::endl;
         }
+        // Unlock nacelle servo
         else if (userInput == "U")
         {
             std::cout << "Start unlock" << std::endl;
-            angle = 90;
-            pulse_width = angleToPulseWidth(SERVO_PULSE_MAX, SERVO_PULSE_MIN, SERVO_DEG_RANGE, angle);
             gpioServo(NACELLE_SERVO, NACELLE_UNLOCK);
             gpioSleep(0, 2, 0);
             std::cout << "End unlock" << std::endl;
         }
+        // Quit program
         else if (userInput == "Q")
         {
             run_again = false;

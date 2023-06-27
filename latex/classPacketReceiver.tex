@@ -1,0 +1,110 @@
+\hypertarget{classPacketReceiver}{}\doxysection{Packet\+Receiver Class Reference}
+\label{classPacketReceiver}\index{PacketReceiver@{PacketReceiver}}
+
+
+\mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}} Object for APRS.  
+
+
+
+
+{\ttfamily \#include $<$Packet\+Receiver.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPacketReceiver_a44659663b638f6c15b56e5afffaedc76}{Packet\+Receiver}} (int serial\+\_\+num, std\+::string frequency, int port, std\+::string configfile)
+\begin{DoxyCompactList}\small\item\em Construct a new Packet Receiver object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPacketReceiver_aaa7c59a15a919bb7842ed062199876cf}\label{classPacketReceiver_aaa7c59a15a919bb7842ed062199876cf}} 
+\mbox{\hyperlink{classPacketReceiver_aaa7c59a15a919bb7842ed062199876cf}{$\sim$\+Packet\+Receiver}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the Packet Receiver object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPacketReceiver_a71342adf823a60bb19eb598ab74bac72}\label{classPacketReceiver_a71342adf823a60bb19eb598ab74bac72}} 
+void \mbox{\hyperlink{classPacketReceiver_a71342adf823a60bb19eb598ab74bac72}{start\+SDR}} ()
+\begin{DoxyCompactList}\small\item\em Initializes SDR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPacketReceiver_ab23a5cadf76e484962899dff8147b7e5}{start\+SDR}} (\mbox{\hyperlink{classLog}{Log}} \&m\+\_\+log)
+\begin{DoxyCompactList}\small\item\em Initializes SDR so \mbox{\hyperlink{classLog}{Log}} can track it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPacketReceiver_a3cdef77ef428177d339f56c31047e4cd}\label{classPacketReceiver_a3cdef77ef428177d339f56c31047e4cd}} 
+void \mbox{\hyperlink{classPacketReceiver_a3cdef77ef428177d339f56c31047e4cd}{stop\+SDR}} ()
+\begin{DoxyCompactList}\small\item\em Terminates SDR. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPacketReceiver_acb9ab72d118d8e8efd298c54b7c43394}{packet\+Available}} ()
+\begin{DoxyCompactList}\small\item\em Checks if APRS Packet is available. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structAX25Packet}{AX25\+Packet}} \mbox{\hyperlink{classPacketReceiver_a0967e86e89ca22f1234756f62f37cc24}{get\+Packet}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{structAX25Packet}{AX25\+Packet}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classPacketReceiver}{Packet\+Receiver}} Object for APRS. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPacketReceiver_a44659663b638f6c15b56e5afffaedc76}\label{classPacketReceiver_a44659663b638f6c15b56e5afffaedc76}} 
+\index{PacketReceiver@{PacketReceiver}!PacketReceiver@{PacketReceiver}}
+\index{PacketReceiver@{PacketReceiver}!PacketReceiver@{PacketReceiver}}
+\doxysubsubsection{\texorpdfstring{PacketReceiver()}{PacketReceiver()}}
+{\footnotesize\ttfamily Packet\+Receiver\+::\+Packet\+Receiver (\begin{DoxyParamCaption}\item[{int}]{serial\+\_\+num,  }\item[{std\+::string}]{frequency,  }\item[{int}]{port,  }\item[{std\+::string}]{configfile }\end{DoxyParamCaption})}
+
+
+
+Construct a new Packet Receiver object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial\+\_\+num} & Serial number \\
+\hline
+{\em frequency} & Desired frequency \\
+\hline
+{\em port} & TCP Port \\
+\hline
+{\em configfile} & Direwolf config file \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPacketReceiver_a0967e86e89ca22f1234756f62f37cc24}\label{classPacketReceiver_a0967e86e89ca22f1234756f62f37cc24}} 
+\index{PacketReceiver@{PacketReceiver}!getPacket@{getPacket}}
+\index{getPacket@{getPacket}!PacketReceiver@{PacketReceiver}}
+\doxysubsubsection{\texorpdfstring{getPacket()}{getPacket()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structAX25Packet}{AX25\+Packet}} Packet\+Receiver\+::get\+Packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{structAX25Packet}{AX25\+Packet}}. 
+
+\begin{DoxyReturn}{Returns}
+The APRS Packet 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPacketReceiver_acb9ab72d118d8e8efd298c54b7c43394}\label{classPacketReceiver_acb9ab72d118d8e8efd298c54b7c43394}} 
+\index{PacketReceiver@{PacketReceiver}!packetAvailable@{packetAvailable}}
+\index{packetAvailable@{packetAvailable}!PacketReceiver@{PacketReceiver}}
+\doxysubsubsection{\texorpdfstring{packetAvailable()}{packetAvailable()}}
+{\footnotesize\ttfamily bool Packet\+Receiver\+::packet\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if APRS Packet is available. 
+
+\begin{DoxyReturn}{Returns}
+true APRS Packet is available 
+
+false APRS Packet is not available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPacketReceiver_ab23a5cadf76e484962899dff8147b7e5}\label{classPacketReceiver_ab23a5cadf76e484962899dff8147b7e5}} 
+\index{PacketReceiver@{PacketReceiver}!startSDR@{startSDR}}
+\index{startSDR@{startSDR}!PacketReceiver@{PacketReceiver}}
+\doxysubsubsection{\texorpdfstring{startSDR()}{startSDR()}}
+{\footnotesize\ttfamily void Packet\+Receiver\+::start\+SDR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLog}{Log}} \&}]{m\+\_\+log }\end{DoxyParamCaption})}
+
+
+
+Initializes SDR so \mbox{\hyperlink{classLog}{Log}} can track it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+log} & Pointer to the \mbox{\hyperlink{classLog}{Log}} object \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Packet\+Reception/include/\mbox{\hyperlink{PacketReceiver_8h}{Packet\+Receiver.\+h}}\item 
+Packet\+Reception/src/Packet\+Receiver.\+cpp\end{DoxyCompactItemize}

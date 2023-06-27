@@ -1,0 +1,111 @@
+\hypertarget{classState__Launch__Detection}{}\doxysection{State\+\_\+\+Launch\+\_\+\+Detection Class Reference}
+\label{classState__Launch__Detection}\index{State\_Launch\_Detection@{State\_Launch\_Detection}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for detecting launch with IMU.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+Launch\+\_\+\+Detection.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+Launch\+\_\+\+Detection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classState__Launch__Detection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+Launch\+\_\+\+Detection\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__Launch__Detection__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__Launch__Detection_a25b3296fceff7e75454e7810c29a80eb}\label{classState__Launch__Detection_a25b3296fceff7e75454e7810c29a80eb}} 
+\mbox{\hyperlink{classState__Launch__Detection_a25b3296fceff7e75454e7810c29a80eb}{State\+\_\+\+Launch\+\_\+\+Detection}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Launch__Detection}{State\+\_\+\+Launch\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__Launch__Detection_a01b0d92c70b83ee594192a1c80e938f6}{State\+\_\+\+Launch\+\_\+\+Detection}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__Launch__Detection}{State\+\_\+\+Launch\+\_\+\+Detection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Launch__Detection_a835c7fe14281e9f522e9d256bedef70a}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__Launch__Detection_acf9ce4bd738cb1163d284e5b29f53bca}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for detecting launch with IMU. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__Launch__Detection_a01b0d92c70b83ee594192a1c80e938f6}\label{classState__Launch__Detection_a01b0d92c70b83ee594192a1c80e938f6}} 
+\index{State\_Launch\_Detection@{State\_Launch\_Detection}!State\_Launch\_Detection@{State\_Launch\_Detection}}
+\index{State\_Launch\_Detection@{State\_Launch\_Detection}!State\_Launch\_Detection@{State\_Launch\_Detection}}
+\doxysubsubsection{\texorpdfstring{State\_Launch\_Detection()}{State\_Launch\_Detection()}}
+{\footnotesize\ttfamily State\+\_\+\+Launch\+\_\+\+Detection\+::\+State\+\_\+\+Launch\+\_\+\+Detection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__Launch__Detection}{State\+\_\+\+Launch\+\_\+\+Detection}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__Launch__Detection_a835c7fe14281e9f522e9d256bedef70a}\label{classState__Launch__Detection_a835c7fe14281e9f522e9d256bedef70a}} 
+\index{State\_Launch\_Detection@{State\_Launch\_Detection}!execute@{execute}}
+\index{execute@{execute}!State\_Launch\_Detection@{State\_Launch\_Detection}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Launch\+\_\+\+Detection\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__Launch__Detection_acf9ce4bd738cb1163d284e5b29f53bca}\label{classState__Launch__Detection_acf9ce4bd738cb1163d284e5b29f53bca}} 
+\index{State\_Launch\_Detection@{State\_Launch\_Detection}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_Launch\_Detection@{State\_Launch\_Detection}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+Launch\+\_\+\+Detection\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__Launch__Detection_8h}{State\+\_\+\+Launch\+\_\+\+Detection.\+h}}\item 
+HFSM/src/State\+\_\+\+Launch\+\_\+\+Detection.\+cpp\end{DoxyCompactItemize}

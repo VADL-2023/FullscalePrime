@@ -40,6 +40,8 @@ EventName State_Launch_Detection::execute()
 		++counter;
 	}
 	int capture_size = this->root_->aac_camera_captures_.size();
+
+	// Determines which cameras can be used for image capture, and start the threads
 	for(int i = 0;i < capture_size;i++) {
 		if(this->root_->aac_camera_captures_strings_[i] == "/dev/videoCam1") {
 			this->root_->m_log_.write("In Cap 1");
@@ -62,7 +64,7 @@ EventName State_Launch_Detection::execute()
 	this->root_->launch_time_ = this->root_->getCurrentTime();
 
 	// Wait for motor burn to complete while still collecting IMU data
-	this->root_->activeSleep(this->root_->t_burn_, this->root_->m_vn_, this->root_->response_, this->root_->m_log_, this->root_->start_time_);
+	this->root_->activeSleep(this->root_->t_burn_, this->root_->m_vn_, this->root_->response_, this->root_->m_log_);
 	return LAUNCH_DETECTED;
 }
 

@@ -1,0 +1,111 @@
+\hypertarget{classState__RCB__Motor}{}\doxysection{State\+\_\+\+RCB\+\_\+\+Motor Class Reference}
+\label{classState__RCB__Motor}\index{State\_RCB\_Motor@{State\_RCB\_Motor}}
+
+
+\mbox{\hyperlink{classState}{State}} responsible for testing RCB motor without IMU.  
+
+
+
+
+{\ttfamily \#include $<$State\+\_\+\+RCB\+\_\+\+Motor.\+h$>$}
+
+
+
+Inheritance diagram for State\+\_\+\+RCB\+\_\+\+Motor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classState__RCB__Motor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+\_\+\+RCB\+\_\+\+Motor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{classState__RCB__Motor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState__RCB__Motor_a53e95fe74b747d36876eb3a97b07875e}\label{classState__RCB__Motor_a53e95fe74b747d36876eb3a97b07875e}} 
+\mbox{\hyperlink{classState__RCB__Motor_a53e95fe74b747d36876eb3a97b07875e}{State\+\_\+\+RCB\+\_\+\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__RCB__Motor}{State\+\_\+\+RCB\+\_\+\+Motor}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classState__RCB__Motor_a0e59b956e8673d994b9376fd7c12db00}{State\+\_\+\+RCB\+\_\+\+Motor}} (\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} name, std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&state\+\_\+transitions, \mbox{\hyperlink{classRoot}{Root}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classState__RCB__Motor}{State\+\_\+\+RCB\+\_\+\+Motor}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__RCB__Motor_ae4817baeae7b2328c6ddf9a936064e92}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Main execution method for state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} \mbox{\hyperlink{classState__RCB__Motor_a59e9211b5cfdb9b15631b6a2e6671ffe}{unit\+Execute}} () override
+\begin{DoxyCompactList}\small\item\em Execution method for state in display mode (DOESN\textquotesingle{}T WORK) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classState}{State}} responsible for testing RCB motor without IMU. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classState__RCB__Motor_a0e59b956e8673d994b9376fd7c12db00}\label{classState__RCB__Motor_a0e59b956e8673d994b9376fd7c12db00}} 
+\index{State\_RCB\_Motor@{State\_RCB\_Motor}!State\_RCB\_Motor@{State\_RCB\_Motor}}
+\index{State\_RCB\_Motor@{State\_RCB\_Motor}!State\_RCB\_Motor@{State\_RCB\_Motor}}
+\doxysubsubsection{\texorpdfstring{State\_RCB\_Motor()}{State\_RCB\_Motor()}}
+{\footnotesize\ttfamily State\+\_\+\+RCB\+\_\+\+Motor\+::\+State\+\_\+\+RCB\+\_\+\+Motor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}}}]{name,  }\item[{std\+::map$<$ \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}}, \mbox{\hyperlink{State__Enums_8h_ac99446a312a3e7b8497ac6ec1f3ae080}{State\+Name}} $>$ \&}]{state\+\_\+transitions,  }\item[{\mbox{\hyperlink{classRoot}{Root}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classState__RCB__Motor}{State\+\_\+\+RCB\+\_\+\+Motor}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & String representing state name \\
+\hline
+{\em state\+\_\+transitions} & Map of transitions to determine what the next state will be \\
+\hline
+{\em root} & \mbox{\hyperlink{classRoot}{Root}} variable used for state machine \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classState__RCB__Motor_ae4817baeae7b2328c6ddf9a936064e92}\label{classState__RCB__Motor_ae4817baeae7b2328c6ddf9a936064e92}} 
+\index{State\_RCB\_Motor@{State\_RCB\_Motor}!execute@{execute}}
+\index{execute@{execute}!State\_RCB\_Motor@{State\_RCB\_Motor}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+RCB\+\_\+\+Motor\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Main execution method for state. 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_aad21360bf6da12cc8442bf0da8bf37a9}{State}}.
+
+\mbox{\Hypertarget{classState__RCB__Motor_a59e9211b5cfdb9b15631b6a2e6671ffe}\label{classState__RCB__Motor_a59e9211b5cfdb9b15631b6a2e6671ffe}} 
+\index{State\_RCB\_Motor@{State\_RCB\_Motor}!unitExecute@{unitExecute}}
+\index{unitExecute@{unitExecute}!State\_RCB\_Motor@{State\_RCB\_Motor}}
+\doxysubsubsection{\texorpdfstring{unitExecute()}{unitExecute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{State__Enums_8h_ab10943c68f32680aedb347755b5488ec}{Event\+Name}} State\+\_\+\+RCB\+\_\+\+Motor\+::unit\+Execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Execution method for state in display mode (DOESN\textquotesingle{}T WORK) 
+
+\begin{DoxyReturn}{Returns}
+Result of state execution 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classState_a571cb364027c5ee65658c623bc03d3b5}{State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+HFSM/include/\mbox{\hyperlink{State__RCB__Motor_8h}{State\+\_\+\+RCB\+\_\+\+Motor.\+h}}\item 
+HFSM/src/State\+\_\+\+RCB\+\_\+\+Motor.\+cpp\end{DoxyCompactItemize}
