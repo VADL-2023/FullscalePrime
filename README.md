@@ -1,6 +1,6 @@
 # Fullscale Prime
 
-Welcome to the VADL 2023 software repository! The goal of this project was to autonomously run the team's payload. This involves launch-apogee-landing detection, RCB to properly place the key nacelle at the top, lift to elevate the key nacelle, and run the SDRs and cameras to autonomously decode APRS packets and perform the proper image processing actions. The code was written by Kush Hari, Meredith Hunter, Andrew Noonan, Matthew McGowan, and technically Eric Holst with README written by Kush Hari.
+Welcome to the VADL 2023 software repository! The goal of this project was to autonomously run the team's payload. This involves launch-apogee-landing detection, RCB to properly place the key nacelle at the top, lift to elevate the key nacelle, and run the SDRs and cameras to autonomously decode APRS packets and perform the proper image processing actions. The code was written by Kush Hari, Meredith Hunter, Andrew Noonan, Matthew McGowan, and technically Eric Holst with README written by Kush Hari. You can checkout our full documentation here: https://vadl-2023.github.io/FullscalePrime/
 
 ## Installation
 This code is designed to work with a Raspberry Pi 4 with the Raspbian Bullseye operating system (but it could probably work with Ubuntu or Ubuntu MATE). The only major installation is OpenCV. OpenCV is an open source computer vision library with lots of cool and efficient CV algorithms, so you don't got to write it yourself.
