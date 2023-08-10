@@ -151,3 +151,6 @@ video_concat scripts: We save the flight videos in increments, so this will just
 ## Limitations
 The code in its current form did not successfully operate in the NASA USLI competition despite functioning through all of our tests. We were able to successfully record flight video, perform RCB, detect all cameras and SDRS post-landing, and lift. However, during the lift, we lost all USB connections despite no hardware disruptions. With a software reboot, we were able to successfully execute the payload. Further testing revealed that this error happens 5-10% of the time. The leading reason for failure is the fact that we powered the Raspberry Pi with GPIO pins, rather than the USB-C or barrel jack port. This is bad because while it is safe voltage-wise, you can only run limited current through the GPIO pins. Perhaps when running the camera, the current spiked up, leading to undefined behavior of the USBs disconnecting. However, this should be thouroughly tested.
 https://forums.raspberrypi.com/viewtopic.php?t=196531
+
+## Documentation Setup (Doxygen + Sphinx + Breathe)
+https://medium.com/practical-coding/c-documentation-with-doxygen-cmake-sphinx-breathe-for-those-of-use-who-are-totally-lost-part-2-21f4fb1abd9f
